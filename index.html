@@ -27,7 +27,7 @@
 				<div id="texte" class="texte inputMenu">
 					<p class="menu">Texte<img alt="" class="down" src="img/down.png"/></p>
 					<div class="textProprieties">
-					<p>value : </p><input type="text" id="txtValue"  value="This is a value.">
+					<p>value : </p><input type="text" id="txtValue"  value="This is a value !">
 				</div>
 				<div id="propertyColor"  class="colorProprieties propertyproperty">
 					<p>Color : </p><input type="text" id="color"  class="jscolor" value="#DADDF0">
@@ -358,54 +358,6 @@
 
 			</script>
 			<script>
-			/*	$(".colorProprieties").click(function(){
-				if($(".colorProprieties").hasClass("active")){
-						$(".colorProprieties").removeClass("active");
-				}else{
-						$(".colorProprieties").addClass("active");
-				}
-			});*/
-
-			/*	$(".texteP").click(function(){
-				if($(".texte > div").hasClass("active")){
-						$(".texte > p > .down").removeClass("activeDown");
-						$(".texte > div").removeClass("active");
-				}else{
-						$(".texte > p > .down").addClass("activeDown");
-						$(".texte > div").addClass("active");
-				}
-				});
-
-				$(".fond > p").click(function(){
-				if($(".fond > div").hasClass("active")){
-
-							$(".fond > p > .down").removeClass("activeDown");
-						$(".fond > div").removeClass("active");
-				}else{
-							$(".fond > p > .down").addClass("activeDown");
-						$(".fond > div").addClass("active");
-				}
-				});
-
-				$(".bordures > p").click(function(){
-				if($(".bordures > div").hasClass("active")){
-						$(".bordures > p > .down").removeClass("activeDown");
-						$(".bordures > div").removeClass("active");
-				}else{
-						$(".bordures > p > .down").addClass("activeDown");
-						$(".bordures > div").addClass("active");
-				}
-				});
-
-				$(".marges > p").click(function(){
-				if($(".marges > div").hasClass("active")){
-						$(".marges > p > .down").removeClass("activeDown");
-						$(".marges > div").removeClass("active");
-				}else{
-						$(".marges > p > .down").addClass("activeDown");
-						$(".marges > div").addClass("active");
-				}
-			});*/
 
 			var elementZ;
 			$(".menu").click(function(){
@@ -461,6 +413,7 @@
 
 
 		function reset () {
+			txtValue.value = 'this is a value !';
 			background.value = "#FFFFFF";
 			color.value = "#000000";
 			FontFamily.value = "";
