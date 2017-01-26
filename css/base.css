@@ -1,0 +1,284 @@
+.bandeau{
+	width: 100%;
+background: rgba(0,0,0,0.9);
+color: white;
+padding: 15px;
+box-sizing: border-box;
+text-transform: uppercase;
+font-size: 30px;
+box-shadow: 3px 3px 3px silver;
+}
+
+
+div > p{
+	width: 32%;
+	float: left;
+	margin: 3px 0px;
+}
+
+div > input[type=text] {
+	display: inline-block;
+	width:32%;
+	border-radius: 4px;
+}
+
+.divOutput{
+	background: rgba(0,0,0,0.6);
+	height: 824px;
+	padding: 15px;
+}
+
+.board{
+}
+
+.cssElements{
+
+	width: 32.5%;
+	background: rgba(255,255,255,0.98);
+	padding: 10px;
+	margin: 1% 0.5% 1% 1%;
+	box-sizing: border-box;
+	padding: 0;
+	float: left;
+}
+
+.cssElements > div{
+background: rgba(0,0,0,0.2);
+}
+
+.cssElements > div:hover{
+background: rgba(0,0,0,0.1);
+}
+
+.generateG{
+		width: 64.5%;
+		display: inline-block;
+		margin: 1% 1% 1% 0.5%;
+}
+.generateCode{
+	width: 49.5%;
+	height:360px;
+	background-color: #272822;
+	color: #F8F8F2;
+    margin: 0% 0.5% 0% 0%;
+box-sizing: border-box;
+float: left;
+}
+
+.attributs{
+	font-style: italic;
+color: #66D9EF;
+}
+.synthaxe{
+		width: 49.5%;
+		height:360px;
+	background: rgba(255,255,255,0.98);
+	padding: 10px;
+	    margin: 0% 0% 0% 0.5%;
+	box-sizing: border-box;
+	display: inline-block;
+}
+
+.console{
+	width: 62.5%;
+	display: inline-block;
+	margin: 0% 1% 0% 0%;
+	background: white;
+	height: 55px;
+	padding: 1%;
+	float: right;
+	background-color: #272822;
+}
+
+.cmd{
+	float: left;
+	width: 80%;
+}
+
+.reset{
+	display: inline-block;
+	width: 10%;
+	background: white;
+    padding: 0px;
+}
+
+.btn {
+	background: #3498db;
+background-image: -webkit-linear-gradient(top, #3498db, #2980b9);
+background-image: -moz-linear-gradient(top, #3498db, #2980b9);
+background-image: -ms-linear-gradient(top, #3498db, #2980b9);
+background-image: -o-linear-gradient(top, #3498db, #2980b9);
+background-image: linear-gradient(to bottom, #3498db, #2980b9);
+-webkit-border-radius: 28;
+-moz-border-radius: 28;
+border-radius: 10px;
+text-shadow: 1px 1px 3px #666666;
+-webkit-box-shadow: 2px 2px 4px #666666;
+-moz-box-shadow: 2px 2px 4px #666666;
+box-shadow: 2px 2px 4px #666666;
+font-family: Arial;
+color: #ffffff;
+font-size: 16px;
+padding: 10px 0px 10px 0px;
+text-decoration: none;
+    width: 150px;
+}
+
+.btn:hover {
+  background: #3cb0fd;
+  background-image: -webkit-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: -moz-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: -ms-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: -o-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
+  text-decoration: none;
+}
+
+.cssrender{
+	margin:0;
+	padding-left:15px;
+}
+
+.displayBlock:nth-child(2), .displayBlock:nth-child(4), .displayBlock:nth-child(6), .displayBlock:nth-child(8), .displayBlock:nth-child(10),
+.displayBlock:nth-child(12), .displayBlock:nth-child(14), .displayBlock:nth-child(16), .displayBlock:nth-child(18), .displayBlock:nth-child(20),
+.displayBlock:nth-child(22), .displayBlock:nth-child(24), .displayBlock:nth-child(26), .displayBlock:nth-child(28), .displayBlock:nth-child(30){
+	background: rgba(255, 255, 255, 0.02);
+}
+.activeProprieties{
+background: rgba(0,0,0,0.1);
+}
+
+.texte >p , .fond >p, .bordures >p , .marges >p {
+    background: -webkit-linear-gradient(top, rgba(65,65,73,1) 0%,rgba(42,42,48,1) 100%);
+    color: white;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+    padding: 5px;
+    border-bottom: 1px solid #1D1E21;
+		width: 100%;
+    box-sizing: border-box;
+    margin: 0;
+    margin-bottom: 5px;
+		font-weight:bold;
+}
+
+
+.borderProprieties, .fontStyleProprieties, .textAlignProprieties, .border-radiusProprieties, .heightProprieties, .widthProprieties, .textProprieties, .colorProprieties, .fontFamilyProprieties, .fontSizeProprieties, .text-shadowProprieties,
+.backgroundProprieties, .opacityProprieties, .box-shadowProprieties, .paddingProprieties, .marginProprieties, .indexProprieties, .box-sizingProprieties, .positionProprieties{
+    background: -webkit-linear-gradient(top, rgba(65,65,73,0.8) 0%,rgba(42,42,48,0.8) 100%);
+    color: white;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+    padding: 5px;
+    border-bottom: 1px solid #1D1E21;
+}
+
+.active, .activeProperty{
+	display:block !important;
+}
+
+.output{
+	padding: 10px;
+	background: rgba(255,255,255,0.5);
+	width: 98%;
+	    margin: 1% 0.5% 1% 1%;
+			box-sizing: border-box;
+}
+
+.bsChrome{
+    background: url('../img/compatible_chrome.gif');
+    background-repeat: no-repeat;
+    background-size: 20px;
+}
+
+.bsEdge{
+    background: url('../img/compatible_edge.gif');
+    background-repeat: no-repeat;
+    background-size: 20px;
+}
+.bsFirefox{
+    background: url('../img/compatible_firefox.gif');
+    background-repeat: no-repeat;
+    background-size: 20px;
+}
+.bsSafari{
+    background: url('../img/compatible_safari.gif');
+    background-repeat: no-repeat;
+    background-size: 20px;
+}
+.bsOpera{
+    background: url('../img/compatible_opera.gif');
+    background-repeat: no-repeat;
+    background-size: 20px;
+}
+
+.down{
+	-ms-transform: rotate(0deg);
+-webkit-transform: rotate(0deg);
+transform: rotate(0deg);
+width: 16px;
+float: right;
+padding: 4px;
+-webkit-transition: width 2s, height 4s; /* Safari */
+    transition: width 2s, height 4s;
+
+}
+
+.activeDown{
+	-webkit-transition: width 2s, height 4s; /* Safari */
+    transition: width 2s, height 4s;
+		-ms-transform: rotate(180deg);
+	-webkit-transform: rotate(180);
+	transform: rotate(180deg);
+}
+
+
+.ace_static_highlight .ace_gutter-cell::before {
+    content: counter(ace_line, decimal);
+    counter-increment: ace_line;
+	}
+
+	.ace_static_highlight .ace_gutter {
+    width: 2em;
+    text-align: right;
+    padding: 0 3px 0 0;
+    margin-right: 3px;
+		padding: 0px 3px 0px 10px;
+		background: rgba(0,0,0,0.2);
+	width: 20px;
+    margin: 0;
+}
+
+.ace_static_highlight .ace_gutter-cell {
+    -moz-user-select: -moz-none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+.ace-monokai .ace_gutter {
+    background: #2F3129;
+    color: #8F908A;
+}
+
+.range, .range1 , .range2, .range3, .range4, .range5{
+	display: inline-block;
+    width: 32%;
+    margin-left: 1%;
+}
+
+footer{
+	width: 100%;
+    height: 56px;
+    background: rgba(0,0,0,0.8);
+    padding: 20px;
+    box-sizing: border-box;
+    text-align: right;
+}
+
+footer > a{
+	color:white;
+	text-decoration: none;
+}
+
+.texte > div, .texte > div , .fond > div, .bordures > div , .marges > div {
+	display: none;
+}

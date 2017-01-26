@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang='fr'>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="author" content="Anthony VISOCCHI" />
+		<meta name="keywords" content="" />
+		<meta name="description" content="" />
+
+		<link rel="stylesheet" type="text/css" href="css/normalize.css" media="all"/>
+		<link rel="stylesheet" type="text/css" href="css/base.css"/>
+
+		<script src="js/jscolor.js"></script>
+	</head>
+	<body>
+		<script type="text/javascript" src="js/jquery.js"></script>
+
+
+		<div class="bandeau">css3 generator v1.0</div>
+		<div class="divOutput">
+			<div id="output" class="output"></div>
+			<div id="output2"></div>
+			<div class="board">
+					<!-- TEXTE -->
+			<div class="cssElements">
+				<div id="texte" class="texte inputMenu">
+					<p class="menu">Texte<img alt="" class="down" src="img/down.png"/></p>
+					<div class="textProprieties">
+					<p>value : </p><input type="text" id="txtValue"  value="This is a value.">
+				</div>
+				<div id="propertyColor"  class="colorProprieties propertyproperty">
+					<p>Color : </p><input type="text" id="color"  class="jscolor" value="#DADDF0">
+				</div>
+				<div id="propertyFontFamily" class="fontFamilyProprieties propertyproperty">
+					<p>font-family : </p><input type="text" id="FontFamily" value="lato">
+				</div>
+				<div id="propertyFontSize" class="fontSizeProprieties propertyproperty">
+					<p>font-size : </p><input type="text" id="FontSize" value="16px">
+				</div>
+				<div id="propertyFontStyle" class="fontStyleProprieties propertyproperty">
+					<p>font-style : </p><input type="text" id="FontStyle" value="normal">
+				</div>
+				<div id="propertyTextAlign" class="textAlignProprieties propertyproperty">
+					<p>text-align : </p><input type="text" id="TextAlign" value="center">
+				</div>
+					<div id="propertyTextShadow" class="text-shadowProprieties propertyproperty">
+						<p>text-shadow : </p><input type="text" id="textShadow" value="1px 1px 1px black">
+					</div>
+			</div>
+				<!-- FOND -->
+				<div id="fond" class="fond inputMenu">
+					<p class="menu">Fond<img alt="" class="down" src="img/down.png"/></p>
+				<div class="backgroundProprieties">
+					<p>Background : </p><input type="text" id="background" class="jscolor" value="#2A5476">
+				</div>
+				<div class="opacityProprieties">
+					<p>opacity : </p><input type="text" id="opacity" value="1" class="inputLeft">
+					<input  type="range" class="range2" name="a" min="0" max="100" step="1" value="50" />
+				</div>
+					<div class="box-shadowProprieties">
+						<p>box-shadow : </p><input type="text" id="boxShadow" value="2px 2px 5px black">
+					</div>
+			</div>
+			<!-- TAILLE -->
+				<div class="widthProprieties" style="display:none;">
+					<p>width : </p><input type="text" id="width" value="200px">
+			</div>
+				<div class="heightProprieties" style="display:none;">
+					<p>height : </p><input type="text" id="height" value="200px">
+				</div>
+				<!-- BORDURES -->
+				<div id="bordures" class="bordures inputMenu">
+					<p class="menu">Bordures<img alt="" class="down" src="img/down.png"/></p>
+				<div class="borderProprieties">
+					<p>border : </p><input type="text" id="border" value="1px dashed black" class="inputLeft">
+					<input  type="range" class="range3" name="a" min="0" max="40" step="1" value="20"/>
+				</div>
+				<div class="border-radiusProprieties">
+					<p>border-radius : </p><input type="text" id="borderRadius" value="20px" class="inputLeft">
+					<input  type="range" class="range" name="a" min="0" max="100" step="1" value="50"/>
+				</div>
+			</div>
+			<div id="marges" class="marges inputMenu">
+				<p class="menu">Marges<img alt="" class="down" src="img/down.png"/></p>
+				<div class="paddingProprieties">
+					<p>padding : </p><input type="text" id="padding" value="10px" class="inputLeft">
+					<input  type="range" class="range4" name="a" min="0" max="100" step="1" value="10"/>
+				</div>
+				<div class="marginProprieties">
+					<p>margin : </p><input type="text" id="margin" value="10px" class="inputLeft">
+					<input  type="range" class="range5" name="a" min="0" max="100" step="1" value="10"/>
+				</div>
+			</div>
+			<div>
+				<div class="z-indexProprieties" style="display:none;">
+					<p>z-index : </p><input type="text" id="zindex" value="">
+				</div>
+				<div class="box-sizingProprieties" style="display:none;">
+					<p>box-sizing : </p><input type="text" id="boxSizing" value="">
+				</div>
+				<div  class="positionProprieties" style="display:none;">
+					<p>position : </p><input type="text" id="position" value="">
+				</div>
+		</div>
+	</div>
+		<div class="generateG">
+			<div class="generateCode" >
+						<div>
+							<div class="ace_static_highlight ace_show_gutter" style="counter-reset:ace_line 0">
+							<code id="CSSRENDER">
+									<div class="ace_line"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p>	<span style="color: #A6E22E;font-style: italic;padding-left:5px;">.class</span></div>
+								<div class="ace_line"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p><span style="margin:0;padding-left:5px;">{</span></div>
+							<div class="ace_line " id="divrenderPosition" style="display:none;" ><p class="ace_gutter ace_gutter-cell " unselectable="on"></p>	<span id="cssrenderPosition" class="cssrender"></span></div>
+							<div class="ace_line" id="divrenderZindex" style="display:none;"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p>	<span id="cssrenderZindex" class="cssrender"></span></div>
+							<div class="ace_line" id="divrenderWidth" style="display:none;"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p>	<span id="cssrenderWidth" class="cssrender"></span></div>
+							<div class="ace_line" id="divrenderHeight" style="display:none;"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p>	<span id="cssrenderHeight" class="cssrender"></span></div>
+							<div class="ace_line" id="divrenderColor"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p>	<span id="cssrenderColor" class="cssrender"></span></div>
+							<div class="ace_line" id="divrenderFontFamily"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p>	<span id="cssrenderFontFamily" class="cssrender"></span></div>
+							<div class="ace_line" id="divrenderFontSize"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p>	<span id="cssrenderFontSize" class="cssrender"></span></div>
+							<div class="ace_line" id="divrenderFontStyle"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p>	<span id="cssrenderFontStyle" class="cssrender"></span></div>
+							<div class="ace_line" id="divrenderTextAlign"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p>	<span id="cssrenderTextAlign" class="cssrender"></span></div>
+							<div class="ace_line" id="divrenderBackground"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p>	<span id="cssrenderBackground" class="cssrender"></span></div>
+							<div class="ace_line" id="divrenderOpacity"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p>	<span id="cssrenderOpacity" class="cssrender"></span></div>
+							<div class="ace_line" id="divrenderBorder"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p>	<span id="cssrenderBorder" class="cssrender"></span></div>
+							<div class="ace_line" id="divrenderBorderRadius"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p>	<span id="cssrenderBorderRadius" class="cssrender"></span></div>
+							<div class="ace_line" id="divrenderTextShadow"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p>	<span id="cssrenderTextShadow" class="cssrender"></span></div>
+							<div class="ace_line" id="divrenderBoxShadow"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p>	<span id="cssrenderBoxShadow" class="cssrender"></span></div>
+							<div class="ace_line" id="divrenderPadding"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p>	<span id="cssrenderPadding" class="cssrender"></span></div>
+							<div class="ace_line" id="divrenderMargin"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p>		<span id="cssrenderMargin" class="cssrender"></span></div>
+							<div class="ace_line" id="divrenderBoxSizing" style="display:none;"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p>	<span id="cssrenderBoxSizing" class="cssrender"></span></div>
+						<div class="ace_line"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p><span style="margin:0;padding-left:5px;">}</span></div>
+							<div class="ace_line"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p><span style="visibility:hidden;">f</span ></div>
+							</code>
+								</div>
+						</div>
+				</div>
+			<div class="synthaxe">
+					<div class="activeProperty" style="display:none;">
+						Just click on a property to see his uses.*A venir*
+					</div>
+					<div class="propertyColor" style="display:none;">
+						propertyColor
+					</div>
+					<div class="propertyFontFamily" style="display:none;">
+						propertyFontFamily
+					</div>
+					<div class="propertyFontSize" style="display:none;">
+						propertyFontSize
+					</div>
+					<div class="propertyFontStyle" style="display:none;">
+						propertyFontStyle
+					</div>
+					<div class="propertyTextAlign" style="display:none;">
+							text-align Property<br/><br/>
+								<table>
+    					<td>	text-align: left|right|center|justify|initial|inherit;</td>
+						</table><br/>
+							Property Values<br/><br/>
+							<table>
+								<tr>
+									<td>Value</td><td>Description</td>
+								</tr>
+								<tr>
+										<td>left</td><td>Aligns the text to the left	</td>
+								</tr>
+								<tr>
+										<td>right</td><td>Aligns the text to the right</td>
+								</tr>
+								<tr>
+										<td>center</td><td>	Centers the text</td>
+								</tr>
+								<tr>
+										<td>justify</td><td>Stretches the lines so that each line has equal width</td>
+								</tr>
+								<tr>
+										<td>initial</td><td>Sets this property to its default value.</td>
+								</tr>
+								<tr>
+										<td>inherit</td><td>Inherits this property from its parent element.</td>
+								</tr>
+							</table>
+
+				</div>
+
+				<div class="propertyTextShadow" style="display:none;">
+					propertyTextShadow
+				</div>
+			</div>
+		</div>
+			<div class="console">
+				<div class="cmd" >
+					<div>
+						<span id="cssValideTrue" style="display:none;color: #A6E22E;">Console *A venir*<!--css validate.--></span>
+						<span id="cssValideFalse" style="display:none;color:red;">Error : Invalid values.</span>
+					</div>
+				</div>
+				<button onclick="reset();" class="btn">
+					CSS RESET
+				</button>
+			</div>
+</div>
+		</div>
+		<script>
+			//Polyfill for requestAnimationFrame
+			window.requestAnimationFrame = (function(){
+				return  window.requestAnimationFrame       ||
+				window.webkitRequestAnimationFrame ||
+				window.mozRequestAnimationFrame    ||
+				window.oRequestAnimationFrame      ||
+				window.msRequestAnimationFrame     ||
+				function(/* function */ callback, /* DOMElement */ element){
+					window.setTimeout(callback, 1000 / 60);
+				};
+			})();
+
+			//Get a reference to the input and output
+
+			var txtValue = document.getElementById("txtValue");
+
+			var color = document.getElementById("color");
+			var FontFamily = document.getElementById("FontFamily");
+			var FontSize = document.getElementById("FontSize");
+			var FontStyle = document.getElementById("FontStyle");
+			var TextAlign = document.getElementById("TextAlign");
+			var width = document.getElementById("width");
+			var height = document.getElementById("height");
+			var background = document.getElementById("background");
+
+			var border = document.getElementById("border");
+			var borderRadius = document.getElementById("borderRadius");
+			var opacity = document.getElementById("opacity");
+			var boxShadow = document.getElementById("boxShadow");
+			var textShadow = document.getElementById("textShadow");
+
+			var padding = document.getElementById("padding");
+			var margin = document.getElementById("margin");
+			var zindex = document.getElementById("zindex");
+			var boxSizing = document.getElementById("boxSizing");
+			var position = document.getElementById("position");
+
+			var container = document.getElementById("output");
+			var container2 = document.getElementById("output2");
+			var colorValue = $('#color').val();
+			var dieze = '';
+
+			//Set up a requestAnimationFrame loop
+			function update () {
+				requestAnimationFrame(update);
+
+
+				container.innerHTML = " <div id='outputContainer' style=\"background: " + dieze + background.value +
+				";color: " + dieze + color.value +
+				";font-family: " + FontFamily.value +
+				";font-size: " + FontSize.value +
+				";font-style: " + FontStyle.value +
+				";text-align: " + TextAlign.value +
+				";width: " + width.value +
+				";height : " + height.value +
+				";border : " + border.value +
+				";border-radius : " + borderRadius.value +
+				";opacity : " + opacity.value +
+				";box-shadow : " + boxShadow.value +
+				";text-shadow : " + textShadow.value +
+				";padding : " + padding.value +
+				";margin : " + margin.value +
+				";z-index : " + zindex.value +
+				";box-sizing : " + boxSizing.value +
+				";position : " + position.value + ";\" >" + txtValue.value  + "</div>"
+
+				/* generate code*/
+		if(color.value == ""){
+			divrenderColor.style.display="none";
+		}else{
+			divrenderColor.style.display="block";
+			cssrenderColor.innerHTML = "<span class='attributs'>color</span> : " + dieze + color.value + ";";
+		}
+		if(FontFamily.value == ""){
+			divrenderFontFamily.style.display="none";
+		}else{
+			divrenderFontFamily.style.display="block";
+			cssrenderFontFamily.innerHTML = "<span class='attributs'>font-family</span> : " + FontFamily.value + ";";
+		}
+		if(FontSize.value == ""){
+			divrenderFontSize.style.display="none";
+		}else{
+			divrenderFontSize.style.display="block";
+			cssrenderFontSize.innerHTML = "<span class='attributs'>font-size</span> : " + FontSize.value + ";";
+		}
+
+		if(FontStyle.value == ""){
+			divrenderFontStyle.style.display="none";
+		}else{
+			divrenderFontStyle.style.display="block";
+			cssrenderFontStyle.innerHTML = "<span class='attributs'>font-style</span> : " + FontStyle.value + ";";
+		}
+		if(TextAlign.value == ""){
+			divrenderTextAlign.style.display="none";
+		}else{
+			divrenderTextAlign.style.display="block";
+			cssrenderTextAlign.innerHTML = "<span class='attributs'>text-align</span> : " + TextAlign.value + ";";
+		}
+		if(background.value == ""){
+			divrenderBackground.style.display="none";
+		}else{
+			divrenderBackground.style.display="block";
+			cssrenderBackground.innerHTML = "<span class='attributs'>background</span> : " + dieze + background.value + ";";
+		}
+		if(border.value == ""){
+			divrenderBorder.style.display="none";
+		}else{
+			divrenderBorder.style.display="block";
+			cssrenderBorder.innerHTML = "<span class='attributs'>border</span> : " + border.value + ";";
+		}
+		if(borderRadius.value == ""){
+			divrenderBorderRadius.style.display="none";
+		}else{
+			divrenderBorderRadius.style.display="block";
+			cssrenderBorderRadius.innerHTML = "<span class='attributs'>border-radius</span> : " + borderRadius.value + ";";
+		}
+		if(opacity.value == ""){
+			divrenderOpacity.style.display="none";
+		}else{
+			divrenderOpacity.style.display="block";
+			cssrenderOpacity.innerHTML = "<span class='attributs'>opacity</span> : " + opacity.value + ";";
+		}
+		if(padding.value == ""){
+			divrenderPadding.style.display="none";
+		}else{
+			divrenderPadding.style.display="block";
+			cssrenderPadding.innerHTML = "<span class='attributs'>padding</span> : " + padding.value + ";";
+		}
+		if(margin.value == ""){
+			divrenderMargin.style.display="none";
+		}else{
+			divrenderMargin.style.display="block";
+			cssrenderMargin.innerHTML = "<span class='attributs'>margin</span> : " + margin.value + ";";
+		}
+		if(textShadow.value == ""){
+			divrenderTextShadow.style.display="none";
+		}else{
+			divrenderTextShadow.style.display="block";
+			cssrenderTextShadow.innerHTML = "<span class='attributs'>text-Shadow</span> : " + textShadow.value + ";";
+		}
+		if(boxShadow.value == ""){
+			divrenderBoxShadow.style.display="none";
+		}else{
+			divrenderBoxShadow.style.display="block";
+			cssrenderBoxShadow.innerHTML = "<span class='attributs'>box-shadow</span> : " + boxShadow.value + ";";
+		}
+
+		if ( color.value.length == 6){
+				dieze = "#";
+			}else{dieze = "";}
+
+			}
+			update();
+
+			</script>
+			<script>
+			/*	$(".colorProprieties").click(function(){
+				if($(".colorProprieties").hasClass("active")){
+						$(".colorProprieties").removeClass("active");
+				}else{
+						$(".colorProprieties").addClass("active");
+				}
+			});*/
+
+			/*	$(".texteP").click(function(){
+				if($(".texte > div").hasClass("active")){
+						$(".texte > p > .down").removeClass("activeDown");
+						$(".texte > div").removeClass("active");
+				}else{
+						$(".texte > p > .down").addClass("activeDown");
+						$(".texte > div").addClass("active");
+				}
+				});
+
+				$(".fond > p").click(function(){
+				if($(".fond > div").hasClass("active")){
+
+							$(".fond > p > .down").removeClass("activeDown");
+						$(".fond > div").removeClass("active");
+				}else{
+							$(".fond > p > .down").addClass("activeDown");
+						$(".fond > div").addClass("active");
+				}
+				});
+
+				$(".bordures > p").click(function(){
+				if($(".bordures > div").hasClass("active")){
+						$(".bordures > p > .down").removeClass("activeDown");
+						$(".bordures > div").removeClass("active");
+				}else{
+						$(".bordures > p > .down").addClass("activeDown");
+						$(".bordures > div").addClass("active");
+				}
+				});
+
+				$(".marges > p").click(function(){
+				if($(".marges > div").hasClass("active")){
+						$(".marges > p > .down").removeClass("activeDown");
+						$(".marges > div").removeClass("active");
+				}else{
+						$(".marges > p > .down").addClass("activeDown");
+						$(".marges > div").addClass("active");
+				}
+			});*/
+
+			var elementZ;
+			$(".menu").click(function(){
+				elementZ = 	$(this).parent().attr('id');
+					if ($("#" + elementZ + " > div").hasClass("active")){
+							$("#" + elementZ + " > p > .down").removeClass("activeDown");
+							$("#" + elementZ + " > div").removeClass("active");
+					}else{
+							$("#" + elementZ + " > p > .down").addClass("activeDown");
+							$("#" + elementZ + " > div").addClass("active");
+					}
+					});
+			/* Lorsque l'on clique sur une class on recupere l'id du meme élément et on affiche la class qui pourte la meme valeur que cet id*/
+				var elementP;
+				$(".propertyproperty").click(function(){
+				elementP = $(this).attr('id');
+						$(".synthaxe > div").removeClass("activeProperty");
+						$("." + elementP).addClass("activeProperty");
+				});
+
+
+
+				$(function() {
+		$('.range').on('input', function() {
+		borderRadius.value = $(this).val() + "px";
+		});
+		});
+
+		$(function() {
+		$('.range2').on('input', function() {
+		opacity.value = $(this).val() / 100;
+		});
+		});
+
+		$(function() {
+		$('.range3').on('input', function() {
+		border.value = $(this).val() + "px dashed black";
+		});
+		});
+
+
+		$(function() {
+		$('.range4').on('input', function() {
+		padding.value = $(this).val() + "px";
+		});
+		});
+
+		$(function() {
+		$('.range5').on('input', function() {
+		margin.value = $(this).val() + "px";
+		});
+		});
+
+
+		function reset () {
+			background.value = "#FFFFFF";
+			color.value = "#000000";
+			FontFamily.value = "";
+			FontSize.value = "";
+			FontStyle.value = "";
+			TextAlign.value = "";
+			width.value = "150px";
+			height.value = "150px";
+			border.value = "";
+			borderRadius.value = "";
+			opacity.value = "";
+			boxShadow.value = "";
+			textShadow.value = "";
+			padding.value = "";
+			margin.value = "";
+			zindex.value = "";
+			boxSizing.value = "";
+			position.value = "";
+		}
+			</script>
+			<script src="js/error.js"></script>
+
+<footer>
+	<a href="https://github.com/anthoviso">By Anthony Visocchi</a>
+</footer>
+	</body>
+</html>
+<!-- COPYRIGHT © VISOCCHI ANTHONY 2017
+
+http://jscolor.com/
+ -->
