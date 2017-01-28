@@ -11,7 +11,7 @@ box-shadow: 3px 3px 3px silver;
 
 
 div > p{
-	width: 32%;
+	width: 30%;
 	float: left;
 	margin: 3px 0px;
 }
@@ -20,12 +20,13 @@ div > input[type=text] {
 	display: inline-block;
 	width:32%;
 	border-radius: 4px;
+	border: 2px solid #c9c9c9;
 }
 
 .divOutput{
 	background: rgba(0,0,0,0.6);
-	height: 824px;
-	padding: 15px;
+	height: 954px;
+	/*genrpadding: 15px;*/
 }
 
 .board{
@@ -33,36 +34,40 @@ div > input[type=text] {
 
 .cssElements{
 
-	width: 32.5%;
-	background: rgba(255,255,255,0.98);
-	padding: 10px;
-	margin: 1% 0.5% 1% 1%;
+	width: 400px;;
+background: rgba(255,255,255,0.98);
 	box-sizing: border-box;
 	padding: 0;
 	float: left;
+	box-shadow: 2px 0px 5px black;
+	height: 954px;
+overflow: hidden;
 }
 
 .cssElements > div{
-background: rgba(0,0,0,0.2);
+  background: -webkit-linear-gradient(top, rgba(65,65,73,1) 0%,rgba(42,42,48,1) 100%);
 }
 
 .cssElements > div:hover{
-background: rgba(0,0,0,0.1);
+  background: -webkit-linear-gradient(top, rgba(65,65,73,1) 0%,rgba(42,42,48,1) 100%);
 }
 
 .generateG{
-		width: 64.5%;
-		display: inline-block;
-		margin: 1% 1% 1% 0.5%;
+	width: 100%;
+display: inline-block;
+    margin: 0% 0% 1% 0%;
+
 }
 .generateCode{
-	width: 49.5%;
-	height:360px;
+	width: calc(100% - 654px);
+	height: 492px;
 	background-color: #272822;
 	color: #F8F8F2;
-    margin: 0% 0.5% 0% 0%;
+	/* margin: 0% 0.5% 0% 0%; */
 box-sizing: border-box;
-float: left;
+display: inline-block;
+overflow-y: scroll;
+overflow-x: hidden;
 }
 
 .attributs{
@@ -70,24 +75,26 @@ float: left;
 color: #66D9EF;
 }
 .synthaxe{
-		width: 49.5%;
-		height:360px;
+		width: 99%;
+		height: 762px;
 	background: rgba(255,255,255,0.98);
 	padding: 10px;
 	    margin: 0% 0% 0% 0.5%;
 	box-sizing: border-box;
 	display: inline-block;
+	overflow-y: scroll;
+overflow-x: hidden;
 }
 
 .console{
-	width: 62.5%;
-	display: inline-block;
-	margin: 0% 1% 0% 0%;
-	background: white;
-	height: 55px;
-	padding: 1%;
-	float: right;
-	background-color: #272822;
+	width: 160px;
+	background: rgba(25,25,25,0.5);
+	height: 20px;
+	padding: 10px;
+	position: fixed;
+	bottom: 0;
+	z-index: 9999;
+	left: 0;
 }
 
 .cmd{
@@ -148,7 +155,15 @@ text-decoration: none;
 background: rgba(0,0,0,0.1);
 }
 
-.texte >p , .fond >p, .bordures >p , .marges >p {
+.menu:hover {
+    cursor: pointer;
+}
+
+.texte > div, .texte > div , .fond > div, .bordures > div , .marges > div, .transitions > div, .taille > div{
+	display: none;
+}
+
+.texte >p , .fond >p, .bordures >p , .marges >p, .transitions >p, .taille > p{
     background: -webkit-linear-gradient(top, rgba(65,65,73,1) 0%,rgba(42,42,48,1) 100%);
     color: white;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
@@ -162,8 +177,8 @@ background: rgba(0,0,0,0.1);
 }
 
 
-.borderProprieties, .fontStyleProprieties, .textAlignProprieties, .border-radiusProprieties, .heightProprieties, .widthProprieties, .textProprieties, .colorProprieties, .fontFamilyProprieties, .fontSizeProprieties, .text-shadowProprieties,
-.backgroundProprieties, .opacityProprieties, .box-shadowProprieties, .paddingProprieties, .marginProprieties, .indexProprieties, .box-sizingProprieties, .positionProprieties{
+.textDecorationProprieties, .fontWeightProprieties, .borderProprieties, .fontStyleProprieties, .textAlignProprieties, .border-radiusProprieties, .heightProprieties, .widthProprieties, .textProprieties, .colorProprieties, .fontFamilyProprieties, .fontSizeProprieties, .text-shadowProprieties,
+.backgroundProprieties, .opacityProprieties, .box-shadowProprieties, .paddingProprieties, .marginProprieties, .indexProprieties, .box-sizingProprieties, .positionProprieties, .transitionsProprieties{
     background: -webkit-linear-gradient(top, rgba(65,65,73,0.8) 0%,rgba(42,42,48,0.8) 100%);
     color: white;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
@@ -176,11 +191,13 @@ background: rgba(0,0,0,0.1);
 }
 
 .output{
-	padding: 10px;
-	background: rgba(255,255,255,0.5);
-	width: 98%;
-	    margin: 1% 0.5% 1% 1%;
+	/*margin: 10px;*/
+/*	background: rgba(255,255,255,0.5);*/
+	width: calc(100% - 20px);
 			box-sizing: border-box;
+			height: 388px;
+			display: inline-block;
+			overflow: hidden;
 }
 
 .bsChrome{
@@ -259,10 +276,21 @@ padding: 4px;
     color: #8F908A;
 }
 
-.range, .range1 , .range2, .range3, .range4, .range5{
+.range, .range1 , .range2, .range3, .range4, .range5,
+.range6, .range7 , .range8, .range9, .range10, .range11{
 	display: inline-block;
     width: 32%;
     margin-left: 1%;
+}
+h2{
+	    margin: 15px 5px;
+}
+table {
+width: 100%;
+}
+td{
+	padding: 10px;
+	background: rgba(0,0,0,0.1);
 }
 
 footer{
@@ -279,6 +307,107 @@ footer > a{
 	text-decoration: none;
 }
 
-.texte > div, .texte > div , .fond > div, .bordures > div , .marges > div {
+
+input[type="radio"], input[type="checkbox"] {
+    cursor: pointer;
+}
+.v-visuallyHidden {
+    position: absolute !important;
+    height: 1px;
+    width: 1px;
+    overflow: hidden;
+    clip: rect(1px, 1px, 1px, 1px);
+}
+label, input, select, textarea {
+    font-family: "Open Sans","Helvetica Neue",Arial,Helvetica,Verdana,sans-serif;
+    font-size: 15px;
+    line-height: 18px;
+    font-weight: normal;
+}
+
+.v-buttonGroupLabel {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    padding: 0 18px;
+    height: 32px;
+    font-size: 13px;
+}
+.v-buttonGroupBordered, .v-buttonGroupLabel {
+    border: 2px solid #e0e0e0;
+    border-left-width: 0;
+		float: left;
+}
+label {
+    color: #484848;
+    font-weight: 600;
+    display: block;
+    max-width: 635px;
+    padding-bottom: .8em;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+}
+
+.v-buttonGroupControl:checked + .v-buttonGroupLabel:hover, .v-buttonGroupControl:checked + .v-buttonGroupLabel:focus {
+    background: #ccebf3;
+}
+.v-buttonGroupControl:checked + .v-buttonGroupLabel {
+    background: #ccebf3;
+    border-color: #b1e0ec;
+}
+.v-buttonGroupBordered:hover, .v-buttonGroupLabel:hover, .v-buttonGroupBordered:focus, .v-buttonGroupLabel:focus {
+    outline: none;
+    background: #f2f2f2;
+}
+
+input[type="radio"]:focus, input[type="checkbox"]:focus {
+    outline: 0 none;
+}
+
+#void-sample, #controls > div.icon.picker-icon, #controls > div.switch{
 	display: none;
+}
+
+#color-info > div:nth-child(3){
+	display: none !important;
+}
+
+.Pix10{
+	width: 9px;
+border-left: 1px solid black;
+height: 10px;
+float: left;
+}
+.GrandPix10{
+	width: 9px;
+border-left: 1px solid black;
+height: 20px;
+float: left;
+}
+
+.VPix10{
+	width: 10px;
+border-top: 1px solid black;
+height: 9px;
+}
+.VGrandPix10{
+	width: 20px;
+border-top: 1px solid black;
+height: 9px;
+}
+
+.InvPix10{
+float: left;
+		width: 20px;
+	height: 20px;
+}
+.VInvPix10{
+	width: 20px;
+height: 20px;
 }
