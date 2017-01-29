@@ -1471,7 +1471,7 @@ var ColorPickerTool = (function ColorPickerTool() {
 					return;
 
 				if(color.format === 'HSL') {
-					palette.title.textContent = 'Luminosit�';
+					palette.title.textContent = 'Luminosité';
 					for(var i = 0; i < 11; i++)
 						palette.samples[i].updateLightness(color, -10, i);
 				}
