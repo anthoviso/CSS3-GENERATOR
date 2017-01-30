@@ -37,6 +37,12 @@
   var boxSizing = document.getElementById("boxSizing");
   var position = document.getElementById("position");
 
+
+  var boxSizing = document.getElementById("boxSizing");
+  var display = document.getElementById("display");
+  var visibility = document.getElementById("visibility");
+  var outline = document.getElementById("outline");
+
   var container = document.getElementById("output");
   var container2 = document.getElementById("output2");
   var colorValue = $('#color').val();
@@ -50,6 +56,11 @@
     container.innerHTML = " <div id='outputContainer' style=\"background: " + dieze + background.value +
     ";color: " + dieze + color.value +
     ";font-family: " + FontFamily.value +
+    ";box-sizing: " + boxSizing.value +
+    ";line-height: " + lineHeight.value +
+    ";display: " + display.value +
+    ";visibility: " + visibility.value +
+    ";outline: " + outline.value +
     ";font-size: " + FontSize.value +
     ";font-style: " + FontStyle.value +
     ";text-align: " + TextAlign.value +
@@ -75,6 +86,44 @@ if(width.value == ""){
   divrenderWidth.style.display="block";
   cssrenderWidth.innerHTML = "<span class='attributs'>width</span> : " + width.value + ";";
 }
+
+if(lineHeight.value == ""){
+  divrenderlineHeight.style.display="none";
+}else{
+  divrenderlineHeight.style.display="block";
+  cssrenderlineHeight.innerHTML = "<span class='attributs'>line-height</span> : " + lineHeight.value + ";";
+}
+
+if(boxSizing.value == ""){
+  divrenderBoxSizing.style.display="none";
+}else{
+  divrenderBoxSizing.style.display="block";
+  cssrenderBoxSizing.innerHTML = "<span class='attributs'>box-sizing</span> : " + boxSizing.value + ";";
+}
+if(display.value == ""){
+  divrenderDisplay.style.display="none";
+}else{
+  divrenderDisplay.style.display="block";
+  cssrenderDisplay.innerHTML = "<span class='attributs'>display</span> : " + display.value + ";";
+}
+
+
+if(visibility.value == ""){
+  divrenderVisibility.style.display="none";
+}else{
+  divrenderVisibility.style.display="block";
+  cssrenderVisibility.innerHTML = "<span class='attributs'>visibility</span> : " + visibility.value + ";";
+}
+if(outline.value == ""){
+  divrenderOutline.style.display="none";
+}else{
+  divrenderOutline.style.display="block";
+  cssrenderOutline.innerHTML = "<span class='attributs'>outline</span> : " + outline.value + ";";
+}
+
+
+
+
 if(height.value == ""){
   divrenderHeight.style.display="none";
 }else{

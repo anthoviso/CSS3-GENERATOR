@@ -19,7 +19,7 @@
 		<script type="text/javascript" src="js/jquery.js"></script>
 
 
-		<div class="bandeau">css3 generator v1.1
+		<div class="bandeau">css3 generator v1.2
 
 			<button onclick="reset();" class="btn" style="float: right;padding: 6px;">
 				CSS RESET
@@ -42,13 +42,13 @@
 				<div id="texte" class="texte inputMenu">
 					<p class="menu">Texte<img alt="" class="down" src="img/down.png"/></p>
 					<div class="textProprieties">
-					<p>value : </p><input type="text" id="txtValue"  value="This is a value !">
+					<p>value : </p><input type="text" id="txtValue"  value="This is my value !">
 				</div>
 				<div id="propertyColor"  class="colorProprieties propertyproperty">
 					<p>Color : </p><input type="text" id="color"  class="" value="#DADDF0">
 				</div>
 				<div id="propertyFontFamily" class="fontFamilyProprieties propertyproperty">
-					<p>font-family : </p><input type="text" id="FontFamily" value="lato">
+					<p>font-family : </p><input type="text" id="FontFamily" value="Arial">
 				</div>
 				<div id="propertyFontSize" class="fontSizeProprieties propertyproperty">
 					<p>font-size : </p><input type="text" id="FontSize" value="16px">
@@ -74,16 +74,16 @@
 					<div id="propertyTextShadow" class="text-shadowProprieties propertyproperty">
 						<p>text-shadow : </p><input type="text" id="textShadow" value="1px 1px 1px black">
 					</div>
+						<div id="propertyLineHeight" class="lineHeightProprieties propertyproperty">
+							<p>line-height : </p><input type="text" id="lineHeight" value="16px">
+							<input  type="range" class="range9" name="a" min="0" max="50" step="1" value="16"/>
+						</div>
 			</div>
 				<!-- FOND -->
 				<div id="fond" class="fond inputMenu">
 					<p class="menu">Fond<img alt="" class="down" src="img/down.png"/></p>
 				<div class="backgroundProprieties">
 					<p>Background : </p><input type="text" id="background" class="" value="#2A5476">
-				</div>
-				<div class="opacityProprieties">
-					<p>opacity : </p><input type="text" id="opacity" value="1" class="inputLeft">
-					<input  type="range" class="range2" name="a" min="0" max="100" step="1" value="100" />
 				</div>
 					<div class="box-shadowProprieties">
 						<p>box-shadow : </p><input type="text" id="boxShadow" value="2px 2px 5px black">
@@ -109,6 +109,12 @@
 						<p>margin : </p><input type="text" id="margin" value="10px" class="inputLeft">
 						<input  type="range" class="range5" name="a" min="0" max="100" step="1" value="10"/>
 					</div>
+					<div class="outlineProprieties">
+						<p>outline : </p><input type="text" id="outline" value="5px dotted red" class="inputLeft">
+					</div>
+					<div class="boxSizingProprieties">
+						<p>box-sizing : </p><input type="text" id="boxSizing" value="border-box" class="inputLeft">
+					</div>
 			</div>
 			<div id="transitions" style="display:none;" class="transitions inputMenu">
 			<p class="menu">Transitions<img alt="" class="down" src="img/down.png"/></p>
@@ -116,56 +122,31 @@
 			<p>transitions : </p><input type="text" id="" value="A venir" class="inputLeft">
 		</div>
 			</div>
-			<div>
-				<div class="z-indexProprieties" style="display:none;">
-					<p>z-index : </p><input type="text" id="zindex" value="">
-				</div>
-				<div class="box-sizingProprieties" style="display:none;">
-					<p>box-sizing : </p><input type="text" id="boxSizing" value="">
-				</div>
-				<div  class="positionProprieties" style="display:none;">
-					<p>position : </p><input type="text" id="position" value="">
-				</div>
+			<div id="visibilité" style="" class="visibilité inputMenu">
+			<p class="menu">Visibilité<img alt="" class="down" src="img/down.png"/></p>
+			<div class="displayProprieties">
+				<p>display : </p><input type="text" id="display" value="block" class="inputLeft">
+			</div>
+			<div class="visibilityProprieties">
+				<p>visibility : </p><input type="text" id="visibility" value="visible" class="inputLeft">
+			</div>
+			<div class="opacityProprieties">
+				<p>opacity : </p><input type="text" id="opacity" value="1" class="inputLeft">
+				<input  type="range" class="range2" name="a" min="0" max="100" step="1" value="100" />
+			</div>
+		</div>
+		<div>
+			<div class="z-indexProprieties" style="display:none;">
+				<p>z-index : </p><input type="text" id="zindex" value="">
+			</div>
+			<div  class="positionProprieties" style="display:none;">
+				<p>position : </p><input type="text" id="position" value="">
+			</div>
+
 		</div>
 		<div class="synthaxe" style="overflow: hidden;">
 			<!--	<div class="activeProperty" style="display:none;">
 					Just click on a property to see his uses.*A venir*
-				</div>
-				<div class="propertyColor" style="display:none;">
-					propertyColor
-				</div>
-				<div class="propertyFontFamily" style="display:none;">
-					propertyFontFamily
-				</div>
-				<div class="propertyFontSize" style="display:none;">
-					<h2>font-size Property</h2>
-					<table>
-							<tr><td>Value</td><td>Description</td></tr>
-							<tr><td>medium</td><td>Sets the font-size to a medium size. This is default</td></tr>
-							<tr><td>xx-small</td><td>Sets the font-size to an xx-small size</td>	</tr>
-							<tr><td>x-small</td><td>Sets the font-size to an extra small size</td>	</tr>
-							<tr><td>small</td><td>Sets the font-size to a small size</td></tr>
-							<tr><td>large</td><td>Sets the font-size to a large size</td></tr>
-							<tr><td>x-large</td><td>Sets the font-size to an extra large size</td></tr>
-							<tr><td>xx-large</td><td>Sets the font-size to an xx-large size</td>	</tr>
-							<tr><td>smaller</td><td>Sets the font-size to a smaller size than the parent element</td>	</tr>
-							<tr><td>larger</td><td>Sets the font-size to a larger size than the parent element</td></tr>
-							<tr><td>length</td><td>Sets the font-size to a fixed size in px, cm, etc.</td></tr>
-							<tr><td>%</td><td>Sets the font-size to a percent of  the parent element's font size</td></tr>
-							<tr><td>initial</td><td>Sets this property to its default value.</td>	</tr>
-							<tr><td>inherit</td><td>Inherits this property from its parent element.</td>	</tr>
-					</table>
-				</div>
-				<div class="propertyFontStyle" style="display:none;">
-					<h2>font-style Property</h2>
-					<table>
-							<tr><td>Value</td><td>Description</td></tr>
-							<tr><td>normal</td><td>The browser displays a normal font style. This is default</td></tr>
-							<tr><td>italic</td><td>The browser displays an italic font style</td>	</tr>
-							<tr><td>oblique</td><td>The browser displays an oblique font style</td>	</tr>
-							<tr><td>initial</td><td>Sets this property to its default value.</td></tr>
-							<tr><td>inherit</td><td>Inherits this property from its parent element.</td></tr>
-					</table>
 				</div>
 				<div class="propertyTextAlign" style="display:none;">
 					<h2>text-align Property</h2>
@@ -228,25 +209,25 @@
 			<label for="TextAlignJustify" class="v-buttonGroupLabel">
 			<img src="img/TextAlignJustify.png" alt=""/>
 			</label>
-	<!--		<select id="ListeElement" onchange="" style="width: 100px;height: 36px;">
-   <option value="Arial" onclick="FontFamily.value='arial';">Arial</option>
-   <option value="Comic Sans MS" onclick="FontFamily.value='Comic Sans MS';">Comic Sans MS</option>
-   <option value="Georgia" onclick="FontFamily.value='Georgia';">Georgia</option>
-<option value="Impact" onclick="FontFamily.value='Impact';">Impact</option>
-<option value="Times New Roman" onclick="FontFamily.value='Times New Roman';">Times New Roman</option>
-<option value="Verdana" onclick="FontFamily.value='Verdana';">Verdana</option>
+			<input onkeyup="txtValue.value=textValueForm.value;"  class="v-buttonGroupControl" id="textValueForm" name="textValueForm" value="This is my value !" type="text" style="padding: 5px;margin: 0px 2px;">
+
+			<select id="ListeElement" onchange="OnSelectionChange (this)" class="selectForm">
+   <option value="Arial" id="arialFont" selected>Arial</option>
+   <option value="Comic Sans MS" id="comicSansMsFont">Comic Sans MS</option>
+   <option value="Georgia" id="georgiaFont" >Georgia</option>
+<option value="Impact" id="impactFont">Impact</option>
+<option value="Times New Roman" id="timeNewRoman">Times New Roman</option>
+<option value="Verdana" id="verdanaFont">Verdana</option>
 </select>
-<select id="ListeElement2" onclick="if (typeof(this.selectedIndex) != 'undefined') check(this.selectedIndex)" style="width: 100px;height: 36px;">
-<option value="10" onclick="FontSize.value='10px';">10 px</option>
-<option value="12" onclick="FontSize.value='12px';">12 px</option>
-<option value="14" onclick="FontSize.value='14px';">14 px</option>
-<option value="16" onclick="FontSize.value='16px';">16 px</option>
-<option value="18" onclick="FontSize.value='18px';">18 px</option>
-<option value="20" onclick="FontSize.value='20px';">20 px</option>
-<option value="24" onclick="FontSize.value='18px';">24 px</option>
-<option value="28" onclick="FontSize.value='28px';">28 px</option>
-<option value="32" onclick="FontSize.value='32px';">32 px</option>
-</select>-->
+
+<select id="ListeElement2" onchange="OnSelectionChange2(this)" class="selectForm">
+<option value="10">10 px</option>
+<option value="12">12 px</option>
+<option value="16">16 px</option>
+<option value="20">20 px</option>
+<option value="24">24 px</option>
+<option value="30">30 px</option>
+</select>
 			</div>
 			</div>
 		</div>
@@ -288,9 +269,17 @@
 			</div>
 			<div class="generateCode" >
 						<div>
-							<div class="ace_static_highlight ace_show_gutter" style="counter-reset:ace_line 0">
+							<div style="height: 30px;width: 100%;background-color: #EEE;border-top: 2px solid #c9c9c9;">
+								<p style="background: rgba(0,0,0,0.857);height: 30px;width:33px;margin:0;"></p>
+								<p style="color:black;background: grey;height: 30px;width: 40%;margin: 0;padding: 5px;box-sizing: border-box;" class="activeCode">
+									<input onkeyup="txtValue.value=textValueForm.value;" class="v-buttonGroupControl" id="textValueForm" name="textValueForm" value=".myClass" style="width:100%;margin: 0px 2px;background-color: #272822;border: 0px;color: white;font-weight: bold;" type="text">
+									</p>
+								<p style="color:black;background: grey;height: 30px;width: 40%;margin: 0;padding: 5px;box-sizing: border-box;display:none;">Mon html</p>
+							</div>
+							<div class="ace_static_highlight ace_show_gutter" style="counter-reset:ace_line 0;overflow-y: scroll;overflow-x: hidden;height: 458px;">
+
 							<code id="CSSRENDER">
-									<div class="ace_line"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p>	<span style="color: #A6E22E;font-style: italic;padding-left:5px;">.class</span></div>
+
 								<div class="ace_line"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p><span style="margin:0;padding-left:5px;">{</span></div>
 							<div class="ace_line " id="divrenderPosition" style="display:none;" ><p class="ace_gutter ace_gutter-cell " unselectable="on"></p>	<span id="cssrenderPosition" class="cssrender"></span></div>
 							<div class="ace_line" id="divrenderZindex" style="display:none;"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p>	<span id="cssrenderZindex" class="cssrender"></span></div>
@@ -299,6 +288,7 @@
 							<div class="ace_line" id="divrenderColor"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p>	<span id="cssrenderColor" class="cssrender"></span></div>
 							<div class="ace_line" id="divrenderFontFamily"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p>	<span id="cssrenderFontFamily" class="cssrender"></span></div>
 							<div class="ace_line" id="divrenderFontSize"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p>	<span id="cssrenderFontSize" class="cssrender"></span></div>
+							<div class="ace_line" id="divrenderlineHeight"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p>	<span id="cssrenderlineHeight" class="cssrender"></span></div>
 							<div class="ace_line" id="divrenderFontStyle"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p>	<span id="cssrenderFontStyle" class="cssrender"></span></div>
 							<div class="ace_line" id="divrenderFontWeight"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p>	<span id="cssrenderFontWeight" class="cssrender"></span></div>
 							<div class="ace_line" id="divrenderTextDecoration"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p>	<span id="cssrenderTextDecoration" class="cssrender"></span></div>
@@ -311,7 +301,10 @@
 							<div class="ace_line" id="divrenderBoxShadow"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p>	<span id="cssrenderBoxShadow" class="cssrender"></span></div>
 							<div class="ace_line" id="divrenderPadding"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p>	<span id="cssrenderPadding" class="cssrender"></span></div>
 							<div class="ace_line" id="divrenderMargin"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p>		<span id="cssrenderMargin" class="cssrender"></span></div>
-							<div class="ace_line" id="divrenderBoxSizing" style="display:none;"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p>	<span id="cssrenderBoxSizing" class="cssrender"></span></div>
+							<div class="ace_line" id="divrenderDisplay"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p>	<span id="cssrenderDisplay" class="cssrender"></span></div>
+							<div class="ace_line" id="divrenderVisibility"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p>	<span id="cssrenderVisibility" class="cssrender"></span></div>
+							<div class="ace_line" id="divrenderOutline"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p>		<span id="cssrenderOutline" class="cssrender"></span></div>
+							<div class="ace_line" id="divrenderBoxSizing"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p>	<span id="cssrenderBoxSizing" class="cssrender"></span></div>
 						<div class="ace_line"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p><span style="margin:0;padding-left:5px;">}</span></div>
 							<div class="ace_line"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p><span style="visibility:hidden;">f</span ></div>
 							</code>
@@ -422,6 +415,46 @@ RegleContainer.innerHTML += "<div class='InvPix10'></div>";
 		height.value = $(this).val() + "px";
 		});
 		});
+				$(function() {
+				$('.range9').on('input', function() {
+				lineHeight.value = $(this).val() + "px";
+				});
+				});
+
+		function OnSelectionChange (select) {
+				 var selectedOption = select.options[select.selectedIndex];
+				 if (selectedOption.value == 'Arial'){
+					 FontFamily.value='arial';
+				 }else if (selectedOption.value == 'Comic Sans MS'){
+				 	FontFamily.value='Comic Sans MS';
+				}else if(selectedOption.value == 'Georgia'){
+				 FontFamily.value='Georgia';
+				}else if(selectedOption.value == 'Impact'){
+				 FontFamily.value='Impact';
+				}else if(selectedOption.value == 'Times New Roman'){
+				 FontFamily.value='Times New Roman';
+				}else if(selectedOption.value == 'Verdana'){
+				 FontFamily.value='Verdana';
+				}
+		 }
+
+		 function OnSelectionChange2 (select) {
+					var selectedOption2 = select.options[select.selectedIndex];
+					if (selectedOption2.value == '10'){
+						FontSize.value='10px';
+					}else if (selectedOption2.value == '12'){
+					 FontSize.value='12px';
+				 }else if(selectedOption2.value == '16'){
+					FontSize.value='16px';
+				}else if(selectedOption2.value == '20'){
+					FontSize.value='20px';
+				}else if(selectedOption2.value == '24'){
+					FontSize.value='24px';
+				}else if(selectedOption2.value == '30'){
+					FontSize.value='30px';
+				 }
+			}
+		 /*switch principe*/
 
 
 		function reset () {
@@ -446,8 +479,12 @@ RegleContainer.innerHTML += "<div class='InvPix10'></div>";
 			zindex.value = "";
 			boxSizing.value = "";
 			position.value = "";
-
+			display.value = "";
+			visibility.value = "";
+			outline.value = "";
+			boxSizing.value = "";
 			$(".v-buttonGroupControl").prop("checked", false);
+			textValueForm.value="";
 		}
 			</script>
 			<script src="js/error.js"></script>
@@ -456,23 +493,8 @@ RegleContainer.innerHTML += "<div class='InvPix10'></div>";
 
 
 <footer>
-	<a href="https://github.com/anthoviso">By Anthony Visocchi</a>
+	<a href="https://github.com/anthoviso" onclick="window.open(this.href);return false;">By Anthony Visocchi</a>
 </footer>
 	</body>
 </html>
-<!-- COPYRIGHT © VISOCCHI ANTHONY 2017
-
-thanks : http://jscolor.com/
-insipiration : http://kb.mailchimp.com/fr/campaigns/design/about-the-buttons-on-the-editor-toolbar
-
-function componentToHex(c) {
-    var hex = c.toString(16);
-    return hex.length == 1 ? "0" + hex : hex;
-}
-
-function rgbToHex(r, g, b) {
-    return "#" + componentToHex(r) + componentToHex(g) + componentToHex(b);
-}
-
-alert( rgbToHex(0, 51, 255) ); // #0033ff
- -->
+<!-- COPYRIGHT © VISOCCHI ANTHONY 2017 -->
