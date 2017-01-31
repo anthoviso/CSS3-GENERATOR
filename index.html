@@ -159,7 +159,7 @@
 			</div>
 			<div id="outils" class="outils" style="">
 				<div class="" style="width: 100%;background:white;height: 36px;">
-					<input onclick="if(FontWeight.value=='bold'){FontWeight.value='none';}else{FontWeight.value='bold';};" id="FontWeightBoldForm" class="v-visuallyHidden v-buttonGroupControl" name="FontWeightBoldForm" value="FontWeightBold" type="checkbox">
+						<input onclick="if(FontWeight.value=='bold'){FontWeight.value='none';}else{FontWeight.value='bold';};" id="FontWeightBoldForm" class="v-visuallyHidden v-buttonGroupControl" name="FontWeightBoldForm" value="FontWeightBold" type="checkbox">
 					<label for="FontWeightBoldForm" class="v-buttonGroupLabel">
 						<img src="img/FontWeightBold.png" alt=""/>
 					</label>
@@ -189,7 +189,8 @@
 					</label>
 					<input onkeyup="txtValue.value=textValueForm.value;"  class="v-buttonGroupControl" id="textValueForm" name="textValueForm" value="This is my value !" type="text" style="padding: 5px;margin: 0px 2px;">
 					<select id="ListeElement" onchange="OnSelectionChange (this)" class="selectForm">
-   					<option value="Arial" id="arialFont" selected>Arial</option>
+   					<option value="" id="" selected>Police</option>
+   					<option value="Arial" id="arialFont" >Arial</option>
    					<option value="Comic Sans MS" id="comicSansMsFont">Comic Sans MS</option>
    					<option value="Georgia" id="georgiaFont" >Georgia</option>
 						<option value="Impact" id="impactFont">Impact</option>
@@ -197,6 +198,7 @@
 						<option value="Verdana" id="verdanaFont">Verdana</option>
 					</select>
 					<select id="ListeElement2" onchange="OnSelectionChange2(this)" class="selectForm">
+						<option value="" selected>Taille</option>
 						<option value="10">10 px</option>
 						<option value="12">12 px</option>
 						<option value="16">16 px</option>

@@ -1,3 +1,5 @@
+
+
 var elementZ;
 $(".menu").click(function(){
   elementZ = 	$(this).parent().attr('id');
@@ -124,6 +126,8 @@ function OnSelectionChange (select) {
    FontFamily.value='Times New Roman';
   }else if(selectedOption.value == 'Verdana'){
    FontFamily.value='Verdana';
+  }else if(selectedOption.value == ''){
+   FontFamily.value='';
   }
 }
 
@@ -141,7 +145,9 @@ function OnSelectionChange2 (select) {
     FontSize.value='24px';
   }else if(selectedOption2.value == '30'){
     FontSize.value='30px';
-   }
+   }else if(selectedOption2.value == ''){
+     FontSize.value='';
+    }
 }
 /*switch principe*/
 
