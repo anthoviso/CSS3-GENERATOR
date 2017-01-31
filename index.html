@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang='fr'>
-
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -8,99 +7,90 @@
 		<meta name="keywords" content="" />
 		<meta name="description" content="" />
 
-					<link rel="stylesheet" type="text/css" href="css/colorPickerTool.css"/>
-					<script type="text/javascript" src="js/colorPickerTool.js"></script>
-
+		<link rel="stylesheet" type="text/css" href="css/colorPickerTool.css"/>
+		<script type="text/javascript" src="js/colorPickerTool.js"></script>
 		<link rel="stylesheet" type="text/css" href="css/normalize.css" media="all"/>
 		<link rel="stylesheet" type="text/css" href="css/base.css"/>
-
 	</head>
 	<body>
 		<script type="text/javascript" src="js/jquery.js"></script>
 
-
 		<div class="bandeau">css3 generator v1.2
-
 			<button onclick="reset();" class="btn" style="float: right;padding: 6px;">
 				CSS RESET
 			</button>
 		</div>
 		<div class="divOutput">
 			<div class="cssElements">
-				<div id="taille" class="taille inputMenu">
-				<p class="menu">Taille<img alt="" class="down" src="img/down.png"/></p>
 				<!-- TAILLE -->
+				<div id="taille" class="taille inputMenu">
+					<p class="menu">Taille<img alt="" class="down" src="img/down.png"/></p>
 					<div class="widthProprieties" style="display:none;">
 						<p>width : </p><input type="text" id="width" value="150px">
 						<input  type="range" class="range7" name="a" min="0" max="1400" step="1" value="150"/>
-				</div>
+					</div>
 					<div class="heightProprieties" style="display:none;">
 						<p>height : </p><input type="text" id="height" value="150px">
 						<input  type="range" class="range8" name="a" min="0" max="1400" step="1" value="150"/>
 					</div>
 				</div>
+				<!-- TEXTE -->
 				<div id="texte" class="texte inputMenu">
 					<p class="menu">Texte<img alt="" class="down" src="img/down.png"/></p>
 					<div class="textProprieties">
-					<p>value : </p><input type="text" id="txtValue"  value="This is my value !">
-				</div>
-				<div id="propertyColor"  class="colorProprieties propertyproperty">
-					<p>Color : </p><input type="text" id="color"  class="" value="#DADDF0">
-				</div>
-				<div id="propertyFontFamily" class="fontFamilyProprieties propertyproperty">
-					<p>font-family : </p><input type="text" id="FontFamily" value="Arial">
-				</div>
-				<div id="propertyFontSize" class="fontSizeProprieties propertyproperty">
-					<p>font-size : </p><input type="text" id="FontSize" value="16px">
-					<input  type="range" class="range6" name="a" min="8" max="50" step="1" value="16"/>
-				</div>
-
-
-				<div id="propertyFontStyle" class="fontStyleProprieties propertyproperty">
-					<p>font-style : </p><input type="text" id="FontStyle" value="normal">
-				</div>
-
-
-				<div id="propertyFontWeight" class="fontWeightProprieties propertyproperty">
-					<p>font-weight : </p><input type="text" id="FontWeight" value="normal">
-				</div>
-				<div id="propertyTextDecoration" class="textDecorationProprieties propertyproperty">
-					<p>text-decoration : </p><input type="text" id="TextDecoration" value="none">
-				</div>
-
-				<div id="propertyTextAlign" class="textAlignProprieties propertyproperty">
-					<p>text-align : </p><input type="text" id="TextAlign" value="center">
-				</div>
+						<p>value : </p><input type="text" id="txtValue"  value="This is my value !">
+					</div>
+					<div id="propertyColor"  class="colorProprieties propertyproperty">
+						<p>Color : </p><input type="text" id="color"  class="" value="#DADDF0">
+					</div>
+					<div id="propertyFontFamily" class="fontFamilyProprieties propertyproperty">
+						<p>font-family : </p><input type="text" id="FontFamily" value="Arial">
+					</div>
+					<div id="propertyFontSize" class="fontSizeProprieties propertyproperty">
+						<p>font-size : </p><input type="text" id="FontSize" value="16px">
+						<input  type="range" class="range6" name="a" min="8" max="50" step="1" value="16"/>
+					</div>
+					<div id="propertyFontStyle" class="fontStyleProprieties propertyproperty">
+						<p>font-style : </p><input type="text" id="FontStyle" value="normal">
+					</div>
+					<div id="propertyFontWeight" class="fontWeightProprieties propertyproperty">
+						<p>font-weight : </p><input type="text" id="FontWeight" value="normal">
+					</div>
+					<div id="propertyTextDecoration" class="textDecorationProprieties propertyproperty">
+						<p>text-decoration : </p><input type="text" id="TextDecoration" value="none">
+					</div>
+					<div id="propertyTextAlign" class="textAlignProprieties propertyproperty">
+						<p>text-align : </p><input type="text" id="TextAlign" value="center">
+					</div>
 					<div id="propertyTextShadow" class="text-shadowProprieties propertyproperty">
 						<p>text-shadow : </p><input type="text" id="textShadow" value="1px 1px 1px black">
 					</div>
-						<div id="propertyLineHeight" class="lineHeightProprieties propertyproperty">
-							<p>line-height : </p><input type="text" id="lineHeight" value="16px">
-							<input  type="range" class="range9" name="a" min="0" max="50" step="1" value="16"/>
-						</div>
-			</div>
+					<div id="propertyLineHeight" class="lineHeightProprieties propertyproperty">
+						<p>line-height : </p><input type="text" id="lineHeight" value="16px">
+						<input  type="range" class="range9" name="a" min="0" max="50" step="1" value="16"/>
+					</div>
+				</div>
 				<!-- FOND -->
 				<div id="fond" class="fond inputMenu">
 					<p class="menu">Fond<img alt="" class="down" src="img/down.png"/></p>
-				<div class="backgroundProprieties">
-					<p>Background : </p><input type="text" id="background" class="" value="#2A5476">
-				</div>
+					<div class="backgroundProprieties">
+						<p>Background : </p><input type="text" id="background" class="" value="#2A5476">
+					</div>
 					<div class="box-shadowProprieties">
 						<p>box-shadow : </p><input type="text" id="boxShadow" value="2px 2px 5px black">
 					</div>
-			</div>
+				</div>
 				<!-- BORDURES -->
 				<div id="bordures" class="bordures inputMenu">
 					<p class="menu">Bordures | Marges<img alt="" class="down" src="img/down.png"/></p>
-				<div class="borderProprieties">
-					<p>border : </p><input type="text" id="border" value="1px solid black" class="inputLeft">
-
-					<input  type="range" class="range3" name="a" min="0" max="40" step="1" value="20"/>
-				</div>
-				<div class="border-radiusProprieties">
-					<p>border-radius : </p><input type="text" id="borderRadius" value="20px" class="inputLeft">
-					<input  type="range" class="range" name="a" min="0" max="100" step="1" value="50"/>
-				</div>
+					<div class="borderProprieties">
+						<p>border : </p><input type="text" id="border" value="1px solid black" class="inputLeft">
+						<input  type="range" class="range3" name="a" min="0" max="40" step="1" value="20"/>
+					</div>
+					<div class="border-radiusProprieties">
+						<p>border-radius : </p><input type="text" id="borderRadius" value="20px" class="inputLeft">
+						<input  type="range" class="range" name="a" min="0" max="100" step="1" value="50"/>
+					</div>
 					<div class="paddingProprieties">
 						<p>padding : </p><input type="text" id="padding" value="10px" class="inputLeft">
 						<input  type="range" class="range4" name="a" min="0" max="100" step="1" value="10"/>
@@ -116,141 +106,130 @@
 						<p>box-sizing : </p><input type="text" id="boxSizing" value="border-box" class="inputLeft">
 					</div>
 			</div>
+			<!-- transitions -->
 			<div id="transitions" style="display:none;" class="transitions inputMenu">
-			<p class="menu">Transitions<img alt="" class="down" src="img/down.png"/></p>
-		<div class="transitionsProprieties">
-			<p>transitions : </p><input type="text" id="" value="A venir" class="inputLeft">
-		</div>
+				<p class="menu">Transitions<img alt="" class="down" src="img/down.png"/></p>
+				<div class="transitionsProprieties">
+					<p>transitions : </p><input type="text" id="" value="A venir" class="inputLeft">
+				</div>
 			</div>
+			<!-- VISIBILITE -->
 			<div id="visibilité" style="" class="visibilité inputMenu">
-			<p class="menu">Visibilité<img alt="" class="down" src="img/down.png"/></p>
-			<div class="displayProprieties">
-				<p>display : </p><input type="text" id="display" value="block" class="inputLeft">
+				<p class="menu">Visibilité<img alt="" class="down" src="img/down.png"/></p>
+				<div class="displayProprieties">
+					<p>display : </p><input type="text" id="display" value="block" class="inputLeft">
+				</div>
+				<div class="visibilityProprieties">
+					<p>visibility : </p><input type="text" id="visibility" value="visible" class="inputLeft">
+				</div>
+				<div class="opacityProprieties">
+					<p>opacity : </p><input type="text" id="opacity" value="1" class="inputLeft">
+					<input  type="range" class="range2" name="a" min="0" max="100" step="1" value="100" />
+				</div>
 			</div>
-			<div class="visibilityProprieties">
-				<p>visibility : </p><input type="text" id="visibility" value="visible" class="inputLeft">
+			<div>
+				<div class="z-indexProprieties" style="display:none;">
+					<p>z-index : </p><input type="text" id="zindex" value="">
+				</div>
+				<div  class="positionProprieties" style="display:none;">
+					<p>position : </p><input type="text" id="position" value="">
+				</div>
 			</div>
-			<div class="opacityProprieties">
-				<p>opacity : </p><input type="text" id="opacity" value="1" class="inputLeft">
-				<input  type="range" class="range2" name="a" min="0" max="100" step="1" value="100" />
-			</div>
-		</div>
-		<div>
-			<div class="z-indexProprieties" style="display:none;">
-				<p>z-index : </p><input type="text" id="zindex" value="">
-			</div>
-			<div  class="positionProprieties" style="display:none;">
-				<p>position : </p><input type="text" id="position" value="">
-			</div>
-
-		</div>
 		<div class="synthaxe" style="overflow: hidden;">
 			<!--	<div class="activeProperty" style="display:none;">
 					Just click on a property to see his uses.*A venir*
 				</div>
-				<div class="propertyTextAlign" style="display:none;">
-					<h2>text-align Property</h2>
-					<table>
-							<tr><td>Value</td><td>Description</td></tr>
-							<tr><td>left</td><td>Aligns the text to the left</td>	</tr>
-							<tr><td>right</td><td>Aligns the text to the right</td>	</tr>
-							<tr><td>center</td><td>	Centers the text</td></tr>
-							<tr><td>justify</td><td>Stretches the lines so that each line has equal width</td></tr>
-							<tr><td>initial</td><td>Sets this property to its default value.</td></tr>
-							<tr><td>inherit</td><td>Inherits this property from its parent element.</td></tr>
-					</table>
-				</div>
-
 			<div class="propertyTextShadow" style="display:none;">
 				propertyTextShadow
 			</div>-->
 		</div>
 	</div>
-
+	<!-- Affichage dynamique du resultat -->
 	<div style="width: calc(100% - 400px);display: inline-block;">
-			<div style="width: 100%;">
-		<div style="Overflow:hidden;	background: rgba(255,255,255,0.5);">
-			<div id="rPixelHaut" style="width:1600px;height:20px;"></div>
-				<div id="rPixelGauche" style="width:20px;height:10px;float:left;height: 406px;"></div>
-			<div id="output" class="output"></div>
-		</div>
-			<div id="output2"></div>
+		<div style="width: 100%;">
+			<div style="Overflow:hidden;	background: rgba(255,255,255,0.5);">
+				<div id="rPixelHaut" style="width:1600px;height:20px;">
+				</div>
+				<div id="rPixelGauche" style="width:20px;height:10px;float:left;height: 406px;">
+				</div>
+				<div id="output" class="output">
+				</div>
+			</div>
+			<div id="output2">
+			</div>
 			<div id="outils" class="outils" style="">
-			<div class="" style="width: 100%;background:white;height: 36px;">
-
-
-
-			<input onclick="if(FontWeight.value=='bold'){FontWeight.value='none';}else{FontWeight.value='bold';};" id="FontWeightBoldForm" class="v-visuallyHidden v-buttonGroupControl" name="FontWeightBoldForm" value="FontWeightBold" type="checkbox">
-			<label for="FontWeightBoldForm" class="v-buttonGroupLabel">
-				<img src="img/FontWeightBold.png" alt=""/>
-			</label>
-			<input onclick="if(FontStyle.value=='italic'){FontStyle.value='none';}else{FontStyle.value='italic';};" id="FontStyleItalicForm" class="v-visuallyHidden v-buttonGroupControl" name="FontStyleItalicForm" value="FontStyleItalic" type="checkbox">
-			<label for="FontStyleItalicForm" class="v-buttonGroupLabel">
-			<img src="img/FontStyleItalic.png" alt="" />
-			</label>
-			<input onclick="if(TextDecoration.value=='underline'){TextDecoration.value='none';}else{TextDecoration.value='underline';};" id="TextUnderlineForm" class="v-visuallyHidden v-buttonGroupControl" name="TextUnderlineForm" value="TextUnderline" type="checkbox">
-			<label for="TextUnderlineForm" class="v-buttonGroupLabel">
-				<img src="img/TextDecorationUnderline.png" alt=""/>
-			</label>
-
-			<input onclick="TextAlign.value='left';" class="v-visuallyHidden v-buttonGroupControl" id="TextAlignLeft" name="TextAlignForm" value="TextAlignLeft" type="radio">
-			<label for="TextAlignLeft" class="v-buttonGroupLabel">
-				<img src="img/TextAlignLeft.png" alt=""/>
-			</label>
-			<input onclick="TextAlign.value='right';" class="v-visuallyHidden v-buttonGroupControl" id="TextAlignRight" name="TextAlignForm" value="TextAlignRight" type="radio">
-			<label for="TextAlignRight" class="v-buttonGroupLabel">
-			<img src="img/TextAlignRight.png" alt=""/>
-			</label>
-			<input onclick="TextAlign.value='center';" class="v-visuallyHidden v-buttonGroupControl" id="TextAlignCenter" name="TextAlignForm" value="TextAlignCenter" type="radio">
-			<label for="TextAlignCenter" class="v-buttonGroupLabel">
-			<img src="img/TextAlignCenter.png" alt=""/>
-			</label>
-			<input onclick="TextAlign.value='justify';" class="v-visuallyHidden v-buttonGroupControl" id="TextAlignJustify" name="TextAlignForm" value="TextAlignJustify" type="radio">
-			<label for="TextAlignJustify" class="v-buttonGroupLabel">
-			<img src="img/TextAlignJustify.png" alt=""/>
-			</label>
-			<input onkeyup="txtValue.value=textValueForm.value;"  class="v-buttonGroupControl" id="textValueForm" name="textValueForm" value="This is my value !" type="text" style="padding: 5px;margin: 0px 2px;">
-
-			<select id="ListeElement" onchange="OnSelectionChange (this)" class="selectForm">
-   <option value="Arial" id="arialFont" selected>Arial</option>
-   <option value="Comic Sans MS" id="comicSansMsFont">Comic Sans MS</option>
-   <option value="Georgia" id="georgiaFont" >Georgia</option>
-<option value="Impact" id="impactFont">Impact</option>
-<option value="Times New Roman" id="timeNewRoman">Times New Roman</option>
-<option value="Verdana" id="verdanaFont">Verdana</option>
-</select>
-
-<select id="ListeElement2" onchange="OnSelectionChange2(this)" class="selectForm">
-<option value="10">10 px</option>
-<option value="12">12 px</option>
-<option value="16">16 px</option>
-<option value="20">20 px</option>
-<option value="24">24 px</option>
-<option value="30">30 px</option>
-</select>
-			</div>
+				<div class="" style="width: 100%;background:white;height: 36px;">
+					<input onclick="if(FontWeight.value=='bold'){FontWeight.value='none';}else{FontWeight.value='bold';};" id="FontWeightBoldForm" class="v-visuallyHidden v-buttonGroupControl" name="FontWeightBoldForm" value="FontWeightBold" type="checkbox">
+					<label for="FontWeightBoldForm" class="v-buttonGroupLabel">
+						<img src="img/FontWeightBold.png" alt=""/>
+					</label>
+					<input onclick="if(FontStyle.value=='italic'){FontStyle.value='none';}else{FontStyle.value='italic';};" id="FontStyleItalicForm" class="v-visuallyHidden v-buttonGroupControl" name="FontStyleItalicForm" value="FontStyleItalic" type="checkbox">
+					<label for="FontStyleItalicForm" class="v-buttonGroupLabel">
+						<img src="img/FontStyleItalic.png" alt="" />
+					</label>
+					<input onclick="if(TextDecoration.value=='underline'){TextDecoration.value='none';}else{TextDecoration.value='underline';};" id="TextUnderlineForm" class="v-visuallyHidden v-buttonGroupControl" name="TextUnderlineForm" value="TextUnderline" type="checkbox">
+					<label for="TextUnderlineForm" class="v-buttonGroupLabel">
+						<img src="img/TextDecorationUnderline.png" alt=""/>
+					</label>
+					<input onclick="TextAlign.value='left';" class="v-visuallyHidden v-buttonGroupControl" id="TextAlignLeft" name="TextAlignForm" value="TextAlignLeft" type="radio">
+					<label for="TextAlignLeft" class="v-buttonGroupLabel">
+						<img src="img/TextAlignLeft.png" alt=""/>
+					</label>
+					<input onclick="TextAlign.value='right';" class="v-visuallyHidden v-buttonGroupControl" id="TextAlignRight" name="TextAlignForm" value="TextAlignRight" type="radio">
+					<label for="TextAlignRight" class="v-buttonGroupLabel">
+						<img src="img/TextAlignRight.png" alt=""/>
+					</label>
+					<input onclick="TextAlign.value='center';" class="v-visuallyHidden v-buttonGroupControl" id="TextAlignCenter" name="TextAlignForm" value="TextAlignCenter" type="radio">
+					<label for="TextAlignCenter" class="v-buttonGroupLabel">
+						<img src="img/TextAlignCenter.png" alt=""/>
+					</label>
+					<input onclick="TextAlign.value='justify';" class="v-visuallyHidden v-buttonGroupControl" id="TextAlignJustify" name="TextAlignForm" value="TextAlignJustify" type="radio">
+					<label for="TextAlignJustify" class="v-buttonGroupLabel">
+						<img src="img/TextAlignJustify.png" alt=""/>
+					</label>
+					<input onkeyup="txtValue.value=textValueForm.value;"  class="v-buttonGroupControl" id="textValueForm" name="textValueForm" value="This is my value !" type="text" style="padding: 5px;margin: 0px 2px;">
+					<select id="ListeElement" onchange="OnSelectionChange (this)" class="selectForm">
+   					<option value="Arial" id="arialFont" selected>Arial</option>
+   					<option value="Comic Sans MS" id="comicSansMsFont">Comic Sans MS</option>
+   					<option value="Georgia" id="georgiaFont" >Georgia</option>
+						<option value="Impact" id="impactFont">Impact</option>
+						<option value="Times New Roman" id="timeNewRoman">Times New Roman</option>
+						<option value="Verdana" id="verdanaFont">Verdana</option>
+					</select>
+					<select id="ListeElement2" onchange="OnSelectionChange2(this)" class="selectForm">
+						<option value="10">10 px</option>
+						<option value="12">12 px</option>
+						<option value="16">16 px</option>
+						<option value="20">20 px</option>
+						<option value="24">24 px</option>
+						<option value="30">30 px</option>
+					</select>
+				</div>
 			</div>
 		</div>
-			<div class="board">
-					<!-- TEXTE -->
-
-		<div class="generateG">
-			<div id="container">
+		<div class="board">
+			<div class="generateG">
+				<div id="container">
 					<div id="palette" class="block">
-							<div id="color-palette"></div>
+							<div id="color-palette">
+							</div>
 							<div id="color-info" >
-									<div class="title" style="display:none;">Couleurs CSS </div>
+									<div class="title" style="display:none;">Couleurs CSS
+									</div>
 							</div>
 					</div>
-
 					<div id="picker" class="block">
-							<div class="ui-color-picker" data-topic="picker" data-mode="HSL"></div>
-							<div id="picker-samples" sample-id="master"></div>
+						<div class="ui-color-picker" data-topic="picker" data-mode="HSL">
+						</div>
+						<div id="picker-samples" sample-id="master">
+						</div>
 							<div id="controls">
 									<div id="delete">
-											<div id="trash-can"></div>
+											<div id="trash-can">
+											</div>
 									</div>
-									<div id="void-sample" style="display:none;" class="icon"></div>
+									<div id="void-sample" style="display:none;" class="icon">
+									</div>
 									<!--<input onclick="background.value= HEXA;" class="v-visuallyHidden v-buttonGroupControl" id="backgroundColorForm" name="BackgroundOrColorForm" value="backgroundColorForm" type="radio">
 									<label for="backgroundColorForm" class="v-buttonGroupLabel">
 									<span>Background</span>
@@ -259,28 +238,26 @@
 									<label for="ColorForm" class="v-buttonGroupLabel">
 									<span>color</span>
 								</label>-->
-							</div>
+						</div>
 					</div>
-
 					<div id="canvas" data-tutorial="drop" style="display:none !important;">
-							<div id="zindex" class="ui-input-slider" data-topic="z-index" data-info="z-index"
-									data-max="20" data-sensivity="10"></div>
+							<div id="zindex" class="ui-input-slider" data-topic="z-index" data-info="z-index" data-max="20" data-sensivity="10">
+							</div>
 					</div>
 			</div>
 			<div class="generateCode" >
-						<div>
-							<div style="height: 30px;width: 100%;background-color: #EEE;border-top: 2px solid #c9c9c9;">
-								<p style="background: rgba(0,0,0,0.857);height: 30px;width:33px;margin:0;"></p>
-								<p style="color:black;background: grey;height: 30px;width: 40%;margin: 0;padding: 5px;box-sizing: border-box;" class="activeCode">
-									<input onkeyup="txtValue.value=textValueForm.value;" class="v-buttonGroupControl" id="textValueForm" name="textValueForm" value=".myClass" style="width:100%;margin: 0px 2px;background-color: #272822;border: 0px;color: white;font-weight: bold;" type="text">
-									</p>
-								<p style="color:black;background: grey;height: 30px;width: 40%;margin: 0;padding: 5px;box-sizing: border-box;display:none;">Mon html</p>
-							</div>
-							<div class="ace_static_highlight ace_show_gutter" style="counter-reset:ace_line 0;overflow-y: scroll;overflow-x: hidden;height: 458px;">
-
-							<code id="CSSRENDER">
-
-								<div class="ace_line"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p><span style="margin:0;padding-left:5px;">{</span></div>
+				<div>
+					<div style="height: 30px;width: 100%;background-color: #EEE;border-top: 2px solid #c9c9c9;">
+						<p class="copyCode" id="copyCodeCSS" onclick="selectText('CSSRENDER')"></p>
+						<p class="copyCode" id="copyCodeHTML"  onclick="selectText('HTMLRENDER')" style="display:none;"></p>
+						<p id="inputCSScode" onclick="activecodecss();" style="color:black;background: silver;height: 30px;width: 40%;margin: 0;padding: 5px;box-sizing: border-box;" class="activeCode">
+							<input id="inputCSS" class="inputCSS activeCode" onkeyup="txtValue.value=textValueForm.value;" class="v-buttonGroupControl" id="textValueForm" name="textValueForm" value=".myClass"  type="text">
+						</p>
+						<p onclick="activecodehtml();" id="inputHtml" style="background: silver;height: 30px;width: 40%;margin: 0;padding: 5px;box-sizing: border-box;font-weight: bold;color: grey;">Mon html</p>
+					</div>
+					<div class="ace_static_highlight ace_show_gutter" style="counter-reset:ace_line 0;overflow-y: scroll;overflow-x: hidden;height: 458px;">
+						<code id="CSSRENDER">
+							<div class="ace_line"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p><span style="margin:0;padding-left:5px;">{</span></div>
 							<div class="ace_line " id="divrenderPosition" style="display:none;" ><p class="ace_gutter ace_gutter-cell " unselectable="on"></p>	<span id="cssrenderPosition" class="cssrender"></span></div>
 							<div class="ace_line" id="divrenderZindex" style="display:none;"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p>	<span id="cssrenderZindex" class="cssrender"></span></div>
 							<div class="ace_line" id="divrenderWidth" style="display:none;"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p>	<span id="cssrenderWidth" class="cssrender"></span></div>
@@ -305,197 +282,38 @@
 							<div class="ace_line" id="divrenderVisibility"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p>	<span id="cssrenderVisibility" class="cssrender"></span></div>
 							<div class="ace_line" id="divrenderOutline"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p>		<span id="cssrenderOutline" class="cssrender"></span></div>
 							<div class="ace_line" id="divrenderBoxSizing"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p>	<span id="cssrenderBoxSizing" class="cssrender"></span></div>
-						<div class="ace_line"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p><span style="margin:0;padding-left:5px;">}</span></div>
+							<div class="ace_line"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p><span style="margin:0;padding-left:5px;">}</span></div>
 							<div class="ace_line"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p><span style="visibility:hidden;">f</span ></div>
-							</code>
-								</div>
-						</div>
-				</div>
-
-		</div>
-			<div class="console">
-				<div class="cmd" >
-					<div>
-						<span id="cssValideTrue" style="display:none;color: #A6E22E;">Console *A venir*<!--css validate.--></span>
-						<span id="cssValideFalse" style="display:none;color:red;">Error : Invalid values.</span>
+						</code>
+						<code id="HTMLRENDER" style="display:none;">
+							<div class="ace_line"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p><span class="baliseHtml" style="margin:0;padding-left:5px;">A venir<!--json--> </span></div>
+							<div class="ace_line"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p><span class="baliseHtml baliseSpan" style="margin:0;padding-left:5px;"></span></div>
+							<div class="ace_line"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p><span class="baliseSpan" id="htmlTxtValue" style="margin:0;padding-left:5px;"></span></div>
+							<div class="ace_line"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p><span class="baliseHtml baliseSpan" style="margin:0;padding-left:5px;"></span></div>
+							<div class="ace_line"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p><span class="baliseHtml" style="margin:0;padding-left:5px;"></span></div>
+						</code>
 					</div>
 				</div>
-			</div>
-</div>
-</div>
 		</div>
-
-			<script src="js/project.js"></script>
-			<script>
-
-			var elementZ;
-			$(".menu").click(function(){
-				elementZ = 	$(this).parent().attr('id');
-					if ($("#" + elementZ + " > div").hasClass("active")){
-							$("#" + elementZ + " > p > .down").removeClass("activeDown");
-							$("#" + elementZ + " > div").removeClass("active");
-					}else{
-							$("#" + elementZ + " > p > .down").addClass("activeDown");
-							$("#" + elementZ + " > div").addClass("active");
-					}
-					});
-			/* Lorsque l'on clique sur une class on recupere l'id du meme élément et on affiche la class qui pourte la meme valeur que cet id*/
-				var elementP;
-				$(".propertyproperty").click(function(){
-				elementP = $(this).attr('id');
-						$(".synthaxe > div").removeClass("activeProperty");
-						$("." + elementP).addClass("activeProperty");
-				});
-
-
-var RegleContainer = document.getElementById("rPixelHaut");
-RegleContainer.innerHTML += "<div class='InvPix10'></div>";
-	for (var i = 0; i < 15; i++) {
-			RegleContainer.innerHTML += "<div class='GrandPix10'></div>";
-		for (var j = 0; j < 9; j++) {
-			RegleContainer.innerHTML += "<div class='Pix10'></div>";
-		}
-	}
-
-	var RegleContainer2 = document.getElementById("rPixelGauche");
-	RegleContainer.innerHTML += "<div class='VInvPix10'></div>";
-		for (var i = 0; i < 6; i++) {
-				RegleContainer.innerHTML += "<div class='VGrandPix10'></div>";
-			for (var j = 0; j < 9; j++) {
-				RegleContainer.innerHTML += "<div class='VPix10'></div>";
-			}
-		}
-
-
-				$(function() {
-		$('.range').on('input', function() {
-		borderRadius.value = $(this).val() + "px";
-		});
-		});
-
-		$(function() {
-		$('.range2').on('input', function() {
-		opacity.value = $(this).val() / 100;
-		});
-		});
-
-		$(function() {
-		$('.range3').on('input', function() {
-		border.value = $(this).val() + "px solid black";
-		});
-		});
-
-
-		$(function() {
-		$('.range4').on('input', function() {
-		padding.value = $(this).val() + "px";
-		});
-		});
-
-		$(function() {
-		$('.range5').on('input', function() {
-		margin.value = $(this).val() + "px";
-		});
-		});
-
-		$(function() {
-		$('.range6').on('input', function() {
-		FontSize.value = $(this).val() + "px";
-		});
-		});
-
-		$(function() {
-		$('.range7').on('input', function() {
-		width.value = $(this).val() + "px";
-		});
-		});
-
-		$(function() {
-		$('.range8').on('input', function() {
-		height.value = $(this).val() + "px";
-		});
-		});
-				$(function() {
-				$('.range9').on('input', function() {
-				lineHeight.value = $(this).val() + "px";
-				});
-				});
-
-		function OnSelectionChange (select) {
-				 var selectedOption = select.options[select.selectedIndex];
-				 if (selectedOption.value == 'Arial'){
-					 FontFamily.value='arial';
-				 }else if (selectedOption.value == 'Comic Sans MS'){
-				 	FontFamily.value='Comic Sans MS';
-				}else if(selectedOption.value == 'Georgia'){
-				 FontFamily.value='Georgia';
-				}else if(selectedOption.value == 'Impact'){
-				 FontFamily.value='Impact';
-				}else if(selectedOption.value == 'Times New Roman'){
-				 FontFamily.value='Times New Roman';
-				}else if(selectedOption.value == 'Verdana'){
-				 FontFamily.value='Verdana';
-				}
-		 }
-
-		 function OnSelectionChange2 (select) {
-					var selectedOption2 = select.options[select.selectedIndex];
-					if (selectedOption2.value == '10'){
-						FontSize.value='10px';
-					}else if (selectedOption2.value == '12'){
-					 FontSize.value='12px';
-				 }else if(selectedOption2.value == '16'){
-					FontSize.value='16px';
-				}else if(selectedOption2.value == '20'){
-					FontSize.value='20px';
-				}else if(selectedOption2.value == '24'){
-					FontSize.value='24px';
-				}else if(selectedOption2.value == '30'){
-					FontSize.value='30px';
-				 }
-			}
-		 /*switch principe*/
-
-
-		function reset () {
-			txtValue.value = '';
-			background.value = "white";
-			TextDecoration.value = "";
-			FontWeight.value = "";
-			color.value = "";
-			FontFamily.value = "";
-			FontSize.value = "";
-			FontStyle.value = "";
-			TextAlign.value = "";
-			width.value = "100px";
-			height.value = "100px";
-			border.value = "";
-			borderRadius.value = "";
-			opacity.value = "";
-			boxShadow.value = "";
-			textShadow.value = "";
-			padding.value = "";
-			margin.value = "";
-			zindex.value = "";
-			boxSizing.value = "";
-			position.value = "";
-			display.value = "";
-			visibility.value = "";
-			outline.value = "";
-			boxSizing.value = "";
-			$(".v-buttonGroupControl").prop("checked", false);
-			textValueForm.value="";
-			lineHeight.value = "";
-		}
-			</script>
-			<script src="js/error.js"></script>
-			<!-- Learn about this code on MDN: https://developer.mozilla.org/fr/docs/Web/CSS/Couleurs_CSS/S%C3%A9lecteur_de_couleurs -->
-
-
-
+	</div>
+	<div class="console">
+		<div class="cmd" >
+			<div>
+				<span id="cssValideTrue" style="display:none;color: #A6E22E;">Console *A venir*<!--css validate.--></span>
+				<span id="cssValideFalse" style="display:none;color:red;">Error : Invalid values.</span>
+			</div>
+		</div>
+	</div>
+</div>
+</div>
+</div>
 <footer>
 	<a href="https://github.com/anthoviso" onclick="window.open(this.href);return false;">By Anthony Visocchi</a>
 </footer>
+<script src="js/project.js"></script>
+<script src="js/principalesFonctions.js"></script>
+<script src="js/error.js"></script>
 	</body>
 </html>
-<!-- COPYRIGHT © VISOCCHI ANTHONY 2017 -->
+<!-- Learn about this code on MDN: https://developer.mozilla.org/fr/docs/Web/CSS/Couleurs_CSS/S%C3%A9lecteur_de_couleurs -->
+<!-- By VISOCCHI ANTHONY 2017 -->

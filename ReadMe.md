@@ -1,5 +1,4 @@
-# Anthony Visocchi | CSS3 GENERATOR V1.0.
-
+# Anthony Visocchi | CSS3 GENERATOR V1.2
 [Git Hub](https://github.com/anthoviso) - Anthony VISOCCHI.
 
 ```
@@ -10,4 +9,4 @@
 
 * html5
 * css3
-* javascript / jquery / Ajax
+* javascript / jquery / Ajax / (json à venir)

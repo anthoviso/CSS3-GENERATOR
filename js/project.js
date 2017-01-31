@@ -45,6 +45,7 @@
 
   var container = document.getElementById("output");
   var container2 = document.getElementById("output2");
+  var container3 = document.getElementById("htmlTxtValue");
   var colorValue = $('#color').val();
   var dieze = '';
 
@@ -52,7 +53,7 @@
   function update () {
     requestAnimationFrame(update);
 
-
+    container3.innerHTML = txtValue.value;
     container.innerHTML = " <div id='outputContainer' style=\"background: " + dieze + background.value +
     ";color: " + dieze + color.value +
     ";font-family: " + FontFamily.value +
