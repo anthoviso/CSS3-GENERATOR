@@ -3,10 +3,11 @@
 	width: 100%;
 	background: rgba(0,0,0,0.9);
 	color: white;
-	padding: 15px;
+	padding: 10px 15px;
 	box-sizing: border-box;
+	height: 50px;
 	text-transform: uppercase;
-	font-size: 30px;
+	font-size: 26px;
 	box-shadow: 3px 3px 3px silver;
 }
 .btn {
@@ -62,7 +63,7 @@ transform: rotate(180deg);
 }
 
 div > p{
-width: 30%;
+width: 32%;
 float: left;
 	margin: 3px 0px;
 	}
@@ -86,7 +87,8 @@ float: left;
 	float: left;
 	box-shadow: 2px 0px 1px black;
 	height: 954px;
-	overflow: hidden;
+	overflow-x: hidden;
+	overflow-y: scroll;
 	}
 	.cssElements > div{
 	background: -webkit-linear-gradient(top, rgba(65,65,73,1) 0%,rgba(42,42,48,1) 100%);
@@ -124,8 +126,10 @@ float: left;
 	.active, .activeProperty{
 	display:block !important;
 	}
-	
-	
+	.selectedElem{
+		background: #4b82b1 !important;
+	}
+
 	/* ----- Code GENERE ----- */
 	.generateG{
 	width: 100%;
@@ -154,7 +158,7 @@ float: left;
 	margin:0;
 	padding-left:15px;
 	}
-	
+
 	.displayBlock:nth-child(2), .displayBlock:nth-child(4), .displayBlock:nth-child(6), .displayBlock:nth-child(8), .displayBlock:nth-child(10),
 	.displayBlock:nth-child(12), .displayBlock:nth-child(14), .displayBlock:nth-child(16), .displayBlock:nth-child(18), .displayBlock:nth-child(20),
 	.displayBlock:nth-child(22), .displayBlock:nth-child(24), .displayBlock:nth-child(26), .displayBlock:nth-child(28), .displayBlock:nth-child(30){
@@ -180,15 +184,15 @@ float: left;
 	padding: 5px;
 	box-sizing: border-box;
 	font-weight: bold;
-	color: grey;	
-	cursor:pointer;		
+	color: grey;
+	cursor:pointer;
 	}
 	.activeCode{
 	background-color: #272822 !important;
 	color:white !important;
 	border: none;
 	}
-	
+
 	.baliseHtml{
 	}
 	.baliseHtml::before{
@@ -197,12 +201,12 @@ float: left;
 	.baliseHtml::after{
 	content:'';
 	}
-	
+
 	.baliseSpan{
 	padding-left:20px !important;
 	}
-	
-	
+
+
 	.copyCode{
 	background-color: white;
 	background-image: url('../img/colorPickerTool/copy.png');
@@ -211,9 +215,9 @@ float: left;
 	height: 30px;
 	width:33px;
 	margin:0;
-	cursor:pointer;		
+	cursor:pointer;
 	}
-	
+
 	.output{
 	width: calc(100% - 20px);
 	box-sizing: border-box;
@@ -221,12 +225,18 @@ float: left;
 	display: inline-block;
 	overflow: hidden;
 	}
-	
+	.ace_line {
+    display: list-item;
+}
+.ace_line:hover{
+	background: #404040;
+    cursor: pointer;
+}
 	.ace_static_highlight .ace_gutter-cell::before {
     content: counter(ace_line, decimal);
     counter-increment: ace_line;
 	}
-	
+
 	.ace_static_highlight .ace_gutter {
     width: 2em;
     text-align: right;
@@ -237,19 +247,19 @@ float: left;
 	width: 20px;
     margin: 0;
 	}
-	
+
 	.ace_static_highlight .ace_gutter-cell {
     -moz-user-select: -moz-none;
     -khtml-user-select: none;
     -webkit-user-select: none;
     user-select: none;
 	}
-	
+
 	.ace-monokai .ace_gutter {
     background: #2F3129;
     color: #8F908A;
 	}
-	
+
 	.range, .range1 , .range2, .range3, .range4, .range5,
 	.range6, .range7 , .range8, .range9, .range10, .range11{
 	display: inline-block;
@@ -266,7 +276,7 @@ float: left;
 	padding: 10px;
 	background: rgba(0,0,0,0.1);
 	}
-	
+
 	input[type="radio"], input[type="checkbox"] {
     cursor: pointer;
 	}
@@ -283,7 +293,7 @@ float: left;
     line-height: 18px;
     font-weight: normal;
 	}
-	
+
 	.v-buttonGroupLabel {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -312,7 +322,7 @@ float: left;
     -moz-user-select: none;
     user-select: none;
 	}
-	
+
 	.v-buttonGroupControl:checked + .v-buttonGroupLabel:hover, .v-buttonGroupControl:checked + .v-buttonGroupLabel:focus {
     background: #ccebf3;
 	}
@@ -324,19 +334,19 @@ float: left;
     outline: none;
     background: #f2f2f2;
 	}
-	
+
 	input[type="radio"]:focus, input[type="checkbox"]:focus {
     outline: 0 none;
 	}
-	
+
 	#void-sample, #controls > div.icon.picker-icon, #controls > div.switch{
 	display: none;
 	}
-	
+
 	#color-info > div:nth-child(3){
 	display: none !important;
 	}
-	
+
 	.Pix10{
 	width: 9px;
 	border-left: 1px solid black;
@@ -349,7 +359,7 @@ float: left;
 	height: 20px;
 	float: left;
 	}
-	
+
 	.VPix10{
 	width: 10px;
 	border-top: 1px solid black;
@@ -360,7 +370,7 @@ float: left;
 	border-top: 1px solid black;
 	height: 9px;
 	}
-	
+
 	.InvPix10{
 	float: left;
 	width: 20px;
@@ -370,7 +380,7 @@ float: left;
 	width: 20px;
 	height: 20px;
 	}
-	
+
 	.selectForm{
 	width: 100px;
 	height: 36px;
@@ -380,7 +390,7 @@ float: left;
 	border-left-width: 0;
 	}
 	/* ----- SYNTHAXE ----- */
-	
+
 	.synthaxe{
 	width: 99%;
 	height: 818px;
@@ -392,9 +402,9 @@ float: left;
 	overflow-y: scroll;
 	overflow-x: hidden;
 	}
-	
+
 	/* ----- CONSOLE ----- */
-	
+
 	.console{
 	width: 160px;
 	background: rgba(25,25,25,0.5);
@@ -410,9 +420,9 @@ float: left;
 	float: left;
 	width: 80%;
 	}
-	
+
 	/* ----- FOOTER ----- */
-	
+
 	footer{
 	width: 100%;
 	height: 56px;
@@ -425,6 +435,5 @@ float: left;
 	color:white;
 	text-decoration: none;
 	}
-	
+
 	/* By VISOCCHI ANTHONY 2017 */
-		

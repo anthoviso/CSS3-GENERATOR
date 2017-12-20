@@ -6,39 +6,43 @@
 		<meta name="author" content="Anthony VISOCCHI" />
 		<meta name="keywords" content="" />
 		<meta name="description" content="" />
-		
+
 		<link rel="stylesheet" type="text/css" href="css/colorPickerTool.css"/>
 		<script type="text/javascript" src="js/colorPickerTool.js"></script>
 		<link rel="stylesheet" type="text/css" href="css/normalize.css" media="all"/>
 		<link rel="stylesheet" type="text/css" href="css/base.css"/>
+		<link rel="stylesheet" type="text/css" href="css/jquery-ui.css"/>
 	</head>
 	<body>
 		<script type="text/javascript" src="js/jquery.js"></script>
-		
-		<div class="bandeau">css3 generator v1.22
+
+				<script type="text/javascript" src="js/jquery-ui.js"></script>
+
+		<div class="bandeau">css3 generator v1.23
 			<button onclick="reset();" class="btn btnReset">
 				CSS RESET
 			</button>
 		</div>
 		<div class="divOutput">
 			<div class="cssElements">
-				<!-- TAILLE -->
-				<div id="taille" class="taille inputMenu">
-					<p class="menu">Taille<img alt="" class="down" src="img/down.png"/></p>
-					<div class="widthProprieties" style="display:none;">
+				<!-- EVOLUTION A VENIR -->
+				<!-- <div class="ui-widget">
+  <label for="tags">Tags: </label>
+  <input id="tags">
+</div> -->
+					<div>
+					<div class="widthProprieties propertyproperty">
 						<p>width : </p>
 						<input type="text" id="Width" value="150px" class="range7InputLeft"/>
 						<input  type="range" id="rangeType" class="range7" name="a" min="0" max="1400" step="1" value="150"/>
 					</div>
-					<div class="heightProprieties" style="display:none;">
+					<div class="heightProprieties propertyproperty">
 						<p>height : </p>
 						<input type="text" id="Height" value="150px" class="range8InputLeft"/>
 						<input  type="range"  id="rangeType" class="range8" name="a" min="0" max="1400" step="1" value="150"/>
 					</div>
 				</div>
-				<!-- TEXTE -->
-				<div id="texte" class="texte inputMenu">
-					<p class="menu">Texte<img alt="" class="down" src="img/down.png"/></p>
+					<div>
 					<div id="propertyColor"  class="colorProprieties propertyproperty">
 						<p>Color : </p>
 						<input type="text" id="Color"  class="" value="#DADDF0"/>
@@ -78,70 +82,65 @@
 						<input  type="range"  id="rangeType" class="range9" name="a" min="0" max="50" step="1" value="16"/>
 					</div>
 				</div>
-				<!-- FOND -->
-				<div id="fond" class="fond inputMenu">
-					<p class="menu">Fond<img alt="" class="down" src="img/down.png"/></p>
-					<div class="backgroundProprieties">
+					<div>
+					<div class="backgroundProprieties  propertyproperty">
 						<p>Background : </p>
 						<input type="text" id="Background" class="" value="#2A5476"/>
 					</div>
-					<div class="box-shadowProprieties">
+					<div class="box-shadowProprieties propertyproperty">
 						<p>box-shadow : </p>
 						<input type="text" id="BoxShadow" value="2px 2px 5px black"/>
 					</div>
 				</div>
-				<!-- BORDURES -->
-				<div id="bordures" class="bordures inputMenu">
-					<p class="menu">Bordures | Marges<img alt="" class="down" src="img/down.png"/></p>
-					<div class="borderProprieties">
+					<div>
+					<div class="borderProprieties propertyproperty">
 						<p>border : </p>
 						<input type="text" id="Border" value="1px solid black" class="inputLeft"/>
 						<input  type="range" class="range3" name="a" min="0" max="40" step="1" value="20"/>
 					</div>
-					<div class="border-radiusProprieties">
+					<div class="border-radiusProprieties propertyproperty">
 						<p>border-radius : </p>
 						<input type="text" id="BorderRadius" value="20px" class="inputLeft rangeInputLeft"/>
 						<input  type="range" id="rangeType" class="range" name="a" min="0" max="100" step="1" value="50"/>
 					</div>
-					<div class="paddingProprieties">
+					<div class="paddingProprieties propertyproperty">
 						<p>padding : </p>
 						<input type="text" id="Padding" value="10px" class="inputLeft range4InputLeft"/>
 						<input  type="range" id="rangeType" class="range4" name="a" min="0" max="100" step="1" value="10"/>
 					</div>
-					<div class="marginProprieties">
+					<div class="marginProprieties propertyproperty">
 						<p>margin : </p>
 						<input type="text" id="Margin" value="10px" class="inputLeft range5InputLeft"/>
 						<input  type="range" id="rangeType" class="range5" name="a" min="0" max="100" step="1" value="10"/>
 					</div>
-					<div class="outlineProprieties">
+					<div class="outlineProprieties propertyproperty">
 						<p>outline : </p>
 						<input type="text" id="Outline" value="5px dotted red" class="inputLeft"/>
 					</div>
-					<div class="boxSizingProprieties">
+					<div class="boxSizingProprieties propertyproperty">
 						<p>box-sizing : </p>
 						<input type="text" id="BoxSizing" value="border-box" class="inputLeft"/>
 					</div>
 				</div>
-				<!-- transitions -->
 				<div id="transitions" style="display:none;" class="transitions inputMenu">
 					<p class="menu">Transitions<img alt="" class="down" src="img/down.png"/></p>
-					<div class="transitionsProprieties">
+					<div>
+					<div class="transitionsProprieties propertyproperty">
 						<p>transitions : </p>
 						<input type="text" id="" value="A venir" class="inputLeft"/>
 					</div>
 				</div>
-				<!-- VISIBILITE -->
-				<div id="visibilité" style="" class="visibilité inputMenu">
-					<p class="menu">Visibilité<img alt="" class="down" src="img/down.png"/></p>
-					<div class="displayProprieties">
+				</div>
+					<div>
+					<div class="displayProprieties propertyproperty">
 						<p>display : </p>
 						<input type="text" id="Display" value="block" class="inputLeft"/>
 					</div>
-					<div class="visibilityProprieties">
+					<div class="visibilityProprieties propertyproperty">
 						<p>visibility : </p>
 						<input type="text" id="Visibility" value="visible" class="inputLeft"/>
 					</div>
-					<div class="opacityProprieties">
+					<div class="opacityProprieties propertyproperty">
 						<p>opacity : </p>
 						<input type="text" id="Opacity" value="1" class="inputLeft"/>
 						<input  type="range" class="range2" name="a" min="0" max="100" step="1" value="100" />

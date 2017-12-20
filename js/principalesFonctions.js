@@ -2,8 +2,13 @@
 var list = ['Width','Height','Color','FontFamily','FontSize','LineHeight','FontStyle','FontWeight','TextDecoration','TextAlign','Background',
 'Opacity','Border','BorderRadius','TextShadow','BoxShadow','Padding','Margin','Display','Visibility','Outline','BoxSizing'];
 
+// EVOLUTIONA VENIR
+// $( "#tags" ).autocomplete({
+//   source: list
+// });
+
   for (i=0;i < list.length;i++){
-	 $('.ace_first').after('<div class="ace_line " id="divrender' + list[i] + '" ><p class="ace_gutter ace_gutter-cell" unselectable="on"></p><span id="cssrender' + list[i] + '" class="cssrender' + list[i] + '"></span></div>'); 
+	 $('.ace_first').after('<div class="ace_line " id="divrender' + list[i] + '" ><p class="ace_gutter ace_gutter-cell" unselectable="on"></p><span id="cssrender' + list[i] + '" class="cssrender' + list[i] + '"></span></div>');
 	// console.log(list[i]);
 	}
 
@@ -19,6 +24,29 @@ $(".menu").click(function(){
         $("#" + elementZ + " > div").addClass("active");
 	}
 });
+/* Lorsque l'on clic sur une propriété dans le code css, on l'affiche dans le menu de gauche -- A FAIRE -- */
+$("#CSSRENDER > .ace_line").click(function(){
+  var selectedElemId =  $(this).attr('id');
+  if(selectedElemId ){
+    selectedElemId = selectedElemId.replace("divrender","");
+    console.log(selectedElemId);
+    $('.propertyproperty').removeClass('selectedElem');
+    $('#' + selectedElemId + '').parent().addClass('selectedElem');
+  }
+});
+/* Seul les input replis sont affichés */
+function toggleEmptyElem(){
+  $('.propertyproperty input[type=text]').map(function(index) {
+    if($( this ).val() == ""){
+     var replacementEmpty = $( this ).attr('id');
+      $('.cssrender' + replacementEmpty + '').parent().hide();
+    }else if($( this ).val() != ""){
+     var replacement = $( this ).attr('id');
+    $('.cssrender' + replacement + '').parent().show();
+
+    }
+  });
+}
 /* Lorsque l'on clique sur une class on recupere l'id du meme élément et on affiche la class qui pourte la meme valeur que cet id*/
 var elementP;
 $(".propertyproperty").click(function(){
