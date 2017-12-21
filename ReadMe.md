@@ -9,4 +9,4 @@
 
 * html5
 * css3
-* javascript / jquery / Ajax / (json à venir)
+* javascript / jquery / Ajax / json
