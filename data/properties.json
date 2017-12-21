@@ -1,0 +1,317 @@
+{
+  "fileName" : "CSS3 Properties",
+  "date" : 2017,
+  "active" : true,
+  "properties" : [
+    {
+      "property" : "background",
+      "input1" : [
+        {
+          "id" : "Background",
+          "value" : "#2A5476",
+          "class" : ""
+        }
+      ]
+    },
+    {
+      "property" : "border",
+      "input1" : [
+        {
+          "id" : "Border",
+          "value" : "1px solid black",
+          "class" : "inputLeft"
+        }
+      ],
+      "input2" : [
+        {
+          "id" : "",
+          "class" : "range3",
+          "step" : 1,
+          "value" : 20,
+          "min" : 0,
+          "max" : 100
+        }
+      ]
+    },
+    {
+      "property" : "border-radius",
+      "input1" : [
+        {
+          "id" : "BorderRadius",
+          "value" : "20px",
+          "class" : "inputLeft rangeInputLeft"
+        }
+      ],
+      "input2" : [
+        {
+          "id" : "rangeType",
+          "class" : "range",
+          "step" : 1,
+          "value" : 50,
+          "min" : 0,
+          "max" : 100
+        }
+      ]
+    },
+    {
+      "property" : "box-shadow",
+      "input1" : [
+        {
+          "id" : "BoxShadow",
+          "value" : "2px 2px 5px black",
+          "class" : ""
+        }
+      ]
+    },
+    {
+      "property" : "boxSizing",
+      "input1" : [
+        {
+          "id" : "BoxSizing",
+          "value" : "border-box",
+          "class" : "inputLeft"
+        }
+      ]
+    },
+    {
+      "property" : "color",
+      "input1" : [
+        {
+          "id" : "Color",
+          "value" : "#DADDF0",
+          "class" : ""
+        }
+      ]
+    },
+    {
+      "property" : "display",
+      "input1" : [
+        {
+          "id" : "Display",
+          "value" : "block",
+          "class" : "inputLeft"
+        }
+      ]
+    },
+    {
+      "property" : "fontFamily",
+      "input1" : [
+        {
+          "id" : "FontFamily",
+          "value" : "Arial",
+          "class" : ""
+        }
+      ]
+    },
+    {
+      "property" : "fontSize",
+      "input1" : [
+        {
+          "id" : "FontSize",
+          "value" : "16px",
+          "class" : "range6InputLeft"
+        }
+      ],
+      "input2" : [
+        {
+          "id" : "rangeType",
+          "class" : "range6",
+          "step" : 1,
+          "value" : 16,
+          "min" : 8,
+          "max" : 50
+        }
+      ]
+    },
+    {
+      "property" : "fontStyle",
+      "input1" : [
+        {
+          "id" : "FontStyle",
+          "value" : "normal",
+          "class" : ""
+        }
+      ]
+    },
+    {
+      "property" : "fontWeight",
+      "input1" : [
+        {
+          "id" : "FontWeight",
+          "value" : "normal",
+          "class" : ""
+        }
+      ]
+    },
+    {
+      "property" : "height",
+      "input1" : [
+        {
+          "id" : "Height",
+          "value" : "150px",
+          "class" : "range8InputLeft"
+        }
+      ],
+      "input2" : [
+        {
+          "id" : "rangeType",
+          "class" : "range8",
+          "step" : 1,
+          "value" : 150,
+          "min" : 0,
+          "max" : 1400
+        }
+      ]
+    },
+    {
+      "property" : "lineHeight",
+      "input1" : [
+        {
+          "id" : "LineHeight",
+          "value" : "16px",
+          "class" : "range9InputLeft"
+        }
+      ],
+      "input2" : [
+        {
+          "id" : "rangeType",
+          "class" : "range9",
+          "step" : 1,
+          "value" : 16,
+          "min" : 0,
+          "max" : 50
+        }
+      ]
+    },
+    {
+      "property" : "margin",
+      "input1" : [
+        {
+          "id" : "Margin",
+          "value" : "10px",
+          "class" : "inputLeft range5InputLeft"
+        }
+      ],
+      "input2" : [
+        {
+          "id" : "rangeType",
+          "class" : "range5",
+          "step" : 1,
+          "value" : 10,
+          "min" : 0,
+          "max" : 100
+        }
+      ]
+    },
+    {
+      "property" : "opacity",
+      "input1" : [
+        {
+          "id" : "Opacity",
+          "value" : "1",
+          "class" : "inputLeft"
+        }
+      ],
+      "input2" : [
+        {
+          "id" : "",
+          "class" : "range2",
+          "step" : 1,
+          "value" : 100,
+          "min" : 0,
+          "max" : 100
+        }
+      ]
+    },
+    {
+      "property" : "outline",
+      "input1" : [
+        {
+          "id" : "Outline",
+          "value" : "5px dotted grey",
+          "class" : "inputLeft"
+        }
+      ]
+    },
+    {
+      "property" : "padding",
+      "input1" : [
+        {
+          "id" : "Padding",
+          "value" : "10px",
+          "class" : "inputLeft range4InputLeft"
+        }
+      ],
+      "input2" : [
+        {
+          "id" : "rangeType",
+          "class" : "range4",
+          "step" : 1,
+          "value" : 10,
+          "min" : 0,
+          "max" : 100
+        }
+      ]
+    },
+    {
+      "property" : "textAlign",
+      "input1" : [
+        {
+          "id" : "TextAlign",
+          "value" : "center",
+          "class" : ""
+        }
+      ]
+    },
+    {
+      "property" : "textDecoration",
+      "input1" : [
+        {
+          "id" : "TextDecoration",
+          "value" : "none",
+          "class" : ""
+        }
+      ]
+    },
+    {
+      "property" : "text-shadow",
+      "input1" : [
+        {
+          "id" : "TextShadow",
+          "value" : "1px 1px 1px black",
+          "class" : ""
+        }
+      ]
+    },
+    {
+      "property" : "visibility",
+      "input1" : [
+        {
+          "id" : "Visibility",
+          "value" : "visible",
+          "class" : "inputLeft"
+        }
+      ]
+    },
+    {
+      "property" : "width",
+      "input1" : [
+        {
+          "id" : "Width",
+          "value" : "150px",
+          "class" : "range7InputLeft"
+        }
+      ],
+      "input2" : [
+        {
+          "id" : "rangeType",
+          "class" : "range7",
+          "step" : 1,
+          "value" : 150,
+          "min" : 0,
+          "max" : 1400
+        }
+      ]
+    }
+  ]
+}

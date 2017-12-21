@@ -1,40 +1,5 @@
 /* Javascript PrincipalesFonctions.js */
-var list = ['Width','Height','Color','FontFamily','FontSize','LineHeight','FontStyle','FontWeight','TextDecoration','TextAlign','Background',
-'Opacity','Border','BorderRadius','TextShadow','BoxShadow','Padding','Margin','Display','Visibility','Outline','BoxSizing'];
 
-// EVOLUTIONA VENIR
-// $( "#tags" ).autocomplete({
-//   source: list
-// });
-
-  for (i=0;i < list.length;i++){
-	 $('.ace_first').after('<div class="ace_line " id="divrender' + list[i] + '" ><p class="ace_gutter ace_gutter-cell" unselectable="on"></p><span id="cssrender' + list[i] + '" class="cssrender' + list[i] + '"></span></div>');
-	// console.log(list[i]);
-	}
-
-
-var elementZ;
-$(".menu").click(function(){
-	elementZ = 	$(this).parent().attr('id');
-    if ($("#" + elementZ + " > div").hasClass("active")){
-        $("#" + elementZ + " > p > .down").removeClass("activeDown");
-        $("#" + elementZ + " > div").removeClass("active");
-		}else{
-        $("#" + elementZ + " > p > .down").addClass("activeDown");
-        $("#" + elementZ + " > div").addClass("active");
-	}
-});
-/* Lorsque l'on clic sur une propriété dans le code css, on l'affiche dans le menu de gauche -- A FAIRE -- */
-$("#CSSRENDER > .ace_line").click(function(){
-  var selectedElemId =  $(this).attr('id');
-  if(selectedElemId ){
-    selectedElemId = selectedElemId.replace("divrender","");
-    console.log(selectedElemId);
-    $('.propertyproperty').removeClass('selectedElem');
-    $('#' + selectedElemId + '').parent().addClass('selectedElem');
-  }
-});
-/* Seul les input replis sont affichés */
 function toggleEmptyElem(){
   $('.propertyproperty input[type=text]').map(function(index) {
     if($( this ).val() == ""){
@@ -47,66 +12,6 @@ function toggleEmptyElem(){
     }
   });
 }
-/* Lorsque l'on clique sur une class on recupere l'id du meme élément et on affiche la class qui pourte la meme valeur que cet id*/
-var elementP;
-$(".propertyproperty").click(function(){
-	elementP = $(this).attr('id');
-	$(".synthaxe > div").removeClass("activeProperty");
-	$("." + elementP).addClass("activeProperty");
-});
-
-
-var RegleContainer = document.getElementById("rPixelHaut");
-RegleContainer.innerHTML += "<div class='InvPix10'></div>";
-for (var i = 0; i < 15; i++) {
-	RegleContainer.innerHTML += "<div class='GrandPix10'></div>";
-	for (var j = 0; j < 9; j++) {
-		RegleContainer.innerHTML += "<div class='Pix10'></div>";
-	}
-}
-
-var RegleContainer2 = document.getElementById("rPixelGauche");
-RegleContainer.innerHTML += "<div class='VInvPix10'></div>";
-for (var i = 0; i < 6; i++) {
-	RegleContainer.innerHTML += "<div class='VGrandPix10'></div>";
-	for (var j = 0; j < 9; j++) {
-		RegleContainer.innerHTML += "<div class='VPix10'></div>";
-	}
-}
-
-function activecodehtml () {
-	$('#inputHtml').addClass("activeCode");
-	$('.inputCSS').removeClass("activeCode");
-    $('.inputCSS').parent().removeClass("activeCode");
-    $('#CSSRENDER').hide();
-    $('#HTMLRENDER').show();
-    $('#copyCodeCSS').hide();
-    $('#copyCodeHTML').show();
-}
-
-function activecodecss () {
-	$('#inputHtml').removeClass("activeCode");
-    $('.inputCSS').addClass("activeCode");
-    $('.inputCSS').parent().addClass("activeCode");
-    $('#HTMLRENDER').hide();
-    $('#CSSRENDER').show();
-	$('#copyCodeCSS').show();
-	$('#copyCodeHTML').hide();
-}
-
-$(function() {
-	$('input').on('input', function() {
-		if($(this).attr('id') == 'rangeType'){
-			$('.' + $(this)[0].className + 'InputLeft')[0].value = $(this).val() + "px";
-		}else if($(this).hasClass('range2')){
-		console.log('sdfsdf');
-			$('#Opacity').val($('.range2').val() / 100);
-		}else if($(this).hasClass('range3')){
-			$('#Border').val($('.range3').val() + "px solid black");
-		}
-	});
-});
-
 
 function OnSelectionChange (select) {
 	var selectedOption = select.options[select.selectedIndex];
@@ -159,7 +64,6 @@ function selectText(containerid) {
 	}
 }
 
-
 function reset () {
 	$('#Background').val("white");
 	$('#TextDecoration').val("");
@@ -189,3 +93,95 @@ function reset () {
 	textValueForm.value="";
 	$('#LineHeight').val("");
 }
+
+function activecodehtml () {
+  $('#inputHtml').addClass("activeCode");
+  $('.inputCSS').removeClass("activeCode");
+    $('.inputCSS').parent().removeClass("activeCode");
+    $('#CSSRENDER').hide();
+    $('#HTMLRENDER').show();
+    $('#copyCodeCSS').hide();
+    $('#copyCodeHTML').show();
+}
+
+function activecodecss () {
+  $('#inputHtml').removeClass("activeCode");
+    $('.inputCSS').addClass("activeCode");
+    $('.inputCSS').parent().addClass("activeCode");
+    $('#HTMLRENDER').hide();
+    $('#CSSRENDER').show();
+  $('#copyCodeCSS').show();
+  $('#copyCodeHTML').hide();
+}
+
+
+
+$( document ).ready(function() {
+
+
+  // Require List
+  var list = ['Width','Height','Color','FontFamily','FontSize','LineHeight','FontStyle','FontWeight','TextDecoration','TextAlign','Background',
+  'Opacity','Border','BorderRadius','TextShadow','BoxShadow','Padding','Margin','Display','Visibility','Outline','BoxSizing'];
+
+  // EVOLUTIONA VENIR
+  // $( "#tags" ).autocomplete({
+  //   source: list
+  // });
+
+    for (i=0;i < list.length;i++){
+  	 $('.ace_first').after('<div class="ace_line " id="divrender' + list[i] + '" ><p class="ace_gutter ace_gutter-cell" unselectable="on"></p><span id="cssrender' + list[i] + '" class="cssrender' + list[i] + '"></span></div>');
+  	// console.log(list[i]);
+  	}
+
+
+    /* Lorsque l'on clic sur une propriété dans le code css, on l'affiche dans le menu de gauche */
+    $("#CSSRENDER > .ace_line").click(function(){
+      var selectedElemId =  $(this).attr('id');
+      if(selectedElemId ){
+        selectedElemId = selectedElemId.replace("divrender","");
+        console.log(selectedElemId);
+        $('.propertyproperty').removeClass('selectedElem');
+        $('#' + selectedElemId + '').parent().addClass('selectedElem');
+      }
+    });
+    /* Seul les input replis sont affichés */
+
+  /* Lorsque l'on clique sur une class on recupere l'id du meme élément et on affiche la class qui pourte la meme valeur que cet id*/
+  var elementP;
+  $(".propertyproperty").click(function(){
+  	elementP = $(this).attr('id');
+  	$(".synthaxe > div").removeClass("activeProperty");
+  	$("." + elementP).addClass("activeProperty");
+  });
+
+
+  var RegleContainer = document.getElementById("rPixelHaut");
+  RegleContainer.innerHTML += "<div class='InvPix10'></div>";
+  for (var i = 0; i < 15; i++) {
+  	RegleContainer.innerHTML += "<div class='GrandPix10'></div>";
+  	for (var j = 0; j < 9; j++) {
+  		RegleContainer.innerHTML += "<div class='Pix10'></div>";
+  	}
+  }
+
+  var RegleContainer2 = document.getElementById("rPixelGauche");
+  RegleContainer.innerHTML += "<div class='VInvPix10'></div>";
+  for (var i = 0; i < 6; i++) {
+  	RegleContainer.innerHTML += "<div class='VGrandPix10'></div>";
+  	for (var j = 0; j < 9; j++) {
+  		RegleContainer.innerHTML += "<div class='VPix10'></div>";
+  	}
+  }
+
+  $(function() {
+  	$('input').on('input', function() {
+  		if($(this).attr('id') == 'rangeType'){
+  			$('.' + $(this)[0].className + 'InputLeft')[0].value = $(this).val() + "px";
+  		}else if($(this).hasClass('range2')){
+  			$('#Opacity').val($('.range2').val() / 100);
+  		}else if($(this).hasClass('range3')){
+  			$('#Border').val($('.range3').val() + "px solid black");
+  		}
+  	});
+  });
+});

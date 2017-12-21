@@ -24,31 +24,31 @@ function update () {
     // requestAnimationFrame(update);
 
     container3.innerHTML = textValueForm.value;
-	$('#outputContainer').css({"background": "" + dieze + $('#Background')[0].value + "",
-		"color":"" + dieze + $('#Color')[0].value + "",
-		"font-family":"" + $('#FontFamily')[0].value + "",
-		"box-sizing":"" + $('#BoxSizing')[0].value + "",
-		"line-height":"" + $('#LineHeight')[0].value + "",
-		"display":"" + $('#Display')[0].value + "",
-		"visibility":"" + $('#Visibility')[0].value + "",
-		"outline":"" + $('#Outline')[0].value + "",
-		"font-size":"" + $('#FontSize')[0].value + "",
-		"font-style":"" + $('#FontStyle')[0].value + "",
-		"text-align":"" + $('#TextAlign')[0].value + "",
-		"font-weight":"" + $('#FontWeight')[0].value + "",
-		"text-decoration":"" + $('#TextDecoration')[0].value + "",
-		"width":"" + $('#Width')[0].value + "",
-		"height":"" + $('#Height')[0].value + "",
-		"border":"" + $('#Border')[0].value + "",
-		"border-radius":"" + $('#BorderRadius')[0].value + "",
-		"opacity":"" + $('#Opacity')[0].value + "",
-		"box-shadow":"" + $('#BoxShadow')[0].value + "",
-		"text-shadow":"" + $('#TextShadow')[0].value + "",
-		"padding":"" + $('#Padding')[0].value + "",
-		"margin":""  + $('#Margin')[0].value + "",
-		"z-index":"" + $('#Zindex')[0].value + "",
-		"box-sizing":"" + $('#BoxSizing')[0].value + "",
-		"position":"" + $('#Position')[0].value + ";\" >" + textValueForm.value  + ""
+	$('#outputContainer').css({"background": "" + dieze + $('#Background').val() + "",
+		"color":"" + dieze + $('#Color').val() + "",
+		"font-family":"" + $('#FontFamily').val() + "",
+		"box-sizing":"" + $('#BoxSizing').val() + "",
+		"line-height":"" + $('#LineHeight').val() + "",
+		"display":"" + $('#Display').val() + "",
+		"visibility":"" + $('#Visibility').val() + "",
+		"outline":"" + $('#Outline').val() + "",
+		"font-size":"" + $('#FontSize').val() + "",
+		"font-style":"" + $('#FontStyle').val() + "",
+		"text-align":"" + $('#TextAlign').val() + "",
+		"font-weight":"" + $('#FontWeight').val() + "",
+		"text-decoration":"" + $('#TextDecoration').val() + "",
+		"width":"" + $('#Width').val() + "",
+		"height":"" + $('#Height').val() + "",
+		"border":"" + $('#Border').val() + "",
+		"border-radius":"" + $('#BorderRadius').val() + "",
+		"opacity":"" + $('#Opacity').val() + "",
+		"box-shadow":"" + $('#BoxShadow').val() + "",
+		"text-shadow":"" + $('#TextShadow').val() + "",
+		"padding":"" + $('#Padding').val() + "",
+		"margin":""  + $('#Margin').val() + "",
+		"z-index":"" + $('#Zindex').val() + "",
+		"box-sizing":"" + $('#BoxSizing').val() + "",
+		"position":"" + $('#Position').val() + ";\" >" + textValueForm.value  + ""
 		});
 		$('#outputContainer').html(textValueForm.value);
 
@@ -70,7 +70,57 @@ function update () {
 		}else{dieze = "";}
 	*/
 }
-$(document).on('click keyup input', function(){
+
+
+function showProperties(jsonObj) {
+  var elProperty = jsonObj['properties'];
+console.log(jsonObj['properties']);
+  for (var i = 0; i < elProperty.length; i++) {
+    var mypElem = '<p>' + elProperty[i].property + '</p>';
+
+    // myH2.textContent = 'Propriété : ' +  elProperty[i].property;
+    // myPara2.textContent = 'Fonctionalités:';
+
+    var elinput1= elProperty[i].input1;
+    for (var j = 0; j < elinput1.length; j++) {
+      var myinput1Elem = '<input type="text" class="' + elinput1[j].class + '" value="' + elinput1[j].value + '" id="' + elinput1[j].id + '"/>';
+    }
+
+
+    if(elProperty[i].hasOwnProperty('input2')){
+      var elinput2 = elProperty[i].input2;
+      for (var k = 0; k < elinput2.length; k++) {
+        var myinput2Elem = '<input type="range" id="' + elinput2[k].id + '"  class="' + elinput2[k].class + '" value="' + elinput2[k].value + '" step="' + elinput2[k].step + '" min="' + elinput2[k].min + '" max="' + elinput2[k].max + '"/>';
+      }
+    }else{
+      var myinput2Elem = '';
+    }
+
+
+    var mydivElem = '<div class=" ' + elProperty[i].property + 'Proprieties  propertyproperty"> ' + mypElem + myinput1Elem + myinput2Elem + '</div>';
+    $('.cssElements > section').append(mydivElem);
+  }
   update();
-  toggleEmptyElem()
+  toggleEmptyElem();
+}
+
+$( document ).ready(function() {
+  // JSON
+  var requestURL = 'data/properties.json';
+  console.log('d');
+  var request = new XMLHttpRequest();
+  request.open('GET', requestURL);
+  request.responseType = 'json';
+  request.send();
+
+  request.onload = function() {
+    var allProperties = request.response;
+    showProperties(allProperties);
+  }
+
+  $(document).on('load click keyup input', function(){
+    update();
+    toggleEmptyElem();
+  });
+
 });
