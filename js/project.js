@@ -48,24 +48,6 @@ function OnSelectionChange (select) {
 	}
 }
 
-function OnSelectionChange2 (select) {
-    var selectedOption2 = select.options[select.selectedIndex];
-    if (selectedOption2.value == '10'){
-		fontSize.value='10px';
-		}else if (selectedOption2.value == '12'){
-		fontSize.value='12px';
-		}else if(selectedOption2.value == '16'){
-		fontSize.value='16px';
-		}else if(selectedOption2.value == '20'){
-		fontSize.value='20px';
-		}else if(selectedOption2.value == '24'){
-		fontSize.value='24px';
-		}else if(selectedOption2.value == '30'){
-		fontSize.value='30px';
-		}else if(selectedOption2.value == ''){
-		fontSize.value='';
-	}
-}
 /*switch principe*/
 
 function selectText(containerid) {

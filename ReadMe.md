@@ -1,4 +1,4 @@
-# Anthony Visocchi | CSS3 GENERATOR V1.25
+# Anthony Visocchi | CSS3 GENERATOR V1.26
 [Git Hub](https://github.com/anthoviso) - Anthony VISOCCHI.
 
 ```

@@ -17,6 +17,8 @@
 	</head>
 	<body>
 		<div class="bandeau">css3 generator v1.23
+			<a href="https://github.com/anthoviso" onclick="window.open(this.href);return false;">By Anthony Visocchi</a>
+
 			<button onclick="reset();" class="btn btnReset">
 				CSS RESET
 			</button>
@@ -52,18 +54,23 @@
 			</div>
 			<!-- Affichage dynamique du resultat -->
 			<div style="width: calc(100% - 400px);display: inline-block;">
-				<div style="width: 100%;">
-					<div style="Overflow:hidden;	background: rgba(255,255,255,0.5);width:100%;">
+				<div class="containerDraws">
+					<div >
 						<div id="rPixelHaut" style="width:1600px;height:20px;">
 						</div>
 						<div id="rPixelGauche" style="width:20px;height:10px;float:left;height: 406px;">
 						</div>
-						<div id="output" class="output">
+						<div id="output" class="output" style="position:relative;">
 							 <div id='outputContainer' ></div>
+							 <div style="display:flex;background: #333;padding: 5px;width: 110px;border-radius: 30px;position: absolute;bottom: 0;right: 0;border-top-right-radius: 0;border-bottom-right-radius: 0;">
+ 							 <div onclick="$('.containerDraws > div').css('background', 'url(img/fondBlanc.png)')" style="background: url(img/fondBlanc.png);width: 30px;height: 30px;border: 2px solid white;right: 0;border-radius: 30px;box-shadow: inset 0px 0px 1px black, 0px 0px 1px black;margin: 5px;"></div>
+ 							<div onclick="$('.containerDraws > div').css('background', 'url(img/fondGris.png)')" style="background: url(img/fondGris.png);width: 30px;height: 30px;border: 2px solid white;right: 0;border-radius: 30px;box-shadow: inset 0px 0px 1px black, 0px 0px 1px black;margin: 5px;"></div>
+ 							 <div></div>
+ 							 </div>
 						</div>
 					</div>
-					<div id="output2">
-					</div>
+
+				</div>
 					<div id="outils" class="outils" style="">
 						<div class="" style="width: 100%;background:white;height: 36px;">
 							<input onclick="if($('#FontWeightBoldForm').is(':checked')){fontWeight.value='bold';}else{fontWeight.value='initial';};" id="FontWeightBoldForm" class="v-visuallyHidden v-buttonGroupControl" name="FontWeightBoldForm" value="fontWeightBold" type="checkbox">
@@ -104,18 +111,8 @@
 								<option value="Times New Roman" id="timeNewRoman">Times New Roman</option>
 								<option value="Verdana" id="verdanaFont">Verdana</option>
 							</select>
-							<select id="ListeElement2" onchange="OnSelectionChange2(this)" class="selectForm">
-								<option style="font-weight:bold;" value="" selected>Taille</option>
-								<option value="10">10 px</option>
-								<option value="12">12 px</option>
-								<option value="16">16 px</option>
-								<option value="20">20 px</option>
-								<option value="24">24 px</option>
-								<option value="30">30 px</option>
-							</select>
 						</div>
 					</div>
-				</div>
 				<div class="board">
 					<div class="generateG">
 						<div id="container">
@@ -148,7 +145,7 @@
 						</div>
 						<div class="generateCode" >
 							<div>
-								<div style="height: 30px;width: 100%;background-color: #EEE;border-top: 2px solid #c9c9c9;">
+								<div style="height: 30px;width: 100%;background-color: #EEE;border-top: 2px solid #c9c9c9;display: flex;">
 									<p class="copyCode" id="copyCodeCSS" onclick="selectText('CSSRENDER')"></p>
 									<p class="copyCode" id="copyCodeHTML"  onclick="selectText('HTMLRENDER')" style="display:none;"></p>
 									<p id="inputCSScode" onclick="activecodecss();" style="color:black;background: silver;height: 30px;width: 40%;margin: 0;padding: 5px;box-sizing: border-box;" class="activeCode">
@@ -185,7 +182,6 @@
 			</div>
 		</div>
 		<footer>
-			<a href="https://github.com/anthoviso" onclick="window.open(this.href);return false;">By Anthony Visocchi</a>
 		</footer>
 		<script src="js/project.js"></script>
 		<script src="js/error.js"></script>
