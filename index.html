@@ -12,12 +12,10 @@
 		<link rel="stylesheet" type="text/css" href="css/normalize.css" media="all"/>
 		<link rel="stylesheet" type="text/css" href="css/base.css"/>
 		<link rel="stylesheet" type="text/css" href="css/jquery-ui.css"/>
+		<script type="text/javascript" src="js/jquery.js"></script>
+		<script type="text/javascript" src="js/jquery-ui.js"></script>
 	</head>
 	<body>
-		<script type="text/javascript" src="js/jquery.js"></script>
-
-				<script type="text/javascript" src="js/jquery-ui.js"></script>
-
 		<div class="bandeau">css3 generator v1.23
 			<button onclick="reset();" class="btn btnReset">
 				CSS RESET
@@ -32,8 +30,6 @@
 				</div> -->
 				<section>
 				</section>
-
-
 				<!-- <div id="transitions" style="display:none;" class="transitions inputMenu">
 					<p class="menu">Transitions<img alt="" class="down" src="img/down.png"/></p>
 					<div>
@@ -53,8 +49,6 @@
 						<input type="text" id="Position" value=""/>
 					</div>
 				</div> -->
-				<div class="synthaxe" style="">
-				</div>
 			</div>
 			<!-- Affichage dynamique du resultat -->
 			<div style="width: calc(100% - 400px);display: inline-block;">
@@ -72,31 +66,31 @@
 					</div>
 					<div id="outils" class="outils" style="">
 						<div class="" style="width: 100%;background:white;height: 36px;">
-							<input onclick="if(FontWeight.value=='bold'){FontWeight.value='none';}else{FontWeight.value='bold';};" id="FontWeightBoldForm" class="v-visuallyHidden v-buttonGroupControl" name="FontWeightBoldForm" value="FontWeightBold" type="checkbox">
+							<input onclick="if($('#FontWeightBoldForm').is(':checked')){fontWeight.value='bold';}else{fontWeight.value='initial';};" id="FontWeightBoldForm" class="v-visuallyHidden v-buttonGroupControl" name="FontWeightBoldForm" value="fontWeightBold" type="checkbox">
 							<label for="FontWeightBoldForm" class="v-buttonGroupLabel">
 								<img src="img/FontWeightBold.png" alt=""/>
 							</label>
-							<input onclick="if(FontStyle.value=='italic'){FontStyle.value='none';}else{FontStyle.value='italic';};" id="FontStyleItalicForm" class="v-visuallyHidden v-buttonGroupControl" name="FontStyleItalicForm" value="FontStyleItalic" type="checkbox">
+							<input onclick="if($('#FontStyleItalicForm').is(':checked')){fontStyle.value='italic';}else{fontStyle.value='initial';};" id="FontStyleItalicForm" class="v-visuallyHidden v-buttonGroupControl" name="FontStyleItalicForm" value="fontStyleItalic" type="checkbox">
 							<label for="FontStyleItalicForm" class="v-buttonGroupLabel">
 								<img src="img/FontStyleItalic.png" alt="" />
 							</label>
-							<input onclick="if(TextDecoration.value=='underline'){TextDecoration.value='none';}else{TextDecoration.value='underline';};" id="TextUnderlineForm" class="v-visuallyHidden v-buttonGroupControl" name="TextUnderlineForm" value="TextUnderline" type="checkbox">
-							<label for="TextUnderlineForm" class="v-buttonGroupLabel">
+							<input onclick="if($('#TextUnderlineForm').is(':checked')){textDecoration.value='underline';}else{textDecoration.value='none';};" id="TextUnderlineForm" class="v-visuallyHidden v-buttonGroupControl" name="TextUnderlineForm" value="textUnderline" type="checkbox">
+							<label for="textUnderlineForm" class="v-buttonGroupLabel">
 								<img src="img/TextDecorationUnderline.png" alt=""/>
 							</label>
-							<input onclick="TextAlign.value='left';" class="v-visuallyHidden v-buttonGroupControl" id="TextAlignLeft" name="TextAlignForm" value="TextAlignLeft" type="radio">
+							<input onclick="textAlign.value='left';" class="v-visuallyHidden v-buttonGroupControl" id="TextAlignLeft" name="TextAlignForm" value="TextAlignLeft" type="radio">
 							<label for="TextAlignLeft" class="v-buttonGroupLabel">
 								<img src="img/TextAlignLeft.png" alt=""/>
 							</label>
-							<input onclick="TextAlign.value='right';" class="v-visuallyHidden v-buttonGroupControl" id="TextAlignRight" name="TextAlignForm" value="TextAlignRight" type="radio">
+							<input onclick="textAlign.value='right';" class="v-visuallyHidden v-buttonGroupControl" id="TextAlignRight" name="TextAlignForm" value="TextAlignRight" type="radio">
 							<label for="TextAlignRight" class="v-buttonGroupLabel">
 								<img src="img/TextAlignRight.png" alt=""/>
 							</label>
-							<input onclick="TextAlign.value='center';" class="v-visuallyHidden v-buttonGroupControl" id="TextAlignCenter" name="TextAlignForm" value="TextAlignCenter" type="radio">
+							<input onclick="textAlign.value='center';" class="v-visuallyHidden v-buttonGroupControl" id="TextAlignCenter" name="TextAlignForm" value="TextAlignCenter" type="radio">
 							<label for="TextAlignCenter" class="v-buttonGroupLabel">
 								<img src="img/TextAlignCenter.png" alt=""/>
 							</label>
-							<input onclick="TextAlign.value='justify';" class="v-visuallyHidden v-buttonGroupControl" id="TextAlignJustify" name="TextAlignForm" value="TextAlignJustify" type="radio">
+							<input onclick="textAlign.value='justify';" class="v-visuallyHidden v-buttonGroupControl" id="TextAlignJustify" name="TextAlignForm" value="TextAlignJustify" type="radio">
 							<label for="TextAlignJustify" class="v-buttonGroupLabel">
 								<img src="img/TextAlignJustify.png" alt=""/>
 							</label>
@@ -194,9 +188,7 @@
 			<a href="https://github.com/anthoviso" onclick="window.open(this.href);return false;">By Anthony Visocchi</a>
 		</footer>
 		<script src="js/project.js"></script>
-		<script src="js/principalesFonctions.js"></script>
 		<script src="js/error.js"></script>
 	</body>
 </html>
-<!-- Learn about this code on MDN: https://developer.mozilla.org/fr/docs/Web/CSS/Couleurs_CSS/S%C3%A9lecteur_de_couleurs -->
 <!-- By VISOCCHI ANTHONY 2017 -->

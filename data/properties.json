@@ -7,7 +7,7 @@
       "property" : "background",
       "input1" : [
         {
-          "id" : "Background",
+          "id" : "background",
           "value" : "#2A5476",
           "class" : ""
         }
@@ -17,7 +17,7 @@
       "property" : "border",
       "input1" : [
         {
-          "id" : "Border",
+          "id" : "border",
           "value" : "1px solid black",
           "class" : "inputLeft"
         }
@@ -34,10 +34,10 @@
       ]
     },
     {
-      "property" : "border-radius",
+      "property" : "borderRadius",
       "input1" : [
         {
-          "id" : "BorderRadius",
+          "id" : "borderRadius",
           "value" : "20px",
           "class" : "inputLeft rangeInputLeft"
         }
@@ -54,10 +54,10 @@
       ]
     },
     {
-      "property" : "box-shadow",
+      "property" : "boxShadow",
       "input1" : [
         {
-          "id" : "BoxShadow",
+          "id" : "boxShadow",
           "value" : "2px 2px 5px black",
           "class" : ""
         }
@@ -67,7 +67,7 @@
       "property" : "boxSizing",
       "input1" : [
         {
-          "id" : "BoxSizing",
+          "id" : "boxSizing",
           "value" : "border-box",
           "class" : "inputLeft"
         }
@@ -77,7 +77,7 @@
       "property" : "color",
       "input1" : [
         {
-          "id" : "Color",
+          "id" : "color",
           "value" : "#DADDF0",
           "class" : ""
         }
@@ -87,7 +87,7 @@
       "property" : "display",
       "input1" : [
         {
-          "id" : "Display",
+          "id" : "display",
           "value" : "block",
           "class" : "inputLeft"
         }
@@ -97,7 +97,7 @@
       "property" : "fontFamily",
       "input1" : [
         {
-          "id" : "FontFamily",
+          "id" : "fontFamily",
           "value" : "Arial",
           "class" : ""
         }
@@ -107,7 +107,7 @@
       "property" : "fontSize",
       "input1" : [
         {
-          "id" : "FontSize",
+          "id" : "fontSize",
           "value" : "16px",
           "class" : "range6InputLeft"
         }
@@ -127,7 +127,7 @@
       "property" : "fontStyle",
       "input1" : [
         {
-          "id" : "FontStyle",
+          "id" : "fontStyle",
           "value" : "normal",
           "class" : ""
         }
@@ -137,7 +137,7 @@
       "property" : "fontWeight",
       "input1" : [
         {
-          "id" : "FontWeight",
+          "id" : "fontWeight",
           "value" : "normal",
           "class" : ""
         }
@@ -147,7 +147,7 @@
       "property" : "height",
       "input1" : [
         {
-          "id" : "Height",
+          "id" : "height",
           "value" : "150px",
           "class" : "range8InputLeft"
         }
@@ -167,7 +167,7 @@
       "property" : "lineHeight",
       "input1" : [
         {
-          "id" : "LineHeight",
+          "id" : "lineHeight",
           "value" : "16px",
           "class" : "range9InputLeft"
         }
@@ -187,7 +187,7 @@
       "property" : "margin",
       "input1" : [
         {
-          "id" : "Margin",
+          "id" : "margin",
           "value" : "10px",
           "class" : "inputLeft range5InputLeft"
         }
@@ -207,7 +207,7 @@
       "property" : "opacity",
       "input1" : [
         {
-          "id" : "Opacity",
+          "id" : "opacity",
           "value" : "1",
           "class" : "inputLeft"
         }
@@ -227,7 +227,7 @@
       "property" : "outline",
       "input1" : [
         {
-          "id" : "Outline",
+          "id" : "outline",
           "value" : "5px dotted grey",
           "class" : "inputLeft"
         }
@@ -237,7 +237,7 @@
       "property" : "padding",
       "input1" : [
         {
-          "id" : "Padding",
+          "id" : "padding",
           "value" : "10px",
           "class" : "inputLeft range4InputLeft"
         }
@@ -257,7 +257,7 @@
       "property" : "textAlign",
       "input1" : [
         {
-          "id" : "TextAlign",
+          "id" : "textAlign",
           "value" : "center",
           "class" : ""
         }
@@ -267,17 +267,17 @@
       "property" : "textDecoration",
       "input1" : [
         {
-          "id" : "TextDecoration",
+          "id" : "textDecoration",
           "value" : "none",
           "class" : ""
         }
       ]
     },
     {
-      "property" : "text-shadow",
+      "property" : "textShadow",
       "input1" : [
         {
-          "id" : "TextShadow",
+          "id" : "textShadow",
           "value" : "1px 1px 1px black",
           "class" : ""
         }
@@ -287,7 +287,7 @@
       "property" : "visibility",
       "input1" : [
         {
-          "id" : "Visibility",
+          "id" : "visibility",
           "value" : "visible",
           "class" : "inputLeft"
         }
@@ -297,7 +297,7 @@
       "property" : "width",
       "input1" : [
         {
-          "id" : "Width",
+          "id" : "width",
           "value" : "150px",
           "class" : "range7InputLeft"
         }

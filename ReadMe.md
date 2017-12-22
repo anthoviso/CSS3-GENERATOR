@@ -1,12 +1,13 @@
-# Anthony Visocchi | CSS3 GENERATOR V1.24
+# Anthony Visocchi | CSS3 GENERATOR V1.25
 [Git Hub](https://github.com/anthoviso) - Anthony VISOCCHI.
 
 ```
 ! Projet en cours de développement.
+  [En local sur Chrome](https://cmatskas.com/interacting-with-local-data-files-using-chrome/)
 ```
 
 ### Langages
 
-* html5
-* css3
+* HTML5
+* CSS3
 * javascript / jquery / Ajax / json
