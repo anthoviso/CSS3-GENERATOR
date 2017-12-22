@@ -3,7 +3,7 @@
 
 ```
 ! Projet en cours de développement.
-  [En local sur Chrome](https://cmatskas.com/interacting-with-local-data-files-using-chrome/)
+Use Firefox for this version or [try this for Chrome](https://cmatskas.com/interacting-with-local-data-files-using-chrome/)
 ```
 
 ### Langages
