@@ -5,6 +5,7 @@
   "properties" : [
     {
       "property" : "background",
+      "option" : "false",
       "input1" : [
         {
           "id" : "background",
@@ -15,59 +16,43 @@
     },
     {
       "property" : "border",
+      "option" : "false",
       "input1" : [
         {
           "id" : "border",
           "value" : "1px solid black",
           "class" : "inputLeft"
         }
-      ],
-      "input2" : [
-        {
-          "id" : "",
-          "class" : "range3",
-          "step" : 1,
-          "value" : 20,
-          "min" : 0,
-          "max" : 100
-        }
       ]
     },
     {
-      "property" : "borderRadius",
+      "property" : "border-radius",
+      "option" : "true",
       "input1" : [
         {
-          "id" : "borderRadius",
+          "id" : "border-radius",
           "value" : "20px",
           "class" : "inputLeft rangeInputLeft"
         }
-      ],
-      "input2" : [
-        {
-          "id" : "rangeType",
-          "class" : "range",
-          "step" : 1,
-          "value" : 50,
-          "min" : 0,
-          "max" : 100
-        }
       ]
     },
     {
-      "property" : "boxShadow",
+      "property" : "box-shadow",
+      "option" : "false",
       "input1" : [
         {
-          "id" : "boxShadow",
+          "id" : "box-shadow",
           "value" : "2px 2px 5px black",
           "class" : ""
         }
       ]
     },
     {
-      "property" : "boxSizing",
+      "property" : "box-sizing",
+      "option" : "false",
       "input1" : [
         {
-          "id" : "boxSizing",
+          "id" : "box-sizing",
           "value" : "",
           "class" : "inputLeft"
         }
@@ -75,6 +60,7 @@
     },
     {
       "property" : "color",
+      "option" : "false",
       "input1" : [
         {
           "id" : "color",
@@ -85,6 +71,7 @@
     },
     {
       "property" : "display",
+      "option" : "false",
       "input1" : [
         {
           "id" : "display",
@@ -94,50 +81,44 @@
       ]
     },
     {
-      "property" : "fontFamily",
+      "property" : "font-family",
+      "option" : "false",
       "input1" : [
         {
-          "id" : "fontFamily",
+          "id" : "font-family",
           "value" : "",
           "class" : ""
         }
       ]
     },
     {
-      "property" : "fontSize",
+      "property" : "font-size",
+      "option" : "true",
       "input1" : [
         {
-          "id" : "fontSize",
+          "id" : "font-size",
           "value" : "16px",
           "class" : "range6InputLeft"
         }
-      ],
-      "input2" : [
-        {
-          "id" : "rangeType",
-          "class" : "range6",
-          "step" : 1,
-          "value" : 16,
-          "min" : 8,
-          "max" : 50
-        }
       ]
     },
     {
-      "property" : "fontStyle",
+      "property" : "font-style",
+      "option" : "false",
       "input1" : [
         {
-          "id" : "fontStyle",
+          "id" : "font-style",
           "value" : "",
           "class" : ""
         }
       ]
     },
     {
-      "property" : "fontWeight",
+      "property" : "font-weight",
+      "option" : "false",
       "input1" : [
         {
-          "id" : "fontWeight",
+          "id" : "font-weight",
           "value" : "",
           "class" : ""
         }
@@ -145,86 +126,51 @@
     },
     {
       "property" : "height",
+      "option" : "true",
       "input1" : [
         {
           "id" : "height",
           "value" : "150px",
           "class" : "range8InputLeft"
         }
-      ],
-      "input2" : [
-        {
-          "id" : "rangeType",
-          "class" : "range8",
-          "step" : 1,
-          "value" : 150,
-          "min" : 0,
-          "max" : 1400
-        }
       ]
     },
     {
-      "property" : "lineHeight",
+      "property" : "line-height",
+      "option" : "true",
       "input1" : [
         {
-          "id" : "lineHeight",
+          "id" : "line-height",
           "value" : "",
           "class" : "range9InputLeft"
-        }
-      ],
-      "input2" : [
-        {
-          "id" : "rangeType",
-          "class" : "range9",
-          "step" : 1,
-          "value" : 16,
-          "min" : 0,
-          "max" : 50
         }
       ]
     },
     {
       "property" : "margin",
+      "option" : "true",
       "input1" : [
         {
           "id" : "margin",
           "value" : "100px auto",
           "class" : "inputLeft range5InputLeft"
         }
-      ],
-      "input2" : [
-        {
-          "id" : "rangeType",
-          "class" : "range5",
-          "step" : 1,
-          "value" : 10,
-          "min" : 0,
-          "max" : 100
-        }
       ]
     },
     {
       "property" : "opacity",
+      "option" : "false",
       "input1" : [
         {
           "id" : "opacity",
           "value" : "",
           "class" : "inputLeft"
         }
-      ],
-      "input2" : [
-        {
-          "id" : "",
-          "class" : "range2",
-          "step" : 1,
-          "value" : 100,
-          "min" : 0,
-          "max" : 100
-        }
       ]
     },
     {
       "property" : "outline",
+      "option" : "false",
       "input1" : [
         {
           "id" : "outline",
@@ -235,49 +181,43 @@
     },
     {
       "property" : "padding",
+      "option" : "true",
       "input1" : [
         {
           "id" : "padding",
           "value" : "10px",
           "class" : "inputLeft range4InputLeft"
         }
-      ],
-      "input2" : [
-        {
-          "id" : "rangeType",
-          "class" : "range4",
-          "step" : 1,
-          "value" : 10,
-          "min" : 0,
-          "max" : 100
-        }
       ]
     },
     {
-      "property" : "textAlign",
+      "property" : "text-align",
+      "option" : "false",
       "input1" : [
         {
-          "id" : "textAlign",
+          "id" : "text-align",
           "value" : "center",
           "class" : ""
         }
       ]
     },
     {
-      "property" : "textDecoration",
+      "property" : "text-decoration",
+      "option" : "false",
       "input1" : [
         {
-          "id" : "textDecoration",
+          "id" : "text-decoration",
           "value" : "",
           "class" : ""
         }
       ]
     },
     {
-      "property" : "textShadow",
+      "property" : "text-shadow",
+      "option" : "false",
       "input1" : [
         {
-          "id" : "textShadow",
+          "id" : "text-shadow",
           "value" : "1px 1px 1px black",
           "class" : ""
         }
@@ -285,6 +225,7 @@
     },
     {
       "property" : "visibility",
+      "option" : "false",
       "input1" : [
         {
           "id" : "visibility",
@@ -295,21 +236,12 @@
     },
     {
       "property" : "width",
+      "option" : "true",
       "input1" : [
         {
           "id" : "width",
           "value" : "150px",
           "class" : "range7InputLeft"
-        }
-      ],
-      "input2" : [
-        {
-          "id" : "rangeType",
-          "class" : "range7",
-          "step" : 1,
-          "value" : 150,
-          "min" : 0,
-          "max" : 1400
         }
       ]
     }

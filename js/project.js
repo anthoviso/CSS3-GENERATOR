@@ -17,7 +17,7 @@ var dieze = '';
 
 
 function toggleEmptyElem(){
-  $('.propertyproperty input[type=text]').map(function(index) {
+  $('section > div > input[type=text]').map(function(index) {
     if($( this ).val() == ""){
      var replacementEmpty = $( this ).attr('id');
       $('.cssrender' + replacementEmpty + '').parent().hide();
@@ -32,19 +32,19 @@ function toggleEmptyElem(){
 function OnSelectionChange (select) {
 	var selectedOption = select.options[select.selectedIndex];
 	if (selectedOption.value == 'Arial'){
-		fontFamily.value='arial';
-		}else if (selectedOption.value == 'Comic Sans MS'){
-		fontFamily.value='Comic Sans MS';
-		}else if(selectedOption.value == 'Georgia'){
-		fontFamily.value='Georgia';
-		}else if(selectedOption.value == 'Impact'){
-		fontFamily.value='Impact';
-		}else if(selectedOption.value == 'Times New Roman'){
-		fontFamily.value='Times New Roman';
-		}else if(selectedOption.value == 'Verdana'){
-		fontFamily.value='Verdana';
-		}else if(selectedOption.value == ''){
-		fontFamily.value='';
+		$('#font-family').val('Arial');
+  }else if (selectedOption.value == 'Comic Sans MS'){
+		$('#font-family').val('Comic Sans MS');
+	}else if(selectedOption.value == 'Georgia'){
+    $('#font-family').val('Georgia');
+	}else if(selectedOption.value == 'Impact'){
+    $('#font-family').val('Impact');
+	}else if(selectedOption.value == 'Times New Roman'){
+    $('#font-family').val('Times New Roman');
+	}else if(selectedOption.value == 'Verdana'){
+    $('#font-family').val('Verdana');
+	}else if(selectedOption.value == ''){
+    $('#font-family').val('');
 	}
 }
 
@@ -64,32 +64,31 @@ function selectText(containerid) {
 
 function reset () {
 	$('#background').val("white");
-	$('#textDecoration').val("");
-	$('#fontWeight').val("");
+	$('#text-decoration').val("");
+	$('#font-weight').val("");
 	$('#color').val("");
-	$('#fontFamily').val("");
-	$('#fontSize').val("")
-	$('#fontStyle').val("");
-	$('#textAlign').val("");
+	$('#font-family').val("");
+	$('#font-size').val("")
+	$('#font-style').val("");
+	$('#text-align').val("");
 	$('#width').val("100px");
 	$('#height').val("100px");
 	$('#border').val("");
-	$('#borderRadius').val("");
+	$('#border-radius').val("");
 	$('#opacity').val("");
-	$('#boxShadow').val("");
-	$('#textShadow').val("");
+	$('#box-shadow').val("");
+	$('#text-shadow').val("");
 	$('#padding').val("");
 	$('#margin').val("");
 	$('#zindex').val("");
-	$('#boxSizing').val("");
+	$('#box-sizing').val("");
 	$('#position').val("");
 	$('#display').val("");
 	$('#visibility').val("");
 	$('#outline').val("");
-	$('#boxSizing').val("");
 	$(".v-buttonGroupControl").prop("checked", false);
 	textValueForm.value="";
-	$('#lineHeight').val("");
+	$('#line-height').val("");
 }
 
 function activecodehtml () {
@@ -151,16 +150,13 @@ function showProperties(jsonObj) {
       var myinput1Elem = '<input type="text" class="' + elinput1[j].class + '" value="' + elinput1[j].value + '" id="' + elinput1[j].id + '"/>';
     }
 
-    if(elProperty[i].hasOwnProperty('input2')){
-      var elinput2 = elProperty[i].input2;
-      for (var k = 0; k < elinput2.length; k++) {
-        var myinput2Elem = '<input type="range" id="' + elinput2[k].id + '"  class="' + elinput2[k].class + '" value="' + elinput2[k].value + '" step="' + elinput2[k].step + '" min="' + elinput2[k].min + '" max="' + elinput2[k].max + '"/>';
-      }
+    if(elProperty[i].option == ('true')){
+        var myinput2Elem = '<span id="less' +  elProperty[i].property  + '"" class="value_less">-</span><span id="more' +  elProperty[i].property  + '"" class="value_more">+</span>';
     }else{
       var myinput2Elem = '';
     }
 
-    var mydivElem = '<div class=" ' + elProperty[i].property + 'Proprieties  propertyproperty"> ' + mypElem + myinput1Elem + myinput2Elem + '</div>';
+    var mydivElem = '<div class="' + elProperty[i].property + 'Proprieties"> ' + mypElem + myinput1Elem + '<a href="https://developer.mozilla.org/fr/docs/Web/CSS/' + elProperty[i].property + '" target="_blank"><span "="" class="button_help">?</span></a>' + myinput2Elem + '</div>';
     $('.cssElements > section').append(mydivElem);
   }
 
@@ -179,7 +175,6 @@ function showProperties(jsonObj) {
 $( document ).ready(function() {
   // JSON
   var requestURL = 'data/properties.json';
-  console.log('d');
   var request = new XMLHttpRequest();
   request.open('GET', requestURL);
   request.responseType = 'json';
@@ -193,45 +188,47 @@ $( document ).ready(function() {
   // $( "#tags" ).autocomplete({
   //   source: list
   // });
-
+ var unit = 'px';
     /* Lorsque l'on clic sur une propriété dans le code css, on l'affiche dans le menu de gauche */
     $("#CSSRENDER").on('click', '.ace_line', function(){
       var selectedElemId =  $(this).attr('id');
       if(selectedElemId ){
         selectedElemId = selectedElemId.replace("divrender","");
 
-        $('.propertyproperty').removeClass('selectedElem');
+        $('section > div').removeClass('selectedElem');
         $('#' + selectedElemId + '').parent().addClass('selectedElem');
       }
     });
 
-  var RegleContainer = document.getElementById("rPixelHaut");
-  RegleContainer.innerHTML += "<div class='InvPix10'></div>";
-  for (var i = 0; i < 15; i++) {
-    RegleContainer.innerHTML += "<div class='GrandPix10'></div>";
-    for (var j = 0; j < 9; j++) {
-      RegleContainer.innerHTML += "<div class='Pix10'></div>";
-    }
-  }
-
-  var RegleContainer2 = document.getElementById("rPixelGauche");
-  RegleContainer.innerHTML += "<div class='VInvPix10'></div>";
-  for (var i = 0; i < 6; i++) {
-    RegleContainer.innerHTML += "<div class='VGrandPix10'></div>";
-    for (var j = 0; j < 9; j++) {
-      RegleContainer.innerHTML += "<div class='VPix10'></div>";
-    }
-  }
 
   $(function() {
-    $('input').on('input click', function() {
-      if($(this).attr('id') == 'rangeType'){
-        $('.' + $(this)[0].className + 'InputLeft')[0].value = $(this).val() + "px";
-      }else if($(this).hasClass('range2')){
-        $('#opacity').val($('.range2').val() / 100);
-      }else if($(this).hasClass('range3')){
-        $('#border').val($('.range3').val() + "px solid black");
-      }
+    $('.value_less').on('click', function() {
+        console.log($(this).attr('class') );
+        console.log($(this).attr('id') );
+
+        var spanLessParent =   $(this).parent().attr('class');
+        var presentValue;
+        if($('.' + spanLessParent + ' > input')[0].value == ''){
+          presentValue = 1;
+        }else{
+          presentValue =  $('.' + spanLessParent + ' > input')[0].value;
+        }
+        var intpresentValue = parseInt(presentValue);
+        $('.' + spanLessParent + ' > input')[0].value = intpresentValue - 1 + unit;
+    });
+
+
+
+    $('.value_more').on('click', function() {
+        var spanLessParent =   $(this).parent().attr('class');
+        var presentValue;
+        if($('.' + spanLessParent + ' > input')[0].value == ''){
+          presentValue = 1;
+        }else{
+          presentValue =  $('.' + spanLessParent + ' > input')[0].value;
+        }
+        var intpresentValue = parseInt(presentValue);
+        $('.' + spanLessParent + ' > input')[0].value = intpresentValue + 1 + unit;
     });
   });
 });
