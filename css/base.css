@@ -36,7 +36,7 @@ padding: 5px 20px;
 }
 #inputFilter {
 	padding: 5px;
-	width: 150px;
+	width: 200px;
 	margin: 0px 2px;
 	background: #2f2f2f;
 	color: white;
@@ -59,6 +59,12 @@ padding: 5px 20px;
 .menu:hover {
 	cursor: pointer;
 }
+.value_more{
+	right: 70px;
+}
+ .value_less{
+	 right: 40px;
+ }
 .value_more, .value_less{
 	font-size: 12px;
 	padding: 5px 10px;
@@ -66,16 +72,16 @@ padding: 5px 20px;
 	border-bottom: 2px solid grey;
 	background: #2f2f2f;
 	width: 10px;
+	position: absolute;
 }
 .button_help{
-	color:white;
+	color: #818181;
 	position: absolute;
 	z-index: 1;
-	right: 71px;
-	padding: 4px 8px;
+	right: 10px;
+	padding: 5px 9px;
 	cursor: pointer;
-	background: #2f2f2f;
-	display: none;
+	display:none;
 }
 .button_empty{
 	color: white;
@@ -122,14 +128,13 @@ div > p{
 	margin: 3px 0px;
 }
 section > div > p{
-	width: calc(47% - 68px);
+	width: 100px;
 	float: left;
 	margin: 0px 0px;
 	padding: 4px 4px;
 }
 div > input[type=text] {
 	display: inline-block;
-	width: 50%;
 	border-radius: 4px;
 	border: 2px solid #c9c9c9;
 }
@@ -141,6 +146,7 @@ section input[type=text] {
 	padding: 5px;
 	border-radius:0;
 	font-size: 14px;
+	width: 208px;
 }
 .divOutput{
 	background: rgba(0,0,0,0.6);
@@ -150,7 +156,8 @@ section input[type=text] {
 .board{
 }
 .cssElements{
-	width: 500px;
+	width: 394px;
+	min-width: 394px;
 	background: #333;
 	box-sizing: border-box;
 	padding: 0;
@@ -236,7 +243,9 @@ section input[type=text] {
 	margin:0;
 	padding-left:15px;
 }
-
+.cssPadLeft{
+padding-left: 20px;
+}
 .displayBlock:nth-child(2), .displayBlock:nth-child(4), .displayBlock:nth-child(6), .displayBlock:nth-child(8), .displayBlock:nth-child(10),
 .displayBlock:nth-child(12), .displayBlock:nth-child(14), .displayBlock:nth-child(16), .displayBlock:nth-child(18), .displayBlock:nth-child(20),
 .displayBlock:nth-child(22), .displayBlock:nth-child(24), .displayBlock:nth-child(26), .displayBlock:nth-child(28), .displayBlock:nth-child(30){

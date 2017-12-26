@@ -177,7 +177,7 @@ function showProperties(jsonObj) {
   }
 
   for (i=0;i < elProperty.length;i++){
-   $('.ace_first').after('<div class="ace_line " id="divrender' + elProperty[i].property + '" ><p class="ace_gutter ace_gutter-cell" unselectable="on"></p><span id="cssrender' + elProperty[i].property + '" class="cssrender' + elProperty[i].property + '"></span></div>');
+   $('.ace_first').after('<div class="ace_line " id="divrender' + elProperty[i].property + '" ><p class="ace_gutter ace_gutter-cell" unselectable="on"></p><span id="cssrender' + elProperty[i].property + '" class="cssPadLeft cssrender' + elProperty[i].property + '"></span></div>');
   }
   update(jsonObj);
   toggleEmptyElem();
@@ -220,6 +220,7 @@ $( document ).ready(function() {
   $(function() {
     $('#inputFilter').on('click input', function(){
       // console.log($('#inputFilter').val());
+      $('section > div').removeClass('selectedElem');
       $('section > div').hide();
       for(i=1;i<=$('section > div').length;i++){
         if($('section > div:nth-child(' + i + ')').attr('class').indexOf($('#inputFilter').val()) > -1){
@@ -234,7 +235,6 @@ $( document ).ready(function() {
     $('.value_less').on('click', function() {
         // console.log($(this).attr('class') );
         // console.log($(this).attr('id') );
-
         var spanLessParent =   $(this).parent().attr('class');
         var presentValue;
         if($('.' + spanLessParent + ' > input')[0].value == ''){
