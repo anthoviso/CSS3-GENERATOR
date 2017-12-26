@@ -165,12 +165,14 @@ function showProperties(jsonObj) {
     }
 
     if(elProperty[i].option == ('true')){
-        var myinput2Elem = '<span id="less' +  elProperty[i].property  + '"" class="value_less">-</span><span id="more' +  elProperty[i].property  + '"" class="value_more">+</span>';
+        var myinput2Elem = '<span id="less' +  elProperty[i].property  + '"" class="value_less"><i class="fa fa-minus" aria-hidden="true"></i></span><span id="more' +  elProperty[i].property  + '"" class="value_more"><i class="fa fa-plus" aria-hidden="true"></i></span>';
     }else{
       var myinput2Elem = '';
     }
 
-    var mydivElem = '<div class="' + elProperty[i].property + 'Proprieties"> ' + mypElem + myinput1Elem + '<a href="https://developer.mozilla.org/fr/docs/Web/CSS/' + elProperty[i].property + '" target="_blank"><span "="" class="button_help">?</span></a>' + myinput2Elem + '</div>';
+    var mydivElem = '<div class="' + elProperty[i].property + 'Proprieties"> ' + mypElem +myinput1Elem +
+     '<a href="https://developer.mozilla.org/fr/docs/Web/CSS/' + elProperty[i].property +
+      '" target="_blank"><span "="" class="button_help"><i class="fa fa-question-circle" aria-hidden="true"></i></span></a>' + myinput2Elem + '</div>';
     $('.cssElements > section').append(mydivElem);
   }
 
@@ -208,13 +210,20 @@ $( document ).ready(function() {
         $('#' + selectedElemId + '').parent().addClass('selectedElem');
       }
     });
+      $(function() {
+    $('.button_empty').on('click', function(){
+      $('#inputFilter').val('');
+      $('section > div').show();
+    });
+  });
+
   $(function() {
     $('#inputFilter').on('click input', function(){
-      console.log($('#inputFilter').val());
+      // console.log($('#inputFilter').val());
       $('section > div').hide();
       for(i=1;i<=$('section > div').length;i++){
         if($('section > div:nth-child(' + i + ')').attr('class').indexOf($('#inputFilter').val()) > -1){
-          console.log(i);
+          // console.log(i);
           var ClassFilter = $('section > div:nth-child(' + i + ')').attr('class');
           $("." + ClassFilter).show();
         }
@@ -223,8 +232,8 @@ $( document ).ready(function() {
   });
   $(function() {
     $('.value_less').on('click', function() {
-        console.log($(this).attr('class') );
-        console.log($(this).attr('id') );
+        // console.log($(this).attr('class') );
+        // console.log($(this).attr('id') );
 
         var spanLessParent =   $(this).parent().attr('class');
         var presentValue;

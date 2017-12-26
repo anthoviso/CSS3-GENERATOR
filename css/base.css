@@ -32,12 +32,15 @@
 }
 .btnSort{
 	width: auto;
-padding: 10px 20px;
+padding: 5px 20px;
 }
 #inputFilter {
-    padding: 5px;
-    width: 150px;
-    margin: 2px;
+	padding: 5px;
+	width: 150px;
+	margin: 0px 2px;
+	background: #2f2f2f;
+	color: white;
+	border: 1px solid #2f2f2f;
 }
 .btn:hover {
 	background: #3cb0fd;
@@ -56,20 +59,33 @@ padding: 10px 20px;
 .menu:hover {
 	cursor: pointer;
 }
-.value_more, .value_less {
-	font-size: 20px;
-	padding: 0px 10px;
+.value_more, .value_less{
+	font-size: 12px;
+	padding: 5px 10px;
 	cursor: pointer;
+	border-bottom: 2px solid grey;
+	background: #2f2f2f;
+	width: 10px;
 }
 .button_help{
 	color:white;
 	position: absolute;
 	z-index: 1;
-	right: 62px;
+	right: 71px;
 	padding: 4px 8px;
 	cursor: pointer;
 	background: #2f2f2f;
 	display: none;
+}
+.button_empty{
+	color: white;
+	position: absolute;
+	z-index: 1;
+	right: 0px;
+	padding: 7px 8px;
+	cursor: pointer;
+	background: #2f2f2f;
+	font-size: 14px;
 }
 section > div:hover .button_help{
 	display: block;
@@ -117,13 +133,14 @@ div > input[type=text] {
 	border-radius: 4px;
 	border: 2px solid #c9c9c9;
 }
-section > div > input[type=text] {
+section input[type=text] {
 	background: #2f2f2f;
 	color: #eeeeee;
 	border:none;
 	border-bottom: 2px solid grey;
 	padding: 5px;
 	border-radius:0;
+	font-size: 14px;
 }
 .divOutput{
 	background: rgba(0,0,0,0.6);
@@ -140,12 +157,6 @@ section > div > input[type=text] {
 	height: 1014px;
 	overflow-x: hidden;
 	overflow-y: scroll;
-}
-.cssElements > div{
-	background: -webkit-linear-gradient(top, rgba(65,65,73,1) 0%,rgba(42,42,48,1) 100%);
-}
-.cssElements > div > div{
-	background: rgba(255,255,255,0.2);
 }
 .cssElements > div:hover{
 	background: -webkit-linear-gradient(top, rgba(65,65,73,1) 0%,rgba(42,42,48,1) 100%);
@@ -171,10 +182,12 @@ section > div > input[type=text] {
 	background: #3f3f3f;
 	color: white;
 	text-transform: capitalize;
-	padding: 5px 0px;
+	padding: 5px 10px;
 	margin: 1px 0px;
 	display:flex;
 	position:relative;
+	font-size: 14px;
+	line-height: 18px;
 }
 .active, .activeProperty{
 	display:block !important;
