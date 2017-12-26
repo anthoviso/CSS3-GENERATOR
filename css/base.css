@@ -262,10 +262,9 @@ section > div > input[type=text] {
 	padding-left:20px !important;
 }
 
-
 .copyCode{
 	background-color: white;
-	background-image: url('../img/colorPickerTool/copy.png');
+	background-image: url('../img/copy.png');
 	background-repeat: no-repeat;
 	background-position: center left;
 	height: 30px;

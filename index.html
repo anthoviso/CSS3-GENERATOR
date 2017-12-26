@@ -6,14 +6,15 @@
 		<meta name="author" content="Anthony VISOCCHI" />
 		<meta name="keywords" content="" />
 		<meta name="description" content="" />
-
-		<link rel="stylesheet" type="text/css" href="css/colorPickerTool.css"/>
-		<script type="text/javascript" src="js/colorPickerTool.js"></script>
+    <!-- js and css -->
+		<link rel="stylesheet" type="text/css" href="lib/ColorPickerTool/colorPickerTool.css"/>
+		<script type="text/javascript" src="lib/ColorPickerTool/colorPickerTool.js"></script>
 		<link rel="stylesheet" type="text/css" href="css/normalize.css" media="all"/>
 		<link rel="stylesheet" type="text/css" href="css/base.css"/>
 		<link rel="stylesheet" type="text/css" href="css/jquery-ui.css"/>
 		<script type="text/javascript" src="js/jquery.js"></script>
-		<script type="text/javascript" src="js/jquery-ui.js"></script>
+		<script src="lib/EasyAutocomplete/jquery.easy-autocomplete.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="lib/EasyAutocomplete/easy-autocomplete.min.css"/>
 	</head>
 	<body>
 		<div class="bandeau">css3 generator v1.27
@@ -28,28 +29,26 @@
 		<div class="divOutput">
 			<div class="cssElements">
 				<!-- EVOLUTION A VENIR -->
-								<!-- <div class="ui-widget">
-				  <label for="tags">Tags: </label>
-				  <input id="tags">
-				</div> -->
+				<!-- <input id="countries" /> -->
 				<section>
 				</section>
 			</div>
 			<!-- Affichage dynamique du resultat -->
 			<div style="width: 100%;">
 				<div class="containerDraws">
-					<div >
+					<div>
 						<div id="output" class="output" style="position:relative;">
 							 <div id='outputContainer' ></div>
 							 <div class="outputOptions">
- 							 <div class="outputChangeBack" onclick="$('.containerDraws > div').css('background', 'url(img/fondBlanc.png)')" style="background: url(img/fondBlanc.png);"></div>
- 							<div class="outputChangeBack"  onclick="$('.containerDraws > div').css('background', 'url(img/fondGris.png)')" style="background: url(img/fondGris.png);"></div>
-							<div class="outputChangeBack"  onclick="$('.containerDraws > div').css('background', '#333')" style="background: #333;"></div>
-
+ 							 		<div class="outputChangeBack" onclick="$('.containerDraws > div').css('background', 'url(img/fondBlanc.png)')" style="background: url(img/fondBlanc.png);">
+									</div>
+ 									<div class="outputChangeBack"  onclick="$('.containerDraws > div').css('background', 'url(img/fondGris.png)')" style="background: url(img/fondGris.png);">
+									</div>
+									<div class="outputChangeBack"  onclick="$('.containerDraws > div').css('background', '#333')" style="background: #333;">
+									</div>
  							 </div>
 						</div>
 					</div>
-
 				</div>
 					<div id="outils" class="outils" style="">
 						<div class="" style="width: 100%;background:white;height: 36px;">
@@ -167,6 +166,6 @@
 		</footer>
 		<script src="js/project.js"></script>
 		<script src="js/error.js"></script>
+		<!-- By VISOCCHI ANTHONY 2017 -->
 	</body>
 </html>
-<!-- By VISOCCHI ANTHONY 2017 -->

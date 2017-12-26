@@ -162,7 +162,6 @@ function showProperties(jsonObj) {
 
   for (i=0;i < elProperty.length;i++){
    $('.ace_first').after('<div class="ace_line " id="divrender' + elProperty[i].property + '" ><p class="ace_gutter ace_gutter-cell" unselectable="on"></p><span id="cssrender' + elProperty[i].property + '" class="cssrender' + elProperty[i].property + '"></span></div>');
-  // console.log(list[i]);
   }
   update(jsonObj);
   toggleEmptyElem();
@@ -185,9 +184,19 @@ $( document ).ready(function() {
   }
 
   // EVOLUTIONA VENIR
-  // $( "#tags" ).autocomplete({
-  //   source: list
-  // });
+  // var options = {
+  //   url: "data/properties.json",
+  //   getValue: "name",
+  //   list: {
+  //     match: {
+  //       enabled: true
+  //     }
+  //   },
+  //   theme: "square"
+  // };
+  // $("#countries").easyAutocomplete(options);
+
+
  var unit = 'px';
     /* Lorsque l'on clic sur une propriété dans le code css, on l'affiche dans le menu de gauche */
     $("#CSSRENDER").on('click', '.ace_line', function(){
