@@ -29,6 +29,20 @@ function toggleEmptyElem(){
   });
 }
 
+function sortByClass(a, b) {
+        return a.className > b.className;
+}
+function sortInvByClass(a, b) {
+        return a.className < b.className;
+}
+function button_sortByClass(){
+  var elemToSort = $('section').find('div').sort(sortByClass);
+  $('section').append(elemToSort);
+}
+function button_sortInvByClass(){
+  var elemToSort = $('section').find('div').sort(sortInvByClass);
+  $('section').append(elemToSort);
+}
 function OnSelectionChange (select) {
 	var selectedOption = select.options[select.selectedIndex];
 	if (selectedOption.value == 'Arial'){
@@ -183,20 +197,6 @@ $( document ).ready(function() {
     showProperties(allProperties);
   }
 
-  // EVOLUTIONA VENIR
-  // var options = {
-  //   url: "data/properties.json",
-  //   getValue: "name",
-  //   list: {
-  //     match: {
-  //       enabled: true
-  //     }
-  //   },
-  //   theme: "square"
-  // };
-  // $("#countries").easyAutocomplete(options);
-
-
  var unit = 'px';
     /* Lorsque l'on clic sur une propriété dans le code css, on l'affiche dans le menu de gauche */
     $("#CSSRENDER").on('click', '.ace_line', function(){
@@ -208,8 +208,19 @@ $( document ).ready(function() {
         $('#' + selectedElemId + '').parent().addClass('selectedElem');
       }
     });
-
-
+  $(function() {
+    $('#inputFilter').on('click input', function(){
+      console.log($('#inputFilter').val());
+      $('section > div').hide();
+      for(i=1;i<=$('section > div').length;i++){
+        if($('section > div:nth-child(' + i + ')').attr('class').indexOf($('#inputFilter').val()) > -1){
+          console.log(i);
+          var ClassFilter = $('section > div:nth-child(' + i + ')').attr('class');
+          $("." + ClassFilter).show();
+        }
+      }
+    });
+  });
   $(function() {
     $('.value_less').on('click', function() {
         console.log($(this).attr('class') );

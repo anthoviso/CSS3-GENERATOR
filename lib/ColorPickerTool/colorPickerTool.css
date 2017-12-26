@@ -31,7 +31,7 @@
 
 /* HSV format - Hue-Saturation-Value(Brightness) */
 .ui-color-picker .picking-area {
-	background: url('../img/colorPickerTool/picker_mask_200.png') center center;
+	background: url('img/colorPickerTool/picker_mask_200.png') center center;
 
 	background: -moz-linear-gradient(bottom, #000 0%, rgba(0, 0, 0, 0) 100%),
 				-moz-linear-gradient(left, #FFF 0%, rgba(255, 255, 255, 0) 100%);
@@ -91,7 +91,7 @@
 }
 
 .ui-color-picker .hue {
-	background: url("../img/colorPickerTool/hue.png") center;
+	background: url("img/colorPickerTool/hue.png") center;
 	background: -moz-linear-gradient(left, #F00 0%, #FF0 16.66%, #0F0 33.33%, #0FF 50%,
 				#00F 66.66%, #F0F 83.33%, #F00 100%);
 	background: -webkit-linear-gradient(left, #F00 0%, #FF0 16.66%, #0F0 33.33%, #0FF 50%,
@@ -104,13 +104,13 @@
 
 .ui-color-picker .alpha {
 	border: 1px solid #CCC;
-	background: url("../img/colorPickerTool/alpha.png");
+	background: url("img/colorPickerTool/alpha.png");
 }
 
 .ui-color-picker .alpha-mask {
 	width: 100%;
 	height: 100%;
-	background: url("../img/colorPickerTool/alpha_mask.png");
+	background: url("img/colorPickerTool/alpha_mask.png");
 }
 
 .ui-color-picker .slider-picker {
@@ -214,7 +214,7 @@
 	margin: 5px;
 	margin-top: 10px;
 	border: 1px solid #DDD;
-	background-image: url("../img/colorPickerTool/alpha.png");
+	background-image: url("img/colorPickerTool/alpha.png");
 	float: left;
 	position: relative;
 }
@@ -296,11 +296,11 @@
 .ui-input-slider-left, .ui-input-slider-right {
 	width: 16px;
 	cursor: pointer;
-	background: url("../img/colorPickerTool/arrows.png") center left no-repeat;
+	background: url("img/colorPickerTool/arrows.png") center left no-repeat;
 }
 
 .ui-input-slider-right {
-	background: url("../img/colorPickerTool/arrows.png") center right no-repeat;
+	background: url("img/colorPickerTool/arrows.png") center right no-repeat;
 }
 
 .ui-input-slider-name {
@@ -353,7 +353,7 @@ body {
 .resize-handle {
 	width: 10px;
 	height: 10px;
-	background: url('../img/colorPickerTool/resize.png') center center no-repeat;
+	background: url('img/colorPickerTool/resize.png') center center no-repeat;
 	position: absolute;
 	bottom: 0;
 	right: 0;
@@ -461,7 +461,7 @@ border: 2px solid silver;
 #picker-samples .sample[data-active='true']:after {
 	content: "";
 	position: absolute;
-	background: url('../img/colorPickerTool/arrow.png') center no-repeat;
+	background: url('img/colorPickerTool/arrow.png') center no-repeat;
 	width: 100%;
 	height: 12px;
 	top: -12px;
@@ -540,12 +540,12 @@ border: 2px solid silver;
 }
 
 #controls .picker-icon {
-	background-image: url('../img/colorPickerTool/picker.png');
+	background-image: url('img/colorPickerTool/picker.png');
 }
 
 #controls #void-sample {
 	margin-right: 10px;
-	background-image: url('../img/colorPickerTool/void.png');
+	background-image: url('img/colorPickerTool/void.png');
 	background-position: center left;
 }
 
@@ -578,7 +578,7 @@ border: 2px solid silver;
 
 #controls .switch [data-active='true'] {
 	color: #FFF;
-	background-image: url('../img/colorPickerTool/grain.png');
+	background-image: url('img/colorPickerTool/grain.png');
 	background-color: #777;
 }
 
@@ -590,7 +590,7 @@ border: 2px solid silver;
 	width: 100%;
 	height: 94px;
 	background-color: #DDD;
-	background-image: url('../img/colorPickerTool/grain.png');
+	background-image: url('img/colorPickerTool/grain.png');
 	background-repeat: repeat;
 
 	text-align: center;
@@ -605,7 +605,7 @@ border: 2px solid silver;
 	height: 80%;
 	border: 2px dashed #FFF;
 	border-radius: 5px;
-	background: url('../img/colorPickerTool/trash-can.png') no-repeat center;
+	background: url('img/colorPickerTool/trash-can.png') no-repeat center;
 
 	position: absolute;
 	top: 10%;
@@ -652,7 +652,7 @@ border: 2px solid silver;
 	padding: 15px;
 	font-size: 18px;
 	text-align: center;
-	background-image: url('../img/colorPickerTool/color-wheel.png');
+	background-image: url('img/colorPickerTool/color-wheel.png');
 	background-repeat:no-repeat;
 	background-position: center left 28%;
 }
@@ -708,7 +708,7 @@ border: 2px solid silver;
 	height: 100%;
 	padding: 0 5px;
 	background-color: #FFF;
-	background-image: url('../img/colorPickerTool/copy.png');
+	background-image: url('img/colorPickerTool/copy.png');
 	background-repeat: no-repeat;
 	background-position: center left;
 	border-left: 1px solid #EEE;
@@ -728,7 +728,7 @@ border: 2px solid silver;
 #palette {
 	width: 650px;
 	padding: 10px 0;
-	background-image: url('../img/colorPickerTool/grain.png');
+	background-image: url('img/colorPickerTool/grain.png');
 	background-repeat: repeat;
 	background-color: #EEE;
 	color: #777;
@@ -807,7 +807,7 @@ border: 2px solid silver;
 	height: 24px;
 	margin: 10px;
 	padding: 3px;
-	background-image: url('../img/colorPickerTool/lock.png');
+	background-image: url('img/colorPickerTool/lock.png');
 	background-repeat: no-repeat;
 	background-position: bottom right;
 }
@@ -836,7 +836,7 @@ border: 2px solid silver;
 	height: 300px;
 	min-height: 250px;
 	border-top: 1px solid #DDD;
-	background-image: url('../img/colorPickerTool/grain.png');
+	background-image: url('img/colorPickerTool/grain.png');
 	background-repeat: repeat;
 	position: relative;
 	float: left;
@@ -853,7 +853,7 @@ border: 2px solid silver;
 	width: 40%;
 	padding: 30px 9% 70px 11%;
 
-	background-image: url('../img/colorPickerTool/drop.png');
+	background-image: url('img/colorPickerTool/drop.png');
 	background-repeat: no-repeat;
 	background-position: left 35px top 60%;
 
@@ -907,7 +907,7 @@ border: 2px solid silver;
 #canvas .sample[data-active='true']:after {
 	content: "";
 	position: absolute;
-	background: url('../img/colorPickerTool/arrow.png') center no-repeat;
+	background: url('img/colorPickerTool/arrow.png') center no-repeat;
 	width: 100%;
 	height: 12px;
 	top: -12px;
@@ -927,7 +927,7 @@ border: 2px solid silver;
 	width: 10px;
 	height: 10px;
 	margin: 5px;
-	background: url('../img/colorPickerTool/pick.png') center no-repeat;
+	background: url('img/colorPickerTool/pick.png') center no-repeat;
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -938,7 +938,7 @@ border: 2px solid silver;
 	width: 10px;
 	height: 10px;
 	margin: 5px;
-	background: url('../img/colorPickerTool/close.png') center no-repeat;
+	background: url('img/colorPickerTool/close.png') center no-repeat;
 	position: absolute;
 	top: 0;
 	right: 0;
@@ -954,7 +954,7 @@ border: 2px solid silver;
 	width: 16px;
 	height: 16px;
 	margin: 5px;
-	background: url("../../img/colorPickerTool/canvas-controls.png") center left no-repeat;
+	background: url("img/colorPickerTool/canvas-controls.png") center left no-repeat;
 	position: absolute;
 	top: 0;
 	right: 0;
@@ -969,7 +969,7 @@ border: 2px solid silver;
 }
 
 #canvas[data-bg='true'] .toggle-bg {
-	background: url('../../../img/colorPickerTool/canvas-controls.png') center right no-repeat;
+	background: url('img/colorPickerTool/canvas-controls.png') center right no-repeat;
 }
 
 #zindex {

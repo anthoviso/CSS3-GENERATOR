@@ -30,6 +30,15 @@
 	float: right;
 	padding: 6px;
 }
+.btnSort{
+	width: auto;
+padding: 10px 20px;
+}
+#inputFilter {
+    padding: 5px;
+    width: 150px;
+    margin: 2px;
+}
 .btn:hover {
 	background: #3cb0fd;
 	background-image: -webkit-linear-gradient(top, #3cb0fd, #3498db);
@@ -389,8 +398,14 @@ label, input, select, textarea {
 .v-buttonGroupBordered, .v-buttonGroupLabel {
 	border: 2px solid #e0e0e0;
 	border-left-width: 0;
-	float: left;
 }
+ .outilsContainer{
+	 width: 100%;
+	 background:white;
+	 height: 36px;
+	 display:flex;
+ }
+
 label {
 	color: #484848;
 	font-weight: 600;

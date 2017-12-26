@@ -12,9 +12,8 @@
 		<link rel="stylesheet" type="text/css" href="css/normalize.css" media="all"/>
 		<link rel="stylesheet" type="text/css" href="css/base.css"/>
 		<link rel="stylesheet" type="text/css" href="css/jquery-ui.css"/>
+		<link rel="stylesheet" href="lib/font-awesome/css/font-awesome.min.css">
 		<script type="text/javascript" src="js/jquery.js"></script>
-		<script src="lib/EasyAutocomplete/jquery.easy-autocomplete.min.js"></script>
-		<link rel="stylesheet" type="text/css" href="lib/EasyAutocomplete/easy-autocomplete.min.css"/>
 	</head>
 	<body>
 		<div class="bandeau">css3 generator v1.27
@@ -28,8 +27,17 @@
 		</div>
 		<div class="divOutput">
 			<div class="cssElements">
-				<!-- EVOLUTION A VENIR -->
-				<!-- <input id="countries" /> -->
+				<div>
+					<input type="text" id="inputFilter" placeholder="recherche"/>
+					<button onclick="button_sortByClass();" class="btn btnSort">
+						<i class="fa fa-sort-alpha-asc" aria-hidden="true"></i>
+
+					</button>
+					<button onclick="button_sortInvByClass();" class="btn btnSort">
+						<i class="fa fa-sort-alpha-desc" aria-hidden="true"></i>
+
+					</button>
+			</div>
 				<section>
 				</section>
 			</div>
@@ -50,8 +58,7 @@
 						</div>
 					</div>
 				</div>
-					<div id="outils" class="outils" style="">
-						<div class="" style="width: 100%;background:white;height: 36px;">
+					<div id="outils" class="outilsContainer">
 							<input onclick="if($('#FontWeightBoldForm').is(':checked')){$('#font-weight').val('bold');}else{$('#font-weight').val('initial');};" id="FontWeightBoldForm" class="v-visuallyHidden v-buttonGroupControl" name="FontWeightBoldForm" value="fontWeightBold" type="checkbox">
 							<label for="FontWeightBoldForm" class="v-buttonGroupLabel">
 								<img src="img/FontWeightBold.png" alt=""/>
@@ -90,7 +97,6 @@
 								<option value="Times New Roman" id="timeNewRoman">Times New Roman</option>
 								<option value="Verdana" id="verdanaFont">Verdana</option>
 							</select>
-						</div>
 					</div>
 				<div class="board">
 					<div class="generateG">
