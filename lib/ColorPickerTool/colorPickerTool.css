@@ -389,13 +389,11 @@ body {
  */
 #container {
 	width: 650px;
-border: 2px solid silver;
 	-moz-box-sizing: border-box;
 	-webkit-box-sizing: border-box;
 	box-sizing: border-box;
 
 	display: table;
-	float: left;
 }
 
 /**

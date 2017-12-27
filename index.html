@@ -16,14 +16,20 @@
 		<script type="text/javascript" src="js/jquery.js"></script>
 	</head>
 	<body>
-		<div class="bandeau">css3 generator v1.28
-			<a href="https://github.com/anthoviso" onclick="window.open(this.href);return false;">By Anthony Visocchi</a>
+		<div class="bandeau">
+			<div style="display:flex;width: auto;">
+			<button onclick="$('.cssElements').toggleClass('cssElemTransition');" class="btn btnToggle">
+				<i class="fa fa-bars" aria-hidden="true"></i>
+			</button>
+			<span style="padding: 8px 16px;width: 291px;">css3 generator v1.28</span>
+
+			<a  style="padding: 18px 14px;color:white;font-size:12px;text-decoration:none;width: 140px;" href="https://github.com/anthoviso" onclick="window.open(this.href);return false;">By Anthony Visocchi</a>
+		</div>
+			<div style="display:flex;width: 100%;justify-content: flex-end;">
 			<button onclick="reset();" class="btn btnReset">
 				CSS RESET
 			</button>
-			<button onclick="$('.cssElements').toggle();" class="btn btnToggle">
-				Toggle
-			</button>
+		</div>
 		</div>
 		<div class="divOutput">
 			<div class="cssElements">
@@ -61,48 +67,49 @@
 						</div>
 					</div>
 				</div>
-					<div id="outils" class="outilsContainer">
-							<input onclick="if($('#FontWeightBoldForm').is(':checked')){$('#font-weight').val('bold');}else{$('#font-weight').val('initial');};" id="FontWeightBoldForm" class="v-visuallyHidden v-buttonGroupControl" name="FontWeightBoldForm" value="fontWeightBold" type="checkbox">
-							<label for="FontWeightBoldForm" class="v-buttonGroupLabel">
-								<img src="img/FontWeightBold.png" alt=""/>
-							</label>
-							<input onclick="if($('#FontStyleItalicForm').is(':checked')){$('#font-style').val('italic');}else{$('#font-style').val('initial');};" id="FontStyleItalicForm" class="v-visuallyHidden v-buttonGroupControl" name="FontStyleItalicForm" value="fontStyleItalic" type="checkbox">
-							<label for="FontStyleItalicForm" class="v-buttonGroupLabel">
-								<img src="img/FontStyleItalic.png" alt="" />
-							</label>
-							<input onclick="if($('#TextUnderlineForm').is(':checked')){$('#text-decoration').val('underline');}else{$('#text-decoration').val('none');};" id="TextUnderlineForm" class="v-visuallyHidden v-buttonGroupControl" name="TextUnderlineForm" value="textUnderline" type="checkbox">
-							<label for="TextUnderlineForm" class="v-buttonGroupLabel">
-								<img src="img/TextDecorationUnderline.png" alt=""/>
-							</label>
-							<input onclick="$('#text-align').val('left');" class="v-visuallyHidden v-buttonGroupControl" id="TextAlignLeft" name="TextAlignForm" value="TextAlignLeft" type="radio">
-							<label for="TextAlignLeft" class="v-buttonGroupLabel">
-								<img src="img/TextAlignLeft.png" alt=""/>
-							</label>
-							<input onclick="$('#text-align').val('right');" class="v-visuallyHidden v-buttonGroupControl" id="TextAlignRight" name="TextAlignForm" value="TextAlignRight" type="radio">
-							<label for="TextAlignRight" class="v-buttonGroupLabel">
-								<img src="img/TextAlignRight.png" alt=""/>
-							</label>
-							<input onclick="$('#text-align').val('center');" class="v-visuallyHidden v-buttonGroupControl" id="TextAlignCenter" name="TextAlignForm" value="TextAlignCenter" type="radio">
-							<label for="TextAlignCenter" class="v-buttonGroupLabel">
-								<img src="img/TextAlignCenter.png" alt=""/>
-							</label>
-							<input onclick="$('#text-align').val('justify');" class="v-visuallyHidden v-buttonGroupControl" id="TextAlignJustify" name="TextAlignForm" value="TextAlignJustify" type="radio">
-							<label for="TextAlignJustify" class="v-buttonGroupLabel">
-								<img src="img/TextAlignJustify.png" alt=""/>
-							</label>
-							<input   class="v-buttonGroupControl" id="textValueForm" name="textValueForm" value="This is my value !" type="text" style="padding: 5px;margin: 0px 2px;" />
-							<select id="ListeElement" onchange="OnSelectionChange (this)" class="selectForm">
-								<option style="font-weight:bold;" value="" id="" selected>Police</option>
-								<option value="Arial" id="arialFont" >Arial</option>
-								<option value="Comic Sans MS" id="comicSansMsFont">Comic Sans MS</option>
-								<option value="Georgia" id="georgiaFont" >Georgia</option>
-								<option value="Impact" id="impactFont">Impact</option>
-								<option value="Times New Roman" id="timeNewRoman">Times New Roman</option>
-								<option value="Verdana" id="verdanaFont">Verdana</option>
-							</select>
-					</div>
 				<div class="board">
 					<div class="generateG">
+						<div style="float:left;">
+							<div id="outils" class="outilsContainer">
+									<input onclick="if($('#FontWeightBoldForm').is(':checked')){$('#font-weight').val('bold');}else{$('#font-weight').val('initial');};" id="FontWeightBoldForm" class="v-visuallyHidden v-buttonGroupControl" name="FontWeightBoldForm" value="fontWeightBold" type="checkbox">
+									<label for="FontWeightBoldForm" class="v-buttonGroupLabel">
+										<img src="img/FontWeightBold.png" alt=""/>
+									</label>
+									<input onclick="if($('#FontStyleItalicForm').is(':checked')){$('#font-style').val('italic');}else{$('#font-style').val('initial');};" id="FontStyleItalicForm" class="v-visuallyHidden v-buttonGroupControl" name="FontStyleItalicForm" value="fontStyleItalic" type="checkbox">
+									<label for="FontStyleItalicForm" class="v-buttonGroupLabel">
+										<img src="img/FontStyleItalic.png" alt="" />
+									</label>
+									<input onclick="if($('#TextUnderlineForm').is(':checked')){$('#text-decoration').val('underline');}else{$('#text-decoration').val('none');};" id="TextUnderlineForm" class="v-visuallyHidden v-buttonGroupControl" name="TextUnderlineForm" value="textUnderline" type="checkbox">
+									<label for="TextUnderlineForm" class="v-buttonGroupLabel">
+										<img src="img/TextDecorationUnderline.png" alt=""/>
+									</label>
+									<input onclick="$('#text-align').val('left');" class="v-visuallyHidden v-buttonGroupControl" id="TextAlignLeft" name="TextAlignForm" value="TextAlignLeft" type="radio">
+									<label for="TextAlignLeft" class="v-buttonGroupLabel">
+										<img src="img/TextAlignLeft.png" alt=""/>
+									</label>
+									<input onclick="$('#text-align').val('right');" class="v-visuallyHidden v-buttonGroupControl" id="TextAlignRight" name="TextAlignForm" value="TextAlignRight" type="radio">
+									<label for="TextAlignRight" class="v-buttonGroupLabel">
+										<img src="img/TextAlignRight.png" alt=""/>
+									</label>
+									<input onclick="$('#text-align').val('center');" class="v-visuallyHidden v-buttonGroupControl" id="TextAlignCenter" name="TextAlignForm" value="TextAlignCenter" type="radio">
+									<label for="TextAlignCenter" class="v-buttonGroupLabel">
+										<img src="img/TextAlignCenter.png" alt=""/>
+									</label>
+									<input onclick="$('#text-align').val('justify');" class="v-visuallyHidden v-buttonGroupControl" id="TextAlignJustify" name="TextAlignForm" value="TextAlignJustify" type="radio">
+									<label for="TextAlignJustify" class="v-buttonGroupLabel">
+										<img src="img/TextAlignJustify.png" alt=""/>
+									</label>
+									<input   class="v-buttonGroupControl" id="textValueForm" name="textValueForm" value="This is my value !" type="text" style="width: 132px;padding: 5px;" />
+									<select id="ListeElement" onchange="OnSelectionChange (this)" class="selectForm">
+										<option style="font-weight:bold;" value="" id="" selected>Police</option>
+										<option value="Arial" id="arialFont" >Arial</option>
+										<option value="Comic Sans MS" id="comicSansMsFont">Comic Sans MS</option>
+										<option value="Georgia" id="georgiaFont" >Georgia</option>
+										<option value="Impact" id="impactFont">Impact</option>
+										<option value="Times New Roman" id="timeNewRoman">Times New Roman</option>
+										<option value="Verdana" id="verdanaFont">Verdana</option>
+									</select>
+							</div>
 						<div id="container">
 							<div id="palette" class="block">
 								<div id="color-palette">
@@ -131,6 +138,7 @@
 								</div>
 							</div>
 						</div>
+					</div>
 						<div class="generateCode" >
 							<div>
 								<div style="height: 30px;width: 100%;background-color: #EEE;border-top: 2px solid #c9c9c9;display: flex;">
