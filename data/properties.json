@@ -37,6 +37,17 @@
       ]
     },
     {
+      "property" : "bottom",
+      "option" : "false",
+      "input1" : [
+        {
+          "id" : "bottom",
+          "value" : "",
+          "class" : "inputLeft"
+        }
+      ]
+    },
+    {
       "property" : "box-shadow",
       "option" : "false",
       "input1" : [
@@ -66,6 +77,28 @@
           "id" : "color",
           "value" : "#DADDF0",
           "class" : ""
+        }
+      ]
+    },
+    {
+      "property" : "clip",
+      "option" : "false",
+      "input1" : [
+        {
+          "id" : "clip",
+          "value" : "",
+          "class" : "inputLeft"
+        }
+      ]
+    },
+    {
+      "property" : "cursor",
+      "option" : "false",
+      "input1" : [
+        {
+          "id" : "cursor",
+          "value" : "",
+          "class" : "inputLeft"
         }
       ]
     },
@@ -136,6 +169,28 @@
       ]
     },
     {
+      "property" : "left",
+      "option" : "false",
+      "input1" : [
+        {
+          "id" : "left",
+          "value" : "",
+          "class" : "inputLeft"
+        }
+      ]
+    },
+    {
+      "property" : "letter-spacing",
+      "option" : "false",
+      "input1" : [
+        {
+          "id" : "letter-spacing",
+          "value" : "",
+          "class" : "inputLeft"
+        }
+      ]
+    },
+    {
       "property" : "line-height",
       "option" : "true",
       "input1" : [
@@ -191,6 +246,28 @@
       ]
     },
     {
+      "property" : "position",
+      "option" : "false",
+      "input1" : [
+        {
+          "id" : "position",
+          "value" : "",
+          "class" : "inputLeft"
+        }
+      ]
+    },
+    {
+      "property" : "right",
+      "option" : "false",
+      "input1" : [
+        {
+          "id" : "right",
+          "value" : "",
+          "class" : "inputLeft"
+        }
+      ]
+    },
+    {
       "property" : "text-align",
       "option" : "false",
       "input1" : [
@@ -224,6 +301,39 @@
       ]
     },
     {
+      "property" : "text-transform",
+      "option" : "false",
+      "input1" : [
+        {
+          "id" : "text-transform",
+          "value" : "",
+          "class" : "inputLeft"
+        }
+      ]
+    },
+    {
+      "property" : "top",
+      "option" : "false",
+      "input1" : [
+        {
+          "id" : "top",
+          "value" : "",
+          "class" : "inputLeft"
+        }
+      ]
+    },
+    {
+      "property" : "transform",
+      "option" : "false",
+      "input1" : [
+        {
+          "id" : "transform",
+          "value" : "",
+          "class" : "inputLeft"
+        }
+      ]
+    },
+    {
       "property" : "visibility",
       "option" : "false",
       "input1" : [
@@ -242,6 +352,17 @@
           "id" : "width",
           "value" : "150px",
           "class" : "range7InputLeft"
+        }
+      ]
+    },
+    {
+      "property" : "word-spacing",
+      "option" : "false",
+      "input1" : [
+        {
+          "id" : "word-spacing",
+          "value" : "",
+          "class" : "inputLeft"
         }
       ]
     }

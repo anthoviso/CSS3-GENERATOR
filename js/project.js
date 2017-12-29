@@ -77,32 +77,14 @@ function selectText(containerid) {
 }
 
 function reset () {
+  for(y=0;y<listProperties.length;y++){
+    $('#' + listProperties[y] + '').val("");
+  }
 	$('#background').val("white");
-	$('#text-decoration').val("");
-	$('#font-weight').val("");
-	$('#color').val("");
-	$('#font-family').val("");
-	$('#font-size').val("")
-	$('#font-style').val("");
-	$('#text-align').val("");
 	$('#width').val("100px");
 	$('#height').val("100px");
-	$('#border').val("");
-	$('#border-radius').val("");
-	$('#opacity').val("");
-	$('#box-shadow').val("");
-	$('#text-shadow').val("");
-	$('#padding').val("");
-	$('#margin').val("");
-	$('#zindex').val("");
-	$('#box-sizing').val("");
-	$('#position').val("");
-	$('#display').val("");
-	$('#visibility').val("");
-	$('#outline').val("");
 	$(".v-buttonGroupControl").prop("checked", false);
 	textValueForm.value="";
-	$('#line-height').val("");
 }
 
 function activecodehtml () {
@@ -135,7 +117,9 @@ function update (jsonObj) {
 
     for (i=0;i < elProperty.length;i++){
       /* Assign values into the div*/
-      $('#outputContainer').css(elProperty[i].property , $('#' + elProperty[i].property).val());
+      /* A AMELIORER --> Récupérer seulement les propriétés non vide puis afficher celles-ci dans la class*/
+        $('#outputContainer').css(elProperty[i].property , $('#' + elProperty[i].property).val());
+
       /* show / hide if value is empty*/
       if($('#' + elProperty[i].property).val() == ""){
         $('.divrender' + elProperty[i].property).css('display','none');
@@ -152,13 +136,15 @@ function update (jsonObj) {
 	*/
 }
 
-
+  var listProperties = [];
 function showProperties(jsonObj) {
   var elProperty = jsonObj['properties'];
   // console.log(jsonObj);
   for (var i = 0; i < elProperty.length; i++) {
     var mypElem = '<p>' + elProperty[i].property + '</p>';
     var elinput1= elProperty[i].input1;
+
+    listProperties.push(elProperty[i].property);
 
     for (var j = 0; j < elinput1.length; j++) {
       var myinput1Elem = '<input type="text" class="' + elinput1[j].class + '" value="' + elinput1[j].value + '" id="' + elinput1[j].id + '"/>';
@@ -177,7 +163,7 @@ function showProperties(jsonObj) {
   }
 
   for (i=0;i < elProperty.length;i++){
-   $('.ace_first').after('<div class="ace_line " id="divrender' + elProperty[i].property + '" ><p class="ace_gutter ace_gutter-cell" unselectable="on"></p><span id="cssrender' + elProperty[i].property + '" class="cssPadLeft cssrender' + elProperty[i].property + '"></span></div>');
+   $('.ace_first').after('<div class="ace_line " id="divrender' + elProperty[i].property + '" ><p class="ace_gutter ace_gutter-cell" unselectable="on"></p><span class="propertyRemove">+</span><span id="cssrender' + elProperty[i].property + '" class="cssrender' + elProperty[i].property + '"></span></div>');
   }
   update(jsonObj);
   toggleEmptyElem();
@@ -232,6 +218,11 @@ $( document ).ready(function() {
     });
   });
   $(function() {
+    $('.propertyRemove').on('click', function() {
+        var removeParent =   $(this).parent().attr('id');
+        removeParent = removeParent.replace('divrender','');
+        $('.' + removeParent + 'Proprieties > input').val('');
+    });
     $('.value_less').on('click', function() {
         // console.log($(this).attr('class') );
         // console.log($(this).attr('id') );

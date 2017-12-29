@@ -192,9 +192,7 @@ section input[type=text] {
 	margin-bottom: 5px;
 	font-weight:bold;
 }
-.line-heightProprieties, .box-sizingProprieties, .outlineProprieties, .visibilityProprieties, .displayProprieties,
-.text-decorationProprieties, .font-weightProprieties, .borderProprieties, .font-styleProprieties, .text-alignProprieties, .border-radiusProprieties, .heightProprieties, .widthProprieties, .textProprieties, .colorProprieties, .font-familyProprieties, .font-sizeProprieties, .text-shadowProprieties,
-.backgroundProprieties, .opacityProprieties, .box-shadowProprieties, .paddingProprieties, .marginProprieties, .indexProprieties, .positionProprieties, .transitionsProprieties{
+section > div{
 	background: #3f3f3f;
 	color: white;
 	text-transform: capitalize;
@@ -209,7 +207,7 @@ section input[type=text] {
 	display:block !important;
 }
 .selectedElem{
-	background: #4b82b1 !important;
+	background: #3f5a71 !important;
 }
 .containerDraws{
 	width:100%;
@@ -251,9 +249,6 @@ section input[type=text] {
 .cssrender{
 	margin:0;
 	padding-left:15px;
-}
-.cssPadLeft{
-padding-left: 20px;
 }
 .displayBlock:nth-child(2), .displayBlock:nth-child(4), .displayBlock:nth-child(6), .displayBlock:nth-child(8), .displayBlock:nth-child(10),
 .displayBlock:nth-child(12), .displayBlock:nth-child(14), .displayBlock:nth-child(16), .displayBlock:nth-child(18), .displayBlock:nth-child(20),
@@ -379,7 +374,15 @@ padding-left: 20px;
 	background: #2F3129;
 	color: #8F908A;
 }
-
+.propertyRemove{
+	width: 10px;
+	padding: 0px 5px;
+	transform: rotate(45deg);
+	visibility: hidden;
+}
+.ace_line:hover .propertyRemove{
+	visibility: visible;
+}
 .range, .range1 , .range2, .range3, .range4, .range5,
 .range6, .range7 , .range8, .range9, .range10, .range11{
 	display: inline-block;
