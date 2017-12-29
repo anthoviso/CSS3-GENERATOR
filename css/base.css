@@ -164,15 +164,32 @@ section input[type=text] {
 	box-sizing: border-box;
 	padding: 0;
 	height: 1014px;
-	overflow-x: hidden;
-	overflow-y: scroll;
 	-webkit-transition: margin-left 0.6s;
 	transition: margin-left 0.6s;
+}
+.cssElements > section{
+	overflow-x: hidden;
+	overflow-y: scroll;
+	height: 974px;
 }
 .cssElemTransition{
 	margin-left:-394px;
 	-webkit-transition: margin-left 0.6s;
 	transition: margin-left 0.6s;
+}
+.tmpRemove{
+	/* text-decoration: line-through; */
+	color: grey !important;
+	-moz-user-select: -moz-none;
+	-khtml-user-select: none;
+	-webkit-user-select: none;
+	user-select: none;
+}
+.tmpRemove > span, .cssCommentStart , .cssCommentEnd{
+	color: grey !important;
+}
+.ace_gutter:hover{
+	text-decoration: line-through;
 }
 .cssElements > div:hover{
 	background: -webkit-linear-gradient(top, rgba(65,65,73,1) 0%,rgba(42,42,48,1) 100%);
@@ -379,6 +396,10 @@ section > div{
 	padding: 0px 5px;
 	transform: rotate(45deg);
 	visibility: hidden;
+-moz-user-select: none;
+-webkit-user-select: none;
+-ms-user-select: none;
+user-select: none;
 }
 .ace_line:hover .propertyRemove{
 	visibility: visible;

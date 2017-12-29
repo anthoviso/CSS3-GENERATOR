@@ -14,7 +14,8 @@ var container2 = document.getElementById("output2");
 var container3 = document.getElementById("htmlTxtValue");
 var colorValue = $('#color').val();
 var dieze = '';
-
+var cssCommentStart = '/*';
+var cssCommentEnd = '*/';
 
 function toggleEmptyElem(){
   $('section > div > input[type=text]').map(function(index) {
@@ -118,15 +119,25 @@ function update (jsonObj) {
     for (i=0;i < elProperty.length;i++){
       /* Assign values into the div*/
       /* A AMELIORER --> Récupérer seulement les propriétés non vide puis afficher celles-ci dans la class*/
+      if($('#cssrender' + elProperty[i].property).hasClass('tmpRemove')){
+        $('#outputContainer').css(elProperty[i].property , "");
+      }else{
         $('#outputContainer').css(elProperty[i].property , $('#' + elProperty[i].property).val());
+      }
+
 
       /* show / hide if value is empty*/
       if($('#' + elProperty[i].property).val() == ""){
         $('.divrender' + elProperty[i].property).css('display','none');
+        $('#cssrender' + elProperty[i].property).removeClass('tmpRemove');
         }
       else{
         $('.divrender' + elProperty[i].property).css('display','block');
-        $('.cssrender' + elProperty[i].property).html("<span class='attributs'>" + elProperty[i].property + "</span> : " + $('#' + elProperty[i].property).val() + ";");
+        if($('#cssrender' + elProperty[i].property).hasClass('tmpRemove')){
+          $('.cssrender' + elProperty[i].property).html("<span class='cssCommentStart'>" + cssCommentStart + "</span><span class='attributs'>" + elProperty[i].property + "</span> : " + $('#' + elProperty[i].property).val() + "; <span class='cssCommentEnd'>" + cssCommentEnd + "</span>");
+        }else{
+          $('.cssrender' + elProperty[i].property).html("<span class='attributs'>" + elProperty[i].property + "</span> : " + $('#' + elProperty[i].property).val() + ";");
+        }
       }
     }
 	/*
@@ -165,6 +176,7 @@ function showProperties(jsonObj) {
   for (i=0;i < elProperty.length;i++){
    $('.ace_first').after('<div class="ace_line " id="divrender' + elProperty[i].property + '" ><p class="ace_gutter ace_gutter-cell" unselectable="on"></p><span class="propertyRemove">+</span><span id="cssrender' + elProperty[i].property + '" class="cssrender' + elProperty[i].property + '"></span></div>');
   }
+
   update(jsonObj);
   toggleEmptyElem();
   $(document).on('load click keyup input', function(){
@@ -189,12 +201,12 @@ $( document ).ready(function() {
     /* Lorsque l'on clic sur une propriété dans le code css, on l'affiche dans le menu de gauche */
     $("#CSSRENDER").on('click', '.ace_line', function(){
       var selectedElemId =  $(this).attr('id');
-      if(selectedElemId ){
-        selectedElemId = selectedElemId.replace("divrender","");
-
-        $('section > div').removeClass('selectedElem');
-        $('#' + selectedElemId + '').parent().addClass('selectedElem');
-      }
+      // if(selectedElemId ){
+      //   selectedElemId = selectedElemId.replace("divrender","");
+      //
+      //   $('section > div').removeClass('selectedElem');
+      //   $('#' + selectedElemId + '').parent().addClass('selectedElem');
+      // }
     });
       $(function() {
     $('.button_empty').on('click', function(){
@@ -218,37 +230,49 @@ $( document ).ready(function() {
     });
   });
   $(function() {
+    $('.ace_gutter').on('click', function() {
+        var tmpRemoveParent =   $(this).parent().attr('id');
+        tmpRemoveParent = tmpRemoveParent.replace('divrender','');
+        $('#cssrender' + tmpRemoveParent).toggleClass('tmpRemove');
+
+
+    });
     $('.propertyRemove').on('click', function() {
         var removeParent =   $(this).parent().attr('id');
         removeParent = removeParent.replace('divrender','');
         $('.' + removeParent + 'Proprieties > input').val('');
+        $('#cssrender' + removeParent).removeClass('tmpRemove');
     });
     $('.value_less').on('click', function() {
-        // console.log($(this).attr('class') );
-        // console.log($(this).attr('id') );
+        console.log($(this).attr('class') );
+        console.log($(this).attr('id') );
         var spanLessParent =   $(this).parent().attr('class');
         var presentValue;
-        if($('.' + spanLessParent + ' > input')[0].value == ''){
+        if($('.' + spanLessParent + ' > input').val() == ''){
+        console.log('1');
           presentValue = 1;
         }else{
-          presentValue =  $('.' + spanLessParent + ' > input')[0].value;
+        console.log('2');
+          presentValue =  $('.' + spanLessParent + ' > input').val();
         }
-        var intpresentValue = parseInt(presentValue);
-        $('.' + spanLessParent + ' > input')[0].value = intpresentValue - 1 + unit;
-    });
 
+        console.log('3');
+        var intpresentValue = parseInt(presentValue);
+        $('.' + spanLessParent + ' > input').val(intpresentValue - 1 + unit);
+    });
 
 
     $('.value_more').on('click', function() {
         var spanLessParent =   $(this).parent().attr('class');
         var presentValue;
-        if($('.' + spanLessParent + ' > input')[0].value == ''){
+
+        if($('.' + spanLessParent + ' > input').val() == ''){
           presentValue = 1;
         }else{
-          presentValue =  $('.' + spanLessParent + ' > input')[0].value;
+          presentValue =  $('.' + spanLessParent + ' > input').val();
         }
         var intpresentValue = parseInt(presentValue);
-        $('.' + spanLessParent + ' > input')[0].value = intpresentValue + 1 + unit;
+        $('.' + spanLessParent + ' > input').val(intpresentValue + 1 + unit);
     });
   });
 });
