@@ -243,10 +243,10 @@ $( document ).ready(function() {
   $('#inputFilter').on('click input', function(){
     searchPropterties();
   });
-  $("#CSSRENDER").on('click', '.ace_line', function(){
-    var selectedElemId =  $(this).attr('id');
+  $("#CSSRENDER").on('click', '.attributs', function(){
+    var selectedElemId =  $(this).parent().attr('id');
     if(selectedElemId ){
-      selectedElemId = selectedElemId.replace("divrender","");
+      selectedElemId = selectedElemId.replace("cssrender","");
 
       $('#inputFilter').val(selectedElemId);
       searchPropterties();
@@ -305,20 +305,21 @@ $( document ).ready(function() {
   $('.backGrey').on('click', function() {
     $('#output').css('background', 'rgb(79, 85, 99)');
   });
-    $('.ace_gutter').on('click', function() {
+
+    $("#CSSRENDER").on('click', '.ace_gutter', function() {
         var tmpRemoveParent =   $(this).parent().attr('id');
         tmpRemoveParent = tmpRemoveParent.replace('divrender','');
         $('#cssrender' + tmpRemoveParent).toggleClass('tmpRemove');
 
 
     });
-    $('.propertyRemove').on('click', function() {
+      $("#CSSRENDER").on('click', '.propertyRemove', function() {
         var removeParent =   $(this).parent().attr('id');
         removeParent = removeParent.replace('divrender','');
         $('.' + removeParent + 'Proprieties > input').val('');
         $('#cssrender' + removeParent).removeClass('tmpRemove');
     });
-    $('.value_less').on('click', function() {
+    $('.cssElements').on('click', '.value_less', function() {
         // console.log($(this).attr('class') );
         // console.log($(this).attr('id') );
         var spanLessParent =   $(this).parent().attr('class');
@@ -333,7 +334,7 @@ $( document ).ready(function() {
     });
 
 
-    $('.value_more').on('click', function() {
+    $('.cssElements').on('click', '.value_more', function() {
         var spanLessParent =   $(this).parent().attr('class');
         var presentValue;
 
