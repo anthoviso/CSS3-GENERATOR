@@ -5,7 +5,7 @@
   "properties" : [
     {
       "property" : "background",
-      "option" : "false",
+      "option" : "true",
       "input1" : [
         {
           "id" : "background",
@@ -71,7 +71,7 @@
     },
     {
       "property" : "color",
-      "option" : "false",
+      "option" : "true",
       "input1" : [
         {
           "id" : "color",

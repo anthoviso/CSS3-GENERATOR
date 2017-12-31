@@ -86,6 +86,8 @@ function reset () {
 	$('#height').val("100px");
 	$(".v-buttonGroupControl").prop("checked", false);
 	textValueForm.value="";
+  $(".backgroundProprieties .sp-preview-inner").css("background-color", $("#background").val());
+  $(".colorProprieties .sp-preview-inner").css("color", $("#color").val());
 }
 
 function activecodehtml () {
@@ -128,8 +130,7 @@ function update (jsonObj) {
       if($('#' + elProperty[i].property).val() == ""){
         $('.divrender' + elProperty[i].property).css('display','none');
         $('#cssrender' + elProperty[i].property).removeClass('tmpRemove');
-        }
-      else{
+        }else{
         $('.divrender' + elProperty[i].property).css('display','block');
         if($('#cssrender' + elProperty[i].property).hasClass('tmpRemove')){
           $('.cssrender' + elProperty[i].property).html("<span class='cssCommentStart'>" + cssCommentStart + "</span><span class='attributs'>" + elProperty[i].property + "</span> : " + $('#' + elProperty[i].property).val() + "; <span class='cssCommentEnd'>" + cssCommentEnd + "</span>");
@@ -138,6 +139,9 @@ function update (jsonObj) {
         }
       }
     }
+
+    $(".backgroundProprieties .sp-preview-inner").css("background-color", $("#background").val());
+    $(".colorProprieties .sp-preview-inner").css("color", $("#color").val());
 	/*
 		if ( color.value.length == 6){
 		dieze = "#";
@@ -160,9 +164,13 @@ function showProperties(jsonObj) {
     }
 
     if(elProperty[i].option == ('true')){
+      if(elProperty[i].property == ('background') || elProperty[i].property == ('color')){
+        var myinput2Elem = '<input type="text" id="triggerSet' +  elProperty[i].property  + '" />';
+      }else{
         var myinput2Elem = '<span id="less' +  elProperty[i].property  + '"" class="value_less"><i class="fa fa-minus" aria-hidden="true"></i></span><span id="more' +  elProperty[i].property  + '"" class="value_more"><i class="fa fa-plus" aria-hidden="true"></i></span>';
+      }
     }else{
-      var myinput2Elem = '';
+        var myinput2Elem = '';
     }
 
     var mydivElem = '<div class="' + elProperty[i].property + 'Proprieties"> ' + mypElem +myinput1Elem +
@@ -193,40 +201,64 @@ $( document ).ready(function() {
   request.onload = function() {
     var allProperties = request.response;
     showProperties(allProperties);
+    $("#triggerSetbackground").spectrum({
+        preferredFormat: "rgb",
+        showInitial: true,
+        showInput: true,
+        showButtons: false,  
+        move: function(color) {
+            $('#background').val(color.toHexString());
+            $('#outputContainer').css('background',$('#background').val());
+        },
+        palette: [["red", "rgba(0, 255, 0, .5)", "rgb(0, 0, 255)"]]
+    });
+    $("#triggerSetcolor").spectrum({
+        preferredFormat: "rgb",
+        showInitial: true,
+        showInput: true,
+        showButtons: false,
+        move: function(color) {
+            $('#color').val(color.toHexString());
+            $('#outputContainer').css('color',$('#color').val());
+        },
+        palette: [["red", "rgba(0, 255, 0, .5)", "rgb(0, 0, 255)"]]
+    });
   }
 
  var unit = 'px';
-    /* Lorsque l'on clic sur une propriété dans le code css, on l'affiche dans le menu de gauche */
-    $("#CSSRENDER").on('click', '.ace_line', function(){
-      var selectedElemId =  $(this).attr('id');
-      // if(selectedElemId ){
-      //   selectedElemId = selectedElemId.replace("divrender","");
-      //
-      //   $('section > div').removeClass('selectedElem');
-      //   $('#' + selectedElemId + '').parent().addClass('selectedElem');
-      // }
-    });
-      $(function() {
+ function searchPropterties(){
+   // console.log($('#inputFilter').val());
+   $('section > div').removeClass('selectedElem');
+   $('section > div').hide();
+   for(i=1;i<=$('section > div').length;i++){
+     if($('section > div:nth-child(' + i + ')').attr('class').indexOf($('#inputFilter').val()) > -1){
+       // console.log(i);
+       var ClassFilter = $('section > div:nth-child(' + i + ')').attr('class');
+       $("." + ClassFilter).show();
+     }
+   }
+ }
+
+
+  $('#inputFilter').on('click input', function(){
+    searchPropterties();
+  });
+  $("#CSSRENDER").on('click', '.ace_line', function(){
+    var selectedElemId =  $(this).attr('id');
+    if(selectedElemId ){
+      selectedElemId = selectedElemId.replace("divrender","");
+
+      $('#inputFilter').val(selectedElemId);
+      searchPropterties();
+    }
+  });
+  $(function() {
     $('.button_empty').on('click', function(){
       $('#inputFilter').val('');
       $('section > div').show();
     });
   });
 
-  $(function() {
-    $('#inputFilter').on('click input', function(){
-      // console.log($('#inputFilter').val());
-      $('section > div').removeClass('selectedElem');
-      $('section > div').hide();
-      for(i=1;i<=$('section > div').length;i++){
-        if($('section > div:nth-child(' + i + ')').attr('class').indexOf($('#inputFilter').val()) > -1){
-          // console.log(i);
-          var ClassFilter = $('section > div:nth-child(' + i + ')').attr('class');
-          $("." + ClassFilter).show();
-        }
-      }
-    });
-  });
   $(function() {
   $('.btnToggle').on('click', function() {
     $('.outilsContainer').toggle();
@@ -287,19 +319,15 @@ $( document ).ready(function() {
         $('#cssrender' + removeParent).removeClass('tmpRemove');
     });
     $('.value_less').on('click', function() {
-        console.log($(this).attr('class') );
-        console.log($(this).attr('id') );
+        // console.log($(this).attr('class') );
+        // console.log($(this).attr('id') );
         var spanLessParent =   $(this).parent().attr('class');
         var presentValue;
         if($('.' + spanLessParent + ' > input').val() == ''){
-        console.log('1');
           presentValue = 1;
         }else{
-        console.log('2');
           presentValue =  $('.' + spanLessParent + ' > input').val();
         }
-
-        console.log('3');
         var intpresentValue = parseInt(presentValue);
         $('.' + spanLessParent + ' > input').val(intpresentValue - 1 + unit);
     });
