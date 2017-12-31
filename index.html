@@ -6,9 +6,6 @@
 		<meta name="author" content="Anthony VISOCCHI" />
 		<meta name="keywords" content="CSS3, generator" />
 		<meta name="description" content="This page help you to learn and play with the CSS3 properties." />
-		<!-- ColorPickerTool -->
-		<link rel="stylesheet" type="text/css" href="lib/ColorPickerTool/colorPickerTool.css"/>
-		<script type="text/javascript" src="lib/ColorPickerTool/colorPickerTool.js"></script>
 		<!-- font-awesome -->
 		<link rel="stylesheet" href="lib/font-awesome/css/font-awesome.min.css">
 		<!-- Jquery -->
@@ -40,74 +37,46 @@
 			 </div>
 		 </div>
 		</div>
-		<div>
-			<div id="outils" class="outilsContainer" style="display:none;">
-					<input id="FontWeightBoldForm" class="v-visuallyHidden v-buttonGroupControl" name="FontWeightBoldForm" value="fontWeightBold" type="checkbox">
-					<label for="FontWeightBoldForm" class="v-buttonGroupLabel">
-						<img src="img/FontWeightBold.png" alt=""/>
-					</label>
-					<input id="FontStyleItalicForm" class="v-visuallyHidden v-buttonGroupControl" name="FontStyleItalicForm" value="fontStyleItalic" type="checkbox">
-					<label for="FontStyleItalicForm" class="v-buttonGroupLabel">
-						<img src="img/FontStyleItalic.png" alt="" />
-					</label>
-					<input id="TextUnderlineForm" class="v-visuallyHidden v-buttonGroupControl" name="TextUnderlineForm" value="textUnderline" type="checkbox">
-					<label for="TextUnderlineForm" class="v-buttonGroupLabel">
-						<img src="img/TextDecorationUnderline.png" alt=""/>
-					</label>
-					<input class="v-visuallyHidden v-buttonGroupControl" id="TextAlignLeft" name="TextAlignForm" value="TextAlignLeft" type="radio">
-					<label for="TextAlignLeft" class="v-buttonGroupLabel">
-						<img src="img/TextAlignLeft.png" alt=""/>
-					</label>
-					<input class="v-visuallyHidden v-buttonGroupControl" id="TextAlignRight" name="TextAlignForm" value="TextAlignRight" type="radio">
-					<label for="TextAlignRight" class="v-buttonGroupLabel">
-						<img src="img/TextAlignRight.png" alt=""/>
-					</label>
-					<input class="v-visuallyHidden v-buttonGroupControl" id="TextAlignCenter" name="TextAlignForm" value="TextAlignCenter" type="radio">
-					<label for="TextAlignCenter" class="v-buttonGroupLabel">
-						<img src="img/TextAlignCenter.png" alt=""/>
-					</label>
-					<input class="v-visuallyHidden v-buttonGroupControl" id="TextAlignJustify" name="TextAlignForm" value="TextAlignJustify" type="radio">
-					<label for="TextAlignJustify" class="v-buttonGroupLabel">
-						<img src="img/TextAlignJustify.png" alt=""/>
-					</label>
-					<input   class="v-buttonGroupControl" id="textValueForm" name="textValueForm" value="This is my value !" type="text" />
-					<select id="ListeElement" onchange="OnSelectionChange (this)" class="selectForm">
-						<option style="font-weight:bold;" value="" id="" selected>Police</option>
-						<option value="Arial" id="arialFont" >Arial</option>
-						<option value="Comic Sans MS" id="comicSansMsFont">Comic Sans MS</option>
-						<option value="Georgia" id="georgiaFont" >Georgia</option>
-						<option value="Impact" id="impactFont">Impact</option>
-						<option value="Times New Roman" id="timeNewRoman">Times New Roman</option>
-						<option value="Verdana" id="verdanaFont">Verdana</option>
-					</select>
-			</div>
-			<div id="palette" class="block" style="display:none;">
-				<div id="color-info" >
-					<div class="title" style="display:none;">Couleurs CSS
-					</div>
-				</div>
-				<div id="picker" class="block">
-					<div class="ui-color-picker" data-topic="picker" data-mode="HSL">
-					</div>
-					<div id="picker-samples" sample-id="master">
-					</div>
-					<div id="controls">
-						<div id="delete">
-							<div id="trash-can">
-							</div>
-						</div>
-						<div id="void-sample" style="display:none;" class="icon">
-						</div>
-					</div>
-				</div>
-				<div id="color-palette">
-				</div>
-			</div>
-			<div id="canvas" data-tutorial="drop" style="display:none !important;">
-				<div id="zindex" class="ui-input-slider" data-topic="z-index" data-info="z-index" data-max="20" data-sensivity="10">
-				</div>
-			</div>
-	</div>
+		<div id="outils" class="outilsContainer" style="display:none;">
+				<input id="FontWeightBoldForm" class="v-visuallyHidden v-buttonGroupControl" name="FontWeightBoldForm" value="fontWeightBold" type="checkbox">
+				<label for="FontWeightBoldForm" class="v-buttonGroupLabel">
+					<img src="img/FontWeightBold.png" alt=""/>
+				</label>
+				<input id="FontStyleItalicForm" class="v-visuallyHidden v-buttonGroupControl" name="FontStyleItalicForm" value="fontStyleItalic" type="checkbox">
+				<label for="FontStyleItalicForm" class="v-buttonGroupLabel">
+					<img src="img/FontStyleItalic.png" alt="" />
+				</label>
+				<input id="TextUnderlineForm" class="v-visuallyHidden v-buttonGroupControl" name="TextUnderlineForm" value="textUnderline" type="checkbox">
+				<label for="TextUnderlineForm" class="v-buttonGroupLabel">
+					<img src="img/TextDecorationUnderline.png" alt=""/>
+				</label>
+				<input class="v-visuallyHidden v-buttonGroupControl" id="TextAlignLeft" name="TextAlignForm" value="TextAlignLeft" type="radio">
+				<label for="TextAlignLeft" class="v-buttonGroupLabel">
+					<img src="img/TextAlignLeft.png" alt=""/>
+				</label>
+				<input class="v-visuallyHidden v-buttonGroupControl" id="TextAlignRight" name="TextAlignForm" value="TextAlignRight" type="radio">
+				<label for="TextAlignRight" class="v-buttonGroupLabel">
+					<img src="img/TextAlignRight.png" alt=""/>
+				</label>
+				<input class="v-visuallyHidden v-buttonGroupControl" id="TextAlignCenter" name="TextAlignForm" value="TextAlignCenter" type="radio">
+				<label for="TextAlignCenter" class="v-buttonGroupLabel">
+					<img src="img/TextAlignCenter.png" alt=""/>
+				</label>
+				<input class="v-visuallyHidden v-buttonGroupControl" id="TextAlignJustify" name="TextAlignForm" value="TextAlignJustify" type="radio">
+				<label for="TextAlignJustify" class="v-buttonGroupLabel">
+					<img src="img/TextAlignJustify.png" alt=""/>
+				</label>
+				<input   class="v-buttonGroupControl" id="textValueForm" name="textValueForm" value="This is my value !" type="text" />
+				<select id="ListeElement" onchange="OnSelectionChange (this)" class="selectForm">
+					<option style="font-weight:bold;" value="" id="" selected>Police</option>
+					<option value="Arial" id="arialFont" >Arial</option>
+					<option value="Comic Sans MS" id="comicSansMsFont">Comic Sans MS</option>
+					<option value="Georgia" id="georgiaFont" >Georgia</option>
+					<option value="Impact" id="impactFont">Impact</option>
+					<option value="Times New Roman" id="timeNewRoman">Times New Roman</option>
+					<option value="Verdana" id="verdanaFont">Verdana</option>
+				</select>
+		</div>
 	<div id="output" class="output" style="position:relative;">
 		 <div id='outputContainer' ></div>
 	</div>
@@ -157,14 +126,6 @@
 						</code>
 					</div>
 			</div>
-		<div class="history">
-				<!-- dans input > option color -->
-					<!-- historique + retour arrière/ avant -->
-						<!-- Css :before :after :hover :active :focus :visited ? :selected -->
-							<!-- Html add balise + a + div -->
-								<!-- css input value propositions -->
-									<!-- rename a class -->
-		</div>
 	</div>
 	<footer>
 	</footer>
