@@ -37,11 +37,11 @@ function sortInvByClass(a, b) {
         return a.className < b.className;
 }
 function button_sortByClass(){
-  var elemToSort = $('section').find('div').sort(sortByClass);
+  var elemToSort = $('.cssElements').find('section > div').sort(sortByClass);
   $('section').append(elemToSort);
 }
 function button_sortInvByClass(){
-  var elemToSort = $('section').find('div').sort(sortInvByClass);
+  var elemToSort = $('.cssElements').find('section > div').sort(sortInvByClass);
   $('section').append(elemToSort);
 }
 function OnSelectionChange (select) {
@@ -205,7 +205,7 @@ $( document ).ready(function() {
         preferredFormat: "rgb",
         showInitial: true,
         showInput: true,
-        showButtons: false,  
+        showButtons: false,
         move: function(color) {
             $('#background').val(color.toHexString());
             $('#outputContainer').css('background',$('#background').val());
