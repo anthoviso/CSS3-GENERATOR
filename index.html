@@ -4,8 +4,8 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta name="author" content="Anthony VISOCCHI" />
-		<meta name="keywords" content="" />
-		<meta name="description" content="" />
+		<meta name="keywords" content="CSS3, generator" />
+		<meta name="description" content="This page help you to learn and play with the CSS3 properties." />
     <!-- js and css -->
 		<link rel="stylesheet" type="text/css" href="lib/ColorPickerTool/colorPickerTool.css"/>
 		<script type="text/javascript" src="lib/ColorPickerTool/colorPickerTool.js"></script>
@@ -17,172 +17,149 @@
 	</head>
 	<body>
 		<div class="bandeau">
-			<div style="display:flex;width: auto;">
-			<button onclick="$('.cssElements').toggleClass('cssElemTransition');" class="btn btnToggle">
-				<i class="fa fa-bars" aria-hidden="true"></i>
-			</button>
-			<span style="padding: 8px 16px;width: 291px;">css3 generator v1.29</span>
-
-			<a  style="padding: 18px 14px;color:white;font-size:12px;text-decoration:none;width: 140px;" href="https://github.com/anthoviso" onclick="window.open(this.href);return false;">By Anthony Visocchi</a>
+			<div style="float: left;">
+				<button class="btn btnToggle">
+					<i class="fa fa-bars" aria-hidden="true"></i>
+				</button>
+				<span class="title">css3 generator v1.3</span>
+				<a class="author" href="https://github.com/anthoviso" onclick="window.open(this.href);return false;">
+					<span>By Anthony Visocchi</span>
+				</a>
+			</div>
+			<div class="outputOptions">
+			 <div class="outputChangeBack backWhite">
+			 </div>
+			 <div class="outputChangeBack backBlack">
+			 </div>
+			 <div class="outputChangeBack backGrey">
+			 </div>
+		 </div>
 		</div>
-			<div style="display:flex;width: 100%;justify-content: flex-end;">
-			<button onclick="reset();" class="btn btnReset">
-				CSS RESET
-			</button>
-		</div>
-		</div>
-		<div class="divOutput">
-			<div class="cssElements">
-				<div style="background: #3f3f3f;padding: 5px 10px;display:flex;">
-					<div style="position:relative;">
-						<input type="text" id="inputFilter" placeholder="recherche"/>
-						<span class="button_empty"><i class="fa fa-times-circle" aria-hidden="true"></i></span>
+		<div>
+			<div id="outils" class="outilsContainer" style="display:none;">
+					<input id="FontWeightBoldForm" class="v-visuallyHidden v-buttonGroupControl" name="FontWeightBoldForm" value="fontWeightBold" type="checkbox">
+					<label for="FontWeightBoldForm" class="v-buttonGroupLabel">
+						<img src="img/FontWeightBold.png" alt=""/>
+					</label>
+					<input id="FontStyleItalicForm" class="v-visuallyHidden v-buttonGroupControl" name="FontStyleItalicForm" value="fontStyleItalic" type="checkbox">
+					<label for="FontStyleItalicForm" class="v-buttonGroupLabel">
+						<img src="img/FontStyleItalic.png" alt="" />
+					</label>
+					<input id="TextUnderlineForm" class="v-visuallyHidden v-buttonGroupControl" name="TextUnderlineForm" value="textUnderline" type="checkbox">
+					<label for="TextUnderlineForm" class="v-buttonGroupLabel">
+						<img src="img/TextDecorationUnderline.png" alt=""/>
+					</label>
+					<input class="v-visuallyHidden v-buttonGroupControl" id="TextAlignLeft" name="TextAlignForm" value="TextAlignLeft" type="radio">
+					<label for="TextAlignLeft" class="v-buttonGroupLabel">
+						<img src="img/TextAlignLeft.png" alt=""/>
+					</label>
+					<input class="v-visuallyHidden v-buttonGroupControl" id="TextAlignRight" name="TextAlignForm" value="TextAlignRight" type="radio">
+					<label for="TextAlignRight" class="v-buttonGroupLabel">
+						<img src="img/TextAlignRight.png" alt=""/>
+					</label>
+					<input class="v-visuallyHidden v-buttonGroupControl" id="TextAlignCenter" name="TextAlignForm" value="TextAlignCenter" type="radio">
+					<label for="TextAlignCenter" class="v-buttonGroupLabel">
+						<img src="img/TextAlignCenter.png" alt=""/>
+					</label>
+					<input class="v-visuallyHidden v-buttonGroupControl" id="TextAlignJustify" name="TextAlignForm" value="TextAlignJustify" type="radio">
+					<label for="TextAlignJustify" class="v-buttonGroupLabel">
+						<img src="img/TextAlignJustify.png" alt=""/>
+					</label>
+					<input   class="v-buttonGroupControl" id="textValueForm" name="textValueForm" value="This is my value !" type="text" />
+					<select id="ListeElement" onchange="OnSelectionChange (this)" class="selectForm">
+						<option style="font-weight:bold;" value="" id="" selected>Police</option>
+						<option value="Arial" id="arialFont" >Arial</option>
+						<option value="Comic Sans MS" id="comicSansMsFont">Comic Sans MS</option>
+						<option value="Georgia" id="georgiaFont" >Georgia</option>
+						<option value="Impact" id="impactFont">Impact</option>
+						<option value="Times New Roman" id="timeNewRoman">Times New Roman</option>
+						<option value="Verdana" id="verdanaFont">Verdana</option>
+					</select>
+			</div>
+			<div id="palette" class="block" style="display:none;">
+				<div id="color-info" >
+					<div class="title" style="display:none;">Couleurs CSS
 					</div>
-					<button onclick="button_sortByClass();" class="btn btnSort">
-						<i class="fa fa-sort-alpha-asc" aria-hidden="true"></i>
-
-					</button>
-					<button onclick="button_sortInvByClass();" class="btn btnSort">
-						<i class="fa fa-sort-alpha-desc" aria-hidden="true"></i>
-
-					</button>
-			</div>
-				<section>
-				</section>
-			</div>
-			<!-- Affichage dynamique du resultat -->
-			<div style="width: 100%;">
-				<div class="containerDraws">
-					<div>
-						<div id="output" class="output" style="position:relative;">
-							 <div id='outputContainer' ></div>
-							 <div class="outputOptions">
- 							 		<div class="outputChangeBack" onclick="$('.containerDraws > div').css('background', 'url(img/fondBlanc.png)')" style="background: url(img/fondBlanc.png);">
-									</div>
- 									<div class="outputChangeBack"  onclick="$('.containerDraws > div').css('background', 'url(img/fondGris.png)')" style="background: url(img/fondGris.png);">
-									</div>
-									<div class="outputChangeBack"  onclick="$('.containerDraws > div').css('background', '#333')" style="background: #333;">
-									</div>
- 							 </div>
+				</div>
+				<div id="picker" class="block">
+					<div class="ui-color-picker" data-topic="picker" data-mode="HSL">
+					</div>
+					<div id="picker-samples" sample-id="master">
+					</div>
+					<div id="controls">
+						<div id="delete">
+							<div id="trash-can">
+							</div>
+						</div>
+						<div id="void-sample" style="display:none;" class="icon">
 						</div>
 					</div>
 				</div>
-				<div class="board">
-					<div class="generateG">
-						<div style="float:left;">
-							<div id="outils" class="outilsContainer">
-									<input onclick="if($('#FontWeightBoldForm').is(':checked')){$('#font-weight').val('bold');}else{$('#font-weight').val('initial');};" id="FontWeightBoldForm" class="v-visuallyHidden v-buttonGroupControl" name="FontWeightBoldForm" value="fontWeightBold" type="checkbox">
-									<label for="FontWeightBoldForm" class="v-buttonGroupLabel">
-										<img src="img/FontWeightBold.png" alt=""/>
-									</label>
-									<input onclick="if($('#FontStyleItalicForm').is(':checked')){$('#font-style').val('italic');}else{$('#font-style').val('initial');};" id="FontStyleItalicForm" class="v-visuallyHidden v-buttonGroupControl" name="FontStyleItalicForm" value="fontStyleItalic" type="checkbox">
-									<label for="FontStyleItalicForm" class="v-buttonGroupLabel">
-										<img src="img/FontStyleItalic.png" alt="" />
-									</label>
-									<input onclick="if($('#TextUnderlineForm').is(':checked')){$('#text-decoration').val('underline');}else{$('#text-decoration').val('none');};" id="TextUnderlineForm" class="v-visuallyHidden v-buttonGroupControl" name="TextUnderlineForm" value="textUnderline" type="checkbox">
-									<label for="TextUnderlineForm" class="v-buttonGroupLabel">
-										<img src="img/TextDecorationUnderline.png" alt=""/>
-									</label>
-									<input onclick="$('#text-align').val('left');" class="v-visuallyHidden v-buttonGroupControl" id="TextAlignLeft" name="TextAlignForm" value="TextAlignLeft" type="radio">
-									<label for="TextAlignLeft" class="v-buttonGroupLabel">
-										<img src="img/TextAlignLeft.png" alt=""/>
-									</label>
-									<input onclick="$('#text-align').val('right');" class="v-visuallyHidden v-buttonGroupControl" id="TextAlignRight" name="TextAlignForm" value="TextAlignRight" type="radio">
-									<label for="TextAlignRight" class="v-buttonGroupLabel">
-										<img src="img/TextAlignRight.png" alt=""/>
-									</label>
-									<input onclick="$('#text-align').val('center');" class="v-visuallyHidden v-buttonGroupControl" id="TextAlignCenter" name="TextAlignForm" value="TextAlignCenter" type="radio">
-									<label for="TextAlignCenter" class="v-buttonGroupLabel">
-										<img src="img/TextAlignCenter.png" alt=""/>
-									</label>
-									<input onclick="$('#text-align').val('justify');" class="v-visuallyHidden v-buttonGroupControl" id="TextAlignJustify" name="TextAlignForm" value="TextAlignJustify" type="radio">
-									<label for="TextAlignJustify" class="v-buttonGroupLabel">
-										<img src="img/TextAlignJustify.png" alt=""/>
-									</label>
-									<input   class="v-buttonGroupControl" id="textValueForm" name="textValueForm" value="This is my value !" type="text" style="width: 132px;padding: 5px;" />
-									<select id="ListeElement" onchange="OnSelectionChange (this)" class="selectForm">
-										<option style="font-weight:bold;" value="" id="" selected>Police</option>
-										<option value="Arial" id="arialFont" >Arial</option>
-										<option value="Comic Sans MS" id="comicSansMsFont">Comic Sans MS</option>
-										<option value="Georgia" id="georgiaFont" >Georgia</option>
-										<option value="Impact" id="impactFont">Impact</option>
-										<option value="Times New Roman" id="timeNewRoman">Times New Roman</option>
-										<option value="Verdana" id="verdanaFont">Verdana</option>
-									</select>
-							</div>
-						<div id="container">
-							<div id="palette" class="block">
-								<div id="color-palette">
-								</div>
-								<div id="color-info" >
-									<div class="title" style="display:none;">Couleurs CSS
-									</div>
-								</div>
-							</div>
-							<div id="picker" class="block">
-								<div class="ui-color-picker" data-topic="picker" data-mode="HSL">
-								</div>
-								<div id="picker-samples" sample-id="master">
-								</div>
-								<div id="controls">
-									<div id="delete">
-										<div id="trash-can">
-										</div>
-									</div>
-									<div id="void-sample" style="display:none;" class="icon">
-									</div>
-								</div>
-							</div>
-							<div id="canvas" data-tutorial="drop" style="display:none !important;">
-								<div id="zindex" class="ui-input-slider" data-topic="z-index" data-info="z-index" data-max="20" data-sensivity="10">
-								</div>
-							</div>
-						</div>
-					</div>
-						<div class="generateCode" >
-							<div>
-								<div style="height: 30px;width: 100%;background-color: #EEE;border-top: 2px solid #c9c9c9;display: flex;">
-									<p class="copyCode" id="copyCodeCSS" onclick="selectText('CSSRENDER')"></p>
-									<p class="copyCode" id="copyCodeHTML"  onclick="selectText('HTMLRENDER')" style="display:none;"></p>
-									<p id="inputCSScode" onclick="activecodecss();" style="color:black;background: silver;height: 30px;width: 40%;margin: 0;padding: 5px;box-sizing: border-box;" class="activeCode">
-										<span id="inputCSS" name="textValueForm" value="myClass" type="text" class="inputCSS textValueForm activeCode">CSS3</span>
-									</p>
-									<p onclick="activecodehtml();" id="inputHtml">Html5</p>
-								</div>
-								<div class="ace_static_highlight ace_show_gutter" style="counter-reset:ace_line 0;overflow-y: scroll;overflow-x: hidden;height: 458px;">
-									<code id="CSSRENDER">
-										<div class="ace_line ace_first"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p><span style="margin:0;padding-left:5px;">.myClass{</span></div>
-										<div class="ace_line"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p><span style="margin:0;padding-left:5px;">}</span></div>
-										<div class="ace_line"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p><span style="visibility:hidden;">f</span ></div>
-									</code>
-									<code id="HTMLRENDER" style="display:none;">
-									<div class="ace_line"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p><span class="baliseHtml" style="margin:0;padding-left:0px;">&lt;html&gt;</span></div>
-									<div class="ace_line"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p><span class="baliseHtml" style="margin:0;padding-left:5px;">&lt;body&gt;</span></div>
-										<div class="ace_line"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p><span class="baliseHtml" style="margin:0;padding-left:10px;">&lt;div class="myClass" &gt;</span></div>
-										<div class="ace_line"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p><span class="baliseSpan" id="htmlTxtValue" style="margin:0;padding-left:5px;"></span></div>
-										<div class="ace_line"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p><span class="baliseHtml" style="margin:0;padding-left:10px;">&lt;/div&gt;</span></div>
-										<div class="ace_line"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p><span class="baliseHtml" style="margin:0;padding-left:5px;">&lt;/body&gt;</span></div>
-										<div class="ace_line"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p><span class="baliseHtml" style="margin:0;padding-left:0px;">&lt;/html&gt;</span></div>
-									</code>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="console">
-						<div class="cmd" >
-							<div>
-								<span id="cssValideTrue" style="display:none;color: #A6E22E;">Console *A venir*<!--css validate.--></span>
-								<span id="cssValideFalse" style="display:none;color:red;">Error : Invalid values.</span>
-							</div>
-						</div>
-					</div>
+				<div id="color-palette">
 				</div>
 			</div>
+			<div id="canvas" data-tutorial="drop" style="display:none !important;">
+				<div id="zindex" class="ui-input-slider" data-topic="z-index" data-info="z-index" data-max="20" data-sensivity="10">
+				</div>
+			</div>
+	</div>
+	<!-- Affichage dynamique du resultat -->
+	<div id="output" class="output" style="position:relative;">
+		 <div id='outputContainer' ></div>
+	</div>
+	<div class="board" >
+		<div class="cssElements">
+			<div class="cssSearch">
+				<div style="position:relative;">
+					<input type="text" id="inputFilter" placeholder="recherche"/>
+					<span class="button_empty"><i class="fa fa-times-circle" aria-hidden="true"></i></span>
+				</div>
+				<button onclick="button_sortByClass();" class="btn btnSort">
+					<i class="fa fa-sort-alpha-asc" aria-hidden="true"></i>
+				</button>
+				<button onclick="button_sortInvByClass();" class="btn btnSort">
+					<i class="fa fa-sort-alpha-desc" aria-hidden="true"></i>
+				</button>
+				<button onclick="reset();" class="btn btnReset">
+					CSS RESET
+				</button>
 		</div>
-		<footer>
-		</footer>
-		<script src="js/project.js"></script>
-		<script src="js/error.js"></script>
-		<!-- By VISOCCHI ANTHONY 2017 -->
+			<section>
+			</section>
+		</div>
+			<div class="generateCode" >
+					<div class="generateCodeTab">
+						<div id="inputCSScode" onclick="activecodecss();"  class="activeCode"><span>CSS3</span>
+							<p class="copyCode" id="copyCodeCSS" onclick="selectText('CSSRENDER')"></p>
+						</div>
+						<div onclick="activecodehtml();" id="inputHTMLcode"><span>Html5</span>
+								<p class="copyCode" id="copyCodeHTML"  onclick="selectText('HTMLRENDER')" style="display:none;"></p>
+						</div>
+					</div>
+					<div class="ace_static_highlight ace_show_gutter">
+						<code id="CSSRENDER">
+							<div class="ace_line ace_first"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p><span style="margin:0;padding-left:5px;">.myClass{</span></div>
+							<div class="ace_line"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p><span style="margin:0;padding-left:5px;">}</span></div>
+							<div class="ace_line"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p></div>
+						</code>
+						<code id="HTMLRENDER" style="display:none;">
+						<div class="ace_line"><p class="ace_gutter ace_gutter-cell " unselectable="on"></p><span class="baliseHtml" style="margin:0;padding-left:0px;">&lt;html&gt;</span></div>
+						<div class="ace_line"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p><span class="baliseHtml" style="margin:0;padding-left:5px;">&lt;body&gt;</span></div>
+							<div class="ace_line"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p><span class="baliseHtml" style="margin:0;padding-left:10px;">&lt;div class="myClass" &gt;</span></div>
+							<div class="ace_line"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p><span class="baliseSpan" id="htmlTxtValue" style="margin:0;padding-left:5px;"></span></div>
+							<div class="ace_line"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p><span class="baliseHtml" style="margin:0;padding-left:10px;">&lt;/div&gt;</span></div>
+							<div class="ace_line"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p><span class="baliseHtml" style="margin:0;padding-left:5px;">&lt;/body&gt;</span></div>
+							<div class="ace_line"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p><span class="baliseHtml" style="margin:0;padding-left:0px;">&lt;/html&gt;</span></div>
+						</code>
+					</div>
+			</div>
+		<div class="history">
+		</div>
+	</div>
+	<footer>
+	</footer>
+	<script src="js/project.js"></script>
+	<script src="js/error.js"></script>
+	<!-- By VISOCCHI ANTHONY 2017 -->
 	</body>
 </html>

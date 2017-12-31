@@ -89,9 +89,8 @@ function reset () {
 }
 
 function activecodehtml () {
-  $('#inputHtml').addClass("activeCode");
-  $('.inputCSS').removeClass("activeCode");
-    $('.inputCSS').parent().removeClass("activeCode");
+  $('#inputHTMLcode').addClass("activeCode");
+  $('#inputCSScode').removeClass("activeCode");
     $('#CSSRENDER').hide();
     $('#HTMLRENDER').show();
     $('#copyCodeCSS').hide();
@@ -99,9 +98,8 @@ function activecodehtml () {
 }
 
 function activecodecss () {
-  $('#inputHtml').removeClass("activeCode");
-    $('.inputCSS').addClass("activeCode");
-    $('.inputCSS').parent().addClass("activeCode");
+  $('#inputHTMLcode').removeClass("activeCode");
+    $('#inputCSScode').addClass("activeCode");
     $('#HTMLRENDER').hide();
     $('#CSSRENDER').show();
   $('#copyCodeCSS').show();
@@ -230,6 +228,51 @@ $( document ).ready(function() {
     });
   });
   $(function() {
+  $('.btnToggle').on('click', function() {
+    $('.outilsContainer').toggle();
+  });
+  $('#FontWeightBoldForm').on('click', function() {
+    if($('#FontWeightBoldForm').is(':checked')){
+      $('#font-weight').val('bold');
+    }else{
+      $('#font-weight').val('initial');
+    }
+  });
+  $('#FontStyleItalicForm').on('click', function() {
+    if($('#FontStyleItalicForm').is(':checked')){
+      $('#font-style').val('italic');
+    }else{
+      $('#font-style').val('initial');
+    }
+  });
+  $('#TextUnderlineForm').on('click', function() {
+    if($('#TextUnderlineForm').is(':checked')){
+      $('#text-decoration').val('underline');
+    }else{
+      $('#text-decoration').val('none');
+    }
+  });
+  $('#TextAlignLeft').on('click', function() {
+    $('#text-align').val('left');
+  });
+  $('#TextAlignRight').on('click', function() {
+    $('#text-align').val('right');
+  });
+  $('#TextAlignCenter').on('click', function() {
+    $('#text-align').val('center');
+  });
+  $('#TextAlignJustify').on('click', function() {
+    $('#text-align').val('justify');
+  });
+  $('.backWhite').on('click', function() {
+    $('#output').css('background', 'url("img/fondBlanc.png")');
+  });
+  $('.backBlack').on('click', function() {
+    $('#output').css('background', 'url("img/fondGris.png")');
+  });
+  $('.backGrey').on('click', function() {
+    $('#output').css('background', 'rgb(79, 85, 99)');
+  });
     $('.ace_gutter').on('click', function() {
         var tmpRemoveParent =   $(this).parent().attr('id');
         tmpRemoveParent = tmpRemoveParent.replace('divrender','');
