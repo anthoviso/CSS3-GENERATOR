@@ -1,370 +1,182 @@
 {
   "fileName" : "CSS3 Properties",
-  "date" : 2017,
+  "date" : "2017 - 2018",
   "active" : true,
-  "properties" : [
+  "properties" :[
+    {
+      "property" : "align-content",
+      "option" : "false",
+      "input" : ""
+    },
+    {
+      "property" : "all",
+      "option" : "false",
+      "input" : ""
+    },
     {
       "property" : "background",
       "option" : "true",
-      "input1" : [
-        {
-          "id" : "background",
-          "value" : "#2A5476",
-          "class" : ""
-        }
-      ]
+      "input" : "#2A5476"
     },
     {
       "property" : "border",
       "option" : "false",
-      "input1" : [
-        {
-          "id" : "border",
-          "value" : "1px solid black",
-          "class" : "inputLeft"
-        }
-      ]
+      "input" : "1px solid black"
     },
     {
       "property" : "border-radius",
       "option" : "true",
-      "input1" : [
-        {
-          "id" : "border-radius",
-          "value" : "20px",
-          "class" : "inputLeft rangeInputLeft"
-        }
-      ]
+      "input" : "20px"
     },
     {
       "property" : "bottom",
       "option" : "false",
-      "input1" : [
-        {
-          "id" : "bottom",
-          "value" : "",
-          "class" : "inputLeft"
-        }
-      ]
+      "input" : ""
     },
     {
       "property" : "box-shadow",
       "option" : "false",
-      "input1" : [
-        {
-          "id" : "box-shadow",
-          "value" : "2px 2px 5px black",
-          "class" : ""
-        }
-      ]
+      "input" : "2px 2px 5px black"
     },
     {
       "property" : "box-sizing",
       "option" : "false",
-      "input1" : [
-        {
-          "id" : "box-sizing",
-          "value" : "",
-          "class" : "inputLeft"
-        }
-      ]
+      "input" : ""
     },
     {
       "property" : "color",
       "option" : "true",
-      "input1" : [
-        {
-          "id" : "color",
-          "value" : "#DADDF0",
-          "class" : ""
-        }
-      ]
+      "input" : "#DADDF0"
     },
     {
       "property" : "clip",
       "option" : "false",
-      "input1" : [
-        {
-          "id" : "clip",
-          "value" : "",
-          "class" : "inputLeft"
-        }
-      ]
+      "input" : ""
     },
     {
       "property" : "cursor",
       "option" : "false",
-      "input1" : [
-        {
-          "id" : "cursor",
-          "value" : "",
-          "class" : "inputLeft"
-        }
-      ]
+      "input" : ""
     },
     {
       "property" : "display",
       "option" : "false",
-      "input1" : [
-        {
-          "id" : "display",
-          "value" : "",
-          "class" : "inputLeft"
-        }
-      ]
+      "input" : ""
     },
     {
       "property" : "font-family",
       "option" : "false",
-      "input1" : [
-        {
-          "id" : "font-family",
-          "value" : "",
-          "class" : ""
-        }
-      ]
+      "input" : ""
     },
     {
       "property" : "font-size",
       "option" : "true",
-      "input1" : [
-        {
-          "id" : "font-size",
-          "value" : "16px",
-          "class" : "range6InputLeft"
-        }
-      ]
+      "input" : "16px"
     },
     {
       "property" : "font-style",
       "option" : "false",
-      "input1" : [
-        {
-          "id" : "font-style",
-          "value" : "",
-          "class" : ""
-        }
-      ]
+      "input" : ""
     },
     {
       "property" : "font-weight",
       "option" : "false",
-      "input1" : [
-        {
-          "id" : "font-weight",
-          "value" : "",
-          "class" : ""
-        }
-      ]
+      "input" : ""
     },
     {
       "property" : "height",
       "option" : "true",
-      "input1" : [
-        {
-          "id" : "height",
-          "value" : "150px",
-          "class" : "range8InputLeft"
-        }
-      ]
+      "input" : "150px"
     },
     {
       "property" : "left",
       "option" : "false",
-      "input1" : [
-        {
-          "id" : "left",
-          "value" : "",
-          "class" : "inputLeft"
-        }
-      ]
+      "input" : ""
     },
     {
       "property" : "letter-spacing",
       "option" : "false",
-      "input1" : [
-        {
-          "id" : "letter-spacing",
-          "value" : "",
-          "class" : "inputLeft"
-        }
-      ]
+      "input" : ""
     },
     {
       "property" : "line-height",
       "option" : "true",
-      "input1" : [
-        {
-          "id" : "line-height",
-          "value" : "",
-          "class" : "range9InputLeft"
-        }
-      ]
+      "input" : ""
     },
     {
       "property" : "margin",
       "option" : "true",
-      "input1" : [
-        {
-          "id" : "margin",
-          "value" : "100px auto",
-          "class" : "inputLeft range5InputLeft"
-        }
-      ]
+      "input" : "100px auto"
     },
     {
       "property" : "opacity",
       "option" : "false",
-      "input1" : [
-        {
-          "id" : "opacity",
-          "value" : "",
-          "class" : "inputLeft"
-        }
-      ]
+      "input" : ""
     },
     {
       "property" : "outline",
       "option" : "false",
-      "input1" : [
-        {
-          "id" : "outline",
-          "value" : "5px dotted grey",
-          "class" : "inputLeft"
-        }
-      ]
+      "input" : "5px dotted grey"
     },
     {
       "property" : "padding",
       "option" : "true",
-      "input1" : [
-        {
-          "id" : "padding",
-          "value" : "10px",
-          "class" : "inputLeft range4InputLeft"
-        }
-      ]
+      "input" : "10px"
     },
     {
       "property" : "position",
       "option" : "false",
-      "input1" : [
-        {
-          "id" : "position",
-          "value" : "",
-          "class" : "inputLeft"
-        }
-      ]
+      "input" : ""
     },
     {
       "property" : "right",
       "option" : "false",
-      "input1" : [
-        {
-          "id" : "right",
-          "value" : "",
-          "class" : "inputLeft"
-        }
-      ]
+      "input" : ""
     },
     {
       "property" : "text-align",
       "option" : "false",
-      "input1" : [
-        {
-          "id" : "text-align",
-          "value" : "center",
-          "class" : ""
-        }
-      ]
+      "input" : "center"
     },
     {
       "property" : "text-decoration",
       "option" : "false",
-      "input1" : [
-        {
-          "id" : "text-decoration",
-          "value" : "",
-          "class" : ""
-        }
-      ]
+      "input" : ""
     },
     {
       "property" : "text-shadow",
       "option" : "false",
-      "input1" : [
-        {
-          "id" : "text-shadow",
-          "value" : "1px 1px 1px black",
-          "class" : ""
-        }
-      ]
+      "input" : "1px 1px 1px black"
     },
     {
       "property" : "text-transform",
       "option" : "false",
-      "input1" : [
-        {
-          "id" : "text-transform",
-          "value" : "",
-          "class" : "inputLeft"
-        }
-      ]
+      "input" : ""
     },
     {
       "property" : "top",
       "option" : "false",
-      "input1" : [
-        {
-          "id" : "top",
-          "value" : "",
-          "class" : "inputLeft"
-        }
-      ]
+      "input" : ""
     },
     {
       "property" : "transform",
       "option" : "false",
-      "input1" : [
-        {
-          "id" : "transform",
-          "value" : "",
-          "class" : "inputLeft"
-        }
-      ]
+      "input" : ""
     },
     {
       "property" : "visibility",
       "option" : "false",
-      "input1" : [
-        {
-          "id" : "visibility",
-          "value" : "",
-          "class" : "inputLeft"
-        }
-      ]
+      "input" : ""
     },
     {
       "property" : "width",
       "option" : "true",
-      "input1" : [
-        {
-          "id" : "width",
-          "value" : "150px",
-          "class" : "range7InputLeft"
-        }
-      ]
+      "input" : "150px"
     },
     {
       "property" : "word-spacing",
       "option" : "false",
-      "input1" : [
-        {
-          "id" : "word-spacing",
-          "value" : "",
-          "class" : "inputLeft"
-        }
-      ]
+      "input" : ""
     }
   ]
 }

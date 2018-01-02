@@ -155,13 +155,9 @@ function showProperties(jsonObj) {
   // console.log(jsonObj);
   for (var i = 0; i < elProperty.length; i++) {
     var mypElem = '<p>' + elProperty[i].property + '</p>';
-    var elinput1= elProperty[i].input1;
-
     listProperties.push(elProperty[i].property);
 
-    for (var j = 0; j < elinput1.length; j++) {
-      var myinput1Elem = '<input type="text" class="' + elinput1[j].class + '" value="' + elinput1[j].value + '" id="' + elinput1[j].id + '"/>';
-    }
+    var myinput1Elem = '<input type="text" id="' + elProperty[i].property + '" value="' + elProperty[i].input + '"/>';
 
     if(elProperty[i].option == ('true')){
       if(elProperty[i].property == ('background') || elProperty[i].property == ('color')){
