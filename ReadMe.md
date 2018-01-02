@@ -7,7 +7,7 @@ You should use Firefox for this version to read JSON data
 You can try this [for Chrome](https://cmatskas.com/interacting-with-local-data-files-using-chrome/)
 ```
 
-##" This Project
+### This Project
 
 This project is intended for those who are learning on the CSS3 language,
 to be able to efficiently code, to test most of the available properties and to see the result live.
