@@ -321,7 +321,7 @@ $('#outputContainer').attr('style') +
 "}";
 tmpFile = tmpFile.replace(/\,/g,', ').replace(/\{/g,' {\n\t').replace(/\}/g,'}\n').replace(/\;/g,';\n\t');
   var file = new Blob([tmpFile], {type: "text/plain;charset=utf-8"});
-saveAs(file, 'hello_world.css');
+saveAs(file, 'style.css');
 });
     $("#CSSRENDER").on('click', '.ace_gutter', function() {
         var tmpRemoveParent =   $(this).parent().attr('id');
