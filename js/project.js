@@ -176,7 +176,7 @@ function showProperties(jsonObj) {
   }
 
   for (i=0;i < elProperty.length;i++){
-   $('.ace_first').after('<div class="ace_line " id="divrender' + elProperty[i].property + '" ><p class="ace_gutter ace_gutter-cell" unselectable="on"></p><span class="propertyRemove">+</span><span id="cssrender' + elProperty[i].property + '" class="cssrender' + elProperty[i].property + '"></span></div>');
+   $('.ace_first').after('<div class="ace_line " id="divrender' + elProperty[i].property + '" ><p class="ace_gutter ace_gutter-cell" unselectable="on"></p><span class="propertyRemove"><img src="img/more.png" style="width: 6px;padding: 1px;"/></span><span id="cssrender' + elProperty[i].property + '" class="cssrender' + elProperty[i].property + '"></span></div>');
   }
 
   update(jsonObj);
@@ -301,7 +301,28 @@ $( document ).ready(function() {
   $('.backGrey').on('click', function() {
     $('#output').css('background', 'rgb(79, 85, 99)');
   });
+  $( ".sortable-items" ).sortable({
+  axis: "y",
+  handle: "span"
+});
+/*Select elem
++
 
+var style = document.createElement('style');
+style.type = 'text/css';
+style.innerHTML = '.cssClass { color: #F00; }';
+document.getElementsByTagName('head')[0].appendChild(style);
+
+document.getElementById('someElementId').className = 'cssClass';*/
+// https://davidwalsh.name/add-rules-stylesheets
+    $("#download").on('click', function() {
+var tmpFile = ".class{" +
+$('#outputContainer').attr('style') +
+"}";
+tmpFile = tmpFile.replace(/\,/g,', ').replace(/\{/g,' {\n\t').replace(/\}/g,'}\n').replace(/\;/g,';\n\t');
+  var file = new Blob([tmpFile], {type: "text/plain;charset=utf-8"});
+saveAs(file, 'hello_world.css');
+});
     $("#CSSRENDER").on('click', '.ace_gutter', function() {
         var tmpRemoveParent =   $(this).parent().attr('id');
         tmpRemoveParent = tmpRemoveParent.replace('divrender','');

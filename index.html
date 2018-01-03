@@ -10,6 +10,11 @@
 		<link rel="stylesheet" href="lib/font-awesome/css/font-awesome.min.css">
 		<!-- Jquery -->
 		<script type="text/javascript" src="lib/jquery/jquery.js"></script>
+		<!-- Jquery-ui -->
+		<script type="text/javascript" src="lib/jquery-ui/jquery-ui.js"></script>
+		<link rel='stylesheet' type="text/css" href='lib/jquery-ui/jquery-ui.css' />
+		<!-- fileSaver -->
+		<script type="text/javascript" src='lib/fileSaver/FileSaver.js'></script>
 		<!-- Spectrum -->
 		<script type="text/javascript" src='lib/spectrum/spectrum.js'></script>
 		<link rel='stylesheet' type="text/css" href='lib/spectrum/spectrum.css' />
@@ -103,14 +108,15 @@
 			<div class="generateCode" >
 					<div class="generateCodeTab">
 						<div id="inputCSScode" onclick="activecodecss();"  class="activeCode"><span>CSS3</span>
-							<p class="copyCode" id="copyCodeCSS" onclick="selectText('CSSRENDER')"></p>
+								<i class="fa fa-files-o" style="padding: 1px 5px;" id="copyCodeCSS" onclick="selectText('CSSRENDER')" aria-hidden="true"></i>
+								<i class="fa fa-download" style="padding: 1px 5px;" id="download" aria-hidden="true"></i>
 						</div>
 						<div onclick="activecodehtml();" id="inputHTMLcode"><span>Html5</span>
-								<p class="copyCode" id="copyCodeHTML"  onclick="selectText('HTMLRENDER')" style="display:none;"></p>
+								<i class="fa fa-files-o" style="padding: 1px 5px;display:none;" id="copyCodeHTML" onclick="selectText('HTMLRENDER')" aria-hidden="true"></i>
 						</div>
 					</div>
 					<div class="ace_static_highlight ace_show_gutter">
-						<code id="CSSRENDER">
+						<code id="CSSRENDER" class="sortable-items">
 							<div class="ace_line ace_first"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p><span style="margin:0;padding-left:5px;">.myClass{</span></div>
 							<div class="ace_line"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p><span style="margin:0;padding-left:5px;">}</span></div>
 							<div class="ace_line"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p></div>
