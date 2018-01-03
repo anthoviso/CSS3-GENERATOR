@@ -300,7 +300,7 @@ $( document ).ready(function() {
   });
 
   $("#download").on('click', function() {
-    var tmpFile = ".class{" +
+    var tmpFile = ".defaultClass{" +
     $('#outputContainer').attr('style') +
     "}";
     tmpFile = tmpFile.replace(/\,/g,', ').replace(/\{/g,' {\n\t').replace(/\}/g,'}\n').replace(/\;/g,';\n\t');
