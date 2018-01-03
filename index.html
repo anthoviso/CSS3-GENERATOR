@@ -10,6 +10,11 @@
 		<link rel="stylesheet" href="lib/font-awesome/css/font-awesome.min.css">
 		<!-- Jquery -->
 		<script type="text/javascript" src="lib/jquery/jquery.js"></script>
+		<!-- Jquery-ui -->
+		<script type="text/javascript" src="lib/jquery-ui/jquery-ui.js"></script>
+		<link rel='stylesheet' type="text/css" href='lib/jquery-ui/jquery-ui.css' />
+		<!-- fileSaver -->
+		<script type="text/javascript" src='lib/fileSaver/FileSaver.js'></script>
 		<!-- Spectrum -->
 		<script type="text/javascript" src='lib/spectrum/spectrum.js'></script>
 		<link rel='stylesheet' type="text/css" href='lib/spectrum/spectrum.css' />
@@ -103,29 +108,45 @@
 			<div class="generateCode" >
 					<div class="generateCodeTab">
 						<div id="inputCSScode" onclick="activecodecss();"  class="activeCode"><span>CSS3</span>
-							<p class="copyCode" id="copyCodeCSS" onclick="selectText('CSSRENDER')"></p>
-						</div>
+							<i class="fa fa-files-o" style="padding: 1px 5px;" id="copyCodeCSS" onclick="selectText('CSSRENDER')" aria-hidden="true"></i>
+								<i class="fa fa-download" style="padding: 1px 5px;" id="download" aria-hidden="true"></i>
+					</div>
 						<div onclick="activecodehtml();" id="inputHTMLcode"><span>Html5</span>
-								<p class="copyCode" id="copyCodeHTML"  onclick="selectText('HTMLRENDER')" style="display:none;"></p>
-						</div>
+							<i class="fa fa-files-o" style="padding: 1px 5px;display:none;" id="copyCodeHTML" onclick="selectText('HTMLRENDER')" aria-hidden="true"></i>
+					</div>
 					</div>
 					<div class="ace_static_highlight ace_show_gutter">
 						<code id="CSSRENDER">
-							<div class="ace_line ace_first"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p><span style="margin:0;padding-left:5px;">.myClass{</span></div>
-							<div class="ace_line"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p><span style="margin:0;padding-left:5px;">}</span></div>
-							<div class="ace_line"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p></div>
+								<div class="ace_line ace_first"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p><span style="margin:0;padding-left:5px;">.defaultClass{</span>
+									<!-- <span style="background: #6797C0;border-radius: 5px;padding: 1px;margin: 0 10px;font-size: 14px;">:before</span> --></div>
+										<div class="defaultClass sortable-items">
+																		</div>
+								<div class="ace_line"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p><span style="margin:0;padding-left:5px;">}</span></div>
+								<div class="ace_line"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p></div>
 						</code>
 						<code id="HTMLRENDER" style="display:none;">
-						<div class="ace_line"><p class="ace_gutter ace_gutter-cell " unselectable="on"></p><span class="baliseHtml" style="margin:0;padding-left:0px;">&lt;html&gt;</span></div>
-						<div class="ace_line"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p><span class="baliseHtml" style="margin:0;padding-left:5px;">&lt;body&gt;</span></div>
-							<div class="ace_line"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p><span class="baliseHtml" style="margin:0;padding-left:10px;">&lt;div class="myClass" &gt;</span></div>
-							<div class="ace_line"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p><span class="baliseSpan" id="htmlTxtValue" style="margin:0;padding-left:5px;"></span></div>
-							<div class="ace_line"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p><span class="baliseHtml" style="margin:0;padding-left:10px;">&lt;/div&gt;</span></div>
-							<div class="ace_line"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p><span class="baliseHtml" style="margin:0;padding-left:5px;">&lt;/body&gt;</span></div>
-							<div class="ace_line"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p><span class="baliseHtml" style="margin:0;padding-left:0px;">&lt;/html&gt;</span></div>
+							<div class="ace_line"><p class="ace_gutter ace_gutter-cell " unselectable="on"></p><span class="baliseHtml" style="margin:0;padding-left:0px;">&lt;html&gt;</span></div>
+							<div class="ace_line"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p><span class="baliseHtml" style="margin:0;padding-left:10px;">&lt;head&gt;</span></div>
+							<div class="ace_line"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p><span class="baliseHtml" style="margin:0;padding-left:20px;">&lt;link rel="stylesheet" type="text/css" href="style.css" /&gt;</span></div>
+							<div class="ace_line"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p><span class="baliseHtml" style="margin:0;padding-left:10px;">&lt;/head&gt;</span></div>
+							<div class="ace_line"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p><span class="baliseHtml" style="margin:0;padding-left:10px;">&lt;body&gt;</span></div>
+							<div class="ace_line"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p><span class="baliseHtml" style="margin:0;padding-left:20px;">&lt;div class="myClass" &gt;</span></div>
+							<div class="ace_line"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p><span class="" id="htmlTxtValue" style="margin:0;padding-left:30px;"></span></div>
+							<div class="ace_line"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p><span class="baliseHtml" style="margin:0;padding-left:20px;">&lt;/div&gt;</span></div>
+							<div class="ace_line"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p><span class="baliseHtml" style="margin:0;padding-left:10px;">&lt;/body&gt;</span></div>
+	 						<div class="ace_line"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p><span class="baliseHtml" style="margin:0;padding-left:0px;">&lt;/html&gt;</span></div>
 						</code>
 					</div>
 			</div>
+		<div class="history">
+					<!-- historique + retour arrière/ avant -->
+						<!-- Css :before :after :hover :active :focus :visited ? :selected -->
+							<!-- Html add balise + a + div -->
+								<!-- css input value propositions -->
+									<!-- rename a class -->
+									<!-- moreproperties -->
+									<!-- unity values -->
+		</div>
 	</div>
 	<footer>
 	</footer>

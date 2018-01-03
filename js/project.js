@@ -117,21 +117,20 @@ function update (jsonObj) {
     $('#outputContainer').html(textValueForm.value);
 
     for (i=0;i < elProperty.length;i++){
-      /* Assign values into the div*/
-      /* A AMELIORER --> Récupérer seulement les propriétés non vide puis afficher celles-ci dans la class*/
       if($('#cssrender' + elProperty[i].property).hasClass('tmpRemove')){
         $('#outputContainer').css(elProperty[i].property , "");
       }else{
         $('#outputContainer').css(elProperty[i].property , $('#' + elProperty[i].property).val());
       }
-
-
-      /* show / hide if value is empty*/
+    // Afficher les valuers dans le code généré
       if($('#' + elProperty[i].property).val() == ""){
-        $('.divrender' + elProperty[i].property).css('display','none');
         $('#cssrender' + elProperty[i].property).removeClass('tmpRemove');
+        $('#divrender' + elProperty[i].property).remove();
+      }else{
+        if($('#divrender' + elProperty[i].property).length > 0){
         }else{
-        $('.divrender' + elProperty[i].property).css('display','block');
+          $('.defaultClass').append('<div class="ace_line " id="divrender' + elProperty[i].property + '" ><p class="ace_gutter ace_gutter-cell" unselectable="on"></p><span class="propertyRemove"><img src="img/more.png" style="width: 6px;padding: 1px;"/></span><span id="cssrender' + elProperty[i].property + '" class="cssrender' + elProperty[i].property + '"></span></div>');
+        }
         if($('#cssrender' + elProperty[i].property).hasClass('tmpRemove')){
           $('.cssrender' + elProperty[i].property).html("<span class='cssCommentStart'>" + cssCommentStart + "</span><span class='attributs'>" + elProperty[i].property + "</span> : " + $('#' + elProperty[i].property).val() + "; <span class='cssCommentEnd'>" + cssCommentEnd + "</span>");
         }else{
@@ -142,17 +141,14 @@ function update (jsonObj) {
 
     $(".backgroundProprieties .sp-preview-inner").css("background-color", $("#background").val());
     $(".colorProprieties .sp-preview-inner").css("color", $("#color").val());
-	/*
-		if ( color.value.length == 6){
-		dieze = "#";
-		}else{dieze = "";}
-	*/
 }
 
   var listProperties = [];
 function showProperties(jsonObj) {
+
+  // Gérer les valeurs de la partie recherche
+
   var elProperty = jsonObj['properties'];
-  // console.log(jsonObj);
   for (var i = 0; i < elProperty.length; i++) {
     var mypElem = '<p>' + elProperty[i].property + '</p>';
     var elinput1= elProperty[i].input1;
@@ -177,10 +173,6 @@ function showProperties(jsonObj) {
      '<a href="https://developer.mozilla.org/fr/docs/Web/CSS/' + elProperty[i].property +
       '" target="_blank"><span "="" class="button_help"><i class="fa fa-question-circle" aria-hidden="true"></i></span></a>' + myinput2Elem + '</div>';
     $('.cssElements > section').append(mydivElem);
-  }
-
-  for (i=0;i < elProperty.length;i++){
-   $('.ace_first').after('<div class="ace_line " id="divrender' + elProperty[i].property + '" ><p class="ace_gutter ace_gutter-cell" unselectable="on"></p><span class="propertyRemove">+</span><span id="cssrender' + elProperty[i].property + '" class="cssrender' + elProperty[i].property + '"></span></div>');
   }
 
   update(jsonObj);
@@ -235,6 +227,7 @@ $( document ).ready(function() {
        // console.log(i);
        var ClassFilter = $('section > div:nth-child(' + i + ')').attr('class');
        $("." + ClassFilter).show();
+       $('#inputFilter:after').css('content',$('section > div').length);
      }
    }
  }
@@ -304,6 +297,19 @@ $( document ).ready(function() {
   });
   $('.backGrey').on('click', function() {
     $('#output').css('background', 'rgb(79, 85, 99)');
+  });
+  $( ".sortable-items" ).sortable({
+   axis: "y",
+   handle: "p"
+  });
+
+  $("#download").on('click', function() {
+    var tmpFile = ".class{" +
+    $('#outputContainer').attr('style') +
+    "}";
+    tmpFile = tmpFile.replace(/\,/g,', ').replace(/\{/g,' {\n\t').replace(/\}/g,'}\n').replace(/\;/g,';\n\t');
+      var file = new Blob([tmpFile], {type: "text/plain;charset=utf-8"});
+    saveAs(file, 'style.css');
   });
 
     $("#CSSRENDER").on('click', '.ace_gutter', function() {
