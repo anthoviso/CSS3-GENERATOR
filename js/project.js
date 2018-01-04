@@ -221,11 +221,12 @@ $( document ).ready(function() {
   // JSON
   // localData.gggg={};
 
-  var requestURL = 'properties.json';
+  var requestURL = 'data/properties.json';
   var request = new XMLHttpRequest();
   request.open('GET', requestURL);
   request.responseType = 'json';
   request.send();
+
   request.onload = function() {
     var allProperties = request.response;
     showProperties(allProperties);
