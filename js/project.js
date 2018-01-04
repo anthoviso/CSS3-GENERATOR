@@ -16,6 +16,10 @@ var colorValue = $('#color').val();
 var dieze = '';
 var cssCommentStart = '/*';
 var cssCommentEnd = '*/';
+var localData =
+  {"defaultClass":{},
+  "foo":{}
+  };
 
 function toggleEmptyElem(){
   $('section > div > input[type=text]').map(function(index) {
@@ -62,8 +66,6 @@ function OnSelectionChange (select) {
     $('#font-family').val('');
 	}
 }
-
-/*switch principe*/
 
 function selectText(containerid) {
 	if (document.selection) {
@@ -126,19 +128,24 @@ function update (jsonObj) {
       if($('#' + elProperty[i].property).val() == ""){
         $('#cssrender' + elProperty[i].property).removeClass('tmpRemove');
         $('#divrender' + elProperty[i].property).remove();
+        delete  localData.defaultClass[elProperty[i].property];
       }else{
         if($('#divrender' + elProperty[i].property).length > 0){
         }else{
           $('.defaultClass').append('<div class="ace_line " id="divrender' + elProperty[i].property + '" ><p class="ace_gutter ace_gutter-cell" unselectable="on"></p><span class="propertyRemove"><img src="img/more.png" style="width: 6px;padding: 1px;"/></span><span id="cssrender' + elProperty[i].property + '" class="cssrender' + elProperty[i].property + '"></span></div>');
         }
         if($('#cssrender' + elProperty[i].property).hasClass('tmpRemove')){
+        delete  localData.defaultClass[elProperty[i].property];
           $('.cssrender' + elProperty[i].property).html("<span class='cssCommentStart'>" + cssCommentStart + "</span><span class='attributs'>" + elProperty[i].property + "</span> : " + $('#' + elProperty[i].property).val() + "; <span class='cssCommentEnd'>" + cssCommentEnd + "</span>");
         }else{
           $('.cssrender' + elProperty[i].property).html("<span class='attributs'>" + elProperty[i].property + "</span> : " + $('#' + elProperty[i].property).val() + ";");
+        localData.defaultClass[elProperty[i].property]= $('#' + elProperty[i].property).val();
         }
       }
     }
-
+// console.log(localData);
+// console.log(JSON.stringify(localData));
+// console.log(JSON.parse(localData));
     $(".backgroundProprieties .sp-preview-inner").css("background-color", $("#background").val());
     $(".colorProprieties .sp-preview-inner").css("color", $("#color").val());
 }
@@ -181,6 +188,8 @@ function showProperties(jsonObj) {
 
 $( document ).ready(function() {
   // JSON
+  // localData.gggg={};
+
   var requestURL = 'data/properties.json';
   var request = new XMLHttpRequest();
   request.open('GET', requestURL);
