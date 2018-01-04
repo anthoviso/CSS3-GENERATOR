@@ -1,15 +1,3 @@
-//Polyfill for requestAnimationFrame
-window.requestAnimationFrame = (function(){
-    return  window.requestAnimationFrame       ||
-    window.webkitRequestAnimationFrame ||
-    window.mozRequestAnimationFrame    ||
-    window.oRequestAnimationFrame      ||
-    window.msRequestAnimationFrame     ||
-    function(/* function */ callback, /* DOMElement */ element){
-		window.setTimeout(callback, 1000 / 60);
-	};
-})();
-
 var container2 = document.getElementById("output2");
 var container3 = document.getElementById("htmlTxtValue");
 var colorValue = $('#color').val();
@@ -20,6 +8,8 @@ var localData =
   {"defaultClass":{},
   "foo":{}
   };
+var listProperties = [];
+var unit = 'px';
 
 function toggleEmptyElem(){
   $('section > div > input[type=text]').map(function(index) {
@@ -66,7 +56,6 @@ function OnSelectionChange (select) {
     $('#font-family').val('');
 	}
 }
-
 function selectText(containerid) {
 	if (document.selection) {
 		var range = document.body.createTextRange();
@@ -78,7 +67,6 @@ function selectText(containerid) {
 		window.getSelection().addRange(range);
 	}
 }
-
 function reset () {
   for(y=0;y<listProperties.length;y++){
     $('#' + listProperties[y] + '').val("");
@@ -91,7 +79,6 @@ function reset () {
   $(".backgroundProprieties .sp-preview-inner").css("background-color", $("#background").val());
   $(".colorProprieties .sp-preview-inner").css("color", $("#color").val());
 }
-
 function activecodehtml () {
   $('#inputHTMLcode').addClass("activeCode");
   $('#inputCSScode').removeClass("activeCode");
@@ -100,7 +87,6 @@ function activecodehtml () {
     $('#copyCodeCSS').hide();
     $('#copyCodeHTML').show();
 }
-
 function activecodecss () {
   $('#inputHTMLcode').removeClass("activeCode");
     $('#inputCSScode').addClass("activeCode");
@@ -109,7 +95,55 @@ function activecodecss () {
   $('#copyCodeCSS').show();
   $('#copyCodeHTML').hide();
 }
+function spectrumInit(){
+  $("#triggerSetbackground").spectrum({
+      preferredFormat: "rgb",
+      showInitial: true,
+      showInput: true,
+      showButtons: false,
+      move: function(color) {
+          $('#background').val(color.toHexString());
+          $('#outputContainer').css('background',$('#background').val());
+      },
+      palette: [["red", "rgba(0, 255, 0, .5)", "rgb(0, 0, 255)"]]
+  });
+  $("#triggerSetcolor").spectrum({
+      preferredFormat: "rgb",
+      showInitial: true,
+      showInput: true,
+      showButtons: false,
+      move: function(color) {
+          $('#color').val(color.toHexString());
+          $('#outputContainer').css('color',$('#color').val());
+      },
+      palette: [["red", "rgba(0, 255, 0, .5)", "rgb(0, 0, 255)"]]
+  });
+}
+function searchPropterties(){
+  // console.log($('#inputFilter').val());
+  $('section > div').removeClass('selectedElem');
+  $('section > div').hide();
+  for(i=1;i<=$('section > div').length;i++){
+    if($('section > div:nth-child(' + i + ')').attr('class').indexOf($('#inputFilter').val()) > -1){
+      // console.log(i);
+      var ClassFilter = $('section > div:nth-child(' + i + ')').attr('class');
+      $("." + ClassFilter).show();
+      $('#inputFilter:after').css('content',$('section > div').length);
+    }
+  }
+}
 
+//Polyfill for requestAnimationFrame
+window.requestAnimationFrame = (function(){
+    return  window.requestAnimationFrame       ||
+    window.webkitRequestAnimationFrame ||
+    window.mozRequestAnimationFrame    ||
+    window.oRequestAnimationFrame      ||
+    window.msRequestAnimationFrame     ||
+    function(/* function */ callback, /* DOMElement */ element){
+		window.setTimeout(callback, 1000 / 60);
+	};
+})();
 //Set up a requestAnimationFrame loop
 function update (jsonObj) {
     // requestAnimationFrame(update);
@@ -143,18 +177,14 @@ function update (jsonObj) {
         }
       }
     }
-// console.log(localData);
-// console.log(JSON.stringify(localData));
+console.log(localData);
+console.log(JSON.stringify(localData));
 // console.log(JSON.parse(localData));
     $(".backgroundProprieties .sp-preview-inner").css("background-color", $("#background").val());
     $(".colorProprieties .sp-preview-inner").css("color", $("#color").val());
 }
-
-  var listProperties = [];
 function showProperties(jsonObj) {
-
   // Gérer les valeurs de la partie recherche
-
   var elProperty = jsonObj['properties'];
   for (var i = 0; i < elProperty.length; i++) {
     var mypElem = '<p>' + elProperty[i].property + '</p>';
@@ -186,11 +216,12 @@ function showProperties(jsonObj) {
   });
 }
 
+
 $( document ).ready(function() {
   // JSON
   // localData.gggg={};
 
-  var requestURL = 'data/properties.json';
+  var requestURL = 'properties.json';
   var request = new XMLHttpRequest();
   request.open('GET', requestURL);
   request.responseType = 'json';
@@ -198,44 +229,9 @@ $( document ).ready(function() {
   request.onload = function() {
     var allProperties = request.response;
     showProperties(allProperties);
-    $("#triggerSetbackground").spectrum({
-        preferredFormat: "rgb",
-        showInitial: true,
-        showInput: true,
-        showButtons: false,
-        move: function(color) {
-            $('#background').val(color.toHexString());
-            $('#outputContainer').css('background',$('#background').val());
-        },
-        palette: [["red", "rgba(0, 255, 0, .5)", "rgb(0, 0, 255)"]]
-    });
-    $("#triggerSetcolor").spectrum({
-        preferredFormat: "rgb",
-        showInitial: true,
-        showInput: true,
-        showButtons: false,
-        move: function(color) {
-            $('#color').val(color.toHexString());
-            $('#outputContainer').css('color',$('#color').val());
-        },
-        palette: [["red", "rgba(0, 255, 0, .5)", "rgb(0, 0, 255)"]]
-    });
+    spectrumInit();
   }
 
- var unit = 'px';
- function searchPropterties(){
-   // console.log($('#inputFilter').val());
-   $('section > div').removeClass('selectedElem');
-   $('section > div').hide();
-   for(i=1;i<=$('section > div').length;i++){
-     if($('section > div:nth-child(' + i + ')').attr('class').indexOf($('#inputFilter').val()) > -1){
-       // console.log(i);
-       var ClassFilter = $('section > div:nth-child(' + i + ')').attr('class');
-       $("." + ClassFilter).show();
-       $('#inputFilter:after').css('content',$('section > div').length);
-     }
-   }
- }
 
 
   $('#inputFilter').on('click input', function(){
