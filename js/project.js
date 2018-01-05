@@ -3,22 +3,38 @@ var container3 = document.getElementById("htmlTxtValue");
 var colorValue = $('#color').val();
 var dieze = '';
 var cssCommentStart = '/*';
+var selectedClass = "defaultClass";
 var cssCommentEnd = '*/';
 var localData =
-  {"defaultClass":{},
-  "foo":{}
+  {"defaultClass":{
+      "background" : "#2A5476",
+      "border" : "1px solid black",
+      "border-radius" : "20px",
+      "box-shadow" : "2px 2px 5px black",
+      "color" : "#DADDF0",
+      "font-size" : "16px",
+      "height" : "150px",
+      "margin" : "100px auto",
+      "outline" : "5px dotted grey",
+      "padding" : "10px",
+      "text-align" : "center",
+      "text-shadow": "1px 1px 1px black",
+      "width" : "150px"
+  },
+  "aaaa":{
+    "border" : "5px solid green"
+  }
   };
-var listProperties = [];
 var unit = 'px';
 
 function toggleEmptyElem(){
   $('section > div > input[type=text]').map(function(index) {
     if($( this ).val() == ""){
      var replacementEmpty = $( this ).attr('id');
-      $('.cssrender' + replacementEmpty + '').parent().hide();
+      $('.' + selectedClass + ' .cssrender' + replacementEmpty + '').parent().hide();
     }else if($( this ).val() != ""){
      var replacement = $( this ).attr('id');
-    $('.cssrender' + replacement + '').parent().show();
+    $('.' + selectedClass + ' .cssrender' + replacement + '').parent().show();
 
     }
   });
@@ -67,18 +83,27 @@ function selectText(containerid) {
 		window.getSelection().addRange(range);
 	}
 }
-function reset () {
-  for(y=0;y<listProperties.length;y++){
-    $('#' + listProperties[y] + '').val("");
+function resetAll () {
+  delete localData.defaultClass;
+    delete localData.aaaa;
+    localData.defaultClass={};
+    localData.aaaa={};
+  localData.defaultClass.background="white";
+  localData.defaultClass.height="100px";
+  localData.defaultClass.width="100px";
+  $('#output_defaultClass').remove();
+  $("#output").append('<div id="output_defaultClass"></div>');
+  $('section input').val("");
+  for (y=0;y <  Object.keys(localData.defaultClass).length;y++){
+    $('#' + Object.keys(localData.defaultClass)[y]).val(localData.defaultClass[Object.keys(localData.defaultClass)[y]]);
   }
-	$('#background').val("white");
-	$('#width').val("100px");
-	$('#height').val("100px");
+
 	$(".v-buttonGroupControl").prop("checked", false);
 	textValueForm.value="";
   $(".backgroundProprieties .sp-preview-inner").css("background-color", $("#background").val());
   $(".colorProprieties .sp-preview-inner").css("color", $("#color").val());
 }
+function resetClass () {}
 function activecodehtml () {
   $('#inputHTMLcode').addClass("activeCode");
   $('#inputCSScode').removeClass("activeCode");
@@ -103,7 +128,7 @@ function spectrumInit(){
       showButtons: false,
       move: function(color) {
           $('#background').val(color.toHexString());
-          $('#outputContainer').css('background',$('#background').val());
+          $('#output_' + selectedClass).css('background',$('#background').val());
       },
       palette: [["red", "rgba(0, 255, 0, .5)", "rgb(0, 0, 255)"]]
   });
@@ -114,7 +139,7 @@ function spectrumInit(){
       showButtons: false,
       move: function(color) {
           $('#color').val(color.toHexString());
-          $('#outputContainer').css('color',$('#color').val());
+          $('#output_' + selectedClass).css('color',$('#color').val());
       },
       palette: [["red", "rgba(0, 255, 0, .5)", "rgb(0, 0, 255)"]]
   });
@@ -132,6 +157,24 @@ function searchPropterties(){
     }
   }
 }
+function switchToInput() {
+    var $input = $("<input>", {
+        val: $(this).text(),
+        type: "text"
+    });
+    $input.addClass("loadNum");
+    $(this).replaceWith($input);
+    $input.on("blur", switchToSpan);
+    $input.select();
+};
+function switchToSpan() {
+    var $span = $("<span>", {
+        text: $(this).val()
+    });
+    $span.addClass("loadNum");
+    $(this).replaceWith($span);
+    $span.on("click", switchToInput);
+}
 
 //Polyfill for requestAnimationFrame
 window.requestAnimationFrame = (function(){
@@ -146,38 +189,62 @@ window.requestAnimationFrame = (function(){
 })();
 //Set up a requestAnimationFrame loop
 function update (jsonObj) {
+  if($('.loadNum').text() == ""){
+    // console.log($(this).attr('class'));
+
+    $(this).parent().parent().remove();
+  }
+
     // requestAnimationFrame(update);
     /* generate code*/
     var elProperty = jsonObj['properties'];
     container3.innerHTML = textValueForm.value;
-    $('#outputContainer').html(textValueForm.value);
+    $('#output_defaultClass').html(textValueForm.value);
 
-    for (i=0;i < elProperty.length;i++){
-      if($('#cssrender' + elProperty[i].property).hasClass('tmpRemove')){
-        $('#outputContainer').css(elProperty[i].property , "");
+    for (i=0;i <  Object.keys(localData[selectedClass]).length;i++){
+      if($('.' + selectedClass + ' #cssrender' +  Object.keys(localData[selectedClass])[i]).hasClass('tmpRemove')){
+        $('#output_' + selectedClass).css(Object.keys(localData[selectedClass])[i] , "");
+        console.log('sdfds');
       }else{
-        $('#outputContainer').css(elProperty[i].property , $('#' + elProperty[i].property).val());
+        $('#output_' + selectedClass).css(Object.keys(localData[selectedClass])[i] , localData[selectedClass][Object.keys(localData[selectedClass])[i]]);
       }
+      if($('#' + Object.keys(localData[selectedClass])[i]).val() == ""){
+        $('.' + selectedClass + ' #divrender' + Object.keys(localData[selectedClass])[i]).remove();
+          $('#output_' + selectedClass).css(Object.keys(localData[selectedClass])[i] , "");
+        delete  localData[selectedClass][Object.keys(localData[selectedClass])[i]];
+      }
+    }
+
+    for (i=0;i <  elProperty.length;i++){
     // Afficher les valuers dans le code généré
       if($('#' + elProperty[i].property).val() == ""){
-        $('#cssrender' + elProperty[i].property).removeClass('tmpRemove');
-        $('#divrender' + elProperty[i].property).remove();
-        delete  localData.defaultClass[elProperty[i].property];
       }else{
-        if($('#divrender' + elProperty[i].property).length > 0){
+
+        if($('.' + selectedClass + ' #divrender' + elProperty[i].property).length > 0){
         }else{
-          $('.defaultClass').append('<div class="ace_line " id="divrender' + elProperty[i].property + '" ><p class="ace_gutter ace_gutter-cell" unselectable="on"></p><span class="propertyRemove"><img src="img/more.png" style="width: 6px;padding: 1px;"/></span><span id="cssrender' + elProperty[i].property + '" class="cssrender' + elProperty[i].property + '"></span></div>');
+
+          $('.' + selectedClass).append('<div class="ace_line " id="divrender' + elProperty[i].property
+          + '" ><p class="ace_gutter ace_gutter-cell" unselectable="on"></p><span class="propertyRemove"><img src="img/more.png" style="width: 6px;padding: 1px;"/></span><span id="cssrender' +
+          elProperty[i].property + '" class="cssrender' + elProperty[i].property + '"></span></div>');
+
         }
-        if($('#cssrender' + elProperty[i].property).hasClass('tmpRemove')){
-        delete  localData.defaultClass[elProperty[i].property];
-          $('.cssrender' + elProperty[i].property).html("<span class='cssCommentStart'>" + cssCommentStart + "</span><span class='attributs'>" + elProperty[i].property + "</span> : " + $('#' + elProperty[i].property).val() + "; <span class='cssCommentEnd'>" + cssCommentEnd + "</span>");
+
+        if($('.' + selectedClass + ' #cssrender' + elProperty[i].property).hasClass('tmpRemove')){
+
+          // delete  localData[selectedClass][elProperty[i].property];
+            localData[selectedClass][elProperty[i].property]= $('#' + elProperty[i].property).val(); // evolution proposition suppr les commentaires
+          $('.' + selectedClass + ' .cssrender' + elProperty[i].property).html("<span class='cssCommentStart'>" + cssCommentStart
+          + "</span><span class='attributs'>" + elProperty[i].property + "</span> : " + $('#' + elProperty[i].property).val() + "; <span class='cssCommentEnd'>" + cssCommentEnd + "</span>");
+
         }else{
-          $('.cssrender' + elProperty[i].property).html("<span class='attributs'>" + elProperty[i].property + "</span> : " + $('#' + elProperty[i].property).val() + ";");
-        localData.defaultClass[elProperty[i].property]= $('#' + elProperty[i].property).val();
+
+          $('.' + selectedClass + ' .cssrender' + elProperty[i].property).html("<span class='attributs'>" + elProperty[i].property + "</span> : " + $('#' + elProperty[i].property).val() + ";");
+          localData[selectedClass][elProperty[i].property]= $('#' + elProperty[i].property).val();
+
         }
       }
     }
-console.log(localData);
+// console.log(localData);
 console.log(JSON.stringify(localData));
 // console.log(JSON.parse(localData));
     $(".backgroundProprieties .sp-preview-inner").css("background-color", $("#background").val());
@@ -188,7 +255,6 @@ function showProperties(jsonObj) {
   var elProperty = jsonObj['properties'];
   for (var i = 0; i < elProperty.length; i++) {
     var mypElem = '<p>' + elProperty[i].property + '</p>';
-    listProperties.push(elProperty[i].property);
 
     var myinput1Elem = '<input type="text" id="' + elProperty[i].property + '" value="' + elProperty[i].input + '"/>';
 
@@ -210,6 +276,7 @@ function showProperties(jsonObj) {
 
   update(jsonObj);
   toggleEmptyElem();
+
   $(document).on('load click keyup input', function(){
     update(jsonObj);
     toggleEmptyElem();
@@ -234,7 +301,17 @@ $( document ).ready(function() {
   }
 
 
+$('.classDiv').on('click', function(){
+  selectedClass = $(this).attr('id');
+  $('.classDiv').removeClass('selectedClass');
+  $('#' + $(this).attr('id')).addClass('selectedClass');
+  $('.spanSelected').html(selectedClass);
+  $('section input').val('');
+for (i=0;i <  Object.keys(localData[selectedClass]).length;i++){
+  $('section #' +  Object.keys(localData[selectedClass])[i]).val(localData[selectedClass][Object.keys(localData[selectedClass])[i]]);
+}
 
+});
   $('#inputFilter').on('click input', function(){
     searchPropterties();
   });
@@ -248,6 +325,8 @@ $( document ).ready(function() {
     }
   });
   $(function() {
+    $(".loadNum").on("click", switchToInput);
+
     $('.button_empty').on('click', function(){
       $('#inputFilter').val('');
       $('section > div').show();
@@ -307,7 +386,7 @@ $( document ).ready(function() {
 
   $("#download").on('click', function() {
     var tmpFile = ".defaultClass{" +
-    $('#outputContainer').attr('style') +
+    $('#output_' + selectedClass).attr('style') +
     "}";
     tmpFile = tmpFile.replace(/\,/g,', ').replace(/\{/g,' {\n\t').replace(/\}/g,'}\n').replace(/\;/g,';\n\t');
       var file = new Blob([tmpFile], {type: "text/plain;charset=utf-8"});
@@ -317,7 +396,7 @@ $( document ).ready(function() {
     $("#CSSRENDER").on('click', '.ace_gutter', function() {
         var tmpRemoveParent =   $(this).parent().attr('id');
         tmpRemoveParent = tmpRemoveParent.replace('divrender','');
-        $('#cssrender' + tmpRemoveParent).toggleClass('tmpRemove');
+        $('.' + selectedClass + ' #cssrender' + tmpRemoveParent).toggleClass('tmpRemove');
 
 
     });

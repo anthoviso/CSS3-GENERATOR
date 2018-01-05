@@ -83,7 +83,7 @@
 				</select>
 		</div>
 	<div id="output" class="output" style="position:relative;">
-		 <div id='outputContainer' ></div>
+		<div id='output_aaaa' > <div id='output_defaultClass' ></div></div>
 	</div>
 	<div class="board" >
 		<div class="cssElements">
@@ -98,7 +98,7 @@
 				<button onclick="button_sortInvByClass();" class="btn btnSort">
 					<i class="fa fa-sort-alpha-desc" aria-hidden="true"></i>
 				</button>
-				<button onclick="reset();" class="btn btnReset">
+				<button onclick="resetAll();" class="btn btnReset">
 					CSS RESET
 				</button>
 		</div>
@@ -109,7 +109,7 @@
 					<div class="generateCodeTab">
 						<div id="inputCSScode" onclick="activecodecss();"  class="activeCode"><span>CSS3</span>
 							<i class="fa fa-files-o" style="padding: 1px 5px;" id="copyCodeCSS" onclick="selectText('CSSRENDER')" aria-hidden="true"></i>
-								<i class="fa fa-download" style="padding: 1px 5px;" id="download" aria-hidden="true"></i>
+								<i class="fa fa-download" style="padding: 1px 5px;" id="download" aria-hidden="true"></i><span class="spanSelected"></span>
 					</div>
 						<div onclick="activecodehtml();" id="inputHTMLcode"><span>Html5</span>
 							<i class="fa fa-files-o" style="padding: 1px 5px;display:none;" id="copyCodeHTML" onclick="selectText('HTMLRENDER')" aria-hidden="true"></i>
@@ -117,12 +117,21 @@
 					</div>
 					<div class="ace_static_highlight ace_show_gutter">
 						<code id="CSSRENDER">
-								<div class="ace_line ace_first"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p><span style="margin:0;padding-left:5px;">.defaultClass{</span>
-									<!-- <span style="background: #6797C0;border-radius: 5px;padding: 1px;margin: 0 10px;font-size: 14px;">:before</span> --></div>
+																<!-- <span style="background: #6797C0;border-radius: 5px;padding: 1px;margin: 0 10px;font-size: 14px;">:before</span> -->
+							<div  id="defaultClass" class="classDiv">
+								<div class="ace_line ace_first"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p><span style="margin:0;padding-left:5px;" class="loadNum">.defaultClass</span><span>{</span></div>
 										<div class="defaultClass sortable-items">
 																		</div>
 								<div class="ace_line"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p><span style="margin:0;padding-left:5px;">}</span></div>
+							</div>
 								<div class="ace_line"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p></div>
+								<div  id="aaaa" class="classDiv">
+									<div class="ace_line ace_first"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p><span style="margin:0;padding-left:5px;" class="loadNum">.aaaa</span><span>{</span></div>
+											<div class="aaaa sortable-items">
+																			</div>
+									<div class="ace_line"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p><span style="margin:0;padding-left:5px;">}</span></div>
+								</div>
+									<div class="ace_line"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p></div>
 						</code>
 						<code id="HTMLRENDER" style="display:none;">
 							<div class="ace_line"><p class="ace_gutter ace_gutter-cell " unselectable="on"></p><span class="baliseHtml" style="margin:0;padding-left:0px;">&lt;html&gt;</span></div>
@@ -130,8 +139,10 @@
 							<div class="ace_line"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p><span class="baliseHtml" style="margin:0;padding-left:20px;">&lt;link rel="stylesheet" type="text/css" href="style.css" /&gt;</span></div>
 							<div class="ace_line"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p><span class="baliseHtml" style="margin:0;padding-left:10px;">&lt;/head&gt;</span></div>
 							<div class="ace_line"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p><span class="baliseHtml" style="margin:0;padding-left:10px;">&lt;body&gt;</span></div>
+							<div class="ace_line"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p><span class="baliseHtml" style="margin:0;padding-left:20px;">&lt;div class="aaaa" &gt;</span></div>
 							<div class="ace_line"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p><span class="baliseHtml" style="margin:0;padding-left:20px;">&lt;div class="defaultClass" &gt;</span></div>
 							<div class="ace_line"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p><span class="" id="htmlTxtValue" style="margin:0;padding-left:30px;"></span></div>
+							<div class="ace_line"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p><span class="baliseHtml" style="margin:0;padding-left:20px;">&lt;/div&gt;</span></div>
 							<div class="ace_line"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p><span class="baliseHtml" style="margin:0;padding-left:20px;">&lt;/div&gt;</span></div>
 							<div class="ace_line"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p><span class="baliseHtml" style="margin:0;padding-left:10px;">&lt;/body&gt;</span></div>
 	 						<div class="ace_line"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p><span class="baliseHtml" style="margin:0;padding-left:0px;">&lt;/html&gt;</span></div>

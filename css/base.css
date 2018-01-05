@@ -181,6 +181,15 @@ section input[type=text]{
 	width: 208px;
 	border-radius: 4px;
 }
+#CSSRENDER input.loadNum {
+    background: grey;
+    border: none;
+    padding: 0;
+    border-radius: 4px;
+}
+.selectedClass .ace_gutter {
+    background: #42455d;
+}
 section input[type=text]:focus, #inputFilter:focus {
 	background: rgb(32,38,52);
 	border: 1px solid #a4dcff;
@@ -193,7 +202,9 @@ section input[type=text]::-moz-selection, #inputFilter::-moz-selection{
   background: rgb(71, 79, 105);
 	color:white;
 }
-
+.loadNum{
+	padding: 0px 5px;
+}
 .cssElements{
 	width: 394px;
 	min-width: 394px;
