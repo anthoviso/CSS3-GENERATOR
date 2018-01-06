@@ -2,6 +2,7 @@ var container2 = document.getElementById("output2");
 var container3 = document.getElementById("htmlTxtValue");
 var colorValue = $('#color').val();
 var dieze = '';
+var initJsonClass = 0;
 var cssCommentStart = '/*';
 var selectedClass = "defaultClass";
 var cssCommentEnd = '*/';
@@ -199,6 +200,12 @@ window.requestAnimationFrame = (function(){
 function update (jsonObj) {
   // requestAnimationFrame(update);
   /* generate code*/
+  if(initJsonClass == Object.keys(localData).length){}else{
+  $('section input').val('');
+  for (i=0;i <  Object.keys(localData[selectedClass]).length;i++){
+    $('section #' +  Object.keys(localData[selectedClass])[i]).val(localData[selectedClass][Object.keys(localData[selectedClass])[i]]);
+  }}
+  console.log('slectedClass : ' + selectedClass );
   var elProperty = jsonObj['properties'];
   container3.innerHTML = textValueForm.value;
   $('#output_defaultClass').html(textValueForm.value);
@@ -218,16 +225,6 @@ function update (jsonObj) {
   for (i=0;i <  Object.keys(localData[selectedClass]).length;i++){
     var elProp = Object.keys(localData[selectedClass])[i];
     var elVal = localData[selectedClass][Object.keys(localData[selectedClass])[i]];
-    // SI TMP REMOVE
-    if($('.' + selectedClass + ' #cssrender' +  elProp).hasClass('tmpRemove')){
-      $('#output_' + selectedClass).css(elProp , "");
-      $('.' + selectedClass + ' .cssrender' + elProp).html("<span class='cssCommentStart'>" + cssCommentStart
-        + "</span><span class='attributs'>" + elProp + "</span> : " + $('#' + elProp).val() + "; <span class='cssCommentEnd'>" + cssCommentEnd + "</span>");
-    }else{
-      // SI NON TMP REMOVE
-      $('#output_' + selectedClass).css(elProp , elVal);
-      $('.' + selectedClass + ' .cssrender' + elProp).html("<span class='attributs'>" + elProp + "</span> : " + $('#' + elProp).val() + ";");
-    }
       // SI valeur input ""
     if($('#' + elProp).val() == ""){
       $('.' + selectedClass + ' #divrender' + elProp).remove();
@@ -240,6 +237,16 @@ function update (jsonObj) {
         + '" ><p class="ace_gutter ace_gutter-cell" unselectable="on"></p><span class="propertyRemove"><img src="img/more.png" style="width: 6px;padding: 1px;"/></span><span id="cssrender' +
         elProp + '" class="cssrender' + elProp + '"></span></div>');
       }
+    }
+    // SI TMP REMOVE
+    if($('.' + selectedClass + ' #cssrender' +  elProp).hasClass('tmpRemove')){
+      $('#output_' + selectedClass).css(elProp , "");
+      $('.' + selectedClass + ' .cssrender' + elProp).html("<span class='cssCommentStart'>" + cssCommentStart
+        + "</span><span class='attributs'>" + elProp + "</span> : " + $('#' + elProp).val() + "; <span class='cssCommentEnd'>" + cssCommentEnd + "</span>");
+    }else{
+      // SI NON TMP REMOVE
+      $('#output_' + selectedClass).css(elProp , elVal);
+      $('.' + selectedClass + ' .cssrender' + elProp).html("<span class='attributs'>" + elProp + "</span> : " + $('#' + elProp).val() + ";");
     }
   }
   // console.log(localData);
@@ -270,14 +277,22 @@ function showProperties(jsonObj) {
     '" target="_blank"><span "="" class="button_help"><i class="fa fa-question-circle" aria-hidden="true"></i></span></a>' + myinput2Elem + '</div>';
     $('.cssElements > section').append(mydivElem);
   }
-
-  update(jsonObj);
-  toggleEmptyElem();
+if(initJsonClass == Object.keys(localData).length){}else{
+  for(i=0;i<=Object.keys(localData).length - 1;i++){
+    selectedClass = Object.keys(localData)[i];
+    // console.log(selectedClass + " : update des classes en cours");
+    update(jsonObj);
+    toggleEmptyElem();
+    initJsonClass = initJsonClass + 1;
+    console.log(initJsonClass);
+  }
+}
 
   $(document).on('load click keyup input', function(){
     update(jsonObj);
     toggleEmptyElem();
   });
+
 }
 
 
@@ -296,8 +311,6 @@ $( document ).ready(function() {
     showProperties(allProperties);
     spectrumInit();
   }
-
-
   $('.classDiv').on('click', function(){
     selectedClass = $(this).attr('id');
     $('.classDiv').removeClass('selectedClass');
