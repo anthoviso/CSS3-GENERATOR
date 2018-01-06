@@ -23,7 +23,10 @@ var localData =
   "width" : "150px"
 },
 "aaaa":{
-  "border" : "5px solid green"
+  "border" : "5px solid green",
+  "text-shadow": "1px 1px 1px black",
+  "outline" : "5px dotted grey",
+  "width" : "150px"
 }
 };
 var unit = 'px';
@@ -85,30 +88,38 @@ function selectText(containerid) {
   }
 }
 function resetAll () {
-  delete localData.defaultClass;
-  delete localData.aaaa;
-  localData.defaultClass={};
-  localData.aaaa={};
-  localData.defaultClass.background="white";
-  localData.defaultClass.height="100px";
-  localData.defaultClass.width="100px";
-  $('#output_defaultClass').remove();
-  $("#output").append('<div id="output_defaultClass"></div>');
-  $('section input').val("");
-  for (y=0;y <  Object.keys(localData.defaultClass).length;y++){
-    $('#' + Object.keys(localData.defaultClass)[y]).val(localData.defaultClass[Object.keys(localData.defaultClass)[y]]);
-  }
+
+// var tmpLength =  Object.keys(localData).length;
+//   for (i=1;i < tmpLength +1;i++){
+//     delete localData[$('#CSSRENDER > div:nth-child(' + i + ')').attr('id')];
+//   }
+// BUGs impossible de continuer ecire dans input
+    $('.sortable-items').empty();
+    $('#output').empty();
+      $('section input').val("");
+    $("#output").append('<div id="output_defaultClass"></div>');
+    localData.defaultClass = {};
+    console.log(localData);
+    localData = {"defaultClass":{
+      "background" : "white",
+      "height" : "100px",
+      "width" : "100px"}};
+      selectedClass = 'defaultClass';
+
+      $('.spanSelected').html('defaultClass');
+
 
   $(".v-buttonGroupControl").prop("checked", false);
   textValueForm.value="";
   $(".backgroundProprieties .sp-preview-inner").css("background-color", $("#background").val());
   $(".colorProprieties .sp-preview-inner").css("color", $("#color").val());
+
 }
 function resetClass () {
   delete localData[selectedClass];
   localData[selectedClass]={};
   $('#output_'+ selectedClass).remove();
-  $("#output").append('<div id="output_defaultClass"></div>');
+  $("#output").append('<div id="output_' + selectedClass + '"></div>');
   $('section input').val("");
 }
 function createClass () {
