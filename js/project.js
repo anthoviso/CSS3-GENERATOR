@@ -191,6 +191,15 @@ function switchToSpan() {
   var $span = $("<span>", {
     text: $(this).val()
   });
+
+  $('.' + selectedClass).addClass($span.text());
+  $('.' + selectedClass).removeClass(selectedClass);
+  $('#' + selectedClass).attr("id", $span.text());
+localData[$span.text()] = localData[selectedClass];
+var tmpSelected = selectedClass;
+selectedClass =   $("#" + $span.text()).attr('id');
+delete localData[tmpSelected];
+
   $span.addClass("loadNum");
   $(this).replaceWith($span);
   $span.on("click", switchToInput);
