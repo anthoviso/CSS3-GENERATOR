@@ -169,13 +169,16 @@ function searchPropterties(){
   // console.log($('#inputFilter').val());
   $('section > div').removeClass('selectedElem');
   $('section > div').hide();
+  var numElem = 0;
   for(i=1;i<=$('section > div').length;i++){
     if($('section > div:nth-child(' + i + ')').attr('class').indexOf($('#inputFilter').val()) > -1){
       // console.log(i);
       var ClassFilter = $('section > div:nth-child(' + i + ')').attr('class');
+      numElem = numElem + 1;
       $("." + ClassFilter).show();
-      $('#inputFilter:after').css('content',$('section > div').length);
     }
+
+    $('.cssSearch p').text(numElem);
   }
 }
 function switchToInput() {
@@ -192,7 +195,7 @@ function switchToInput() {
 };
 function switchToSpan() {
   var $span = $("<span>", {
-    text: $(this).val().replace(/[^A-z\d\_\:\-]/g,'')
+    text: $(this).val().replace(/^\-/,'').replace(/[^A-z\d\_\:\-]/g,'')
   });
 
   if(oldSpan != $span.text()){
@@ -200,7 +203,7 @@ function switchToSpan() {
     $('.' + oldSpan).removeClass(oldSpan);
     $('#' + oldSpan).attr("id", $span.text());
     $('#output_' + oldSpan).attr("id", "output_" + $span.text());
-    var tmpSpan = $span.text().replace(/[^A-z\d\_\:\-]/g,'');
+    var tmpSpan = $span.text().replace(/^\-/,'').replace(/[^A-z\d\_\:\-]/g,'');
     localData['-' + tmpSpan] = localData['-' + oldSpan];
     if(tmpSpan == ""){
       tmpSpan = oldSpan;
@@ -447,10 +450,8 @@ $( document ).ready(function() {
     });
 
     $("#download").on('click', function() {
-      var tmpFile = ".defaultClass{" +
-      $('#output_' + selectedClass).attr('style') +
-      "}";
-      tmpFile = tmpFile.replace(/\,/g,', ').replace(/\{/g,' {\n\t').replace(/\}/g,'}\n').replace(/\;/g,';\n\t');
+      var tmpFile = $('body style').text();
+      tmpFile = tmpFile.replace(/\,/g,', ').replace(/\{/g,' {\n\t').replace(/\}/g,'}\n').replace(/\;/g,';\n\t').replace(/\.\-+/g,'.');
       var file = new Blob([tmpFile], {type: "text/plain;charset=utf-8"});
       saveAs(file, 'style.css');
     });
