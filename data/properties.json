@@ -164,6 +164,11 @@
       "input" : ""
     },
     {
+      "property" : "transition",
+      "option" : "false",
+      "input" : ""
+    },
+    {
       "property" : "visibility",
       "option" : "false",
       "input" : ""

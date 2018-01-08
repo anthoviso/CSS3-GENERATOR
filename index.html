@@ -72,7 +72,7 @@
 				<label for="TextAlignJustify" class="v-buttonGroupLabel">
 					<img src="img/TextAlignJustify.png" alt=""/>
 				</label>
-				<input   class="v-buttonGroupControl" id="textValueForm" name="textValueForm" value="This is my value !" type="text" />
+				<input   class="v-buttonGroupControl" id="textValueForm" name="textValueForm" value="CSS3 Generator" type="text" />
 				<select id="ListeElement" onchange="OnSelectionChange (this)" class="selectForm">
 					<option style="font-weight:bold;" value="" id="" selected>Police</option>
 					<option value="Arial" id="arialFont" >Arial</option>
@@ -84,7 +84,9 @@
 				</select>
 		</div>
 	<div id="output" class="output" style="position:relative;">
-		<div id='output_defaultClass' ></div><div id='output_aaaa' > </div>
+		<div id='output_defaultClass' class='-defaultClass' ></div>
+			<div id='output_defaultClass:hover' class='-defaultClass:hover' ></div>
+		<!-- <div id='output_aaaa' class='-aaaa' > </div> -->
 	</div>
 	<div class="board" >
 		<div class="cssElements">
@@ -137,13 +139,20 @@
 								<div class="ace_line"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p><span style="margin:0;padding-left:5px;">}</span></div>
 									<div class="ace_line"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p></div>
 							</div>
-								<div  id="aaaa" class="classDiv">
+							<div  id="defaultClass:hover" class="classDiv">
+								<div class="ace_line ace_first"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p><span style="margin:0;padding-left:5px;" class="loadNum">defaultClass:hover</span><span>{</span></div>
+										<div class="defaultClass:hover sortable-items">
+																		</div>
+								<div class="ace_line"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p><span style="margin:0;padding-left:5px;">}</span></div>
+									<div class="ace_line"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p></div>
+							</div>
+								<!-- <div  id="aaaa" class="classDiv">
 									<div class="ace_line ace_first"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p><span style="margin:0;padding-left:5px;" class="loadNum">aaaa</span><span>{</span></div>
 											<div class="aaaa sortable-items">
 																			</div>
 									<div class="ace_line"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p><span style="margin:0;padding-left:5px;">}</span></div>
 										<div class="ace_line"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p></div>
-								</div>
+								</div> -->
 						</code>
 						<code id="HTMLRENDER" style="display:none;">
 							<div class="ace_line"><p class="ace_gutter ace_gutter-cell " unselectable="on"></p><span class="baliseHtml" style="margin:0;padding-left:0px;">&lt;html&gt;</span></div>
@@ -161,7 +170,7 @@
 			</div>
 		<div class="history">
 					<!-- historique + retour arrière/ avant -->
-						<!-- Css :before :after :hover :active :focus :visited ? :selected -->
+						<!-- Css :before :after :hover :active :focus :visited ? :selected BOUTON-->
 							<!-- Html add balise + a + div -->
 								<!-- css input value propositions -->
 									<!-- eleme class or id -->
