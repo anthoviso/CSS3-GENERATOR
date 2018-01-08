@@ -23,6 +23,7 @@
 		<link rel="stylesheet" type="text/css" href="css/base.css"/>
 	</head>
 	<body>
+		<style></style>
 		<div class="bandeau">
 			<div style="float: left;">
 				<button class="btn btnToggle">
@@ -98,28 +99,33 @@
 				<button onclick="button_sortInvByClass();" class="btn btnSort">
 					<i class="fa fa-sort-alpha-desc" aria-hidden="true"></i>
 				</button>
-				<button onclick="resetAll();" class="btn btnReset">
-					CSS RESET
-				</button>
-				<button onclick="resetClass();" class="btn btnReset">
-					emptyClass
-				</button>
-				<button onclick="createClass();" class="btn btnReset">
-					AddClass
-				</button>
 		</div>
 			<section>
 			</section>
 		</div>
 			<div class="generateCode" >
 					<div class="generateCodeTab">
-						<div id="inputCSScode" onclick="activecodecss();"  class="activeCode"><span>CSS3</span>
-							<i class="fa fa-files-o" style="padding: 1px 5px;" id="copyCodeCSS" onclick="selectText('CSSRENDER')" aria-hidden="true"></i>
-								<i class="fa fa-download" style="padding: 1px 5px;" id="download" aria-hidden="true"></i><span class="spanSelected"></span>
+						<div id="inputCSScode" onclick="activecodecss();"  class="activeCode"><span>CSS3</span><span class="spanSelected"></span>
+							<i class="fa fa-files-o" style="padding: 1px 5px;float:right;" id="copyCodeCSS" onclick="selectText('CSSRENDER')" aria-hidden="true"></i>
+								<i class="fa fa-download" style="padding: 1px 5px;float:right;" id="download" aria-hidden="true"></i>
 					</div>
 						<div onclick="activecodehtml();" id="inputHTMLcode"><span>Html5</span>
-							<i class="fa fa-files-o" style="padding: 1px 5px;display:none;" id="copyCodeHTML" onclick="selectText('HTMLRENDER')" aria-hidden="true"></i>
+							<i class="fa fa-files-o" style="padding: 1px 5px;display:none;float:right;" id="copyCodeHTML" onclick="selectText('HTMLRENDER')" aria-hidden="true"></i>
 					</div>
+					</div>
+					<div style="padding: 5px 5px;">
+						<button onclick="createClass();" class="btn btnReset">
+							+ Add
+						</button>
+						<button onclick="resetClass();" class="btn btnReset">
+							emptyClass
+						</button>
+						<button onclick="delClass();" class="btn btnReset">
+							delClass
+						</button>
+						<button onclick="resetAll();" class="btn btnReset">
+							CSS RESET
+						</button>
 					</div>
 					<div class="ace_static_highlight ace_show_gutter">
 						<code id="CSSRENDER">
@@ -158,9 +164,11 @@
 						<!-- Css :before :after :hover :active :focus :visited ? :selected -->
 							<!-- Html add balise + a + div -->
 								<!-- css input value propositions -->
-									<!-- rename a class -->
+									<!-- eleme class or id -->
 									<!-- moreproperties -->
 									<!-- unity values -->
+									<!-- CSS errors -->
+									<!-- remove or comment a class -->
 		</div>
 	</div>
 	<footer>

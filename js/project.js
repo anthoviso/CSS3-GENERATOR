@@ -7,6 +7,7 @@ var cssCommentStart = '/*';
 var selectedClass = "defaultClass";
 var cssCommentEnd = '*/';
 var oldSpan;
+var newClassVal = 1;
 var init = true;
 var localData =
 {"defaultClass":{
@@ -86,24 +87,13 @@ function selectText(containerid) {
 }
 function resetAll () {
 
-// var tmpLength =  Object.keys(localData).length;
-//   for (i=1;i < tmpLength +1;i++){
-//     delete localData[$('#CSSRENDER > div:nth-child(' + i + ')').attr('id')];
-//   }
-// BUGs impossible de continuer ecire dans input
-    $('.sortable-items').empty();
+// Si input en changement et valeurs modif //bug // si changment encore.. bug
+    $('#CSSRENDER').empty();
     $('#output').empty();
       $('section input').val("");
     $("#output").append('<div id="output_defaultClass"></div>');
-    localData.defaultClass = {};
     console.log(localData);
-    localData = {"defaultClass":{
-      "background" : "white",
-      "height" : "100px",
-      "width" : "100px"}};
-      selectedClass = 'defaultClass';
-
-      $('.spanSelected').html('defaultClass');
+    localData = {};
 
 
   $(".v-buttonGroupControl").prop("checked", false);
@@ -111,6 +101,12 @@ function resetAll () {
   $(".backgroundProprieties .sp-preview-inner").css("background-color", $("#background").val());
   $(".colorProprieties .sp-preview-inner").css("color", $("#color").val());
 
+}
+function delClass () {
+  console.log(selectedClass);
+      $('#CSSRENDER > #' + selectedClass).remove();
+    $('#output_' + selectedClass).remove();
+    delete localData[selectedClass];
 }
 function resetClass () {
   delete localData[selectedClass];
@@ -120,11 +116,11 @@ function resetClass () {
   $('section input').val("");
 }
 function createClass () {
-  $('#CSSRENDER').prepend('<div  id="new_class" class="classDiv"><div class="ace_line ace_first"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p><span style="margin:0;padding-left:5px;" class="loadNum">new_class</span><span>{</span></div><div class="new_class sortable-items"></div><div class="ace_line"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p><span style="margin:0;padding-left:5px;">}</span></div><div class="ace_line"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p></div></div>');
-  $("#output").append('<div id="output_new_class"></div>');
-  selectedClass = 'new_class';
-  localData[selectedClass]={};
-  $('section input').val("");
+
+  $('#CSSRENDER').append('<div  id="new_class_' + newClassVal + '" class="classDiv"><div class="ace_line ace_first"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p><span style="margin:0;padding-left:5px;" class="loadNum">new_class_' + newClassVal + '</span><span>{</span></div><div class="new_class_' + newClassVal + ' sortable-items"></div><div class="ace_line"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p><span style="margin:0;padding-left:5px;">}</span></div><div class="ace_line"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p></div></div>');
+  $("#output").append('<div id="output_new_class_' + newClassVal + '"></div>');
+  localData['new_class_' + newClassVal]={};
+  newClassVal = newClassVal + 1;
 }
 function activecodehtml () {
   $('#inputHTMLcode').addClass("activeCode");
@@ -196,17 +192,19 @@ function switchToSpan() {
     text: $(this).val().replace(/[^A-z\d\_\-]/g,'')
   });
 
-  $('.' + oldSpan).addClass($span.text());
-  $('.' + oldSpan).removeClass(oldSpan);
-  $('#' + oldSpan).attr("id", $span.text());
-  $('#output_' + oldSpan).attr("id", "output_" + $span.text());
-  var tmpSpan = $span.text().replace(/[^A-z\d\_\-]/g,'');
-  localData[tmpSpan] = localData[oldSpan];
-  if(tmpSpan == ""){
-    tmpSpan = oldSpan;
+  if(oldSpan != $span.text()){
+    $('.' + oldSpan).addClass($span.text());
+    $('.' + oldSpan).removeClass(oldSpan);
+    $('#' + oldSpan).attr("id", $span.text());
+    $('#output_' + oldSpan).attr("id", "output_" + $span.text());
+    var tmpSpan = $span.text().replace(/[^A-z\d\_\-]/g,'');
+    localData[tmpSpan] = localData[oldSpan];
+    if(tmpSpan == ""){
+      tmpSpan = oldSpan;
+    }
+    selectedClass = tmpSpan;
+    delete localData[oldSpan];
   }
-  selectedClass = tmpSpan;
-  delete localData[oldSpan];
   $span.addClass("loadNum");
   $(this).replaceWith($span);
   $span.on("click", switchToInput);
@@ -217,7 +215,7 @@ function selectedClassFunc(thisObj){
     console.log("selectedClass : " + selectedClass);
     $('.classDiv').removeClass('selectedClass');
     $('#' + selectedClass).addClass('selectedClass');
-    $('.spanSelected').html(selectedClass);
+    $('.spanSelected').html(" : " + selectedClass);
     $('section input').val('');
     for (i=0;i <  Object.keys(localData[selectedClass]).length;i++){
       $('section #' +  Object.keys(localData[selectedClass])[i]).val(localData[selectedClass][Object.keys(localData[selectedClass])[i]]);
@@ -248,7 +246,7 @@ function update (jsonObj) {
   }
   $('.classDiv').removeClass('selectedClass');
   $('#' + selectedClass).addClass('selectedClass');
-  $('.spanSelected').html(selectedClass);
+  $('.spanSelected').html(" : " + selectedClass);
 }
   // console.log('slectedClass : ' + selectedClass );
   var elProperty = jsonObj['properties'];
@@ -294,6 +292,18 @@ function update (jsonObj) {
       $('.' + selectedClass + ' .cssrender' + elProp).html("<span class='attributs'>" + elProp + "</span> : " + $('#' + elProp).val() + ";");
     }
   }
+
+// .css to <style> --> remove all classes et ids or change localData
+//   $('body style').empty();
+// for(s=0;s < Object.keys(localData).length;s++){
+//   var styleValue;
+//   for(e=0;e < Object.keys(localData[Object.keys(localData)[s]]).length;e++){
+//     styleValue += Object.keys(localData[selectedClass])[e] + ":" + localData[selectedClass][Object.keys(localData[selectedClass])[e]] + ";";
+//     }
+//   $('body style').append('.' + Object.keys(localData)[s] + '{' + styleValue + '}');
+// }
+
+
   // console.log(localData);
   // console.log(JSON.stringify(localData));
   $(".backgroundProprieties .sp-preview-inner").css("background-color", $("#background").val());
