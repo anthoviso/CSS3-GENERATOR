@@ -6,18 +6,15 @@ var initJsonClass = 0;
 var cssCommentStart = '/*';
 var selectedClass = "defaultClass";
 var cssCommentEnd = '*/';
+var oldSpan;
+var init = true;
 var localData =
 {"defaultClass":{
   "background" : "#2A5476",
   "border" : "1px solid black",
   "border-radius" : "20px",
-  "box-shadow" : "2px 2px 5px black",
-  "color" : "#DADDF0",
-  "font-size" : "16px",
   "height" : "150px",
   "margin" : "100px auto",
-  "outline" : "5px dotted grey",
-  "padding" : "10px",
   "text-align" : "center",
   "text-shadow": "1px 1px 1px black",
   "width" : "150px"
@@ -123,6 +120,11 @@ function resetClass () {
   $('section input').val("");
 }
 function createClass () {
+  $('#CSSRENDER').prepend('<div  id="new_class" class="classDiv"><div class="ace_line ace_first"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p><span style="margin:0;padding-left:5px;" class="loadNum">new_class</span><span>{</span></div><div class="new_class sortable-items"></div><div class="ace_line"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p><span style="margin:0;padding-left:5px;">}</span></div><div class="ace_line"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p></div></div>');
+  $("#output").append('<div id="output_new_class"></div>');
+  selectedClass = 'new_class';
+  localData[selectedClass]={};
+  $('section input').val("");
 }
 function activecodehtml () {
   $('#inputHTMLcode').addClass("activeCode");
@@ -186,23 +188,41 @@ function switchToInput() {
   $(this).replaceWith($input);
   $input.on("blur", switchToSpan);
   $input.select();
+  oldSpan = $input.val();
+  console.log('oldSpan : ' + oldSpan);
 };
 function switchToSpan() {
   var $span = $("<span>", {
-    text: $(this).val()
+    text: $(this).val().replace(/[^A-z\d\_\-]/g,'')
   });
 
-  $('.' + selectedClass).addClass($span.text());
-  $('.' + selectedClass).removeClass(selectedClass);
-  $('#' + selectedClass).attr("id", $span.text());
-localData[$span.text()] = localData[selectedClass];
-var tmpSelected = selectedClass;
-selectedClass =   $("#" + $span.text()).attr('id');
-delete localData[tmpSelected];
-
+  $('.' + oldSpan).addClass($span.text());
+  $('.' + oldSpan).removeClass(oldSpan);
+  $('#' + oldSpan).attr("id", $span.text());
+  $('#output_' + oldSpan).attr("id", "output_" + $span.text());
+  var tmpSpan = $span.text().replace(/[^A-z\d\_\-]/g,'');
+  localData[tmpSpan] = localData[oldSpan];
+  if(tmpSpan == ""){
+    tmpSpan = oldSpan;
+  }
+  selectedClass = tmpSpan;
+  delete localData[oldSpan];
   $span.addClass("loadNum");
   $(this).replaceWith($span);
   $span.on("click", switchToInput);
+}
+function selectedClassFunc(thisObj){
+  if(selectedClass != thisObj.attr('id')){
+    selectedClass = thisObj.attr('id');
+    console.log("selectedClass : " + selectedClass);
+    $('.classDiv').removeClass('selectedClass');
+    $('#' + selectedClass).addClass('selectedClass');
+    $('.spanSelected').html(selectedClass);
+    $('section input').val('');
+    for (i=0;i <  Object.keys(localData[selectedClass]).length;i++){
+      $('section #' +  Object.keys(localData[selectedClass])[i]).val(localData[selectedClass][Object.keys(localData[selectedClass])[i]]);
+    }
+  }
 }
 
 //Polyfill for requestAnimationFrame
@@ -220,12 +240,17 @@ window.requestAnimationFrame = (function(){
 function update (jsonObj) {
   // requestAnimationFrame(update);
   /* generate code*/
-  if(initJsonClass == Object.keys(localData).length){}else{
-  $('section input').val('');
+  if(init == true){
+
+      $('section input').val('');
   for (i=0;i <  Object.keys(localData[selectedClass]).length;i++){
     $('section #' +  Object.keys(localData[selectedClass])[i]).val(localData[selectedClass][Object.keys(localData[selectedClass])[i]]);
-  }}
-  console.log('slectedClass : ' + selectedClass );
+  }
+  $('.classDiv').removeClass('selectedClass');
+  $('#' + selectedClass).addClass('selectedClass');
+  $('.spanSelected').html(selectedClass);
+}
+  // console.log('slectedClass : ' + selectedClass );
   var elProperty = jsonObj['properties'];
   container3.innerHTML = textValueForm.value;
   $('#output_defaultClass').html(textValueForm.value);
@@ -270,7 +295,7 @@ function update (jsonObj) {
     }
   }
   // console.log(localData);
-  console.log(JSON.stringify(localData));
+  // console.log(JSON.stringify(localData));
   $(".backgroundProprieties .sp-preview-inner").css("background-color", $("#background").val());
   $(".colorProprieties .sp-preview-inner").css("color", $("#color").val());
 }
@@ -297,7 +322,7 @@ function showProperties(jsonObj) {
     '" target="_blank"><span "="" class="button_help"><i class="fa fa-question-circle" aria-hidden="true"></i></span></a>' + myinput2Elem + '</div>';
     $('.cssElements > section').append(mydivElem);
   }
-if(initJsonClass == Object.keys(localData).length){}else{
+if(init == true){
   for(i=0;i<=Object.keys(localData).length - 1;i++){
     selectedClass = Object.keys(localData)[i];
     // console.log(selectedClass + " : update des classes en cours");
@@ -305,6 +330,7 @@ if(initJsonClass == Object.keys(localData).length){}else{
     toggleEmptyElem();
     initJsonClass = initJsonClass + 1;
     console.log(initJsonClass);
+    if(initJsonClass == Object.keys(localData).length && init == true){  init = false;}
   }
 }
 
@@ -331,17 +357,10 @@ $( document ).ready(function() {
     showProperties(allProperties);
     spectrumInit();
   }
-  $('.classDiv').on('click', function(){
-    selectedClass = $(this).attr('id');
-    $('.classDiv').removeClass('selectedClass');
-    $('#' + $(this).attr('id')).addClass('selectedClass');
-    $('.spanSelected').html(selectedClass);
-    $('section input').val('');
-    for (i=0;i <  Object.keys(localData[selectedClass]).length;i++){
-      $('section #' +  Object.keys(localData[selectedClass])[i]).val(localData[selectedClass][Object.keys(localData[selectedClass])[i]]);
-    }
-
+  $('#CSSRENDER').on('click', '.classDiv', function(){
+    selectedClassFunc($(this));
   });
+
   $('#inputFilter').on('click input', function(){
     searchPropterties();
   });
@@ -424,17 +443,24 @@ $( document ).ready(function() {
     });
 
     $("#CSSRENDER").on('click', '.ace_gutter', function() {
+
+        console.log('gdfgfdgdfgdfgfdg');
       var tmpRemoveParent =   $(this).parent().attr('id');
+      var tmpParentClass = $(this).parent().parent().parent().attr('id');
       tmpRemoveParent = tmpRemoveParent.replace('divrender','');
-      $('.' + selectedClass + ' #cssrender' + tmpRemoveParent).toggleClass('tmpRemove');
+      $('.' + tmpParentClass + ' #cssrender' + tmpRemoveParent).toggleClass('tmpRemove');
 
 
     });
     $("#CSSRENDER").on('click', '.propertyRemove', function() {
       var removeParent =   $(this).parent().attr('id');
+      var ParentClass = $(this).parent().parent().parent().attr('id');
       removeParent = removeParent.replace('divrender','');
+              console.log(removeParent);
+              console.log(ParentClass);
       $('.' + removeParent + 'Proprieties > input').val('');
-      $('#cssrender' + removeParent).removeClass('tmpRemove');
+      console.log($('.' + removeParent + 'Proprieties > input').val());
+      $('.' + ParentClass + '#cssrender' + removeParent).removeClass('tmpRemove');
     });
     $('.cssElements').on('click', '.value_less', function() {
       // console.log($(this).attr('class') );
