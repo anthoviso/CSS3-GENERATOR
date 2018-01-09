@@ -9,19 +9,14 @@ var cssCommentEnd = '*/';
 var oldSpan;
 var newClassVal = 1;
 var init = true;
+var unit = 'px';
 var localData =
 {"-defaultClass":{
-  "color" : "#fff",
-  "font-size" : "100px",
+  "color" : "#464665",
+  "font-size" : "40px",
   "font-weight" : "bold",
-  "text-shadow" : "#fff 0 0 1px, #eee 0 4px 3px, #ddd 0 9px 3px,   #ccc 0 12px 1px, rgba(0,0,0,0.2) 1px 14px 3px, rgba(0,0,0,0.2) 2px 20px 10px, rgba(0,0,100,0.3) 2px 15px 90px",
-  "transition" : "all 1s ease",
   "text-align" : "center",
   "margin" : "100px auto"
-},
-"-defaultClass:hover":{
-  "color" : "#1abc9c",
-  "text-shadow" : "#1abc9c 0 0 1px, #19B394 0 4px 3px, #1AAD90 0 9px 3px,  #16a085 0 12px 1px, rgba(0,0,0,0.2) 0 14px 3px, rgba(0,0,0,0.1) 0 20px 10px, rgba(0,0,0,0.2) 0 15px 80px"
 }
 // "-aaaa":{
 //   "border" : "5px solid green",
@@ -30,7 +25,6 @@ var localData =
 //   "width" : "150px"
 // }
 };
-var unit = 'px';
 
 function toggleEmptyElem(){
   $('section > div > input[type=text]').map(function(index) {
@@ -89,21 +83,16 @@ function selectText(containerid) {
   }
 }
 function resetAll () {
-
-// Si input en changement et valeurs modif //bug // si changment encore.. bug
-    $('#CSSRENDER').empty();
-    $('#output').empty();
-      $('section input').val("");
-    $("#output").append('<div id="output_new_class" class="-new_class"></div>');
-    console.log(localData);
-    localData = {};
-
-
+  $('#CSSRENDER').empty();
+  $('#output').empty();
+    $('section input').val("");
+  $("#output").append('<div id="output_new_class" class="-new_class"></div>');
+  console.log(localData);
+  localData = {};
   $(".v-buttonGroupControl").prop("checked", false);
   textValueForm.value="";
   $(".backgroundProprieties .sp-preview-inner").css("background-color", $("#background").val());
   $(".colorProprieties .sp-preview-inner").css("color", $("#color").val());
-
 }
 function delClass () {
   console.log(selectedClass);
@@ -119,7 +108,6 @@ function resetClass () {
   $('section input').val("");
 }
 function createClass () {
-
   $('#CSSRENDER').append('<div  id="new_class_' + newClassVal + '" class="classDiv"><div class="ace_line ace_first"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p><span style="margin:0;padding-left:5px;" class="loadNum">new_class_' + newClassVal + '</span><span>{</span></div><div class="new_class_' + newClassVal + ' sortable-items"></div><div class="ace_line"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p><span style="margin:0;padding-left:5px;">}</span></div><div class="ace_line"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p></div></div>');
   $("#output").append('<div id="output_new_class_' + newClassVal + '"  class="-new_class_' + newClassVal + '"></div>');
   localData['-new_class_' + newClassVal]={};
@@ -166,19 +154,20 @@ function spectrumInit(){
   });
 }
 function searchPropterties(){
-  // console.log($('#inputFilter').val());
   $('section > div').removeClass('selectedElem');
   $('section > div').hide();
   var numElem = 0;
   for(i=1;i<=$('section > div').length;i++){
     if($('section > div:nth-child(' + i + ')').attr('class').indexOf($('#inputFilter').val()) > -1){
-      // console.log(i);
       var ClassFilter = $('section > div:nth-child(' + i + ')').attr('class');
       numElem = numElem + 1;
       $("." + ClassFilter).show();
     }
-
-    $('.cssSearch p').text(numElem);
+    if($('#inputFilter').val() != ""){
+      $('.cssSearch .searchNResults').text(numElem + " found");
+    }else{
+        $('.cssSearch .searchNResults').text("");
+    }
   }
 }
 function switchToInput() {
@@ -213,7 +202,7 @@ function switchToSpan() {
   }
   $span.addClass("loadNum");
   $(this).replaceWith($span);
-  $span.on("click", switchToInput);
+  $('#CSSRENDER').on("click", ".loadNum", switchToInput);
 }
 function selectedClassFunc(thisObj){
   if(selectedClass != thisObj.attr('id')){

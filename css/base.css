@@ -58,9 +58,9 @@ padding: 5px 20px;
 	padding: 5px;
 	color: white;
 	border: 1px solid #2f2f2f;
-	width: 358px;
-	margin: 0px 0px 10px 0px;
 	background: rgb(27,29,35);
+	height: 19px;
+	width: 100%;
 }
 .btn:hover {
 	background: #3cb0fd;
@@ -117,16 +117,25 @@ color:white;
 	cursor: pointer;
 	display:none;
 }
-.button_empty{
+.searchNResults{
+	position: absolute;
+	right: 36px;
 	color: white;
+	padding: 5px;
+}
+.button_empty{
+	color: #8d8d8d;
 	position: absolute;
 	z-index: 1;
 	right: 0px;
-	padding: 4px 8px;
+	padding: 4px 10px;
 	cursor: pointer;
 	background: transparent;
 	font-size: 14px;
 	margin: 3px;
+}
+.button_empty:hover{
+	color: white;
 }
 section > div:hover .button_help{
 	display: block;
@@ -221,7 +230,7 @@ section input[type=text]::-moz-selection, #inputFilter::-moz-selection{
 .cssElements > section{
 	overflow-x: hidden;
     overflow-y: scroll;
-    height: 408px;
+    height: 440px;
     width: 100%;
     padding: 10px 9px;
 }
@@ -291,7 +300,6 @@ section > div{
 }
 .cssSearch{
 	 background: rgb(40,44,52);
-	 padding: 15px 10px;
 	 border-bottom: 1px solid #16161e;
 }
 /* ----- Code GENERE ----- */
@@ -405,9 +413,11 @@ font-size: 16px;
 	 counter-reset:ace_line 0;
 	 overflow-y: scroll;
 	 overflow-x: hidden;
-	 width: 100%;
-	 padding-right: 17px;
+	 width: calc(100% + 17px);
 	 height: 498px;
+}
+.selectedClass{
+    background: #3c404d;
 }
 .ace_line {
 	display:flex;
