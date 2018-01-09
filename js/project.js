@@ -17,13 +17,10 @@ var localData =
   "font-weight" : "bold",
   "text-align" : "center",
   "margin" : "100px auto"
+},
+"-defaultClass--hover":{
+"color" : "#626569"
 }
-// "-aaaa":{
-//   "border" : "5px solid green",
-//   "text-shadow": "1px 1px 1px black",
-//   "outline" : "5px dotted grey",
-//   "width" : "150px"
-// }
 };
 
 function toggleEmptyElem(){
@@ -229,7 +226,7 @@ function selectedClassFunc(thisObj){
     console.log("selectedClass : " + selectedClass);
     $('.classDiv').removeClass('selectedClass');
     $('#' + selectedClass).addClass('selectedClass');
-    $('.spanSelected').html(" : " + selectedClass);
+    $('.spanSelected').html(" : " + selectedClass.replace(/\--/,":"));
     $('section input').val('');
     for (i=0;i <  Object.keys(localData['-' + selectedClass]).length;i++){
       $('section #' +  Object.keys(localData['-' + selectedClass])[i]).val(localData['-' + selectedClass][Object.keys(localData['-' + selectedClass])[i]]);
@@ -260,7 +257,7 @@ function update (jsonObj) {
   }
   $('.classDiv').removeClass('selectedClass');
   $('#' + selectedClass).addClass('selectedClass');
-  $('.spanSelected').html(" : " + selectedClass);
+  $('.spanSelected').html(" : " + selectedClass.replace(/\--/,":"));
 }
   // console.log('slectedClass : ' + selectedClass );
   var elProperty = jsonObj['properties'];

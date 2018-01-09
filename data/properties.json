@@ -54,6 +54,11 @@
       "input" : ""
     },
     {
+      "property" : "content",
+      "option" : "false",
+      "input" : ""
+    },
+    {
       "property" : "cursor",
       "option" : "false",
       "input" : ""
