@@ -172,37 +172,56 @@ function searchPropterties(){
 }
 function switchToInput() {
   var $input = $("<input>", {
-    val: $(this).text(),
+    val: $(this).text().replace(/\--/,":"),
     type: "text"
   });
+  oldSpan = $input.val().replace(/\:/,"--");
   $input.addClass("loadNum");
   $(this).replaceWith($input);
   $input.on("blur", switchToSpan);
   $input.select();
-  oldSpan = $input.val();
-  console.log('oldSpan : ' + oldSpan);
 };
 function switchToSpan() {
+
+  console.log('oldSpan : ' + oldSpan);
   var $span = $("<span>", {
     text: $(this).val().replace(/^\-/,'').replace(/[^A-z\d\_\:\-]/g,'')
   });
-
-  if(oldSpan != $span.text()){
-    $('.' + oldSpan).addClass($span.text());
-    $('.' + oldSpan).removeClass(oldSpan);
-    $('#' + oldSpan).attr("id", $span.text());
-    $('#output_' + oldSpan).attr("id", "output_" + $span.text());
-    var tmpSpan = $span.text().replace(/^\-/,'').replace(/[^A-z\d\_\:\-]/g,'');
-    localData['-' + tmpSpan] = localData['-' + oldSpan];
-    if(tmpSpan == ""){
+  var tmpSpan = $span.text().replace(/^\-/,'').replace(/[^A-z\d\_\:\-]/g,'').replace(/\:/,"--");
+  if(oldSpan != tmpSpan){
+    if(tmpSpan == "" || tmpSpan == "undefined"){
+    console.log('tmp vide');
+    $span.val(oldSpan);
       tmpSpan = oldSpan;
+      console.log(localData);
+    }else{
+
+      console.log('tmp rempli');
+            console.log(tmpSpan);
+
+        $('.-' + oldSpan).addClass('-' + tmpSpan);
+        $('.-' + oldSpan).removeClass('-' + oldSpan);
+        $('.' + oldSpan).addClass(tmpSpan);
+        $('.' + oldSpan).removeClass(oldSpan);
+        $('#' + oldSpan).attr("id", tmpSpan);
+        $('#output_' + oldSpan).attr("id", "output_" + tmpSpan);
+
+
+      localData['-' + tmpSpan] = localData['-' + oldSpan];
+      delete localData['-' + oldSpan];
+      console.log(localData);
     }
     selectedClass = tmpSpan;
-    delete localData['-' + oldSpan];
+  }else{
+    console.log('tmp == old');
+    tmpSpan = $span.text();
+    console.log(localData);
   }
+
+    console.log('tmpSpan : ' + tmpSpan);
   $span.addClass("loadNum");
-  $(this).replaceWith($span);
-  $('#CSSRENDER').on("click", ".loadNum", switchToInput);
+  $(this).replaceWith('<span style="margin:0;padding-left:5px;" class="loadNum">' + tmpSpan.replace(/\--/,":") + '</span>');
+  $('#CSSRENDER').on("click", "span.loadNum", switchToInput);
 }
 function selectedClassFunc(thisObj){
   if(selectedClass != thisObj.attr('id')){
@@ -288,7 +307,7 @@ function update (jsonObj) {
     }
   }
 
-// .css to <style> --> remove all classes et ids or change localData
+// style
   $('body style').empty();
 for(s=0;s < Object.keys(localData).length;s++){
   var styleValue = "";
@@ -296,7 +315,7 @@ for(s=0;s < Object.keys(localData).length;s++){
   var tttt = Object.keys(localData)[s];
     styleValue += Object.keys(localData[tttt])[e] + ":" + localData[Object.keys(localData)[s]][Object.keys(localData[tttt])[e]] + ";";
     }
-  $('body style').append('.' + Object.keys(localData)[s] + '{' + styleValue + '}');
+  $('body style').append('.' + Object.keys(localData)[s].replace(/\--/,":") + '{' + styleValue + '}');
 }
 
 
@@ -379,7 +398,7 @@ $( document ).ready(function() {
     }
   });
   $(function() {
-    $(".loadNum").on("click", switchToInput);
+    $("#CSSRENDER").on("click", "span.loadNum", switchToInput);
 
     $('.button_empty').on('click', function(){
       $('#inputFilter').val('');

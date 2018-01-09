@@ -249,6 +249,9 @@ section input[type=text]::-moz-selection, #inputFilter::-moz-selection{
 .ace_gutter:hover{
 	text-decoration: line-through;
 }
+.ace_first .ace_gutter:hover{
+	text-decoration: none;
+}
 .visibilité > div, .texte > div, .texte > div , .fond > div, .bordures > div , .marges > div, .transitions > div, .taille > div{
 	display: none;
 }
