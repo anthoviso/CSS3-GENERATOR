@@ -169,10 +169,10 @@ function searchPropterties(){
 }
 function switchToInput() {
   var $input = $("<input>", {
-    val: $(this).text().replace(/\--/,":"),
+    val: $(this).text().replace(/\---/,"::").replace(/\--/,":"),
     type: "text"
   });
-  oldSpan = $input.val().replace(/\:/,"--");
+  oldSpan = $input.val().replace(/\::/,"---").replace(/\:/,"--");
   $input.addClass("loadNum");
   $(this).replaceWith($input);
   $input.on("blur", switchToSpan);
@@ -184,7 +184,7 @@ function switchToSpan() {
   var $span = $("<span>", {
     text: $(this).val().replace(/^\-/,'').replace(/[^A-z\d\_\:\-]/g,'')
   });
-  var tmpSpan = $span.text().replace(/^\-/,'').replace(/[^A-z\d\_\:\-]/g,'').replace(/\:/,"--");
+  var tmpSpan = $span.text().replace(/^\-/,'').replace(/[^A-z\d\_\:\-]/g,'').replace(/\::/,"---").replace(/\:/,"--");
   if(oldSpan != tmpSpan){
     if(tmpSpan == "" || tmpSpan == "undefined"){
     console.log('tmp vide');
@@ -217,7 +217,7 @@ function switchToSpan() {
 
     console.log('tmpSpan : ' + tmpSpan);
   $span.addClass("loadNum");
-  $(this).replaceWith('<span style="margin:0;padding-left:5px;" class="loadNum">' + tmpSpan.replace(/\--/,":") + '</span>');
+  $(this).replaceWith('<span style="margin:0;padding-left:5px;" class="loadNum">' + tmpSpan.replace(/\---/,"::").replace(/\--/,":") + '</span>');
   $('#CSSRENDER').on("click", "span.loadNum", switchToInput);
 }
 function selectedClassFunc(thisObj){
@@ -226,7 +226,7 @@ function selectedClassFunc(thisObj){
     console.log("selectedClass : " + selectedClass);
     $('.classDiv').removeClass('selectedClass');
     $('#' + selectedClass).addClass('selectedClass');
-    $('.spanSelected').html(" : " + selectedClass.replace(/\--/,":"));
+    $('.spanSelected').html(" : ." + selectedClass.replace(/\---/,"::").replace(/\--/,":"));
     $('section input').val('');
     for (i=0;i <  Object.keys(localData['-' + selectedClass]).length;i++){
       $('section #' +  Object.keys(localData['-' + selectedClass])[i]).val(localData['-' + selectedClass][Object.keys(localData['-' + selectedClass])[i]]);
@@ -257,7 +257,7 @@ function update (jsonObj) {
   }
   $('.classDiv').removeClass('selectedClass');
   $('#' + selectedClass).addClass('selectedClass');
-  $('.spanSelected').html(" : " + selectedClass.replace(/\--/,":"));
+  $('.spanSelected').html(" : ." + selectedClass.replace(/\---/,"::").replace(/\--/,":"));
 }
   // console.log('slectedClass : ' + selectedClass );
   var elProperty = jsonObj['properties'];
@@ -269,7 +269,7 @@ function update (jsonObj) {
       delete localData['-' + selectedClass][elProperty[i].property];
     }else{
       if($('.' + selectedClass + ' #cssrender' + elProperty[i].property).hasClass('tmpRemove')){
-        localData['-' + selectedClass][elProperty[i].property]= $('#' + elProperty[i].property).val();
+        localData['-' + selectedClass][elProperty[i].property]= "/*" + $('#' + elProperty[i].property).val() + "*/";
       }else{
         localData['-' + selectedClass][elProperty[i].property]= $('#' + elProperty[i].property).val();
       }
@@ -294,12 +294,10 @@ function update (jsonObj) {
     }
     // SI TMP REMOVE
     if($('.' + selectedClass + ' #cssrender' +  elProp).hasClass('tmpRemove')){
-      $('#output_' + selectedClass).css(elProp , "unset");
       $('.' + selectedClass + ' .cssrender' + elProp).html("<span class='cssCommentStart'>" + cssCommentStart
         + "</span><span class='attributs'>" + elProp + "</span> : " + $('#' + elProp).val() + "; <span class='cssCommentEnd'>" + cssCommentEnd + "</span>");
     }else{
       // SI NON TMP REMOVE
-      $('#output_' + selectedClass).css(elProp , "");
       $('.' + selectedClass + ' .cssrender' + elProp).html("<span class='attributs'>" + elProp + "</span> : " + $('#' + elProp).val() + ";");
     }
   }
@@ -312,7 +310,7 @@ for(s=0;s < Object.keys(localData).length;s++){
   var tttt = Object.keys(localData)[s];
     styleValue += Object.keys(localData[tttt])[e] + ":" + localData[Object.keys(localData)[s]][Object.keys(localData[tttt])[e]] + ";";
     }
-  $('body style').append('.' + Object.keys(localData)[s].replace(/\--/,":") + '{' + styleValue + '}');
+  $('body style').append('.' + Object.keys(localData)[s].replace(/\---/,"::").replace(/\--/,":") + '{' + styleValue + '}');
 }
 
 
@@ -394,6 +392,14 @@ $( document ).ready(function() {
       searchPropterties();
     }
   });
+
+  $('#CSSRENDER').on("keyDown keyup", "input.loadNum", function(){
+    var value = $('input.loadNum').val();
+    var size  = value.length;
+    size = size*3;
+    $('input.loadNum').css('width',size*3 + 9);
+});
+
   $(function() {
     $("#CSSRENDER").on("click", "span.loadNum", switchToInput);
 
