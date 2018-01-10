@@ -35,7 +35,12 @@ function toggleEmptyElem(){
     }
   });
 }
-
+function inputResize(){
+  var value = $('input.loadNum').val();
+  var size  = value.length;
+  size = size*3;
+  $('input.loadNum').css('width',size*3 + 9);
+}
 function sortByClass(a, b) {
   return a.className > b.className;
 }
@@ -177,6 +182,7 @@ function switchToInput() {
   $(this).replaceWith($input);
   $input.on("blur", switchToSpan);
   $input.select();
+  inputResize();
 };
 function switchToSpan() {
 
@@ -376,6 +382,24 @@ $( document ).ready(function() {
     showProperties(allProperties);
     spectrumInit();
   }
+
+//CodeMirror
+  var config, editor;
+
+    config = {
+        lineNumbers: true,
+        autofocus:true,
+        mode : "xml",
+        theme: "ambiance",
+        indentWithTabs: true
+    };
+
+    editor = CodeMirror.fromTextArea(document.getElementById("codemirror-html"), config);
+    editor.setOption("theme", "monokai");
+    editor.getDoc().setValue('<div><p></p></div>');
+
+
+// end Code mirror
   $('#CSSRENDER').on('click', '.classDiv', function(){
     selectedClassFunc($(this));
   });
@@ -392,12 +416,8 @@ $( document ).ready(function() {
       searchPropterties();
     }
   });
-
   $('#CSSRENDER').on("keyDown keyup", "input.loadNum", function(){
-    var value = $('input.loadNum').val();
-    var size  = value.length;
-    size = size*3;
-    $('input.loadNum').css('width',size*3 + 9);
+    inputResize();
 });
 
   $(function() {

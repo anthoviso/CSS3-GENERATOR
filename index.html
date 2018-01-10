@@ -15,6 +15,11 @@
 		<link rel='stylesheet' type="text/css" href='lib/jquery-ui/jquery-ui.css' />
 		<!-- fileSaver -->
 		<script type="text/javascript" src='lib/fileSaver/FileSaver.js'></script>
+		<!-- Codemirror -->
+		<link rel="stylesheet" type="text/css" href="lib//codemirror/lib/codemirror.css">
+		<link rel="stylesheet" type="text/css" href="lib/codemirror/theme/monokai.css">
+		<script type="text/javascript" src="lib/codemirror/lib/codemirror.js"></script>
+		<script type="text/javascript" src="lib/codemirror//mode/xml/xml.js"></script>
 		<!-- Spectrum -->
 		<script type="text/javascript" src='lib/spectrum/spectrum.js'></script>
 		<link rel='stylesheet' type="text/css" href='lib/spectrum/spectrum.css' />
@@ -117,22 +122,22 @@
 							<i class="fa fa-files-o" style="padding: 1px 5px;display:none;float:right;" id="copyCodeHTML" onclick="selectText('HTMLRENDER')" aria-hidden="true"></i>
 					</div>
 					</div>
-					<div style="padding: 5px 5px;">
-						<button onclick="createClass();" class="btn btnReset">
-							+ Add
-						</button>
-						<button onclick="resetClass();" class="btn btnReset">
-							emptyClass
-						</button>
-						<button onclick="delClass();" class="btn btnReset">
-							delClass
-						</button>
-						<button onclick="resetAll();" class="btn btnReset">
-							CSS RESET
-						</button>
-					</div>
 					<div class="ace_static_highlight ace_show_gutter">
 						<code id="CSSRENDER">
+							<div style="padding: 5px 5px;">
+								<button onclick="createClass();" class="btn btnReset">
+									+ Add
+								</button>
+								<button onclick="resetClass();" class="btn btnReset">
+									emptyClass
+								</button>
+								<button onclick="delClass();" class="btn btnReset">
+									delClass
+								</button>
+								<button onclick="resetAll();" class="btn btnReset">
+									CSS RESET
+								</button>
+							</div>
 																<!-- <span style="background: #6797C0;border-radius: 5px;padding: 1px;margin: 0 10px;font-size: 14px;">:before</span> -->
 							<div  id="defaultClass" class="classDiv">
 								<div class="ace_line ace_first"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p><span style="margin:0;padding-left:5px;" class="loadNum">defaultClass</span><span>{</span></div>
@@ -150,25 +155,30 @@
 								</div>
 						</code>
 						<code id="HTMLRENDER" style="display:none;">
-							<div class="ace_line"><p class="ace_gutter ace_gutter-cell " unselectable="on"></p><span class="baliseHtml" style="margin:0;padding-left:0px;">&lt;html&gt;</span></div>
+							<div style="padding: 5px 5px;">
+								<button onclick="modifyHtml();" class="btn btnReset">
+									modify
+								</button>
+							</div>
+							<span class="" id="htmlTxtValue" style="margin:0;padding-left:30px;"></span>
+							<textarea id="codemirror-html" ></textarea>
+							<!-- <div class="ace_line"><p class="ace_gutter ace_gutter-cell " unselectable="on"></p><span class="baliseHtml" style="margin:0;padding-left:0px;">&lt;html&gt;</span></div>
 							<div class="ace_line"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p><span class="baliseHtml" style="margin:0;padding-left:10px;">&lt;head&gt;</span></div>
 							<div class="ace_line"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p><span class="baliseHtml" style="margin:0;padding-left:20px;">&lt;link rel="stylesheet" type="text/css" href="style.css" /&gt;</span></div>
 							<div class="ace_line"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p><span class="baliseHtml" style="margin:0;padding-left:10px;">&lt;/head&gt;</span></div>
 							<div class="ace_line"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p><span class="baliseHtml" style="margin:0;padding-left:10px;">&lt;body&gt;</span></div>
-							<div class="ace_line"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p><span class="baliseHtml" style="margin:0;padding-left:20px;">&lt;div class="defaultClass" &gt;</span></div>
-							<div class="ace_line"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p><span class="" id="htmlTxtValue" style="margin:0;padding-left:30px;"></span></div>
-							<div class="ace_line"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p><span class="baliseHtml" style="margin:0;padding-left:20px;">&lt;/div&gt;</span></div>
+							<div class="ace_line"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p><span class="baliseHtml" style="margin:0;padding-left:20px;">&lt;div class="defaultClass" &gt;</span></div> -->
+
+							<!-- <div class="ace_line"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p><span class="baliseHtml" style="margin:0;padding-left:20px;">&lt;/div&gt;</span></div>
 							<div class="ace_line"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p><span class="baliseHtml" style="margin:0;padding-left:10px;">&lt;/body&gt;</span></div>
-	 						<div class="ace_line"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p><span class="baliseHtml" style="margin:0;padding-left:0px;">&lt;/html&gt;</span></div>
+	 						<div class="ace_line"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p><span class="baliseHtml" style="margin:0;padding-left:0px;">&lt;/html&gt;</span></div> -->
 						</code>
 					</div>
 			</div>
 		<div class="history">
 					<!-- historique + retour arrière/ avant -->
-						<!-- Css :before :after :hover :active :focus :visited ? :selected BOUTON ou .is(':hover') en jquery-->
 							<!-- Html add balise + a + div -->
 								<!-- css input value propositions -->
-									<!-- eleme class or id -->
 									<!-- moreproperties -->
 									<!-- unity values -->
 									<!-- CSS errors -->
@@ -178,6 +188,7 @@
 	</div>
 	<footer>
 	</footer>
+	<!-- Js -->
 	<script src="js/project.js"></script>
 	<!-- BY VISOCCHI ANTHONY 2017-2018 -->
 	</body>

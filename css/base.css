@@ -191,13 +191,14 @@ section input[type=text]{
 	border-radius: 4px;
 }
 #CSSRENDER input.loadNum {
-			border-radius: 4px;
-		background: rgb(53, 58, 69);
-		color: white;
-		padding: 0px 8px;
-		width: 100px;
-    border: none;
-		font-family: monospace, monospace;
+  font-size: 16px;
+	border-radius: 4px;
+	background: rgb(53, 58, 69);
+	color: white;
+	padding: 0px 8px;
+	width: 100px;
+  border: none;
+	font-family: monospace, monospace;
 }
 .selectedClass .ace_gutter {
     background: #42455d;
@@ -684,5 +685,19 @@ footer{
 }
 .sp-dd{
 	display:none;
+}
+
+
+
+
+.note-codable, .note-editing-area, .note-editor, .CodeMirror {
+	height:100% !important;
+}
+.note-btn-group{
+	display: flex;
+	margin: 0 !important;
+}
+.note-editor.note-frame {
+    border: none !important;
 }
 /* By VISOCCHI ANTHONY 2017 */
