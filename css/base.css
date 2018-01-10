@@ -41,6 +41,10 @@ color:white;
 	padding: 6px 12px;
 	height: 30px;
 	width: auto;
+	-moz-user-select: -moz-none;
+	-khtml-user-select: none;
+	-webkit-user-select: none;
+	user-select: none;
 }
 .btnToggle{
 	background: rgb(40,44,52);
@@ -687,17 +691,26 @@ footer{
 	display:none;
 }
 
-
-
-
-.note-codable, .note-editing-area, .note-editor, .CodeMirror {
-	height:100% !important;
+.htmlCodeValue{
+	display:none !important;
 }
-.note-btn-group{
-	display: flex;
-	margin: 0 !important;
+.CodeMirror {
+		font-size: 16px;
+		height:100%;
 }
-.note-editor.note-frame {
-    border: none !important;
+.cm-s-monokai .CodeMirror-linenumber {
+	margin: 0;
+  margin-top: 0px;
+	background: #42455d;
+	padding: 4px 5px 4px 4px;
+	margin-top: -4px;
 }
+.cm-s-monokai.CodeMirror {
+    background: #3c404d;
+}
+  .CodeMirror-focused div.CodeMirror-cursors {
+    visibility: visible;
+    }
+  .CodeMirror-focused .CodeMirror-selected { background: #d7d4f0; }
+
 /* By VISOCCHI ANTHONY 2017 */

@@ -1,5 +1,4 @@
 var container2 = document.getElementById("output2");
-var container3 = document.getElementById("htmlTxtValue");
 var colorValue = $('#color').val();
 var dieze = '';
 var initJsonClass = 0;
@@ -8,6 +7,7 @@ var selectedClass = "defaultClass";
 var cssCommentEnd = '*/';
 var oldSpan;
 var newClassVal = 1;
+var editor;
 var init = true;
 var unit = 'px';
 var localData =
@@ -92,7 +92,6 @@ function resetAll () {
   console.log(localData);
   localData = {};
   $(".v-buttonGroupControl").prop("checked", false);
-  textValueForm.value="";
   $(".backgroundProprieties .sp-preview-inner").css("background-color", $("#background").val());
   $(".colorProprieties .sp-preview-inner").css("color", $("#color").val());
 }
@@ -267,8 +266,7 @@ function update (jsonObj) {
 }
   // console.log('slectedClass : ' + selectedClass );
   var elProperty = jsonObj['properties'];
-  container3.innerHTML = textValueForm.value;
-  $('#output_defaultClass').html(textValueForm.value);
+  $('#output_defaultClass').html($('.htmlCodeValue > .defaultClass > p').text());
 
   for (i=0;i <  elProperty.length;i++){
     if($('#' + elProperty[i].property).val() == ""){
@@ -381,25 +379,28 @@ $( document ).ready(function() {
     var allProperties = request.response;
     showProperties(allProperties);
     spectrumInit();
+    //Codemirror
+    editor = CodeMirror(document.getElementById("codemirror-html"), {
+      mode: "xml",
+      extraKeys: {"Ctrl-Space": "autocomplete"},
+      value: "<div class='defaultClass'><p>CSS3 Generator</p></div>",
+      lineNumbers: true,
+      enterMode: "keep",
+      autofocus:true,
+      theme: "monokai",
+      indentWithTabs: true
+    });
+    $(editor.getWrapperElement()).slideDown('normal', function(){
+          editor.refresh();
+      });
+      $('.htmlCodeValue').html(editor.getValue());
   }
 
-//CodeMirror
-  var config, editor;
-
-    config = {
-        lineNumbers: true,
-        autofocus:true,
-        mode : "xml",
-        theme: "ambiance",
-        indentWithTabs: true
-    };
-
-    editor = CodeMirror.fromTextArea(document.getElementById("codemirror-html"), config);
-    editor.setOption("theme", "monokai");
-    editor.getDoc().setValue('<div><p></p></div>');
-
-
-// end Code mirror
+  $('#HTMLRENDER').on('click input keyup', '.CodeMirror', function(){
+      var editorValue = editor.getValue();
+      console.log(editorValue);
+      $('.htmlCodeValue').html(editorValue);
+  });
   $('#CSSRENDER').on('click', '.classDiv', function(){
     selectedClassFunc($(this));
   });
