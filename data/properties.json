@@ -5,6 +5,16 @@
   "properties" :[
     {
       "property" : "align-content",
+      "values" : [
+         	"center",
+          "flex-start",
+          "flex-end",
+          "space-between",
+          "space-around",
+          "stretch",
+          "initial",
+          "inherit"
+      ],
       "option" : "false",
       "input" : ""
     },
@@ -40,6 +50,13 @@
     },
     {
       "property" : "box-sizing",
+      "values" : [
+         	"content-box",
+          "padding-box",
+          "border-box",
+          "initial",
+          "inherit"
+      ],
       "option" : "false",
       "input" : ""
     },

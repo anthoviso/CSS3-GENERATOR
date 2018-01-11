@@ -370,7 +370,18 @@ function showProperties(jsonObj) {
     '<a href="https://developer.mozilla.org/fr/docs/Web/CSS/' + elProperty[i].property +
     '" target="_blank"><span "="" class="button_help"><i class="fa fa-question-circle" aria-hidden="true"></i></span></a>' + myinput2Elem + '</div>';
     $('.cssElements > section').append(mydivElem);
+
+if(elProperty[i].values){
+  $( "#" + elProperty[i].property ).autocomplete({
+    source: elProperty[i].values
+  });
+}
+
+
   }
+
+
+
 if(init == true){
   for(i=0;i<=Object.keys(localData).length - 1;i++){
     selectedClass = Object.keys(localData)[i].replace('-','');
@@ -418,6 +429,7 @@ $( document ).ready(function() {
 
       $('#inputFilter').val(selectedElemId);
       searchPropterties();
+      $("#" + selectedElemId).focus();
     }
   });
   $('#CSSRENDER').on("keyDown keyup", "input.loadNum", function(){
@@ -490,6 +502,7 @@ $( document ).ready(function() {
       var file = new Blob([tmpFile], {type: "text/plain;charset=utf-8"});
       saveAs(file, 'style.css');
     });
+
 
     $("#CSSRENDER").on('click', '.ace_gutter', function() {
       var tmpRemoveParent =   $(this).parent().attr('id');

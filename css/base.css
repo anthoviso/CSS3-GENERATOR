@@ -718,4 +718,19 @@ footer{
     }
   .CodeMirror-focused .CodeMirror-selected { background: #d7d4f0; }
 
+
+/* Jquery-ui */
+	.ui-widget.ui-widget-content {
+	    border: 1px solid #c5c5c5;
+	    font-size: 14px;
+	    border-radius: 3px;
+		}
+		.ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active, a.ui-button:active, .ui-button:active, .ui-button.ui-state-active:hover {
+	    border: 0px solid #c9c8c8;
+	    background: #b0b9c0;
+	    font-weight: normal;
+	    color: #ffffff;
+	    margin: 1px;
+	    padding: 2px 1em 3px .4em;
+	}
 /* By VISOCCHI ANTHONY 2017 */
