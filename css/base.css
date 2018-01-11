@@ -667,6 +667,11 @@ footer{
     height: 120px;
 	}
 
+	#HTMLRENDER{
+		display:none;
+
+	}
+
 /* ----- ColorPicker  - Spectrum  ----- */
 #triggerSetbackground, #triggerSetcolor{
 	display:none !important;

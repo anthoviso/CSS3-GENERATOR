@@ -8,6 +8,7 @@ var cssCommentEnd = '*/';
 var oldSpan;
 var newClassVal = 1;
 var editor;
+var initCodeMirror = true;
 var init = true;
 var unit = 'px';
 var localData =
@@ -84,33 +85,33 @@ function selectText(containerid) {
     window.getSelection().addRange(range);
   }
 }
+function resetHtml(){
+    editor.getDoc().setValue('<div></div>');
+}
 function resetAll () {
-  $('#CSSRENDER').empty();
+  $('#CSSRENDER .classDiv').remove();
   $('#output').empty();
     $('section input').val("");
-  $("#output").append('<div id="output_new_class" class="-new_class"></div>');
-  console.log(localData);
+  // console.log(localData);
   localData = {};
   $(".v-buttonGroupControl").prop("checked", false);
   $(".backgroundProprieties .sp-preview-inner").css("background-color", $("#background").val());
   $(".colorProprieties .sp-preview-inner").css("color", $("#color").val());
 }
 function delClass () {
-  console.log(selectedClass);
-      $('#CSSRENDER > #' + selectedClass).remove();
-    $('#output_' + selectedClass).remove();
+  // console.log(selectedClass);
+      $('#CSSRENDER #' + selectedClass).remove();
+    $('.-' + selectedClass).remove();
     delete localData['-' + selectedClass];
 }
 function resetClass () {
   delete localData['-' + selectedClass];
   localData['-' + selectedClass]={};
-  $('#output_'+ selectedClass).remove();
-  $("#output").append('<div id="output_' + selectedClass + ' class="-' + selectedClass + '"></div>');
+  $('.-'+ selectedClass).remove();
   $('section input').val("");
 }
 function createClass () {
   $('#CSSRENDER').append('<div  id="new_class_' + newClassVal + '" class="classDiv"><div class="ace_line ace_first"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p><span style="margin:0;padding-left:5px;" class="loadNum">new_class_' + newClassVal + '</span><span>{</span></div><div class="new_class_' + newClassVal + ' sortable-items"></div><div class="ace_line"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p><span style="margin:0;padding-left:5px;">}</span></div><div class="ace_line"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p></div></div>');
-  $("#output").append('<div id="output_new_class_' + newClassVal + '"  class="-new_class_' + newClassVal + '"></div>');
   localData['-new_class_' + newClassVal]={};
   newClassVal = newClassVal + 1;
 }
@@ -121,6 +122,27 @@ function activecodehtml () {
   $('#HTMLRENDER').show();
   $('#copyCodeCSS').hide();
   $('#copyCodeHTML').show();
+if(initCodeMirror == true){
+  //Codemirror
+  editor = CodeMirror(document.getElementById("codemirror-html"), {
+    mode: "xml",
+    extraKeys: {"Ctrl-Space": "autocomplete"},
+    value: "<div class='defaultClass'>CSS3 Generator</div>",
+    lineNumbers: true,
+    enterMode: "keep",
+    autofocus:true,
+    theme: "monokai",
+    indentWithTabs: true
+  });
+  $(editor.getWrapperElement()).slideDown('normal', function(){
+        editor.refresh();
+    });
+    $('.htmlCodeValue').html(editor.getValue());
+
+    initCodeMirror = false;
+
+      $('#output').html(editor.getValue().replace(/[cC]lass='/g, "class='-").replace(/[cC]lass="/g, 'class="-'));
+  }
 }
 function activecodecss () {
   $('#inputHTMLcode').removeClass("activeCode");
@@ -138,7 +160,7 @@ function spectrumInit(){
     showButtons: false,
     move: function(color) {
       $('#background').val(color.toHexString());
-      $('#output_' + selectedClass).css('background',$('#background').val());
+      $('.-' + selectedClass).css('background',$('#background').val());
     },
     palette: [["red", "rgba(0, 255, 0, .5)", "rgb(0, 0, 255)"]]
   });
@@ -149,7 +171,7 @@ function spectrumInit(){
     showButtons: false,
     move: function(color) {
       $('#color').val(color.toHexString());
-      $('#output_' + selectedClass).css('color',$('#color').val());
+      $('.-' + selectedClass).css('color',$('#color').val());
     },
     palette: [["red", "rgba(0, 255, 0, .5)", "rgb(0, 0, 255)"]]
   });
@@ -206,7 +228,6 @@ function switchToSpan() {
         $('.' + oldSpan).addClass(tmpSpan);
         $('.' + oldSpan).removeClass(oldSpan);
         $('#' + oldSpan).attr("id", tmpSpan);
-        $('#output_' + oldSpan).attr("id", "output_" + tmpSpan);
 
 
       localData['-' + tmpSpan] = localData['-' + oldSpan];
@@ -266,7 +287,9 @@ function update (jsonObj) {
 }
   // console.log('slectedClass : ' + selectedClass );
   var elProperty = jsonObj['properties'];
-  $('#output_defaultClass').html($('.htmlCodeValue > .defaultClass > p').text());
+  if($('.htmlCodeValue > .defaultClass > p').text() == "" && initCodeMirror == true){
+    $('.-defaultClass').html('CSS3 Generator');
+  }
 
   for (i=0;i <  elProperty.length;i++){
     if($('#' + elProperty[i].property).val() == ""){
@@ -286,7 +309,6 @@ function update (jsonObj) {
       // SI valeur input ""
     if($('#' + elProp).val() == ""){
       $('.' + selectedClass + ' #divrender' + elProp).remove();
-      // $('#output_' + selectedClass).css(elProp , "");
     }else{
         // SI NON valeur input ""
       if($('.' + selectedClass + ' #divrender' + elProp).length > 0){
@@ -322,6 +344,9 @@ for(s=0;s < Object.keys(localData).length;s++){
   // console.log(JSON.stringify(localData));
   $(".backgroundProprieties .sp-preview-inner").css("background-color", $("#background").val());
   $(".colorProprieties .sp-preview-inner").css("color", $("#color").val());
+  if(initCodeMirror == false){
+    $('#output').html(editor.getValue().replace(/[cC]lass='/g, "class='-").replace(/[cC]lass="/g, 'class="-'));
+  }
 }
 function showProperties(jsonObj) {
   // Gérer les valeurs de la partie recherche
@@ -349,7 +374,7 @@ function showProperties(jsonObj) {
 if(init == true){
   for(i=0;i<=Object.keys(localData).length - 1;i++){
     selectedClass = Object.keys(localData)[i].replace('-','');
-    console.log(selectedClass + " : update des classes en cours");
+    // console.log(selectedClass + " : update des classes en cours");
     update(jsonObj);
     toggleEmptyElem();
     initJsonClass = initJsonClass + 1;
@@ -367,8 +392,6 @@ if(init == true){
 
 $( document ).ready(function() {
   // JSON
-  // localData.gggg={};
-
   var requestURL = 'data/properties.json';
   var request = new XMLHttpRequest();
   request.open('GET', requestURL);
@@ -379,28 +402,8 @@ $( document ).ready(function() {
     var allProperties = request.response;
     showProperties(allProperties);
     spectrumInit();
-    //Codemirror
-    editor = CodeMirror(document.getElementById("codemirror-html"), {
-      mode: "xml",
-      extraKeys: {"Ctrl-Space": "autocomplete"},
-      value: "<div class='defaultClass'><p>CSS3 Generator</p></div>",
-      lineNumbers: true,
-      enterMode: "keep",
-      autofocus:true,
-      theme: "monokai",
-      indentWithTabs: true
-    });
-    $(editor.getWrapperElement()).slideDown('normal', function(){
-          editor.refresh();
-      });
-      $('.htmlCodeValue').html(editor.getValue());
   }
 
-  $('#HTMLRENDER').on('click input keyup', '.CodeMirror', function(){
-      var editorValue = editor.getValue();
-      console.log(editorValue);
-      $('.htmlCodeValue').html(editorValue);
-  });
   $('#CSSRENDER').on('click', '.classDiv', function(){
     selectedClassFunc($(this));
   });
