@@ -6,8 +6,11 @@ var cssCommentStart = '/*';
 var selectedClass = "defaultClass";
 var cssCommentEnd = '*/';
 var oldSpan;
+var valueLessTmp;
+var valueMoreTmp;
 var newClassVal = 1;
 var editor;
+// var intervalId = 0;
 var initCodeMirror = true;
 var init = true;
 var unit = 'px';
@@ -36,6 +39,29 @@ function toggleEmptyElem(){
 
     }
   });
+}
+function btnLess(){
+  var spanLessParent =   valueLessTmp.parent().attr('class');
+  var presentValue;
+  if($('.' + spanLessParent + ' > input').val() == ''){
+    presentValue = 1;
+  }else{
+    presentValue =  $('.' + spanLessParent + ' > input').val();
+  }
+  var intpresentValue = parseInt(presentValue);
+  $('.' + spanLessParent + ' > input').val(intpresentValue - 1 + unit);
+}
+function btnMore(){
+  var spanLessParent =   valueMoreTmp.parent().attr('class');
+  var presentValue;
+
+  if($('.' + spanLessParent + ' > input').val() == ''){
+    presentValue = 1;
+  }else{
+    presentValue =  $('.' + spanLessParent + ' > input').val();
+  }
+  var intpresentValue = parseInt(presentValue);
+  $('.' + spanLessParent + ' > input').val(intpresentValue + 1 + unit);
 }
 function inputResize(){
   var value = $('input.loadNum').val();
@@ -393,6 +419,7 @@ function showProperties(jsonObj) {
       $( "#" + elProperty[i].property ).autocomplete({
         source: elProperty[i].values
       });
+      // ARROW DOWN - to do
     }
   }
   if(init == true){
@@ -496,38 +523,21 @@ $( document ).ready(function() {
       var removeParent =   $(this).parent().attr('id');
       var ParentClass = $(this).parent().parent().parent().attr('id');
       removeParent = removeParent.replace('divrender','');
-      // console.log(removeParent);
-      // console.log(ParentClass);
       $('.' + removeParent + 'Proprieties > input').val('');
-      // console.log($('.' + removeParent + 'Proprieties > input').val());
       $('.' + ParentClass + '#cssrender' + removeParent).removeClass('tmpRemove');
     });
-    $('.cssElements').on('click', '.value_less', function() {
-      // console.log($(this).attr('class') );
-      // console.log($(this).attr('id') );
-      var spanLessParent =   $(this).parent().attr('class');
-      var presentValue;
-      if($('.' + spanLessParent + ' > input').val() == ''){
-        presentValue = 1;
-      }else{
-        presentValue =  $('.' + spanLessParent + ' > input').val();
-      }
-      var intpresentValue = parseInt(presentValue);
-      $('.' + spanLessParent + ' > input').val(intpresentValue - 1 + unit);
+    $('.cssElements').on('mousedown', '.value_less', function() {
+      valueLessTmp = $(this);
+        intervalId = setInterval ( btnLess, 70 );
+    }).mouseup(function() {
+      clearInterval ( intervalId );
     });
 
-
-    $('.cssElements').on('click', '.value_more', function() {
-      var spanLessParent =   $(this).parent().attr('class');
-      var presentValue;
-
-      if($('.' + spanLessParent + ' > input').val() == ''){
-        presentValue = 1;
-      }else{
-        presentValue =  $('.' + spanLessParent + ' > input').val();
-      }
-      var intpresentValue = parseInt(presentValue);
-      $('.' + spanLessParent + ' > input').val(intpresentValue + 1 + unit);
+    $('.cssElements').on('mousedown', '.value_more', function() {
+      valueMoreTmp = $(this);
+        intervalId = setInterval ( btnMore, 70 );
+    }).mouseup(function() {
+      clearInterval ( intervalId );
     });
   });
 });

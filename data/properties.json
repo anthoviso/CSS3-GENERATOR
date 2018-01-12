@@ -66,7 +66,22 @@
       "input" : "#DADDF0"
     },
     {
+      "property" : "clear",
+      "values" : [
+         	"none",
+          "left",
+          "right",
+          "both",
+          "inherit"
+      ],
+      "option" : "false",
+      "input" : ""
+    },
+    {
       "property" : "clip",
+      "values" : [
+         	 	"auto"
+      ],
       "option" : "false",
       "input" : ""
     },
@@ -77,11 +92,60 @@
     },
     {
       "property" : "cursor",
+      "values" : [
+         	 	"auto",
+            "crosshair",
+            "default",
+            "pointer",
+            "move",
+            "e-resize",
+            "ne-resize",
+            "nw-resize",
+            "n-resize",
+            "se-resize",
+            "sw-resize",
+            "s-resize",
+            "w-resize",
+            "text",
+            "wait",
+            "help"
+      ],
       "option" : "false",
       "input" : ""
     },
     {
       "property" : "display",
+      "values" : [
+         	 	"inline",
+            "block",
+            "list-item",
+            "run-in",
+            "compact",
+            "marker",
+            "table",
+            "inline-table",
+            "table-row-group",
+            "table-header-group",
+            "table-footer-group",
+            "table-row",
+            "table-column-group",
+            "table-column",
+            "table-cell",
+            "table-caption",
+            "none",
+            "inherit"
+      ],
+      "option" : "false",
+      "input" : ""
+    },
+    {
+      "property" : "float",
+      "values" : [
+         	 	"none",
+            "left",
+            "right",
+            "inherit"
+      ],
       "option" : "false",
       "input" : ""
     },
@@ -97,11 +161,35 @@
     },
     {
       "property" : "font-style",
+      "values" : [
+         	"normal",
+          "italic",
+          "oblique"
+      ],
+      "option" : "false",
+      "input" : ""
+    },
+    {
+      "property" : "font-variant",
+      "values" : [
+         	"normal",
+          "small-caps"
+      ],
       "option" : "false",
       "input" : ""
     },
     {
       "property" : "font-weight",
+      "values" : [
+         	"normal",
+          "bold",
+          "bolder",
+          "lighter",
+          "medium",
+          "large",
+          "larger",
+          "smaller"
+      ],
       "option" : "false",
       "input" : ""
     },
@@ -126,6 +214,11 @@
       "input" : ""
     },
     {
+      "property" : "list-style",
+      "option" : "false",
+      "input" : ""
+    },
+    {
       "property" : "margin",
       "option" : "true",
       "input" : "100px auto"
@@ -141,12 +234,30 @@
       "input" : "5px dotted grey"
     },
     {
+      "property" : "overflow",
+      "values" : [
+         	"auto",
+          "visible",
+          "hidden",
+          "scroll"
+      ],
+      "option" : "false",
+      "input" : ""
+    },
+    {
       "property" : "padding",
       "option" : "true",
       "input" : "10px"
     },
     {
       "property" : "position",
+      "values" : [
+         	 	"static",
+            "absolute",
+            "relative",
+            "fixed",
+            "inherit"
+      ],
       "option" : "false",
       "input" : ""
     },
@@ -157,11 +268,24 @@
     },
     {
       "property" : "text-align",
+      "values" : [
+         	"left",
+          "rigth",
+          "center",
+          "justify"
+      ],
       "option" : "false",
       "input" : "center"
     },
     {
       "property" : "text-decoration",
+      "values" : [
+         	"none",
+          "underline",
+          "overline",
+          "line-through",
+          "blink"
+      ],
       "option" : "false",
       "input" : ""
     },
@@ -172,6 +296,12 @@
     },
     {
       "property" : "text-transform",
+      "values" : [
+         	"none",
+          "capitalize",
+          "uppercase",
+          "lowercase"
+      ],
       "option" : "false",
       "input" : ""
     },
@@ -192,6 +322,11 @@
     },
     {
       "property" : "visibility",
+      "values" : [
+         	"inherit",
+          "visible",
+          "hidden"
+      ],
       "option" : "false",
       "input" : ""
     },
@@ -202,6 +337,16 @@
     },
     {
       "property" : "word-spacing",
+      "option" : "false",
+      "input" : ""
+    },
+    {
+      "property" : "white-space",
+      "values" : [
+         	"normal",
+          "pre",
+          "nowrap"
+      ],
       "option" : "false",
       "input" : ""
     }
