@@ -17,8 +17,9 @@
 		<script type="text/javascript" src='lib/fileSaver/FileSaver.js'></script>
 		<!-- Codemirror -->
 		<link rel="stylesheet" type="text/css" href="lib//codemirror/lib/codemirror.css">
-		<link rel="stylesheet" type="text/css" href="lib/codemirror/theme/monokai.css">
+		<link rel="stylesheet" type="text/css" href="lib/codemirror/theme/one-dark.css">
 		<script type="text/javascript" src="lib/codemirror/lib/codemirror.js"></script>
+		<script type="text/javascript" src="lib/codemirror/formatting.js"></script>
 		<script type="text/javascript" src="lib/codemirror//mode/xml/xml.js"></script>
 		<!-- Spectrum -->
 		<script type="text/javascript" src='lib/spectrum/spectrum.js'></script>
@@ -48,44 +49,7 @@
 			 </div>
 		 </div>
 		</div>
-		<div id="outils" class="outilsContainer" style="display:none;">
-				<input id="FontWeightBoldForm" class="v-visuallyHidden v-buttonGroupControl" name="FontWeightBoldForm" value="fontWeightBold" type="checkbox">
-				<label for="FontWeightBoldForm" class="v-buttonGroupLabel">
-					<img src="img/FontWeightBold.png" alt=""/>
-				</label>
-				<input id="FontStyleItalicForm" class="v-visuallyHidden v-buttonGroupControl" name="FontStyleItalicForm" value="fontStyleItalic" type="checkbox">
-				<label for="FontStyleItalicForm" class="v-buttonGroupLabel">
-					<img src="img/FontStyleItalic.png" alt="" />
-				</label>
-				<input id="TextUnderlineForm" class="v-visuallyHidden v-buttonGroupControl" name="TextUnderlineForm" value="textUnderline" type="checkbox">
-				<label for="TextUnderlineForm" class="v-buttonGroupLabel">
-					<img src="img/TextDecorationUnderline.png" alt=""/>
-				</label>
-				<input class="v-visuallyHidden v-buttonGroupControl" id="TextAlignLeft" name="TextAlignForm" value="TextAlignLeft" type="radio">
-				<label for="TextAlignLeft" class="v-buttonGroupLabel">
-					<img src="img/TextAlignLeft.png" alt=""/>
-				</label>
-				<input class="v-visuallyHidden v-buttonGroupControl" id="TextAlignRight" name="TextAlignForm" value="TextAlignRight" type="radio">
-				<label for="TextAlignRight" class="v-buttonGroupLabel">
-					<img src="img/TextAlignRight.png" alt=""/>
-				</label>
-				<input class="v-visuallyHidden v-buttonGroupControl" id="TextAlignCenter" name="TextAlignForm" value="TextAlignCenter" type="radio">
-				<label for="TextAlignCenter" class="v-buttonGroupLabel">
-					<img src="img/TextAlignCenter.png" alt=""/>
-				</label>
-				<input class="v-visuallyHidden v-buttonGroupControl" id="TextAlignJustify" name="TextAlignForm" value="TextAlignJustify" type="radio">
-				<label for="TextAlignJustify" class="v-buttonGroupLabel">
-					<img src="img/TextAlignJustify.png" alt=""/>
-				</label>
-				<select id="ListeElement" onchange="OnSelectionChange (this)" class="selectForm">
-					<option style="font-weight:bold;" value="" id="" selected>Police</option>
-					<option value="Arial" id="arialFont" >Arial</option>
-					<option value="Comic Sans MS" id="comicSansMsFont">Comic Sans MS</option>
-					<option value="Georgia" id="georgiaFont" >Georgia</option>
-					<option value="Impact" id="impactFont">Impact</option>
-					<option value="Times New Roman" id="timeNewRoman">Times New Roman</option>
-					<option value="Verdana" id="verdanaFont">Verdana</option>
-				</select>
+		<div id="outils" class="outilsContainer" style="display:none;">			
 		</div>
 	<div id="output" class="output" style="position:relative;">
 		<div class='-defaultClass' ></div>
@@ -156,6 +120,9 @@
 								<button onclick="resetHtml();" class="btn btnReset">
 									Reset
 								</button>
+									<button onclick="autoFormatSelection();" class="btn btnReset">
+										Indent
+									</button>
 							</div>
 							<div id="htmlRenderContainer">
 							<div id="codemirror-html" ></div>
