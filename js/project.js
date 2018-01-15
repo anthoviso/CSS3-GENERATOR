@@ -120,9 +120,15 @@ function resetClass () {
   $('section input').val("");
 }
 function createClass () {
-  $('#CSSRENDER').append('<div  id="new_class_' + newClassVal + '" class="classDiv"><div class="ace_line ace_first"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p><span style="margin:0;padding-left:5px;" class="loadNum">new_class_' + newClassVal + '</span><span>{</span></div><div class="new_class_' + newClassVal + ' sortable-items"></div><div class="ace_line"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p><span style="margin:0;padding-left:5px;">}</span></div><div class="ace_line"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p></div></div>');
+  $('#cssRenderContainer').append('<div  id="new_class_' + newClassVal + '" class="classDiv"><div class="ace_line ace_first"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p><span style="margin:0;padding-left:5px;" class="loadNum">new_class_' + newClassVal + '</span><span>{</span></div><div class="new_class_' + newClassVal + ' sortable-items"></div><div class="ace_line"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p><span style="margin:0;padding-left:5px;">}</span></div><div class="ace_line"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p></div></div>');
   localData['-new_class_' + newClassVal]={};
   newClassVal = newClassVal + 1;
+}
+function addProperty () {
+  // $('#CSSRENDER .' + selectedClass).append('<input value="test" />');
+}
+function addcomments(){
+ $('#cssrendercolor').append('<span class="commentSpan"></span>')
 }
 function activecodehtml () {
   $('#inputHTMLcode').addClass("activeCode");
@@ -237,7 +243,7 @@ function searchPropterties(){
     }
   }
 }
-function switchToInput() {
+function classSwitchToInput() {
   var $input = $("<input>", {
     val: $(this).text().replace(/\---/,"::").replace(/\--/,":"),
     type: "text"
@@ -245,11 +251,11 @@ function switchToInput() {
   oldSpan = $input.val().replace(/\::/,"---").replace(/\:/,"--");
   $input.addClass("loadNum");
   $(this).replaceWith($input);
-  $input.on("blur", switchToSpan);
+  $input.on("blur", classSwitchToSpan);
   $input.select();
   inputResize();
 };
-function switchToSpan() {
+function classSwitchToSpan() {
 
   console.log('oldSpan : ' + oldSpan);
   var $span = $("<span>", {
@@ -288,7 +294,7 @@ function switchToSpan() {
   console.log('tmpSpan : ' + tmpSpan);
   $span.addClass("loadNum");
   $(this).replaceWith('<span style="margin:0;padding-left:5px;" class="loadNum">' + tmpSpan.replace(/\---/,"::").replace(/\--/,":") + '</span>');
-  $('#CSSRENDER').on("click", "span.loadNum", switchToInput);
+  $('#CSSRENDER').on("click", "span.loadNum", classSwitchToInput);
 }
 function selectedClassFunc(thisObj){
   if(selectedClass != thisObj.attr('id')){
@@ -340,6 +346,8 @@ function update (jsonObj) {
       delete localData['-' + selectedClass][elProperty[i].property];
     }else{
       if($('.' + selectedClass + ' #cssrender' + elProperty[i].property).hasClass('tmpRemove') && localData['-' + selectedClass][elProperty[i].property].indexOf("/*") == -1){
+        localData['-' + selectedClass][elProperty[i].property]= "/*" + $('#' + elProperty[i].property).val() + "*/";
+      }else if($('.' + selectedClass + ' #cssrender' + elProperty[i].property).hasClass('tmpRemove')){
         localData['-' + selectedClass][elProperty[i].property]= "/*" + $('#' + elProperty[i].property).val() + "*/";
       }else{
         localData['-' + selectedClass][elProperty[i].property]= $('#' + elProperty[i].property).val();
@@ -475,9 +483,8 @@ $( document ).ready(function() {
   $('#CSSRENDER').on("keyDown keyup", "input.loadNum", function(){
     inputResize();
   });
-
   $(function() {
-    $("#CSSRENDER").on("click", "span.loadNum", switchToInput);
+    $("#CSSRENDER").on("click", "span.loadNum", classSwitchToInput);
 
     $('.button_empty').on('click', function(){
       $('#inputFilter').val('');
@@ -502,7 +509,10 @@ $( document ).ready(function() {
       axis: "y",
       handle: "p"
     });
-
+    $( ".sortable-classes" ).sortable({
+      axis: "y",
+      handle: "p"
+    });
     $("#download").on('click', function() {
       var tmpFile = $('body style').text();
       tmpFile = tmpFile.replace(/\,/g,', ').replace(/\{/g,' {\n\t').replace(/\}/g,'}\n').replace(/\;/g,';\n\t').replace(/\.\-+/g,'.');

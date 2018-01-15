@@ -88,7 +88,7 @@
 						<code id="CSSRENDER">
 							<div class="cssRenderButtons"	 style="padding: 5px 5px;">
 								<button onclick="createClass();" class="btn btnReset">
-									+ Add
+									addClass
 								</button>
 								<button onclick="resetClass();" class="btn btnReset">
 									emptyClass
@@ -99,8 +99,14 @@
 								<button onclick="resetAll();" class="btn btnReset">
 									CSS RESET
 								</button>
+								<!-- <button onclick="addProperty();" class="btn btnReset">
+									addProperty
+								</button> -->
+								<!-- <button onclick="addcomments();" class="btn btnReset">
+									addProperty
+								</button> -->
 							</div>
-							<div id="cssRenderContainer">
+							<div id="cssRenderContainer" class="sortable-classes ui-sortable">
 								<div  id="defaultClass" class="classDiv">
 									<div class="ace_line ace_first"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p><span style="margin:0;padding-left:5px;" class="loadNum">defaultClass</span><span>{</span></div>
 										<div class="defaultClass sortable-items"></div>
@@ -138,6 +144,7 @@
 									<!-- unity values -->
 									<!-- CSS errors -->
 									<!-- remove or comment a class or minimise -->
+									<!-- tri css -->
 		</div>
 		<div class="htmlCodeValue"></div>
 	</div>
