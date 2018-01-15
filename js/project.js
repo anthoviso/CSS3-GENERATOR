@@ -130,54 +130,21 @@ function addProperty () {
 function addcomments(){
  $('#cssrendercolor').append('<span class="commentSpan"></span>')
 }
+function activecodecss () {
+  // $('#inputHTMLcode').removeClass("activeCode");
+  // $('#inputCSScode').addClass("activeCode");
+  // $('#HTMLRENDER').hide();
+  // $('#CSSRENDER').show();
+  // $('#copyCodeCSS').show();
+  // $('#copyCodeHTML').hide();
+}
 function activecodehtml () {
-  $('#inputHTMLcode').addClass("activeCode");
-  $('#inputCSScode').removeClass("activeCode");
-  $('#CSSRENDER').hide();
-  $('#HTMLRENDER').show();
-  $('#copyCodeCSS').hide();
-  $('#copyCodeHTML').show();
-  if(initCodeMirror == true){
-    //Codemirror
-    editor = CodeMirror(document.getElementById("codemirror-html"), {
-      mode: "xml",
-      extraKeys: {"Ctrl-Space": "autocomplete"},
-      value: "<div class='defaultClass'>CSS3 Generator</div>",
-      lineNumbers: true,
-      enterMode: "keep",
-      autofocus:true,
-      theme: "one-dark",
-      indentWithTabs: true
-    });
-    editor.addKeyMap({
-      "Tab": function (cm) {
-        if (cm.somethingSelected()) {
-          var sel = editor.getSelection("\n");
-          // Indent only if there are multiple lines selected, or if the selection spans a full line
-          if (sel.length > 0 && (sel.indexOf("\n") > -1 || sel.length === cm.getLine(cm.getCursor().line).length)) {
-            cm.indentSelection("add");
-            return;
-          }
-        }
-
-        if (cm.options.indentWithTabs)
-        cm.execCommand("insertTab");
-        else
-        cm.execCommand("insertSoftTab");
-      },
-      "Shift-Tab": function (cm) {
-        cm.indentSelection("subtract");
-      }
-    });
-    $(editor.getWrapperElement()).slideDown('normal', function(){
-      editor.refresh();
-    });
-    $('.htmlCodeValue').html(editor.getValue());
-
-    initCodeMirror = false;
-
-    $('#output').html(editor.getValue().replace(/[cC]lass='/g, "class='-").replace(/[cC]lass="/g, 'class="-'));
-  }
+  // $('#inputHTMLcode').addClass("activeCode");
+  // $('#inputCSScode').removeClass("activeCode");
+  // $('#CSSRENDER').hide();
+  // $('#HTMLRENDER').show();
+  // $('#copyCodeCSS').hide();
+  // $('#copyCodeHTML').show();
 }
 function getSelectedRange() {
   return { from: editor.getCursor(true), to: editor.getCursor(false) };
@@ -193,14 +160,6 @@ function commentSelection(isComment) {
 function indentHtml(){
   console.log(editor.getDoc().setValue(editor.getValue().replace(/\,/g,', ').replace(/\{/g,' {\n\t').replace(/\}/g,'}\n')));
   console.log(editor.getValue().replace(/\,/g,', ').replace(/\{/g,' {\n\t').replace(/\}/g,'}\n'));
-}
-function activecodecss () {
-  $('#inputHTMLcode').removeClass("activeCode");
-  $('#inputCSScode').addClass("activeCode");
-  $('#HTMLRENDER').hide();
-  $('#CSSRENDER').show();
-  $('#copyCodeCSS').show();
-  $('#copyCodeHTML').hide();
 }
 function spectrumInit(){
   $("#triggerSetbackground").spectrum({
@@ -505,6 +464,23 @@ $( document ).ready(function() {
     $('.backGrey').on('click', function() {
       $('#output').css('background', 'rgb(79, 85, 99)');
     });
+    $( ".board" ).resizable({
+        maxHeight: $(window).height() - 50,
+        minHeight: 30,
+        handles: "n",
+        resize: function( event, ui ) {
+          $('.output').css('height', $(window).height() - 80);
+          $('.generateCode').css('height', $('.board').height() + 'px');
+          $('.cssElements').css('height', $('.board').height() + 'px');
+        }
+    });
+
+    $( "#CSSRENDER" ).resizable({
+      handles: "e",
+      resize: function( event, ui ) {
+        $('#HTMLRENDER').css('width', 'calc(100% - ' + $('#CSSRENDER').width() + 'px  - 17px)');
+      }
+    });
     $( ".sortable-items" ).sortable({
       axis: "y",
       handle: "p"
@@ -550,4 +526,46 @@ $( document ).ready(function() {
       clearInterval ( intervalId );
     });
   });
+
+  if(initCodeMirror == true){
+    //Codemirror
+    editor = CodeMirror(document.getElementById("codemirror-html"), {
+      mode: "xml",
+      extraKeys: {"Ctrl-Space": "autocomplete"},
+      value: "<div class='defaultClass'>CSS3 Generator</div>",
+      lineNumbers: true,
+      enterMode: "keep",
+      autofocus:true,
+      theme: "one-dark",
+      indentWithTabs: true
+    });
+    editor.addKeyMap({
+      "Tab": function (cm) {
+        if (cm.somethingSelected()) {
+          var sel = editor.getSelection("\n");
+          // Indent only if there are multiple lines selected, or if the selection spans a full line
+          if (sel.length > 0 && (sel.indexOf("\n") > -1 || sel.length === cm.getLine(cm.getCursor().line).length)) {
+            cm.indentSelection("add");
+            return;
+          }
+        }
+
+        if (cm.options.indentWithTabs)
+        cm.execCommand("insertTab");
+        else
+        cm.execCommand("insertSoftTab");
+      },
+      "Shift-Tab": function (cm) {
+        cm.indentSelection("subtract");
+      }
+    });
+    $(editor.getWrapperElement()).slideDown('normal', function(){
+      editor.refresh();
+    });
+    $('.htmlCodeValue').html(editor.getValue());
+
+    initCodeMirror = false;
+
+    $('#output').html(editor.getValue().replace(/[cC]lass='/g, "class='-").replace(/[cC]lass="/g, 'class="-'));
+  }
 });
