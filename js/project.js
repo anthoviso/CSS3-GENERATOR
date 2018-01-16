@@ -8,11 +8,10 @@ var cssCommentStart = '/*';
 var selectedClass = "defaultClass";
 var cssCommentEnd = '*/';
 var oldSpan;
-var valueLessTmp;
-var valueMoreTmp;
+var valueSpanTmp;
 var newClassVal = 1;
+var toogleButton = true;
 var editor;
-// var intervalId = 0;
 var initCodeMirror = true;
 var init = true;
 var unit = 'px';
@@ -31,7 +30,21 @@ var localData =
 };
 
 /* 2 - FUNCTIONS */
-
+function button_toogle(){
+  if(toogleButton == true){
+    $('.board').css('height','918px');
+    toogleButton = false;
+    $('.output').css('height', $(window).height() - 80);
+    $('.generateCode').css('height', $('.board').height() + 'px');
+    $('.cssElements').css('height', $('.board').height() + 'px');
+  }else{
+      $('.board').css('height','30px');
+      toogleButton = true;
+      $('.output').css('height', $(window).height() - 80);
+      $('.generateCode').css('height', $('.board').height() + 'px');
+      $('.cssElements').css('height', $('.board').height() + 'px');
+  }
+}
 function toggleEmptyElem(){
   $('section > div > input[type=text]').map(function(index) {
     if($( this ).val() == ""){
@@ -44,28 +57,20 @@ function toggleEmptyElem(){
     }
   });
 }
-function btnLess(){
-  var spanLessParent =   valueLessTmp.parent().attr('class');
+function btnValue(){
+  var spanValueParent =  valueSpanTmp.parent().attr('class');
   var presentValue;
-  if($('.' + spanLessParent + ' > input').val() == ''){
+  if($('.' + spanValueParent + ' > input').val() == ''){
     presentValue = 1;
   }else{
-    presentValue =  $('.' + spanLessParent + ' > input').val();
+    presentValue =  $('.' + spanValueParent + ' > input').val();
   }
   var intpresentValue = parseInt(presentValue);
-  $('.' + spanLessParent + ' > input').val(intpresentValue - 1 + unit);
-}
-function btnMore(){
-  var spanLessParent =   valueMoreTmp.parent().attr('class');
-  var presentValue;
-
-  if($('.' + spanLessParent + ' > input').val() == ''){
-    presentValue = 1;
+  if(valueSpanTmp.attr('class') == 'value_more'){
+    $('.' + spanValueParent + ' > input').val(intpresentValue + 1 + unit);
   }else{
-    presentValue =  $('.' + spanLessParent + ' > input').val();
+    $('.' + spanValueParent + ' > input').val(intpresentValue - 1 + unit);
   }
-  var intpresentValue = parseInt(presentValue);
-  $('.' + spanLessParent + ' > input').val(intpresentValue + 1 + unit);
 }
 function inputResize(){
   var value = $('input.loadNum').val();
@@ -437,9 +442,6 @@ $( document ).ready(function() {
   });
 
   $(function() {
-    $('.btnToggle').on('click', function() {
-      $('.outilsContainer').toggle();
-    });
     $('.backWhite').on('click', function() {
       $('#output').css('background', 'url("img/fondBlanc.png")');
     });
@@ -498,16 +500,9 @@ $( document ).ready(function() {
       $('.' + removeParent + 'Proprieties > input').val('');
       $('.' + ParentClass + '#cssrender' + removeParent).removeClass('tmpRemove');
     });
-    $('.cssElements').on('mousedown', '.value_less', function() {
-      valueLessTmp = $(this);
-      var intervalId = setInterval ( btnLess, 70 );
-    }).mouseup(function() {
-      clearInterval ( intervalId );
-    });
-
-    $('.cssElements').on('mousedown', '.value_more', function() {
-      valueMoreTmp = $(this);
-        intervalId = setInterval ( btnMore, 70 );
+    $('.cssElements').on('mousedown', '.value_less, .value_more', function() {
+      valueSpanTmp = $(this);
+      intervalId = setInterval ( btnValue, 70 );
     }).mouseup(function() {
       clearInterval ( intervalId );
     });
