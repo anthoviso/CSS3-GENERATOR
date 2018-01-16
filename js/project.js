@@ -476,7 +476,20 @@ $( document ).ready(function() {
       axis: "y",
       handle: "p"
     });
-    $("#download").on('click', function() {
+
+    $('#toggleMenuHtml').on('click', function(e) {
+      e.stopPropagation();
+       $('#toggleMenuHtml').toggleClass('on');
+    });
+    $('#toggleMenuCss').on('click', function(e) {
+      e.stopPropagation();
+       $('#toggleMenuCss').toggleClass('on');
+    });
+    $(document).click( function(){
+       $('#toggleMenuCss').removeClass('on');
+    });
+
+    $("#menu").on('click', '#download', function() {
       var tmpFile = $('body style').text();
       tmpFile = tmpFile.replace(/\,/g,', ').replace(/\{/g,' {\n\t').replace(/\}/g,'}\n').replace(/\;/g,';\n\t').replace(/\.\-+/g,'.');
       var file = new Blob([tmpFile], {type: "text/plain;charset=utf-8"});
@@ -546,5 +559,4 @@ $( document ).ready(function() {
     initCodeMirror = false;
     $('#output').html(editor.getValue());
   }
-
 });

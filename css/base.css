@@ -39,9 +39,9 @@
 	padding: 16px 16px;
 	width: 54px;
 }
-.btnSort{margin: 0px 2px;
+.btnSort{
 	width: auto;
-	padding: 5px 20px;
+	padding: 5px 6px;
 }
 .btn:hover {
 	background: #3cb0fd;
@@ -65,7 +65,7 @@
 	color: #8d8d8d;
 	position: absolute;
 	z-index: 1;
-	right: 0px;
+	right: 66px;
 	padding: 4px 10px;
 	cursor: pointer;
 	background: transparent;
@@ -109,8 +109,8 @@ section > div:hover .button_help{
 	color: white;
 	border: 1px solid #2f2f2f;
 	background: rgb(27,29,35);
-	height: 19px;
-	width: 100%;
+	height: 18px;
+	width: calc(100% - 80px);
 }
 #textValueForm{
 	width: 200px;
@@ -152,7 +152,7 @@ section > div:hover .button_help{
 }
 .searchNResults{
 	position: absolute;
-	right: 36px;
+	right: 100px;
 	color: white;
 	padding: 5px;
 }
@@ -241,6 +241,15 @@ section input[type=text]::-moz-selection, #inputFilter::-moz-selection{
 	background: #323642;
 }
 /* ----- Code generated ----- */
+#HTMLRENDER{
+	width: calc(50% - 17px);
+	position:relative;
+	min-width: 400px;
+}
+#CSSRENDER{
+	 width: 50%;
+	 min-width:400px;
+}
 #CSSRENDER input.loadNum {
 	font-size: 16px;
 	border-radius: 4px;
@@ -315,6 +324,7 @@ top: auto !important;
 .cssSearch{
 	background: rgb(40,44,52);
 	border-bottom: 1px solid #16161e;
+	position: relative;
 }
 .generateG{
 	width: 100%;
@@ -357,24 +367,18 @@ top: auto !important;
 	font-size: 14px;
 }
 #inputHTMLcode, #inputCSScode{
-	background: rgb(40,44,52);
 	height: 30px;
 	width: 100%;
 	margin: 0;
 	padding: 5px;
 	box-sizing: border-box;
 	font-weight: bold;
-	color: grey;
 	cursor:pointer;
 	border-left: 1px solid #16161e;
 	border-bottom: 1px solid #16161e;
-}
-.activeCode{
-	background: rgb(53, 58, 69) !important;
-	color:white !important;
-	border: none;
-	border-left: 2px solid #a4dcff !important;
-	color:white !important;
+	background: rgb(53, 58, 69);
+	/* border-left: 2px solid #a4dcff !important; */
+	color:white;
 }
 
 .baliseSpan{
@@ -406,6 +410,14 @@ top: auto !important;
 	border-radius: 30px;
 	box-shadow: inset 0px 0px 1px black, 0px 0px 1px black;
 	margin: 5px;
+}
+.cssrenderdiv, .htmlrenderdiv{
+	position: relative;
+	 overflow-y: scroll;
+	 overflow-x: hidden;
+	 width: calc(100% + 17px);
+	 height: 100%;
+	 background: hsl(220, 13%, 18%);
 }
 .ace_static_highlight{
 	counter-reset:ace_line 0;
@@ -550,6 +562,59 @@ footer{
 .ui-color-picker .picking-area {
 	width: 120px;
 	height: 120px;
+}
+
+/* ----- Menu ----- */
+/* on activation */
+#toggleMenuHtml.on span, #toggleMenuCss.on span  {
+  background-color: transparent;
+}
+#toggleMenuHtml.on span:before, #toggleMenuCss.on span:before {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+#toggleMenuHtml.on span:after, #toggleMenuCss.on span:after {
+  transform: rotate(-45deg) translate(7px, -8px);
+}
+#toggleMenuHtml.on + #menu, #toggleMenuCss.on + #menu {
+  opacity: 1;
+  visibility: visible;
+	z-index: 10;
+}
+
+/* menu appearance*/
+#menu {
+	color: #999;
+	width: 200px;
+	padding: 10px;
+	margin: auto;
+	font-family: "Segoe UI", Candara, "Bitstream Vera Sans", "DejaVu Sans", "Bitstream Vera Sans", "Trebuchet MS", Verdana, "Verdana Ref", sans-serif;
+	text-align: center;
+	border-radius: 4px;
+	background: white;
+	box-shadow: 0 1px 8px rgba(0,0,0,0.05);
+	opacity: 0;
+	visibility: hidden;
+	transition: opacity .4s;
+	position: absolute;
+	right: 0;
+	top: 30px;
+}
+ul, li, li i {
+  list-style: none;
+  display: block;
+  margin: 0;
+  padding: 0;
+}
+li, li i {
+  padding: 5px;
+  color: #888;
+  text-decoration: none;
+  transition: all .2s;
+}
+li:hover, li:hover i,
+li:focus, li:focus i {
+  background: #1ABC9C;
+  color: #fff;
 }
 
 

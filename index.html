@@ -41,26 +41,23 @@
 				</a>
 			</div>
 			<div class="outputOptions">
-			 <div class="outputChangeBack backWhite">
-			 </div>
-			 <div class="outputChangeBack backBlack">
-			 </div>
-			 <div class="outputChangeBack backGrey">
-			 </div>
-		 </div>
-		</div>
-	<div id="output" class="output" style="position:relative;">
-		<div class='-defaultClass' ></div>
-	</div>
-	<div class="board" >
-		<div class="cssElements">
-			<div class="cssSearch">
-				<div style="position:relative;">
-				<span class="searchNResults"></span>
-				<span class="button_empty"><i class="fa fa-times-circle" aria-hidden="true"></i></span>
-					<input type="text" id="inputFilter" placeholder="Search ..."/>
+				<div class="outputChangeBack backWhite">
 				</div>
-				<div style="padding: 5px 5px;">
+				<div class="outputChangeBack backBlack">
+				</div>
+				<div class="outputChangeBack backGrey">
+				</div>
+			</div>
+		</div>
+		<div id="output" class="output" style="position:relative;">
+			<div class='-defaultClass' ></div>
+		</div>
+		<div class="board" >
+			<div class="cssElements">
+				<div class="cssSearch">
+					<span class="searchNResults"></span>
+					<span class="button_empty"><i class="fa fa-times-circle" aria-hidden="true"></i></span>
+					<input type="text" id="inputFilter" placeholder="Search ..."/>
 					<button onclick="button_sortByClass();" class="btn btnSort">
 						<i class="fa fa-sort-alpha-asc" aria-hidden="true"></i>
 					</button>
@@ -68,91 +65,75 @@
 						<i class="fa fa-sort-alpha-desc" aria-hidden="true"></i>
 					</button>
 				</div>
-		</div>
-			<section>
-			</section>
-		</div>
-			<div class="generateCode" >
-					<div class="ace_static_highlight ace_show_gutter" style="display: flex;">
-						<code id="CSSRENDER" style="width: 50%;min-width:400px;">
-							<div style="overflow-y: scroll;overflow-x: hidden;width: calc(100% + 17px);height: 100%;background: hsl(220, 13%, 18%);">
-							<div id="inputCSScode" onclick="activecodecss();"  class="activeCode" style="position: absolute;"><span>CSS3</span><span class="spanSelected"></span>
-								<i class="fa fa-files-o" style="padding: 1px 5px;float:right;" id="copyCodeCSS" onclick="selectText('cssRenderContainer')" aria-hidden="true"></i>
-									<i class="fa fa-download" style="padding: 1px 5px;float:right;" id="download" aria-hidden="true"></i>
-						</div>
-							<div class="cssRenderButtons"	 style="padding: 5px 5px;margin-top: 28px;">
-								<button onclick="createClass();" class="btn btnReset">
-									addClass
-								</button>
-								<button onclick="resetClass();" class="btn btnReset">
-									emptyClass
-								</button>
-								<button onclick="delClass();" class="btn btnReset">
-									delClass
-								</button>
-								<button onclick="resetAll();" class="btn btnReset">
-									CSS RESET
-								</button>
-								<!-- <button onclick="addProperty();" class="btn btnReset">
-									addProperty
-								</button> -->
-								<!-- <button onclick="addcomments();" class="btn btnReset">
-									addProperty
-								</button> -->
-							</div>
-							<div id="cssRenderContainer" class="sortable-classes ui-sortable">
-								<div  id="defaultClass" class="classDiv">
-									<div class="ace_line ace_first"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p><span style="margin:0;padding-left:5px;" class="loadNum">defaultClass</span><span>{</span></div>
-										<div class="containerdefaultClass sortable-items"></div>
-									<div class="ace_line"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p><span style="margin:0;padding-left:5px;">}</span></div>
-										<div class="ace_line"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p></div>
-								</div>
-								<div  id="defaultClass--hover" class="classDiv">
-									<div class="ace_line ace_first"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p><span style="margin:0;padding-left:5px;" class="loadNum">defaultClass:hover</span><span>{</span></div>
-										<div class="containerdefaultClass--hover sortable-items"></div>
-									<div class="ace_line"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p><span style="margin:0;padding-left:5px;">}</span></div>
-										<div class="ace_line"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p></div>
-								</div>
-							</div>
-						</div>
-						</code>
-						<code id="HTMLRENDER" style="width: calc(50% - 17px);position:relative;min-width: 400px;">
-
-								<div style="overflow-y: scroll;overflow-x: hidden;width: calc(100% + 17px);height: 100%;background: hsl(220, 13%, 18%);">
-							<div onclick="activecodehtml();" id="inputHTMLcode" style="position: absolute;"><span>Html5</span>
-								<i class="fa fa-files-o" style="padding: 1px 5px;float:right;" id="copyCodeHTML" onclick="selectText('htmlRenderContainer')" aria-hidden="true"></i>
-						</div>
-							<div style="padding: 5px 5px;margin-top: 28px;">
-								<button onclick="resetHtml();" class="btn btnReset">
-									Reset
-								</button>
-									<button onclick="autoFormatSelection();" class="btn btnReset">
-										Indent
-									</button>
-							</div>
-							<div id="htmlRenderContainer">
-							<div id="codemirror-html" ></div>
-						</div>
-					</div>
-						</code>
-					</div>
+				<section>
+				</section>
 			</div>
-		<div class="history">
-					<!-- historique + retour arrière/ avant -->
-								<!-- css input value propositions -->
-								<!-- create property inside cssRender -->
-									<!-- moreproperties -->
-									<!-- unity values -->
-									<!-- CSS errors -->
-									<!-- remove or comment a class or minimise -->
-									<!-- tri css -->
+			<div class="generateCode" >
+				<div class="ace_static_highlight ace_show_gutter" style="display: flex;">
+					<code id="CSSRENDER">
+						<div class="cssrenderdiv">
+							<div id="inputCSScode" style="position: absolute;"><span>CSS3</span><span class="spanSelected"></span>
+								<a href="#menu" id="toggleMenuCss"><i class="fa fa-cogs" style="padding: 1px 5px;float:right;color:white;" aria-hidden="true"></i></a>
+								<div id="menu">
+									<ul>
+										 <li id="download">Download<i class="fa fa-download" style="padding: 1px 5px;float:right;" aria-hidden="true"></i></li>
+										 <li onclick="resetAll();">CSS Reset<i class="fa fa-eraser" style="padding: 1px 5px;float:right;" aria-hidden="true"></i></li>
+										 <li onclick="delClass();">Delete current Class<i class="fa fa-trash" style="padding: 1px 5px;float:right;" aria-hidden="true"></i></li>
+										 <li onclick="resetClass();">Empty current Class<i class="fa fa-square-o" style="padding: 1px 5px;float:right;" aria-hidden="true"></i></li>
+										 <li onclick="createClass();">Add Class<i class="fa fa-plus-square" style="padding: 1px 5px;float:right;" aria-hidden="true"></i></li>
+									</ul>
+								</div>
+								<i class="fa fa-files-o" style="padding: 1px 5px;float:right;" id="copyCodeCSS" onclick="selectText('cssRenderContainer')" aria-hidden="true"></i>
+							</div>
+					<div id="cssRenderContainer" class="sortable-classes ui-sortable" style="margin-top: 30px;">
+						<div  id="defaultClass" class="classDiv">
+							<div class="ace_line ace_first"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p><span style="margin:0;padding-left:5px;" class="loadNum">defaultClass</span><span>{</span></div>
+								<div class="containerdefaultClass sortable-items"></div>
+								<div class="ace_line"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p><span style="margin:0;padding-left:5px;">}</span></div>
+								<div class="ace_line"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p></div>
+							</div>
+							<div  id="defaultClass--hover" class="classDiv">
+								<div class="ace_line ace_first"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p><span style="margin:0;padding-left:5px;" class="loadNum">defaultClass:hover</span><span>{</span></div>
+									<div class="containerdefaultClass--hover sortable-items"></div>
+									<div class="ace_line"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p><span style="margin:0;padding-left:5px;">}</span></div>
+									<div class="ace_line"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p></div>
+								</div>
+							</div>
+						</div>
+					</code>
+					<code id="HTMLRENDER">
+						<div class="htmlrenderdiv">
+							<div id="inputHTMLcode" style="position: absolute;"><span>Html5</span>
+								<a href="#menu" id="toggleMenuHtml"><i class="fa fa-cogs" style="padding: 1px 5px;float:right;color:white;" aria-hidden="true"></i></a>
+								<div id="menu">
+									<ul>
+										 <li onclick="autoFormatSelection();">indent Selection<i class="fa fa-indent" style="padding: 1px 5px;float:right;" aria-hidden="true"></i></li>
+										 <li onclick="resetHtml();">HTML Reset<i class="fa fa-eraser" style="padding: 1px 5px;float:right;" aria-hidden="true"></i></li>
+									</ul>
+								</div>
+								<i class="fa fa-files-o" style="padding: 1px 5px;float:right;" id="copyCodeHTML" onclick="selectText('htmlRenderContainer')" aria-hidden="true"></i>
+							</div>
+							<div id="htmlRenderContainer"  style="padding: 5px 5px;margin-top: 30px;">
+								<div id="codemirror-html" ></div>
+							</div>
+						</div>
+					</code>
+				</div>
+			</div>
+			<div class="history">
+				<!-- historique + retour arrière/ avant -->
+				<!-- create property inside cssRender -->
+				<!-- unity values -->
+				<!-- CSS errors -->
+				<!-- remove or comment a class or minimise -->
+				<!-- tri css -->
+			</div>
+			<div class="htmlCodeValue"></div>
 		</div>
-		<div class="htmlCodeValue"></div>
-	</div>
-	<footer>
-	</footer>
-	<!-- Js -->
-	<script src="js/project.js"></script>
-	<!-- BY VISOCCHI ANTHONY 2017-2018 -->
+		<footer>
+		</footer>
+		<!-- Js -->
+		<script src="js/project.js"></script>
+		<!-- BY VISOCCHI ANTHONY 2017-2018 -->
 	</body>
 </html>
