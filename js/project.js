@@ -110,12 +110,14 @@ function resetAll () {
   $(".v-buttonGroupControl").prop("checked", false);
   $(".backgroundProprieties .sp-preview-inner").css("background-color", $("#background").val());
   $(".colorProprieties .sp-preview-inner").css("color", $("#color").val());
+  selectedClass = "";
 }
 function delClass () {
   // console.log(selectedClass);
   $('#CSSRENDER #' + selectedClass).remove();
   $('.-' + selectedClass).remove();
   delete localData['-' + selectedClass];
+  selectedClass = "";
 }
 function resetClass () {
   delete localData['-' + selectedClass];
@@ -268,72 +270,77 @@ window.requestAnimationFrame = (function(){
 })();
 function update (jsonObj) {
   /* generate code*/
-  if(init == true){
+  if(selectedClass == ""){
+    $('section').css('visibility','hidden');
+  }else{
+    $('section').css('visibility','visible');
+    if(init == true){
 
-    $('section input').val('');
+      $('section input').val('');
+      for (i=0;i <  Object.keys(localData['-' + selectedClass]).length;i++){
+        $('section #' +  Object.keys(localData['-' + selectedClass])[i]).val(localData['-' + selectedClass][Object.keys(localData['-' + selectedClass])[i]]);
+      }
+      $('.classDiv').removeClass('selectedClass');
+      $('#' + selectedClass).addClass('selectedClass');
+      $('.spanSelected').html("." + selectedClass.replace(/\---/,"::").replace(/\--/,":"));
+    }
+    // console.log('slectedClass : ' + selectedClass );
+    var elProperty = jsonObj['properties'];
+    if($('.htmlCodeValue > .defaultClass > p').text() == "" && initCodeMirror == true){
+      $('.defaultClass').html('CSS3 Generator');
+    }
+
+    for (i=0;i <  elProperty.length;i++){
+      if($('#' + elProperty[i].property).val() == ""){
+        $('.container' + selectedClass + ' #cssrender' + elProperty[i].property).removeClass('tmpRemove');
+        delete localData['-' + selectedClass][elProperty[i].property];
+      }else{
+        if($('.container' + selectedClass + ' #cssrender' + elProperty[i].property).hasClass('tmpRemove')){
+          localData['-' + selectedClass][elProperty[i].property]= "/*" + $('#' + elProperty[i].property).val() + "*/";
+        }else{
+          localData['-' + selectedClass][elProperty[i].property]= $('#' + elProperty[i].property).val();
+        }
+      }
+    }
+    // Afficher les valeurs dans le code généré
     for (i=0;i <  Object.keys(localData['-' + selectedClass]).length;i++){
-      $('section #' +  Object.keys(localData['-' + selectedClass])[i]).val(localData['-' + selectedClass][Object.keys(localData['-' + selectedClass])[i]]);
-    }
-    $('.classDiv').removeClass('selectedClass');
-    $('#' + selectedClass).addClass('selectedClass');
-    $('.spanSelected').html("." + selectedClass.replace(/\---/,"::").replace(/\--/,":"));
-  }
-  // console.log('slectedClass : ' + selectedClass );
-  var elProperty = jsonObj['properties'];
-  if($('.htmlCodeValue > .defaultClass > p').text() == "" && initCodeMirror == true){
-    $('.defaultClass').html('CSS3 Generator');
-  }
-
-  for (i=0;i <  elProperty.length;i++){
-    if($('#' + elProperty[i].property).val() == ""){
-      $('.container' + selectedClass + ' #cssrender' + elProperty[i].property).removeClass('tmpRemove');
-      delete localData['-' + selectedClass][elProperty[i].property];
-    }else{
-      if($('.container' + selectedClass + ' #cssrender' + elProperty[i].property).hasClass('tmpRemove')){
-        localData['-' + selectedClass][elProperty[i].property]= "/*" + $('#' + elProperty[i].property).val() + "*/";
+      var elProp = Object.keys(localData['-' + selectedClass])[i];
+      var elVal = localData['-' + selectedClass][Object.keys(localData['-' + selectedClass])[i]];
+      // SI valeur input ""
+      if($('#' + elProp).val() == ""){
+        $('.container' + selectedClass + ' #divrender' + elProp).remove();
       }else{
-        localData['-' + selectedClass][elProperty[i].property]= $('#' + elProperty[i].property).val();
+        // SI NON valeur input ""
+        if($('.container' + selectedClass + ' #divrender' + elProp).length > 0){
+        }else{
+          $('.container' + selectedClass).append('<div class="ace_line " id="divrender' + elProp
+          + '" ><p class="ace_gutter ace_gutter-cell" unselectable="on"></p><span class="propertyRemove"><img src="img/more.png" style="width: 6px;padding: 1px;"/></span><span id="cssrender' +
+          elProp + '" class="cssrender' + elProp + '"></span></div>');
+        }
+      }
+      // SI TMP REMOVE
+      if($('.container' + selectedClass + ' #cssrender' +  elProp).hasClass('tmpRemove')){
+        $('.container' + selectedClass + ' .cssrender' + elProp).html("<span class='cssCommentStart'>" + cssCommentStart
+        + "</span><span class='attributs'>" + elProp + "</span> : " + $('#' + elProp).val() + "; <span class='cssCommentEnd'>" + cssCommentEnd + "</span>");
+      }else{
+        // SI NON TMP REMOVE
+        $('.container' + selectedClass + ' .cssrender' + elProp).html("<span class='attributs'>" + elProp + "</span> : " + $('#' + elProp).val().replace('/*','').replace('*/','')  + ";");
       }
     }
-  }
-  // Afficher les valeurs dans le code généré
-  for (i=0;i <  Object.keys(localData['-' + selectedClass]).length;i++){
-    var elProp = Object.keys(localData['-' + selectedClass])[i];
-    var elVal = localData['-' + selectedClass][Object.keys(localData['-' + selectedClass])[i]];
-    // SI valeur input ""
-    if($('#' + elProp).val() == ""){
-      $('.container' + selectedClass + ' #divrender' + elProp).remove();
-    }else{
-      // SI NON valeur input ""
-      if($('.container' + selectedClass + ' #divrender' + elProp).length > 0){
-      }else{
-        $('.container' + selectedClass).append('<div class="ace_line " id="divrender' + elProp
-        + '" ><p class="ace_gutter ace_gutter-cell" unselectable="on"></p><span class="propertyRemove"><img src="img/more.png" style="width: 6px;padding: 1px;"/></span><span id="cssrender' +
-        elProp + '" class="cssrender' + elProp + '"></span></div>');
+    // style
+    $('body style').empty();
+    for(s=0;s < Object.keys(localData).length;s++){
+      var styleValue = "";
+      for(e=0;e < Object.keys(localData[Object.keys(localData)[s]]).length;e++){
+        var tttt = Object.keys(localData)[s];
+        styleValue += Object.keys(localData[tttt])[e] + ":" + localData[Object.keys(localData)[s]][Object.keys(localData[tttt])[e]] + ";";
       }
+      $('body style').append('.' + Object.keys(localData)[s].replace(/\---/,"::").replace(/\--/,":").replace(/\-/,"") + '{' + styleValue + '}');
     }
-    // SI TMP REMOVE
-    if($('.container' + selectedClass + ' #cssrender' +  elProp).hasClass('tmpRemove')){
-      $('.container' + selectedClass + ' .cssrender' + elProp).html("<span class='cssCommentStart'>" + cssCommentStart
-      + "</span><span class='attributs'>" + elProp + "</span> : " + $('#' + elProp).val() + "; <span class='cssCommentEnd'>" + cssCommentEnd + "</span>");
-    }else{
-      // SI NON TMP REMOVE
-      $('.container' + selectedClass + ' .cssrender' + elProp).html("<span class='attributs'>" + elProp + "</span> : " + $('#' + elProp).val().replace('/*','').replace('*/','')  + ";");
-    }
-  }
-  // style
-  $('body style').empty();
-  for(s=0;s < Object.keys(localData).length;s++){
-    var styleValue = "";
-    for(e=0;e < Object.keys(localData[Object.keys(localData)[s]]).length;e++){
-      var tttt = Object.keys(localData)[s];
-      styleValue += Object.keys(localData[tttt])[e] + ":" + localData[Object.keys(localData)[s]][Object.keys(localData[tttt])[e]] + ";";
-    }
-    $('body style').append('.' + Object.keys(localData)[s].replace(/\---/,"::").replace(/\--/,":").replace(/\-/,"") + '{' + styleValue + '}');
-  }
 
-  $(".backgroundProprieties .sp-preview-inner").css("background-color", $("#background").val());
-  $(".colorProprieties .sp-preview-inner").css("color", $("#color").val());
+    $(".backgroundProprieties .sp-preview-inner").css("background-color", $("#background").val());
+    $(".colorProprieties .sp-preview-inner").css("color", $("#color").val());
+  }
   if(initCodeMirror == false){
     $('#output').html(editor.getValue());
   }
