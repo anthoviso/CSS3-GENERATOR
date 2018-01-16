@@ -1,3 +1,5 @@
+/* 1 - VARIABLES */
+
 var container2 = document.getElementById("output2");
 var colorValue = $('#color').val();
 var dieze = '';
@@ -28,14 +30,16 @@ var localData =
 }
 };
 
+/* 2 - FUNCTIONS */
+
 function toggleEmptyElem(){
   $('section > div > input[type=text]').map(function(index) {
     if($( this ).val() == ""){
       var replacementEmpty = $( this ).attr('id');
-      $('.' + selectedClass + ' .cssrender' + replacementEmpty + '').parent().hide();
+      $('.container' + selectedClass + ' .cssrender' + replacementEmpty + '').parent().hide();
     }else if($( this ).val() != ""){
       var replacement = $( this ).attr('id');
-      $('.' + selectedClass + ' .cssrender' + replacement + '').parent().show();
+      $('.container' + selectedClass + ' .cssrender' + replacement + '').parent().show();
 
     }
   });
@@ -120,7 +124,7 @@ function resetClass () {
   $('section input').val("");
 }
 function createClass () {
-  $('#cssRenderContainer').append('<div  id="new_class_' + newClassVal + '" class="classDiv"><div class="ace_line ace_first"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p><span style="margin:0;padding-left:5px;" class="loadNum">new_class_' + newClassVal + '</span><span>{</span></div><div class="new_class_' + newClassVal + ' sortable-items"></div><div class="ace_line"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p><span style="margin:0;padding-left:5px;">}</span></div><div class="ace_line"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p></div></div>');
+  $('#cssRenderContainer').append('<div  id="new_class_' + newClassVal + '" class="classDiv"><div class="ace_line ace_first"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p><span style="margin:0;padding-left:5px;" class="loadNum">new_class_' + newClassVal + '</span><span>{</span></div><div class="containernew_class_' + newClassVal + ' sortable-items"></div><div class="ace_line"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p><span style="margin:0;padding-left:5px;">}</span></div><div class="ace_line"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p></div></div>');
   localData['-new_class_' + newClassVal]={};
   newClassVal = newClassVal + 1;
 }
@@ -130,22 +134,7 @@ function addProperty () {
 function addcomments(){
  $('#cssrendercolor').append('<span class="commentSpan"></span>')
 }
-function activecodecss () {
-  // $('#inputHTMLcode').removeClass("activeCode");
-  // $('#inputCSScode').addClass("activeCode");
-  // $('#HTMLRENDER').hide();
-  // $('#CSSRENDER').show();
-  // $('#copyCodeCSS').show();
-  // $('#copyCodeHTML').hide();
-}
-function activecodehtml () {
-  // $('#inputHTMLcode').addClass("activeCode");
-  // $('#inputCSScode').removeClass("activeCode");
-  // $('#CSSRENDER').hide();
-  // $('#HTMLRENDER').show();
-  // $('#copyCodeCSS').hide();
-  // $('#copyCodeHTML').show();
-}
+
 function getSelectedRange() {
   return { from: editor.getCursor(true), to: editor.getCursor(false) };
 }
@@ -215,7 +204,6 @@ function classSwitchToInput() {
   inputResize();
 };
 function classSwitchToSpan() {
-
   console.log('oldSpan : ' + oldSpan);
   var $span = $("<span>", {
     text: $(this).val().replace(/^\-/,'').replace(/[^A-z\d\_\:\-]/g,'')
@@ -223,19 +211,16 @@ function classSwitchToSpan() {
   var tmpSpan = $span.text().replace(/^\-/,'').replace(/[^A-z\d\_\:\-]/g,'').replace(/\::/,"---").replace(/\:/,"--");
   if(oldSpan != tmpSpan){
     if(tmpSpan == "" || tmpSpan == "undefined"){
-      console.log('tmp vide');
       $span.val(oldSpan);
       tmpSpan = oldSpan;
       console.log(localData);
     }else{
-
-      console.log('tmp rempli');
       console.log(tmpSpan);
 
       $('.-' + oldSpan).addClass('-' + tmpSpan);
       $('.-' + oldSpan).removeClass('-' + oldSpan);
-      $('.' + oldSpan).addClass(tmpSpan);
-      $('.' + oldSpan).removeClass(oldSpan);
+      $('.container' + oldSpan).addClass('container' + tmpSpan);
+      $('.container' + oldSpan).removeClass('container' + oldSpan);
       $('#' + oldSpan).attr("id", tmpSpan);
 
 
@@ -269,7 +254,8 @@ function selectedClassFunc(thisObj){
   }
 }
 
-//Polyfill for requestAnimationFrame
+/* 3 - UPDATE */
+
 window.requestAnimationFrame = (function(){
   return  window.requestAnimationFrame       ||
   window.webkitRequestAnimationFrame ||
@@ -280,9 +266,7 @@ window.requestAnimationFrame = (function(){
     window.setTimeout(callback, 1000 / 60);
   };
 })();
-//Set up a requestAnimationFrame loop
 function update (jsonObj) {
-  // requestAnimationFrame(update);
   /* generate code*/
   if(init == true){
 
@@ -297,16 +281,15 @@ function update (jsonObj) {
   // console.log('slectedClass : ' + selectedClass );
   var elProperty = jsonObj['properties'];
   if($('.htmlCodeValue > .defaultClass > p').text() == "" && initCodeMirror == true){
-    $('.-defaultClass').html('CSS3 Generator');
+    $('.defaultClass').html('CSS3 Generator');
   }
 
   for (i=0;i <  elProperty.length;i++){
     if($('#' + elProperty[i].property).val() == ""){
+      $('.container' + selectedClass + ' #cssrender' + elProperty[i].property).removeClass('tmpRemove');
       delete localData['-' + selectedClass][elProperty[i].property];
     }else{
-      if($('.' + selectedClass + ' #cssrender' + elProperty[i].property).hasClass('tmpRemove') && localData['-' + selectedClass][elProperty[i].property].indexOf("/*") == -1){
-        localData['-' + selectedClass][elProperty[i].property]= "/*" + $('#' + elProperty[i].property).val() + "*/";
-      }else if($('.' + selectedClass + ' #cssrender' + elProperty[i].property).hasClass('tmpRemove')){
+      if($('.container' + selectedClass + ' #cssrender' + elProperty[i].property).hasClass('tmpRemove')){
         localData['-' + selectedClass][elProperty[i].property]= "/*" + $('#' + elProperty[i].property).val() + "*/";
       }else{
         localData['-' + selectedClass][elProperty[i].property]= $('#' + elProperty[i].property).val();
@@ -319,26 +302,25 @@ function update (jsonObj) {
     var elVal = localData['-' + selectedClass][Object.keys(localData['-' + selectedClass])[i]];
     // SI valeur input ""
     if($('#' + elProp).val() == ""){
-      $('.' + selectedClass + ' #divrender' + elProp).remove();
+      $('.container' + selectedClass + ' #divrender' + elProp).remove();
     }else{
       // SI NON valeur input ""
-      if($('.' + selectedClass + ' #divrender' + elProp).length > 0){
+      if($('.container' + selectedClass + ' #divrender' + elProp).length > 0){
       }else{
-        $('.' + selectedClass).append('<div class="ace_line " id="divrender' + elProp
+        $('.container' + selectedClass).append('<div class="ace_line " id="divrender' + elProp
         + '" ><p class="ace_gutter ace_gutter-cell" unselectable="on"></p><span class="propertyRemove"><img src="img/more.png" style="width: 6px;padding: 1px;"/></span><span id="cssrender' +
         elProp + '" class="cssrender' + elProp + '"></span></div>');
       }
     }
     // SI TMP REMOVE
-    if($('.' + selectedClass + ' #cssrender' +  elProp).hasClass('tmpRemove')){
-      $('.' + selectedClass + ' .cssrender' + elProp).html("<span class='cssCommentStart'>" + cssCommentStart
+    if($('.container' + selectedClass + ' #cssrender' +  elProp).hasClass('tmpRemove')){
+      $('.container' + selectedClass + ' .cssrender' + elProp).html("<span class='cssCommentStart'>" + cssCommentStart
       + "</span><span class='attributs'>" + elProp + "</span> : " + $('#' + elProp).val() + "; <span class='cssCommentEnd'>" + cssCommentEnd + "</span>");
     }else{
       // SI NON TMP REMOVE
-      $('.' + selectedClass + ' .cssrender' + elProp).html("<span class='attributs'>" + elProp + "</span> : " + $('#' + elProp).val().replace('/*','').replace('*/','')  + ";");
+      $('.container' + selectedClass + ' .cssrender' + elProp).html("<span class='attributs'>" + elProp + "</span> : " + $('#' + elProp).val().replace('/*','').replace('*/','')  + ";");
     }
   }
-
   // style
   $('body style').empty();
   for(s=0;s < Object.keys(localData).length;s++){
@@ -347,16 +329,13 @@ function update (jsonObj) {
       var tttt = Object.keys(localData)[s];
       styleValue += Object.keys(localData[tttt])[e] + ":" + localData[Object.keys(localData)[s]][Object.keys(localData[tttt])[e]] + ";";
     }
-    $('body style').append('.' + Object.keys(localData)[s].replace(/\---/,"::").replace(/\--/,":") + '{' + styleValue + '}');
+    $('body style').append('.' + Object.keys(localData)[s].replace(/\---/,"::").replace(/\--/,":").replace(/\-/,"") + '{' + styleValue + '}');
   }
 
-
-  // console.log(localData);
-  // console.log(JSON.stringify(localData));
   $(".backgroundProprieties .sp-preview-inner").css("background-color", $("#background").val());
   $(".colorProprieties .sp-preview-inner").css("color", $("#color").val());
   if(initCodeMirror == false){
-    $('#output').html(editor.getValue().replace(/[cC]lass='/g, "class='-").replace(/[cC]lass="/g, 'class="-'));
+    $('#output').html(editor.getValue());
   }
 }
 function showProperties(jsonObj) {
@@ -376,7 +355,6 @@ function showProperties(jsonObj) {
     }else{
       var myinput2Elem = '';
     }
-
     var mydivElem = '<div class="' + elProperty[i].property + 'Proprieties"> ' + mypElem +myinput1Elem +
     '<a href="https://developer.mozilla.org/fr/docs/Web/CSS/' + elProperty[i].property +
     '" target="_blank"><span "="" class="button_help"><i class="fa fa-question-circle" aria-hidden="true"></i></span></a>' + myinput2Elem + '</div>';
@@ -386,7 +364,6 @@ function showProperties(jsonObj) {
       $( "#" + elProperty[i].property ).autocomplete({
         source: elProperty[i].values
       });
-      // ARROW DOWN - to do
     }
   }
   if(init == true){
@@ -405,8 +382,9 @@ function showProperties(jsonObj) {
   });
 }
 
+/* 4 - ON DOCUMENT READY */
+
 $( document ).ready(function() {
-  // JSON
   var requestURL = 'data/properties.json';
   var request = new XMLHttpRequest();
   request.open('GET', requestURL);
@@ -499,9 +477,10 @@ $( document ).ready(function() {
 
     $("#CSSRENDER").on('click', '.ace_gutter', function() {
       var tmpRemoveParent =   $(this).parent().attr('id');
+      console.log(tmpRemoveParent);
       var tmpParentClass = $(this).parent().parent().parent().attr('id');
       tmpRemoveParent = tmpRemoveParent.replace('divrender','');
-      $('.' + tmpParentClass + ' #cssrender' + tmpRemoveParent).toggleClass('tmpRemove');
+      $('.container' + tmpParentClass + ' #cssrender' + tmpRemoveParent).toggleClass('tmpRemove');
 
 
     });
@@ -514,7 +493,7 @@ $( document ).ready(function() {
     });
     $('.cssElements').on('mousedown', '.value_less', function() {
       valueLessTmp = $(this);
-        intervalId = setInterval ( btnLess, 70 );
+      var intervalId = setInterval ( btnLess, 70 );
     }).mouseup(function() {
       clearInterval ( intervalId );
     });
@@ -527,8 +506,8 @@ $( document ).ready(function() {
     });
   });
 
+// Codemirror INIT
   if(initCodeMirror == true){
-    //Codemirror
     editor = CodeMirror(document.getElementById("codemirror-html"), {
       mode: "xml",
       extraKeys: {"Ctrl-Space": "autocomplete"},
@@ -562,10 +541,8 @@ $( document ).ready(function() {
     $(editor.getWrapperElement()).slideDown('normal', function(){
       editor.refresh();
     });
-    $('.htmlCodeValue').html(editor.getValue());
-
     initCodeMirror = false;
-
-    $('#output').html(editor.getValue().replace(/[cC]lass='/g, "class='-").replace(/[cC]lass="/g, 'class="-'));
+    $('#output').html(editor.getValue());
   }
+
 });
