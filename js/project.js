@@ -487,6 +487,7 @@ $( document ).ready(function() {
     });
     $(document).click( function(){
        $('#toggleMenuCss').removeClass('on');
+        $('#toggleMenuHtml').removeClass('on');
     });
 
     $("#menu").on('click', '#download', function() {
