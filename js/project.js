@@ -32,7 +32,7 @@ var localData =
 /* 2 - FUNCTIONS */
 function button_toogle(){
   if(toogleButton == true){
-    $('.board').css('height','918px');
+    $('.board').css('height',$(window).height() - 50);
     toogleButton = false;
     $('.output').css('height', $(window).height() - 80);
     $('.generateCode').css('height', $('.board').height() + 'px');
@@ -131,7 +131,7 @@ function resetClass () {
   $('section input').val("");
 }
 function createClass () {
-  $('#cssRenderContainer').append('<div  id="new_class_' + newClassVal + '" class="classDiv"><div class="ace_line ace_first"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p><span style="margin:0;padding-left:5px;" class="loadNum">new_class_' + newClassVal + '</span><span>{</span></div><div class="containernew_class_' + newClassVal + ' sortable-items"></div><div class="ace_line"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p><span style="margin:0;padding-left:5px;">}</span></div><div class="ace_line"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p></div></div>');
+  $('#cssRenderContainer').append('<div  id="new_class_' + newClassVal + '" class="classDiv"><div class="ace_line ace_first"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p><span class="isClass">.</span><span class="loadNum">new_class_' + newClassVal + '</span><span style="padding: 0px 4px;"> {</span></div><div class="containernew_class_' + newClassVal + ' sortable-items"></div><div class="ace_line"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p><span style="margin:0;padding-left:5px;">}</span></div><div class="ace_line"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p></div></div>');
   localData['-new_class_' + newClassVal]={};
   newClassVal = newClassVal + 1;
 }
@@ -186,7 +186,7 @@ function searchPropterties(){
   $('section > div').hide();
   var numElem = 0;
   for(i=1;i<=$('section > div').length;i++){
-    if($('section > div:nth-child(' + i + ')').attr('class').indexOf($('#inputFilter').val()) > -1){
+    if($('section > div:nth-child(' + i + ')').attr('class').indexOf($('#inputFilter').val().toLowerCase()) > -1){
       var ClassFilter = $('section > div:nth-child(' + i + ')').attr('class');
       numElem = numElem + 1;
       $("." + ClassFilter).show();
@@ -244,7 +244,7 @@ function classSwitchToSpan() {
 
   console.log('tmpSpan : ' + tmpSpan);
   $span.addClass("loadNum");
-  $(this).replaceWith('<span style="margin:0;padding-left:5px;" class="loadNum">' + tmpSpan.replace(/\---/,"::").replace(/\--/,":") + '</span>');
+  $(this).replaceWith('<span class="loadNum">' + tmpSpan.replace(/\---/,"::").replace(/\--/,":") + '</span>');
   $('#CSSRENDER').on("click", "span.loadNum", classSwitchToInput);
 }
 function selectedClassFunc(thisObj){
@@ -354,7 +354,8 @@ function showProperties(jsonObj) {
   // Gérer les valeurs de la partie recherche
   var elProperty = jsonObj['properties'];
   for (var i = 0; i < elProperty.length; i++) {
-    var mypElem = '<p>' + elProperty[i].property + '</p>';
+    var mypElem = '<a href="https://developer.mozilla.org/fr/docs/Web/CSS/' + elProperty[i].property +
+    '" target="_blank"><p>' + elProperty[i].property + '</p></a>';
 
     var myinput1Elem = '<input type="text" id="' + elProperty[i].property + '" value="' + elProperty[i].input + '"/>';
 
@@ -367,9 +368,7 @@ function showProperties(jsonObj) {
     }else{
       var myinput2Elem = '';
     }
-    var mydivElem = '<div class="' + elProperty[i].property + 'Proprieties"> ' + mypElem +myinput1Elem +
-    '<a href="https://developer.mozilla.org/fr/docs/Web/CSS/' + elProperty[i].property +
-    '" target="_blank"><span "="" class="button_help"><i class="fa fa-question-circle" aria-hidden="true"></i></span></a>' + myinput2Elem + '</div>';
+    var mydivElem = '<div class="' + elProperty[i].property + 'Proprieties"> ' + mypElem +myinput1Elem + myinput2Elem + '</div>';
     $('.cssElements > section').append(mydivElem);
 
     if(elProperty[i].values){
@@ -485,9 +484,14 @@ $( document ).ready(function() {
       e.stopPropagation();
        $('#toggleMenuCss').toggleClass('on');
     });
+    $('#toggleMenuProperties').on('click', function(e) {
+      e.stopPropagation();
+       $('#toggleMenuProperties').toggleClass('on');
+    });
     $(document).click( function(){
        $('#toggleMenuCss').removeClass('on');
         $('#toggleMenuHtml').removeClass('on');
+         $('#toggleMenuProperties').removeClass('on');
     });
 
     $("#menu").on('click', '#download', function() {
@@ -561,3 +565,5 @@ $( document ).ready(function() {
     $('#output').html(editor.getValue());
   }
 });
+
+// VISOCCHI ANTHONY 2017-2018 - Apache License

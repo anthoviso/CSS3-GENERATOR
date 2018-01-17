@@ -13,8 +13,13 @@
 }
 
 /* ----- Btn ----- */
+a{color:white;}
+a:hover{color:white;}
+a:active{color:white;}
+a:focus{color:white;}
+a:visited{color:white;}
+
 .btn {
-	font-family: Arial;
 	color: #b1a9a9;
 	font-size: 14px;
 	padding: 10px 0px 10px 0px;
@@ -52,20 +57,11 @@
 	background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
 	text-decoration: none;
 }
-.button_help{
-	color: #818181;
-	position: absolute;
-	z-index: 1;
-	right: 10px;
-	padding: 5px 9px;
-	cursor: pointer;
-	display:none;
-}
 .button_empty{
 	color: #8d8d8d;
 	position: absolute;
 	z-index: 1;
-	right: 66px;
+	right: 24px;
 	padding: 4px 10px;
 	cursor: pointer;
 	background: transparent;
@@ -75,21 +71,22 @@
 .button_empty:hover{
 	color: white;
 }
-section > div:hover .button_help{
-	display: block;
-}
 /* ----- HEADER ----- */
+body, code, .CodeMirror, label, input, select, textarea {
+		font-family: Inconsolata, Monaco, Consolas, 'Courier New', Courier;
+}
 .title{
 	padding: 13px 16px;
-	width: 291px;
+	width: auto;
 	font-size: 20px;
+	text-transform: uppercase;
 }
-.author{
+.github{
 	padding: 18px 14px;
 	color:white;
 	font-size:12px;
 	text-decoration: none;
-	width: 140px;
+	width: auto;
 }
 .bandeau{
 	width: 100%;
@@ -97,7 +94,6 @@ section > div:hover .button_help{
 	color: white;
 	box-sizing: border-box;
 	height: 50px;
-	text-transform: uppercase;
 	font-size: 26px;
 	border-bottom: 1px solid #16161e;
 }
@@ -105,12 +101,12 @@ section > div:hover .button_help{
 	display: flex;
 }
 #inputFilter {
-	padding: 5px;
+	padding: 5px 15px;
 	color: white;
 	border: 1px solid #2f2f2f;
 	background: rgb(27,29,35);
 	height: 18px;
-	width: calc(100% - 80px);
+	width: calc(100% - 38px);
 }
 #textValueForm{
 	width: 200px;
@@ -131,10 +127,10 @@ section > div:hover .button_help{
 	cursor: pointer;
 }
 .value_more{
-	right: 70px;
+	right: 10px;
 }
 .value_less{
-	right: 40px;
+	right: 38px;
 }
 .value_more, .value_less{
 	font-size: 12px;
@@ -152,7 +148,7 @@ section > div:hover .button_help{
 }
 .searchNResults{
 	position: absolute;
-	right: 100px;
+	right: 56px;
 	color: white;
 	padding: 5px;
 }
@@ -182,16 +178,13 @@ section > div:hover .button_help{
 	-webkit-transform: rotate(180);
 	transform: rotate(180deg);
 }
-div > p{
-	width: 32%;
-	float: left;
-	margin: 3px 0px;
-}
-section > div > p{
+
+section > div p{
 	width: 100px;
 	float: left;
 	margin: 0px 0px;
 	padding: 4px 4px;
+	cursor:help;
 }
 div > input[type=text] {
 	display: inline-block;
@@ -203,8 +196,9 @@ section input[type=text]{
 	border: 1px solid #16161e;
 	padding: 5px;
 	font-size: 14px;
-	width: 208px;
+	width: 100%;
 	border-radius: 4px;
+	height: 18px;
 }
 
 section input[type=text]:focus, #inputFilter:focus {
@@ -229,13 +223,17 @@ section input[type=text]::-moz-selection, #inputFilter::-moz-selection{
 	-webkit-transition: margin-left 0.6s;
 	transition: margin-left 0.6s;
 	overflow: hidden;
+	position: relative;
 }
 .cssElements > section{
+
+	/* padding: 10px 9px; */
+	margin-top: 30px;
 	overflow-x: hidden;
 	overflow-y: scroll;
-	height: 100%;
 	width: 100%;
-	padding: 10px 9px;
+	height: calc(100% - 30px);
+	padding-right: 17px;
 }
 .selectedDiv {
 	background: #323642;
@@ -261,11 +259,11 @@ section input[type=text]::-moz-selection, #inputFilter::-moz-selection{
 	padding: 0px 5px;
 	color: #d19a66;
 }
-.loadNum {
-	color: #d19a66;
+.isClass{
+	padding-left: 5px;
 }
-span.loadNum::before {
-	content: ".";
+.loadNum, .isClass {
+	color: #d19a66;
 }
 .tmpRemove, .tmpRemove > span, .cssCommentStart , .cssCommentEnd{
 	color: #5c6370 !important;
@@ -324,7 +322,13 @@ top: auto !important;
 .cssSearch{
 	background: rgb(40,44,52);
 	border-bottom: 1px solid #16161e;
-	position: relative;
+	display: flex;
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 30px;
+	width: 100%;
+	z-index: 10;
 }
 .generateG{
 	width: 100%;
@@ -339,8 +343,8 @@ top: auto !important;
 	box-sizing: border-box;
 	border: 1px solid #16161e;
 }
+
 .attributs{
-	font-style: italic;
 	color: #61afef;
 	cursor:pointer;
 }
@@ -377,6 +381,8 @@ top: auto !important;
 	border-left: 1px solid #16161e;
 	border-bottom: 1px solid #16161e;
 	background: rgb(53, 58, 69);
+	position: absolute;
+	z-index: 10;
 	/* border-left: 2px solid #a4dcff !important; */
 	color:white;
 }
@@ -421,8 +427,6 @@ top: auto !important;
 }
 .ace_static_highlight{
 	counter-reset:ace_line 0;
-	/* overflow-y: scroll;
-	overflow-x: hidden;*/
 	width: calc(100% + 17px);
 	height: 100%;
 	background-color: hsl(220, 13%, 18%);
@@ -475,7 +479,6 @@ input[type="radio"], input[type="checkbox"] {
 	cursor: pointer;
 }
 label, input, select, textarea {
-	font-family: "Open Sans","Helvetica Neue",Arial,Helvetica,Verdana,sans-serif;
 	font-size: 15px;
 	line-height: 18px;
 	font-weight: normal;
@@ -534,48 +537,18 @@ footer{
 	height: 0px;
 	box-sizing: border-box;
 }
-
-/* ----- PALETTE ----- */
-#color-palette > .container:nth-child(4), 	.ui-color-picker > .preview,  	.ui-color-picker > div.input:nth-child(13), .ui-color-picker > div.input:nth-child(14){
-	display:none;
-}
-#picker {
-	width: 650px;
-	background: white;
-	float: left;
-}
-#color-palette {
-	width: 640px;
-	font-family: Arial, Helvetica, sans-serif;
-	color: #777;
-	float: left;
-}
-
-#color-info {
-	width: 650px;
-	display: inline-block;
-	float: none;
-}
-#palette {
-	width: 100%;
-}
-.ui-color-picker .picking-area {
-	width: 120px;
-	height: 120px;
-}
-
 /* ----- Menu ----- */
 /* on activation */
-#toggleMenuHtml.on span, #toggleMenuCss.on span  {
+#toggleMenuHtml.on span, #toggleMenuCss.on span, #toggleMenuProperties.on span  {
   background-color: transparent;
 }
-#toggleMenuHtml.on span:before, #toggleMenuCss.on span:before {
+#toggleMenuHtml.on span:before, #toggleMenuCss.on span:before, #toggleMenuProperties.on span:before {
   transform: rotate(45deg) translate(5px, 5px);
 }
-#toggleMenuHtml.on span:after, #toggleMenuCss.on span:after {
+#toggleMenuHtml.on span:after, #toggleMenuCss.on span:after, #toggleMenuProperties.on span:after {
   transform: rotate(-45deg) translate(7px, -8px);
 }
-#toggleMenuHtml.on + #menu, #toggleMenuCss.on + #menu {
+#toggleMenuHtml.on + #menu, #toggleMenuCss.on + #menu, #toggleMenuProperties.on + #menu {
   opacity: 1;
   visibility: visible;
 	z-index: 10;
@@ -631,7 +604,7 @@ li:focus, li:focus i {
 }
 .sp-replacer{
 	position: absolute;
-	right: 45px;
+	right: 16px;
 	top: 10px;
 }
 .sp-preview-inner{
@@ -685,10 +658,11 @@ li:focus, li:focus i {
 }
 .ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active, a.ui-button:active, .ui-button:active, .ui-button.ui-state-active:hover {
 	border: 0px solid #c9c8c8;
-	background: #b0b9c0;
+	background: transparent;
 	font-weight: normal;
 	color: #ffffff;
 	margin: 1px;
 	padding: 2px 1em 3px .4em;
 }
-/* By VISOCCHI ANTHONY 2017-2018 */
+
+/* VISOCCHI ANTHONY 2017-2018 - Apache License */

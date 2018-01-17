@@ -35,9 +35,9 @@
 				<button onclick="button_toogle();" class="btn btnToggle">
 					<i class="fa fa-bars" aria-hidden="true"></i>
 				</button>
-				<span class="title">css3 generator v1.3</span>
-				<a class="author" href="https://github.com/anthoviso" onclick="window.open(this.href);return false;">
-					<span>By Anthony Visocchi</span>
+				<span class="title">css3 generator v1.4</span>
+				<a class="github" href="https://github.com/anthoviso/CSS3-GENERATOR" onclick="window.open(this.href);return false;">
+					<span>This project on Github <i class="fa fa-github" aria-hidden="true"></i></span>
 				</a>
 			</div>
 			<div class="outputOptions">
@@ -58,12 +58,13 @@
 					<span class="searchNResults"></span>
 					<span class="button_empty"><i class="fa fa-times-circle" aria-hidden="true"></i></span>
 					<input type="text" id="inputFilter" placeholder="Search ..."/>
-					<button onclick="button_sortByClass();" class="btn btnSort">
-						<i class="fa fa-sort-alpha-asc" aria-hidden="true"></i>
-					</button>
-					<button onclick="button_sortInvByClass();" class="btn btnSort">
-						<i class="fa fa-sort-alpha-desc" aria-hidden="true"></i>
-					</button>
+					<a href="#menu" id="toggleMenuProperties"><i class="fa fa-cog" style="padding: 7px 5px;float:right;color:white;" aria-hidden="true"></i></a>
+					<div id="menu">
+						<ul>
+							 <li onclick="button_sortByClass();">Tri croissant<i class="fa fa-sort-alpha-asc" style="padding: 1px 5px;float:right;" aria-hidden="true"></i></li>
+							 <li onclick="button_sortInvByClass();">Tri décroissant<i class="fa fa-sort-alpha-desc" style="padding: 1px 5px;float:right;" aria-hidden="true"></i></li>
+						</ul>
+					</div>
 				</div>
 				<section>
 				</section>
@@ -71,29 +72,31 @@
 			<div class="generateCode" >
 				<div class="ace_static_highlight ace_show_gutter" style="display: flex;">
 					<code id="CSSRENDER">
-						<div class="cssrenderdiv">
-							<div id="inputCSScode" style="position: absolute;"><span>CSS3</span><span class="spanSelected"></span>
-								<a href="#menu" id="toggleMenuCss"><i class="fa fa-cogs" style="padding: 1px 5px;float:right;color:white;" aria-hidden="true"></i></a>
-								<div id="menu">
-									<ul>
-										 <li id="download">Download<i class="fa fa-download" style="padding: 1px 5px;float:right;" aria-hidden="true"></i></li>
-										 <li onclick="resetAll();">CSS Reset<i class="fa fa-eraser" style="padding: 1px 5px;float:right;" aria-hidden="true"></i></li>
-										 <li onclick="delClass();">Delete current Class<i class="fa fa-trash" style="padding: 1px 5px;float:right;" aria-hidden="true"></i></li>
-										 <li onclick="resetClass();">Empty current Class<i class="fa fa-square-o" style="padding: 1px 5px;float:right;" aria-hidden="true"></i></li>
-										 <li onclick="createClass();">Add Class<i class="fa fa-plus-square" style="padding: 1px 5px;float:right;" aria-hidden="true"></i></li>
-									</ul>
-								</div>
-								<i class="fa fa-files-o" style="padding: 1px 5px;float:right;" id="copyCodeCSS" onclick="selectText('cssRenderContainer')" aria-hidden="true"></i>
+						<div id="inputCSScode">
+							<span>CSS3</span>
+							<span class="spanSelected"></span>
+							<a href="#menu" id="toggleMenuCss"><i class="fa fa-cogs" style="padding: 1px 5px;float:right;color:white;" aria-hidden="true"></i></a>
+							<div id="menu">
+								<ul>
+									 <li id="download">Download<i class="fa fa-download" style="padding: 1px 5px;float:right;" aria-hidden="true"></i></li>
+									 <li onclick="resetAll();">CSS Reset<i class="fa fa-eraser" style="padding: 1px 5px;float:right;" aria-hidden="true"></i></li>
+									 <li onclick="delClass();">Delete current Class<i class="fa fa-trash" style="padding: 1px 5px;float:right;" aria-hidden="true"></i></li>
+									 <li onclick="resetClass();">Empty current Class<i class="fa fa-square-o" style="padding: 1px 5px;float:right;" aria-hidden="true"></i></li>
+									 <li onclick="createClass();">Add Class<i class="fa fa-plus-square" style="padding: 1px 5px;float:right;" aria-hidden="true"></i></li>
+								</ul>
 							</div>
-					<div id="cssRenderContainer" class="sortable-classes ui-sortable" style="margin-top: 30px;">
-						<div  id="defaultClass" class="classDiv">
-							<div class="ace_line ace_first"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p><span style="margin:0;padding-left:5px;" class="loadNum">defaultClass</span><span>{</span></div>
+							<i class="fa fa-files-o" style="padding: 1px 5px;float:right;" id="copyCodeCSS" onclick="selectText('cssRenderContainer')" aria-hidden="true"></i>
+						</div>
+						<div class="cssrenderdiv">
+						<div id="cssRenderContainer" class="sortable-classes ui-sortable" style="margin-top: 30px;padding-top: 8px;">
+							<div  id="defaultClass" class="classDiv">
+								<div class="ace_line ace_first"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p><span class="isClass">.</span><span class="loadNum">defaultClass</span><span style="padding: 0px 4px;"> {</span></div>
 								<div class="containerdefaultClass sortable-items"></div>
 								<div class="ace_line"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p><span style="margin:0;padding-left:5px;">}</span></div>
 								<div class="ace_line"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p></div>
 							</div>
 							<div  id="defaultClass--hover" class="classDiv">
-								<div class="ace_line ace_first"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p><span style="margin:0;padding-left:5px;" class="loadNum">defaultClass:hover</span><span>{</span></div>
+								<div class="ace_line ace_first"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p><span class="isClass">.</span><span class="loadNum">defaultClass:hover</span><span style="padding: 0px 4px;"> {</span></div>
 									<div class="containerdefaultClass--hover sortable-items"></div>
 									<div class="ace_line"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p><span style="margin:0;padding-left:5px;">}</span></div>
 									<div class="ace_line"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p></div>
@@ -102,17 +105,18 @@
 						</div>
 					</code>
 					<code id="HTMLRENDER">
-						<div class="htmlrenderdiv">
-							<div id="inputHTMLcode" style="position: absolute;"><span>Html5</span>
-								<a href="#menu" id="toggleMenuHtml"><i class="fa fa-cogs" style="padding: 1px 5px;float:right;color:white;" aria-hidden="true"></i></a>
-								<div id="menu">
-									<ul>
-										 <li onclick="autoFormatSelection();">indent Selection<i class="fa fa-indent" style="padding: 1px 5px;float:right;" aria-hidden="true"></i></li>
-										 <li onclick="resetHtml();">HTML Reset<i class="fa fa-eraser" style="padding: 1px 5px;float:right;" aria-hidden="true"></i></li>
-									</ul>
-								</div>
-								<i class="fa fa-files-o" style="padding: 1px 5px;float:right;" id="copyCodeHTML" onclick="selectText('htmlRenderContainer')" aria-hidden="true"></i>
+						<div id="inputHTMLcode">
+							<span>Html5</span>
+							<a href="#menu" id="toggleMenuHtml"><i class="fa fa-cogs" style="padding: 1px 5px;float:right;color:white;" aria-hidden="true"></i></a>
+							<div id="menu">
+								<ul>
+									 <li onclick="autoFormatSelection();">indent Selection<i class="fa fa-indent" style="padding: 1px 5px;float:right;" aria-hidden="true"></i></li>
+									 <li onclick="resetHtml();">HTML Reset<i class="fa fa-eraser" style="padding: 1px 5px;float:right;" aria-hidden="true"></i></li>
+								</ul>
 							</div>
+							<i class="fa fa-files-o" style="padding: 1px 5px;float:right;" id="copyCodeHTML" onclick="selectText('htmlRenderContainer')" aria-hidden="true"></i>
+						</div>
+						<div class="htmlrenderdiv">
 							<div id="htmlRenderContainer"  style="padding: 5px 5px;margin-top: 30px;">
 								<div id="codemirror-html" ></div>
 							</div>
@@ -134,6 +138,6 @@
 		</footer>
 		<!-- Js -->
 		<script src="js/project.js"></script>
-		<!-- BY VISOCCHI ANTHONY 2017-2018 -->
+		<!-- VISOCCHI ANTHONY 2017-2018 - Apache License -->
 	</body>
 </html>
