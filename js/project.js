@@ -7,6 +7,7 @@ var cssCommentStart = '/*';
 var selectedClass = "defaultClass";
 var cssCommentEnd = '*/';
 var oldSpan;
+var intervalId;
 var valueSpanTmp;
 var newClassVal = 1;
 var toogleButton = true;
@@ -192,6 +193,16 @@ function searchPropterties(){
     }
   }
 }
+function replaceToClass(obj){
+  obj.replace(/\---/,"::").replace(/\--/,":").replace("_comma_",",").replace("_more_","+").replace("_point_",".").replace("_dieze_","#");
+    console.log(obj);
+    return obj;
+}
+function replaceToJson(obj){
+  obj.replace(/\::/,"---").replace(/\:/,"--").replace(/\,/,"_comma_").replace(/\+/,"_more_").replace(/\./,"_point_").replace(/\#/,"_dieze_");
+    console.log(obj);
+    return obj;
+}
 function classSwitchToInput() {
   var $input = $("<input>", {
     val: $(this).text().replace(/\---/,"::").replace(/\--/,":"),
@@ -238,7 +249,7 @@ function classSwitchToSpan() {
 function selectedClassFunc(thisObj){
   if(selectedClass != thisObj.attr('id')){
     selectedClass = thisObj.attr('id');
-    console.log("selectedClass : " + selectedClass);
+    // console.log("selectedClass : " + selectedClass);
     $('.classDiv').removeClass('selectedClass');
     $('#' + selectedClass).addClass('selectedClass');
     $('.spanSelected').html("." + selectedClass.replace(/\---/,"::").replace(/\--/,":"));
@@ -361,6 +372,7 @@ function showProperties(jsonObj) {
 
     if(elProperty[i].values){
       $( "#" + elProperty[i].property ).autocomplete({
+        minLength: 0,
         source: elProperty[i].values
       });
     }
@@ -460,14 +472,14 @@ $( document ).ready(function() {
         $('#HTMLRENDER').css('width', 'calc(100% - ' + $('#CSSRENDER').width() + 'px  - 17px)');
       }
     });
-    $( ".sortable-items" ).sortable({
-      axis: "y",
-      handle: "p"
-    });
-    $( ".sortable-classes" ).sortable({
-      axis: "y",
-      handle: "p"
-    });
+    // $( ".sortable-items" ).sortable({
+    //   axis: "y",
+    //   handle: "p"
+    // });
+    // $( ".sortable-classes" ).sortable({
+    //   axis: "y",
+    //   handle: "p"
+    // });
     $('.toggleMenu').on('click', function(e) {
       e.stopPropagation();
        $(this).toggleClass('on');

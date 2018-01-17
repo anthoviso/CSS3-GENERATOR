@@ -654,11 +654,12 @@ li:focus, li:focus i {
 	font-size: 14px;
 	border-radius: 3px;
 }
-.ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active, a.ui-button:active, .ui-button:active, .ui-button.ui-state-active:hover {
+.ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active, a.ui-button:active{
 	border: 0px solid #c9c8c8;
-	background: transparent;
+	background: #1ABC9C;
 	font-weight: normal;
-	color: #ffffff;
+	color: white;
+	transition: all .2s;
 	margin: 1px;
 	padding: 2px 1em 3px .4em;
 }
