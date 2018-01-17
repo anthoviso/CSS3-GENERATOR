@@ -1,6 +1,5 @@
 /* 1 - VARIABLES */
 
-var container2 = document.getElementById("output2");
 var colorValue = $('#color').val();
 var dieze = '';
 var initJsonClass = 0;
@@ -22,7 +21,8 @@ var localData =
   "font-weight" : "bold",
   "text-align" : "center",
   "text-shadow" : "1px 1px 1px red",
-  "margin" : "100px auto"
+  "margin" : "100px auto",
+  "transition" : "color 0.6s ease-out"
 },
 "-defaultClass--hover":{
   "color" : "#f2774c"
@@ -110,7 +110,6 @@ function resetAll () {
   $('#CSSRENDER .classDiv').remove();
   $('#output').empty();
   $('section input').val("");
-  // console.log(localData);
   localData = {};
   $(".v-buttonGroupControl").prop("checked", false);
   $(".backgroundProprieties .sp-preview-inner").css("background-color", $("#background").val());
@@ -118,7 +117,6 @@ function resetAll () {
   selectedClass = "";
 }
 function delClass () {
-  // console.log(selectedClass);
   $('#CSSRENDER #' + selectedClass).remove();
   $('.-' + selectedClass).remove();
   delete localData['-' + selectedClass];
@@ -152,10 +150,6 @@ function autoFormatSelection() {
 function commentSelection(isComment) {
   var range = getSelectedRange();
   editor.commentRange(isComment, range.from, range.to);
-}
-function indentHtml(){
-  console.log(editor.getDoc().setValue(editor.getValue().replace(/\,/g,', ').replace(/\{/g,' {\n\t').replace(/\}/g,'}\n')));
-  console.log(editor.getValue().replace(/\,/g,', ').replace(/\{/g,' {\n\t').replace(/\}/g,'}\n'));
 }
 function spectrumInit(){
   $("#triggerSetbackground").spectrum({
@@ -211,7 +205,7 @@ function classSwitchToInput() {
   inputResize();
 };
 function classSwitchToSpan() {
-  console.log('oldSpan : ' + oldSpan);
+  // console.log('oldSpan : ' + oldSpan);
   var $span = $("<span>", {
     text: $(this).val().replace(/^\-/,'').replace(/[^A-z\d\_\:\-]/g,'')
   });
@@ -220,29 +214,23 @@ function classSwitchToSpan() {
     if(tmpSpan == "" || tmpSpan == "undefined"){
       $span.val(oldSpan);
       tmpSpan = oldSpan;
-      console.log(localData);
     }else{
-      console.log(tmpSpan);
-
+      // console.log(tmpSpan);
       $('.-' + oldSpan).addClass('-' + tmpSpan);
       $('.-' + oldSpan).removeClass('-' + oldSpan);
       $('.container' + oldSpan).addClass('container' + tmpSpan);
       $('.container' + oldSpan).removeClass('container' + oldSpan);
       $('#' + oldSpan).attr("id", tmpSpan);
 
-
       localData['-' + tmpSpan] = localData['-' + oldSpan];
       delete localData['-' + oldSpan];
-      console.log(localData);
     }
     selectedClass = tmpSpan;
   }else{
-    console.log('tmp == old');
+    // console.log('tmp == old');
     tmpSpan = $span.text();
-    console.log(localData);
   }
-
-  console.log('tmpSpan : ' + tmpSpan);
+  // console.log('tmpSpan : ' + tmpSpan);
   $span.addClass("loadNum");
   $(this).replaceWith('<span class="loadNum">' + tmpSpan.replace(/\---/,"::").replace(/\--/,":") + '</span>');
   $('#CSSRENDER').on("click", "span.loadNum", classSwitchToInput);
@@ -460,7 +448,12 @@ $( document ).ready(function() {
           $('.cssElements').css('height', $('.board').height() + 'px');
         }
     });
-
+    $( ".cssElements" ).resizable({
+      handles: "e",
+      resize: function( event, ui ) {
+        // $('#HTMLRENDER').css('width', 'calc(100% - ' + $('#CSSRENDER').width() + 'px  - 17px)');
+      }
+    });
     $( "#CSSRENDER" ).resizable({
       handles: "e",
       resize: function( event, ui ) {
@@ -475,26 +468,15 @@ $( document ).ready(function() {
       axis: "y",
       handle: "p"
     });
-
-    $('#toggleMenuHtml').on('click', function(e) {
+    $('.toggleMenu').on('click', function(e) {
       e.stopPropagation();
-       $('#toggleMenuHtml').toggleClass('on');
-    });
-    $('#toggleMenuCss').on('click', function(e) {
-      e.stopPropagation();
-       $('#toggleMenuCss').toggleClass('on');
-    });
-    $('#toggleMenuProperties').on('click', function(e) {
-      e.stopPropagation();
-       $('#toggleMenuProperties').toggleClass('on');
+       $(this).toggleClass('on');
     });
     $(document).click( function(){
-       $('#toggleMenuCss').removeClass('on');
-        $('#toggleMenuHtml').removeClass('on');
-         $('#toggleMenuProperties').removeClass('on');
+         $('.toggleMenu').removeClass('on');
     });
 
-    $("#menu").on('click', '#download', function() {
+    $("#download").on('click', function() {
       var tmpFile = $('body style').text();
       tmpFile = tmpFile.replace(/\,/g,', ').replace(/\{/g,' {\n\t').replace(/\}/g,'}\n').replace(/\;/g,';\n\t').replace(/\.\-+/g,'.');
       var file = new Blob([tmpFile], {type: "text/plain;charset=utf-8"});
@@ -504,7 +486,7 @@ $( document ).ready(function() {
 
     $("#CSSRENDER").on('click', '.ace_gutter', function() {
       var tmpRemoveParent =   $(this).parent().attr('id');
-      console.log(tmpRemoveParent);
+      // console.log(tmpRemoveParent);
       var tmpParentClass = $(this).parent().parent().parent().attr('id');
       tmpRemoveParent = tmpRemoveParent.replace('divrender','');
       $('.container' + tmpParentClass + ' #cssrender' + tmpRemoveParent).toggleClass('tmpRemove');

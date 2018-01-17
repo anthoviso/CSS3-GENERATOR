@@ -180,7 +180,7 @@ body, code, .CodeMirror, label, input, select, textarea {
 }
 
 section > div p{
-	width: 100px;
+	width: 130px;
 	float: left;
 	margin: 0px 0px;
 	padding: 4px 4px;
@@ -214,25 +214,22 @@ section input[type=text]::-moz-selection, #inputFilter::-moz-selection{
 	color:white;
 }
 .cssElements{
-	width: 394px;
-	min-width: 394px;
+	min-width: 350px;
+	width: 350px;
 	height: 435px;
 	background: rgb(40,44,52);
 	box-sizing: border-box;
 	padding: 0;
-	-webkit-transition: margin-left 0.6s;
-	transition: margin-left 0.6s;
 	overflow: hidden;
 	position: relative;
 }
 .cssElements > section{
-
-	/* padding: 10px 9px; */
+	padding: 6px 0px;
 	margin-top: 30px;
 	overflow-x: hidden;
 	overflow-y: scroll;
 	width: 100%;
-	height: calc(100% - 30px);
+	height: calc(100% - 46px);
 	padding-right: 17px;
 }
 .selectedDiv {
@@ -291,6 +288,7 @@ section input[type=text]::-moz-selection, #inputFilter::-moz-selection{
 	font-weight:bold;
 }
 section > div{
+	width: 100%;
 	background: rgb(40,44,52);
 	color: white;
 	text-transform: capitalize;
@@ -378,7 +376,7 @@ top: auto !important;
 	box-sizing: border-box;
 	font-weight: bold;
 	cursor:pointer;
-	border-left: 1px solid #16161e;
+	/* border-left: 1px solid #16161e; */
 	border-bottom: 1px solid #16161e;
 	background: rgb(53, 58, 69);
 	position: absolute;
@@ -539,16 +537,16 @@ footer{
 }
 /* ----- Menu ----- */
 /* on activation */
-#toggleMenuHtml.on span, #toggleMenuCss.on span, #toggleMenuProperties.on span  {
+.toggleMenu.on span  {
   background-color: transparent;
 }
-#toggleMenuHtml.on span:before, #toggleMenuCss.on span:before, #toggleMenuProperties.on span:before {
+.toggleMenu.on span:before {
   transform: rotate(45deg) translate(5px, 5px);
 }
-#toggleMenuHtml.on span:after, #toggleMenuCss.on span:after, #toggleMenuProperties.on span:after {
+.toggleMenu.on span:after {
   transform: rotate(-45deg) translate(7px, -8px);
 }
-#toggleMenuHtml.on + #menu, #toggleMenuCss.on + #menu, #toggleMenuProperties.on + #menu {
+.toggleMenu.on + #menu {
   opacity: 1;
   visibility: visible;
 	z-index: 10;
