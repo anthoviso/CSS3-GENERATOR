@@ -16,7 +16,7 @@ var initCodeMirror = true;
 var init = true;
 var unit = 'px';
 var localData =
-{"-defaultClass":{
+{"-_46defaultClass":{
   "color" : "#ffbdbd",
   "font-size" : "40px",
   "font-weight" : "bold",
@@ -25,10 +25,11 @@ var localData =
   "margin" : "100px auto",
   "transition" : "color 0.6s ease-out"
 },
-"-defaultClass--hover":{
+"-_46defaultClass_58hover":{
   "color" : "#f2774c"
 }
 };
+
 
 /* 2 - FUNCTIONS */
 function button_toogle(){
@@ -130,7 +131,7 @@ function resetClass () {
   $('section input').val("");
 }
 function createClass () {
-  $('#cssRenderContainer').append('<div  id="new_class_' + newClassVal + '" class="classDiv"><div class="ace_line ace_first"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p><span class="isClass">.</span><span class="loadNum">new_class_' + newClassVal + '</span><span style="padding: 0px 4px;"> {</span></div><div class="containernew_class_' + newClassVal + ' sortable-items"></div><div class="ace_line"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p><span style="margin:0;padding-left:5px;">}</span></div><div class="ace_line"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p></div></div>');
+  $('#cssRenderContainer').append('<div  id="new_class_' + newClassVal + '" class="classDiv"><div class="ace_line ace_first"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p><span class="loadNum">new_class_' + newClassVal + '</span><span style="padding: 0px 4px;"> {</span></div><div class="containernew_class_' + newClassVal + ' sortable-items"></div><div class="ace_line"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p><span style="margin:0;padding-left:5px;">}</span></div><div class="ace_line"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p></div></div>');
   localData['-new_class_' + newClassVal]={};
   newClassVal = newClassVal + 1;
 }
@@ -193,22 +194,24 @@ function searchPropterties(){
     }
   }
 }
+// "\n".charCodeAt(0);
+// String.fromCharCode(38)
+
+
 function replaceToClass(obj){
-  obj.replace(/\---/,"::").replace(/\--/,":").replace("_comma_",",").replace("_more_","+").replace("_point_",".").replace("_dieze_","#");
-    console.log(obj);
+  obj.replace(/\_58/g,":").replace(/_44/g,",").replace(/_43/g,"+").replace(/_46/g,".").replace(/_35/g,"#").replace(/_40/g,"(").replace(/_41/g,")").replace(/_62/g,">").replace(/_32/g," ");
     return obj;
 }
-function replaceToJson(obj){
-  obj.replace(/\::/,"---").replace(/\:/,"--").replace(/\,/,"_comma_").replace(/\+/,"_more_").replace(/\./,"_point_").replace(/\#/,"_dieze_");
-    console.log(obj);
-    return obj;
+function replaceToJson(obj2){
+  obj2.replace(/\:/g,"_58").replace(/\,/g,"_44").replace(/\+/g,"_43").replace(/\./g,"_46").replace(/\#/g,"_35").replace(/\(/g,"_40").replace(/\)/g,"_41").replace(/\>/g,"_62").replace(/\s/g,"_32");
+    return obj2;
 }
 function classSwitchToInput() {
   var $input = $("<input>", {
-    val: $(this).text().replace(/\---/,"::").replace(/\--/,":"),
+    val: replaceToClass($(this).text()),
     type: "text"
   });
-  oldSpan = $input.val().replace(/\::/,"---").replace(/\:/,"--");
+  oldSpan = $input.val().replace(/\:/g,"_58").replace(/\,/g,"_44").replace(/\+/g,"_43").replace(/\./g,"_46").replace(/\#/g,"_35").replace(/\(/g,"_40").replace(/\)/g,"_41").replace(/\>/g,"_62").replace(/\s/g,"_32");
   $input.addClass("loadNum");
   $(this).replaceWith($input);
   $input.on("blur", classSwitchToSpan);
@@ -218,15 +221,14 @@ function classSwitchToInput() {
 function classSwitchToSpan() {
   // console.log('oldSpan : ' + oldSpan);
   var $span = $("<span>", {
-    text: $(this).val().replace(/^\-/,'').replace(/[^A-z\d\_\:\-]/g,'')
+    text: replaceToClass($(this).val().replace(/^\-/,'').replace(/[^A-z\d\_\:\-\#\.\,\+\(\)\>\s]/g,'').replace(/\s+/g,' ').trim())
   });
-  var tmpSpan = $span.text().replace(/^\-/,'').replace(/[^A-z\d\_\:\-]/g,'').replace(/\::/,"---").replace(/\:/,"--");
+  var tmpSpan = $span.text().replace(/\:/g,"_58").replace(/\,/g,"_44").replace(/\+/g,"_43").replace(/\./g,"_46").replace(/\#/g,"_35").replace(/\(/g,"_40").replace(/\)/g,"_41").replace(/\>/g,"_62").replace(/\s/g,"_32");
   if(oldSpan != tmpSpan){
     if(tmpSpan == "" || tmpSpan == "undefined"){
       $span.val(oldSpan);
       tmpSpan = oldSpan;
     }else{
-      // console.log(tmpSpan);
       $('.-' + oldSpan).addClass('-' + tmpSpan);
       $('.-' + oldSpan).removeClass('-' + oldSpan);
       $('.container' + oldSpan).addClass('container' + tmpSpan);
@@ -238,12 +240,11 @@ function classSwitchToSpan() {
     }
     selectedClass = tmpSpan;
   }else{
-    // console.log('tmp == old');
     tmpSpan = $span.text();
   }
   // console.log('tmpSpan : ' + tmpSpan);
   $span.addClass("loadNum");
-  $(this).replaceWith('<span class="loadNum">' + tmpSpan.replace(/\---/,"::").replace(/\--/,":") + '</span>');
+  $(this).replaceWith('<span class="loadNum">' + tmpSpan.replace(/\_58/g,":").replace(/_44/g,",").replace(/_43/g,"+").replace(/_46/g,".").replace(/_35/g,"#").replace(/_40/g,"(").replace(/_41/g,")").replace(/_62/g,">").replace(/_32/g," ") + '</span>');
   $('#CSSRENDER').on("click", "span.loadNum", classSwitchToInput);
 }
 function selectedClassFunc(thisObj){
@@ -252,7 +253,7 @@ function selectedClassFunc(thisObj){
     // console.log("selectedClass : " + selectedClass);
     $('.classDiv').removeClass('selectedClass');
     $('#' + selectedClass).addClass('selectedClass');
-    $('.spanSelected').html("." + selectedClass.replace(/\---/,"::").replace(/\--/,":"));
+    $('.spanSelected').html(selectedClass.replace(/\_58/g,":").replace(/_44/g,",").replace(/_43/g,"+").replace(/_46/g,".").replace(/_40/g,"(").replace(/_41/g,")").replace(/_35/g,"#").replace(/_62/g,">").replace(/_32/g," "));
     $('section input').val('');
     for (i=0;i <  Object.keys(localData['-' + selectedClass]).length;i++){
       $('section #' +  Object.keys(localData['-' + selectedClass])[i]).val(localData['-' + selectedClass][Object.keys(localData['-' + selectedClass])[i]]);
@@ -273,6 +274,7 @@ window.requestAnimationFrame = (function(){
   };
 })();
 function update (jsonObj) {
+  // console.log(selectedClass);
   /* generate code*/
   if(selectedClass == ""){
     $('section').css('visibility','hidden');
@@ -286,7 +288,7 @@ function update (jsonObj) {
       }
       $('.classDiv').removeClass('selectedClass');
       $('#' + selectedClass).addClass('selectedClass');
-      $('.spanSelected').html("." + selectedClass.replace(/\---/,"::").replace(/\--/,":"));
+      $('.spanSelected').html(selectedClass.replace(/\_58/g,":").replace(/_44/g,",").replace(/_43/g,"+").replace(/_46/g,".").replace(/_40/g,"(").replace(/_41/g,")").replace(/_35/g,"#").replace(/_62/g,">").replace(/_32/g," "));
     }
     // console.log('slectedClass : ' + selectedClass );
     var elProperty = jsonObj['properties'];
@@ -339,7 +341,7 @@ function update (jsonObj) {
         var tttt = Object.keys(localData)[s];
         styleValue += Object.keys(localData[tttt])[e] + ":" + localData[Object.keys(localData)[s]][Object.keys(localData[tttt])[e]] + ";";
       }
-      $('body style').append('.' + Object.keys(localData)[s].replace(/\---/,"::").replace(/\--/,":").replace(/\-/,"") + '{' + styleValue + '}');
+      $('body style').append("#output " + Object.keys(localData)[s].replace(/\_58/g,":").replace(/_44/g,",").replace(/_43/g,"+").replace(/_46/g,".").replace(/_40/g,"(").replace(/_41/g,")").replace(/_35/g,"#").replace(/\-/,"").replace(/_62/g,">").replace(/_32/g," ") + '{' + styleValue + '}');
     }
 
     $(".backgroundProprieties .sp-preview-inner").css("background-color", $("#background").val());
@@ -386,8 +388,9 @@ function showProperties(jsonObj) {
       initJsonClass = initJsonClass + 1;
       if(initJsonClass == Object.keys(localData).length && init == true){  init = false;}
     }
+      spectrumInit();
   }
-  $(document).on('load click keyup input', function(){
+  $(document).on('load click keyup input', '.board', function(){
     update(jsonObj);
     toggleEmptyElem();
   });
@@ -401,11 +404,11 @@ $( document ).ready(function() {
   request.open('GET', requestURL);
   request.responseType = 'json';
   request.send();
+  var allProperties;
 
   request.onload = function() {
-    var allProperties = request.response;
+    allProperties = request.response;
     showProperties(allProperties);
-    spectrumInit();
   }
 
   $('#CSSRENDER').on('click', '.classDiv', function(){
@@ -490,7 +493,7 @@ $( document ).ready(function() {
 
     $("#download").on('click', function() {
       var tmpFile = $('body style').text();
-      tmpFile = tmpFile.replace(/\,/g,', ').replace(/\{/g,' {\n\t').replace(/\}/g,'}\n').replace(/\;/g,';\n\t').replace(/\.\-+/g,'.');
+      tmpFile = tmpFile.replace(/\,/g,', ').replace(/\{/g,' {\n\t').replace(/\}/g,'}\n').replace(/\;/g,';\n\t').replace(/\.\-+/g,'.').replace(/\#output\s/g,'');
       var file = new Blob([tmpFile], {type: "text/plain;charset=utf-8"});
       saveAs(file, 'style.css');
     });
