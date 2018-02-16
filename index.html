@@ -15,6 +15,12 @@
 		<link rel='stylesheet' type="text/css" href='lib/jquery-ui/jquery-ui.css' />
 		<!-- fileSaver -->
 		<script type="text/javascript" src='lib/fileSaver/FileSaver.js'></script>
+		<!-- Codemirror -->
+		<link rel="stylesheet" type="text/css" href="lib//codemirror/lib/codemirror.css">
+		<link rel="stylesheet" type="text/css" href="lib/codemirror/theme/one-dark.css">
+		<script type="text/javascript" src="lib/codemirror/lib/codemirror.js"></script>
+		<script type="text/javascript" src="lib/codemirror/formatting.js"></script>
+		<script type="text/javascript" src="lib/codemirror//mode/xml/xml.js"></script>
 		<!-- Spectrum -->
 		<script type="text/javascript" src='lib/spectrum/spectrum.js'></script>
 		<link rel='stylesheet' type="text/css" href='lib/spectrum/spectrum.css' />
@@ -23,134 +29,116 @@
 		<link rel="stylesheet" type="text/css" href="css/base.css"/>
 	</head>
 	<body>
+		<style></style>
 		<div class="bandeau">
 			<div style="float: left;">
-				<button class="btn btnToggle">
+				<button onclick="button_toogle();" class="btn btnToggle">
 					<i class="fa fa-bars" aria-hidden="true"></i>
 				</button>
-				<span class="title">css3 generator v1.3</span>
-				<a class="author" href="https://github.com/anthoviso" onclick="window.open(this.href);return false;">
-					<span>By Anthony Visocchi</span>
+				<span class="title">css3 generator v1.4</span>
+				<a class="github" href="https://github.com/anthoviso/CSS3-GENERATOR" onclick="window.open(this.href);return false;">
+					<span>This project on Github <i class="fa fa-github" aria-hidden="true"></i></span>
 				</a>
 			</div>
 			<div class="outputOptions">
-			 <div class="outputChangeBack backWhite">
-			 </div>
-			 <div class="outputChangeBack backBlack">
-			 </div>
-			 <div class="outputChangeBack backGrey">
-			 </div>
-		 </div>
-		</div>
-		<div id="outils" class="outilsContainer" style="display:none;">
-				<input id="FontWeightBoldForm" class="v-visuallyHidden v-buttonGroupControl" name="FontWeightBoldForm" value="fontWeightBold" type="checkbox">
-				<label for="FontWeightBoldForm" class="v-buttonGroupLabel">
-					<img src="img/FontWeightBold.png" alt=""/>
-				</label>
-				<input id="FontStyleItalicForm" class="v-visuallyHidden v-buttonGroupControl" name="FontStyleItalicForm" value="fontStyleItalic" type="checkbox">
-				<label for="FontStyleItalicForm" class="v-buttonGroupLabel">
-					<img src="img/FontStyleItalic.png" alt="" />
-				</label>
-				<input id="TextUnderlineForm" class="v-visuallyHidden v-buttonGroupControl" name="TextUnderlineForm" value="textUnderline" type="checkbox">
-				<label for="TextUnderlineForm" class="v-buttonGroupLabel">
-					<img src="img/TextDecorationUnderline.png" alt=""/>
-				</label>
-				<input class="v-visuallyHidden v-buttonGroupControl" id="TextAlignLeft" name="TextAlignForm" value="TextAlignLeft" type="radio">
-				<label for="TextAlignLeft" class="v-buttonGroupLabel">
-					<img src="img/TextAlignLeft.png" alt=""/>
-				</label>
-				<input class="v-visuallyHidden v-buttonGroupControl" id="TextAlignRight" name="TextAlignForm" value="TextAlignRight" type="radio">
-				<label for="TextAlignRight" class="v-buttonGroupLabel">
-					<img src="img/TextAlignRight.png" alt=""/>
-				</label>
-				<input class="v-visuallyHidden v-buttonGroupControl" id="TextAlignCenter" name="TextAlignForm" value="TextAlignCenter" type="radio">
-				<label for="TextAlignCenter" class="v-buttonGroupLabel">
-					<img src="img/TextAlignCenter.png" alt=""/>
-				</label>
-				<input class="v-visuallyHidden v-buttonGroupControl" id="TextAlignJustify" name="TextAlignForm" value="TextAlignJustify" type="radio">
-				<label for="TextAlignJustify" class="v-buttonGroupLabel">
-					<img src="img/TextAlignJustify.png" alt=""/>
-				</label>
-				<input   class="v-buttonGroupControl" id="textValueForm" name="textValueForm" value="This is my value !" type="text" />
-				<select id="ListeElement" onchange="OnSelectionChange (this)" class="selectForm">
-					<option style="font-weight:bold;" value="" id="" selected>Police</option>
-					<option value="Arial" id="arialFont" >Arial</option>
-					<option value="Comic Sans MS" id="comicSansMsFont">Comic Sans MS</option>
-					<option value="Georgia" id="georgiaFont" >Georgia</option>
-					<option value="Impact" id="impactFont">Impact</option>
-					<option value="Times New Roman" id="timeNewRoman">Times New Roman</option>
-					<option value="Verdana" id="verdanaFont">Verdana</option>
-				</select>
-		</div>
-	<div id="output" class="output" style="position:relative;">
-		 <div id='outputContainer' ></div>
-	</div>
-	<div class="board" >
-		<div class="cssElements">
-			<div class="cssSearch">
-				<div style="position:relative;">
-					<input type="text" id="inputFilter" placeholder="recherche"/>
-					<span class="button_empty"><i class="fa fa-times-circle" aria-hidden="true"></i></span>
+				<div class="outputChangeBack backWhite">
 				</div>
-				<button onclick="button_sortByClass();" class="btn btnSort">
-					<i class="fa fa-sort-alpha-asc" aria-hidden="true"></i>
-				</button>
-				<button onclick="button_sortInvByClass();" class="btn btnSort">
-					<i class="fa fa-sort-alpha-desc" aria-hidden="true"></i>
-				</button>
-				<button onclick="reset();" class="btn btnReset">
-					CSS RESET
-				</button>
+				<div class="outputChangeBack backBlack">
+				</div>
+				<div class="outputChangeBack backGrey">
+				</div>
+			</div>
 		</div>
-			<section>
-			</section>
+		<div id="output" class="output" style="position:relative;">
+			<div class='-defaultClass' ></div>
 		</div>
+		<div class="board" >
+			<div class="cssElements">
+				<div class="cssSearch">
+					<span class="searchNResults"></span>
+					<span class="button_empty"><i class="fa fa-times-circle" aria-hidden="true"></i></span>
+					<input type="text" id="inputFilter" placeholder="Search ..."/>
+					<a href="#menu" class="toggleMenu"><i class="fa fa-cog" style="padding: 7px 5px;float:right;color:white;margin-right: 2px;" aria-hidden="true"></i></a>
+					<div id="menu">
+						<ul>
+							 <li onclick="button_sortByClass();">Tri croissant<i class="fa fa-sort-alpha-asc" style="padding: 1px 5px;float:right;" aria-hidden="true"></i></li>
+							 <li onclick="button_sortInvByClass();">Tri décroissant<i class="fa fa-sort-alpha-desc" style="padding: 1px 5px;float:right;" aria-hidden="true"></i></li>
+						</ul>
+					</div>
+				</div>
+				<section>
+				</section>
+			</div>
 			<div class="generateCode" >
-					<div class="generateCodeTab">
-						<div id="inputCSScode" onclick="activecodecss();"  class="activeCode"><span>CSS3</span>
-							<i class="fa fa-files-o" style="padding: 1px 5px;" id="copyCodeCSS" onclick="selectText('CSSRENDER')" aria-hidden="true"></i>
-								<i class="fa fa-download" style="padding: 1px 5px;" id="download" aria-hidden="true"></i>
-					</div>
-						<div onclick="activecodehtml();" id="inputHTMLcode"><span>Html5</span>
-							<i class="fa fa-files-o" style="padding: 1px 5px;display:none;" id="copyCodeHTML" onclick="selectText('HTMLRENDER')" aria-hidden="true"></i>
-					</div>
-					</div>
-					<div class="ace_static_highlight ace_show_gutter">
-						<code id="CSSRENDER">
-								<div class="ace_line ace_first"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p><span style="margin:0;padding-left:5px;">.defaultClass{</span>
-									<!-- <span style="background: #6797C0;border-radius: 5px;padding: 1px;margin: 0 10px;font-size: 14px;">:before</span> --></div>
-										<div class="defaultClass sortable-items">
-																		</div>
+				<div class="ace_static_highlight ace_show_gutter" style="display: flex;">
+					<code id="CSSRENDER">
+						<div id="inputCSScode">
+							<span style="padding-left: 4px;">CSS3</span>
+							<span class="spanSelected"></span>
+							<a href="#menu" class="toggleMenu"><i class="fa fa-cogs" style="padding: 1px 5px;float:right;color:white;" aria-hidden="true"></i></a>
+							<div id="menu">
+								<ul>
+									 <li id="download">Download<i class="fa fa-download" style="padding: 1px 5px;float:right;" aria-hidden="true"></i></li>
+									 <li onclick="resetAll();">CSS Reset<i class="fa fa-eraser" style="padding: 1px 5px;float:right;" aria-hidden="true"></i></li>
+									 <li onclick="delClass();">Delete current Class<i class="fa fa-trash" style="padding: 1px 5px;float:right;" aria-hidden="true"></i></li>
+									 <li onclick="resetClass();">Empty current Class<i class="fa fa-square-o" style="padding: 1px 5px;float:right;" aria-hidden="true"></i></li>
+									 <li onclick="createClass();">Add Class<i class="fa fa-plus-square" style="padding: 1px 5px;float:right;" aria-hidden="true"></i></li>
+								</ul>
+							</div>
+							<i class="fa fa-files-o" style="padding: 1px 5px;float:right;" id="copyCodeCSS" onclick="selectText('cssRenderContainer')" aria-hidden="true"></i>
+						</div>
+						<div class="cssrenderdiv">
+						<div id="cssRenderContainer" class="sortable-classes ui-sortable" style="margin-top: 30px;padding-top: 8px;">
+							<div  id="_46defaultClass" class="classDiv">
+								<div class="ace_line ace_first"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p><span class="loadNum">.defaultClass</span><span style="padding: 0px 4px;"> {</span></div>
+								<div class="container_46defaultClass sortable-items"></div>
 								<div class="ace_line"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p><span style="margin:0;padding-left:5px;">}</span></div>
 								<div class="ace_line"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p></div>
-						</code>
-						<code id="HTMLRENDER" style="display:none;">
-							<div class="ace_line"><p class="ace_gutter ace_gutter-cell " unselectable="on"></p><span class="baliseHtml" style="margin:0;padding-left:0px;">&lt;html&gt;</span></div>
-							<div class="ace_line"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p><span class="baliseHtml" style="margin:0;padding-left:10px;">&lt;head&gt;</span></div>
-							<div class="ace_line"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p><span class="baliseHtml" style="margin:0;padding-left:20px;">&lt;link rel="stylesheet" type="text/css" href="style.css" /&gt;</span></div>
-							<div class="ace_line"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p><span class="baliseHtml" style="margin:0;padding-left:10px;">&lt;/head&gt;</span></div>
-							<div class="ace_line"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p><span class="baliseHtml" style="margin:0;padding-left:10px;">&lt;body&gt;</span></div>
-							<div class="ace_line"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p><span class="baliseHtml" style="margin:0;padding-left:20px;">&lt;div class="defaultClass" &gt;</span></div>
-							<div class="ace_line"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p><span class="" id="htmlTxtValue" style="margin:0;padding-left:30px;"></span></div>
-							<div class="ace_line"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p><span class="baliseHtml" style="margin:0;padding-left:20px;">&lt;/div&gt;</span></div>
-							<div class="ace_line"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p><span class="baliseHtml" style="margin:0;padding-left:10px;">&lt;/body&gt;</span></div>
-	 						<div class="ace_line"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p><span class="baliseHtml" style="margin:0;padding-left:0px;">&lt;/html&gt;</span></div>
-						</code>
-					</div>
+							</div>
+							<div  id="_46defaultClass_58hover" class="classDiv">
+								<div class="ace_line ace_first"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p><span class="loadNum">.defaultClass:hover</span><span style="padding: 0px 4px;"> {</span></div>
+									<div class="container_46defaultClass_58hover sortable-items"></div>
+									<div class="ace_line"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p><span style="margin:0;padding-left:5px;">}</span></div>
+									<div class="ace_line"><p class="ace_gutter ace_gutter-cell" unselectable="on"></p></div>
+								</div>
+							</div>
+						</div>
+					</code>
+					<code id="HTMLRENDER">
+						<div id="inputHTMLcode">
+							<span style="padding-left: 4px;">Html5</span>
+							<a href="#menu" class="toggleMenu"><i class="fa fa-cogs" style="padding: 1px 5px;float:right;color:white;" aria-hidden="true"></i></a>
+							<div id="menu">
+								<ul>
+									 <li onclick="autoFormatSelection();">indent Selection<i class="fa fa-indent" style="padding: 1px 5px;float:right;" aria-hidden="true"></i></li>
+									 <li onclick="resetHtml();">HTML Reset<i class="fa fa-eraser" style="padding: 1px 5px;float:right;" aria-hidden="true"></i></li>
+								</ul>
+							</div>
+							<i class="fa fa-files-o" style="padding: 1px 5px;float:right;" id="copyCodeHTML" onclick="selectText('htmlRenderContainer')" aria-hidden="true"></i>
+						</div>
+						<div class="htmlrenderdiv">
+							<div id="htmlRenderContainer"  style="padding: 5px 5px;margin-top: 30px;">
+								<div id="codemirror-html" ></div>
+							</div>
+						</div>
+					</code>
+				</div>
 			</div>
-		<div class="history">
-					<!-- historique + retour arrière/ avant -->
-						<!-- Css :before :after :hover :active :focus :visited ? :selected -->
-							<!-- Html add balise + a + div -->
-								<!-- css input value propositions -->
-									<!-- rename a class -->
-									<!-- moreproperties -->
-									<!-- unity values -->
+			<div class="history">
+				<!-- historique + retour arrière/ avant -->
+				<!-- create property inside cssRender -->
+				<!-- unity values -->
+				<!-- CSS errors -->
+				<!-- remove or comment a class or minimise -->
+				<!-- tri css -->
+				<!-- import css -->
+			</div>
+			<div class="htmlCodeValue"></div>
 		</div>
-	</div>
-	<footer>
-	</footer>
-	<script src="js/project.js"></script>
-	<!-- BY VISOCCHI ANTHONY 2017-2018 -->
+		<footer>
+		</footer>
+		<!-- Js -->
+		<script src="js/project.js"></script>
+		<!-- VISOCCHI ANTHONY 2017-2018 - Apache License -->
 	</body>
 </html>
